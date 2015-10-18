@@ -1,0 +1,131 @@
+// @section Configuration Settings
+// Adjust colors, font stacks, breakpoints and sizing.
+//
+// Typographic Scale
+// (For math purposes. Actual font sizes in ems.)
+// 1px, 4px, 5px, 8px, 9px, 11px, 12px, 13px, 15px, 16px, 19px, 21px, 24px, 28px, 32px, 48px, 64px, 80px, 96px
+// line height: 1.5em on small screens, 1.5625em on big screens
+//
+// Theme-specific customizations
+// - typography.scss
+// - buttons.scss
+// - svgs.scss
+// - astro-navbar.scss
+// - drop-basic.scss
+// - overrides.scss
+
+// Developer Options
+$themes: true;
+$fonts: true;
+
+// Colors
+$color-primary: #0088cc;
+$color-black: #272727;
+$color-white: #ffffff;
+
+$color-info: #0088cc; // Blue
+$color-success: #377f31; // Green
+$color-danger: #880e14; // Red
+$color-warning: #dba909; // Yellow
+$color-code: #dd1144;
+
+$color-gray-dark: #808080;
+$color-gray-light: #e5e5e5;
+
+$color-twitter: #41b7d8;
+$color-facebook: #3b5997;
+$color-google: #d64937;
+$color-linkedin: #0073b2;
+$color-pinterest: #cb2027;
+$color-github: #3a3838;
+$color-vk: #5e82a8;
+$color-xing: #175e60;
+$color-tumblr: #35465c;
+$color-reddit: #ff5700;
+$color-instagram: #125688;
+$color-flickr: #f91881;
+
+$color-theme-whale-primary: #333547;
+$color-theme-whale-secondary: #e26957;
+
+$color-theme-bear-primary: #634434;
+$color-theme-bear-secondary: #2f74ad;
+
+$color-theme-parrot: #b9191d;
+
+$color-theme-coral-primary: #1b8bbd;
+$color-theme-coral-secondary: #ed4d47;
+
+$color-theme-octopus: #894b81;
+
+// Font Stacks
+$font-primary: "Helvetica Neue", Arial, sans-serif;
+$font-secondary: Georgia, Times, serif;
+$font-monospace: Menlo, Monaco, "Courier New", monospace;
+
+$font-helvetica: $font-primary;
+$font-open-sans: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+$font-source-sans-pro: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+$font-georgia: $font-secondary;
+$font-lora: "Lora", Georgia, Times, serif;
+$font-droid-serif: "Droid Serif", Georgia, Times, serif;
+
+
+// Breakpoints
+$bp-xsmall: 20em;
+$bp-small: 30em;
+$bp-medium: 40em;
+$bp-large: 60em;
+$bp-xlarge: 80em;
+
+
+// Sizing
+$font-size: 100%;
+$spacing: 1.5625em;
+$container-width: 88%;
+$container-max-width: $bp-medium;
+$container-large-max-width: $bp-xlarge;
+
+
+// Grid
+$grid-margins: 1.4%;
+$grid-sizes: (
+	// Grid width options
+	// Add/remove grid's as needed
+	// $name: $width
+	// $name - {string} class suffix
+	// $width - {string} width of the grid
+	fourth: 25%,
+	third: 33.33333333333%,
+	half: 50%,
+	two-thirds: 66.666666666667%,
+	three-fourths: 75%,
+	full: 100%
+);
+$grid-breakpoints: (
+	// Breakpoints at which to activate grid
+	// Add/remove breakpoints as needed
+	// ($breakpoint, $prefix-class, $include-offsets)
+	// $breakpoint - {string|variable} the breakpoint
+	// $prefix-class - {string|optional} class to be used with `.row` to activate grid
+	// $include-offsets - {boolean} if true, include offset classes at this breakpoint
+	($bp-xsmall, ".row-start-xsmall", false),
+	($bp-small, ".row-start-small", false),
+	($bp-medium, null, true),
+);
+$grid-dynamic: (
+	// Create grid classes that vary in size at different breakpoints
+	// Add/remove classes, breakpoints, and sizes as needed
+	// ($class, $breakpoint, $width)
+	// $class - {string} the grid class
+	// $breakpoint - {string|variable} the breakpoint
+	// $width - {string|variable} width of the grid at the breakpoint
+
+	// (".grid-dynamic", $bp-xsmall, map-get($grid-sizes, half))
+	// (".grid-dynamic", $bp-small, map-get($grid-sizes, third))
+	// (".grid-dynamic", $bp-medium, map-get($grid-sizes, fourth))
+
+	(".grid-dynamic", $bp-xsmall, map-get($grid-sizes, half))
+	(".grid-dynamic", $bp-large, map-get($grid-sizes, third))
+	(".grid-dynamic", $bp-xlarge, map-get($grid-sizes, fourth))
+);

@@ -1,0 +1,68 @@
+/**
+ * @section WordPress Image Classes
+ * Styling for the classes WordPress automatically applies to images.
+ */
+
+/**
+ * Comment Avatar Styling
+ * Class automatically applied to comment avatars.
+ */
+.avatar {
+    @extend .img-border;
+    @extend .img-circle;
+	float: left;
+	margin-right: calc-em(8px);
+	/*  Set $size to 2x desired size in comments.php
+	 *  for crisp images on retina screens. */
+	height: 3.75em;
+	width: 3.75em;
+}
+
+/**
+ * Image alignment
+ */
+
+.aligncenter {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alignleft {
+    @extend .aligncenter;
+
+    @media (min-width: $bp-small) {
+        float: left;
+        margin-right: calc-em(8px);
+    }
+}
+
+.alignright {
+    @extend .aligncenter;
+
+    @media (min-width: $bp-small) {
+        float: right;
+        margin-left: calc-em(8px);
+    }
+}
+
+.alignnone {
+    @extend .aligncenter;
+
+    @media (min-width: $bp-small) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/**
+ * Image Caption Styling
+ */
+.wp-caption-text {
+	font-size: calc-em(15px);
+	font-style: italic;
+	color: $color-gray-dark;
+	padding-top: calc-em(8px);
+	text-align: center;
+}

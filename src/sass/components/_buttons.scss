@@ -1,0 +1,212 @@
+/**
+ * @section Buttons
+ * Styling for CSS buttons.
+ */
+
+
+/**
+ * Primary buttons
+ */
+.btn {
+	background-color: $color-primary;
+	border: calc-em(1px) solid $color-primary;
+	border-radius: calc-em(1px);
+	color: $color-white;
+	display: inline-block;
+	font-size: calc-em(15px);
+	font-weight: normal;
+	line-height: 1.2;
+	margin-right: calc-em(5px);
+	margin-bottom: calc-em(5px);
+	padding: calc-em(8px) calc-em(11px);
+
+	&:hover,
+	a &:hover,
+	&:focus,
+	a &:focus,
+	&:active,
+	a &:active,
+	&.active {
+		background-color: darken( $color-primary, 15% );
+		border-color: darken( $color-primary, 15% );
+		color: $color-white;
+		text-decoration: none;
+	}
+
+	@if $themes == true {
+
+		.theme-whale & {
+			background-color: $color-theme-whale-secondary;
+			border-color: $color-theme-whale-secondary;
+
+			&:hover,
+			a &:hover,
+			&:focus,
+			a &:focus,
+			&:active,
+			a &:active,
+			&.active {
+				background-color: darken( $color-theme-whale-secondary, 15% );
+				border-color: darken( $color-theme-whale-secondary, 15% );
+			}
+		}
+
+		.theme-bear & {
+			background-color: $color-theme-bear-secondary;
+			border-color: $color-theme-bear-secondary;
+
+			&:hover,
+			a &:hover,
+			&:focus,
+			a &:focus,
+			&:active,
+			a &:active,
+			&.active {
+				background-color: darken( $color-theme-bear-secondary, 15% );
+				border-color: darken( $color-theme-bear-secondary, 15% );
+			}
+		}
+
+		.theme-coral & {
+			background-color: $color-theme-coral-secondary;
+			border-color: $color-theme-coral-secondary;
+
+			&:hover,
+			a &:hover,
+			&:focus,
+			a &:focus,
+			&:active,
+			a &:active,
+			&.active {
+				background-color: darken( $color-theme-coral-secondary, 15% );
+				border-color: darken( $color-theme-coral-secondary, 15% );
+			}
+		}
+
+		.theme-lab & {
+			background-color: $color-black;
+			border-color: $color-black;
+
+			&:hover,
+			a &:hover,
+			&:focus,
+			a &:focus,
+			&:active,
+			a &:active,
+			&.active {
+				background-color: darken( $color-black, 15% );
+				border-color: darken( $color-black, 15% );
+			}
+		}
+
+	}
+}
+
+@if $themes == true {
+
+	.theme-whale a.btn,
+	.theme-bear a.btn,
+	.theme-coral a.btn,
+	.theme-lab a.btn {
+		color: $color-white;
+		text-decoration: none;
+	}
+
+}
+
+
+// /**
+//  * Secondary buttons
+//  */
+// .btn-secondary {
+// 	background-color: $color-gray-dark;
+// 	border-color: $color-gray-dark;
+
+// 	&:hover,
+// 	a &:hover,
+// 	&:focus,
+// 	a &:focus,
+// 	&:active,
+// 	a &:active,
+// 	&.active {
+// 		background-color: darken( $color-gray-dark, 15% );
+// 		border-color: darken( $color-gray-dark, 15% );
+// 	}
+// }
+
+
+/**
+ * Active state
+ */
+.btn:active,
+.btn.active {
+	box-shadow: inset 0 calc-em(2.5px) calc-em(4px) rgba(0, 0, 0, 0.15), 0 calc-em(1px) calc-em(2.5px) rgba(0, 0, 0, 0.05);
+	outline: 0;
+}
+
+
+/**
+ * Disabled state
+ */
+.btn.disabled,
+.btn[disabled] {
+	box-shadow: none;
+	cursor: not-allowed;
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+
+/**
+ * Button size
+ */
+.btn-large {
+	font-size: 1em;
+	line-height: normal;
+	padding: calc-em(11px) calc-em(15px);
+}
+
+
+/**
+ * Block-level buttons
+ */
+.btn-block,
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+	display: block;
+	margin-right: 0;
+	padding-right: 0;
+	padding-left: 0;
+	width: 100%;
+}
+
+
+/**
+ * General styles
+ */
+.btn,
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	cursor: pointer;
+	text-align: center;
+	vertical-align: middle;
+
+	/**
+	 * @workaround Override default button styling
+	 * @affected Webkit/Firefox
+	 */
+	// background-image: none;
+	-webkit-appearance: none;
+}
+
+
+/**
+ * Remove right margin on last element and inputs
+ */
+.btn:last-child,
+input.btn {
+	margin-right: 0;
+}

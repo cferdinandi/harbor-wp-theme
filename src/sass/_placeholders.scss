@@ -1,0 +1,24 @@
+// @section Placeholders
+// Reduce code size when applying a style to multiple sections
+
+
+%theme-background {
+	.theme-whale & {
+		background-color: lighten( $color-gray-light, 5% );
+	}
+}
+
+%theme-dropdowns {
+	@extend %theme-background;
+	.theme-whale & {
+		text-decoration: none;
+	}
+}
+
+%theme-buttons {
+
+}
+
+%theme-links {
+
+}

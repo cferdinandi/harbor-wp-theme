@@ -1,0 +1,54 @@
+/**
+ * @section Petfinder
+ * Styles for Petfinder API content.
+ */
+
+
+/**
+ * Filters for "All Pets" page
+ */
+.petfinder-filters {
+	display: none;
+	visibility: hidden;
+
+	@media (min-width: $bp-medium) {
+		.js-petfinder-sort & {
+			display: block;
+			visibility: visible;
+		}
+	}
+
+	.js-petfinder-sort &.active {
+		display: block;
+		visibility: visible;
+	}
+}
+
+
+/**
+ * Filters toggle
+ */
+.petfinder-filters-toggle {
+	display: none;
+	visibility: hidden;
+
+	@media (max-width: $bp-medium) {
+		.js-petfinder-sort & {
+			display: inline-block;
+			visibility: visible;
+		}
+	}
+}
+
+/**
+ * Content for "All Pets" page
+ */
+.petfinder-content {
+	@media (min-width: $bp-medium) {
+		margin-left: 25%;
+
+		.js-petfinder-sort & {
+			margin-left: 0;
+		}
+	}
+}

@@ -1,0 +1,215 @@
+/**
+ * @section Dropdowns
+ * Styling for the dropdown navigation.
+ */
+
+/**
+ * Set dropdown link to relative positioning
+ */
+// .dropdown-basic,
+.nav-navbar .menu-item-has-children {
+	position: relative;
+
+	@media (max-width: $bp-large) {
+		.js-drop & > a {
+			cursor: not-allowed;
+			pointer-events: none;
+		}
+	}
+
+	@media (min-width: $bp-large) {
+		.js-drop & > a {
+
+			&:after {
+				content: "+";
+				display: inline-block;
+				margin-left: calc-em(4px);
+				width: calc-em(8px);
+			}
+
+			&.active:after {
+				content: "\2013";
+			}
+
+		}
+	}
+}
+
+
+/**
+ * Dropdown content
+ */
+// .dropdown-menu-basic,
+.menu-item-has-children .sub-menu {
+	border: calc-em(1px) solid lighten( $color-gray-dark, 22% );
+	border-radius: calc-em(1px);
+	box-shadow: 0 calc-em(4px) calc-em(8px) rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	display: none;
+	float: left;
+	list-style: none;
+	margin-top: calc-em(8px);
+	margin-left: 0;
+	min-width: 10em;
+	padding-top: calc-em(8px);
+	padding-bottom: calc-em(8px);
+	position: absolute;
+	right: 0;
+	text-align: left;
+	top: 100%;
+	visibility: hidden;
+	z-index: 1000;
+
+	&.active {
+		display: block;
+		visibility: visible;
+	}
+
+	@media (max-width: $bp-medium) {
+		margin-left: calc-em(32px);
+	}
+
+	@media (min-width: $bp-medium) {
+		.js-drop & {
+			background-color: $color-white;
+		}
+	}
+
+	a {
+		display: block;
+		padding-left: calc-em(8px);
+		padding-right: calc-em(8px);
+
+		@if $themes == true {
+
+			.theme-whale & {
+				color: $color-theme-whale-secondary;
+			}
+
+			.theme-bear & {
+				color: $color-theme-bear-secondary;
+			}
+
+			.theme-parrot & {
+				color: $color-primary;
+			}
+
+			.theme-coral & {
+				color: $color-theme-coral-secondary;
+			}
+
+			.theme-lab & {
+				color: $color-black;
+			}
+
+			.theme-octopus & {
+				color: $color-theme-octopus;
+			}
+
+			&:hover {
+				.theme-arctic &,
+				.theme-whale &,
+				.theme-bear &,
+				.theme-parrot &,
+				.theme-coral &,
+				.theme-lab &,
+				.theme-octopus & {
+					text-decoration: none;
+				}
+
+				.theme-whale &,
+				.theme-bear &,
+				.theme-parrot &,
+				.theme-coral &,
+				.theme-lab &,
+				.theme-octopus & {
+					color: $color-white;
+				}
+
+				.theme-arctic & {
+					background-color: lighten( $color-gray-light, 5% );
+				}
+
+				.theme-whale & {
+					background-color: $color-theme-whale-primary;
+				}
+
+				.theme-bear & {
+					background-color: $color-theme-bear-primary;
+				}
+
+				.theme-parrot & {
+					background-color: $color-theme-parrot;
+				}
+
+				.theme-coral & {
+					background-color: $color-theme-coral-primary;
+				}
+
+				.theme-lab & {
+					background-color: $color-black;
+				}
+
+				.theme-octopus & {
+					background-color: $color-theme-octopus;
+				}
+			}
+
+		}
+	}
+
+	/**
+	 * Switch up styling on small viewports
+	 */
+	@media (max-width: $bp-medium) {
+		.js-drop & {
+			border: none;
+			box-shadow: none;
+			display: block;
+			float: none;
+			min-width: 100%;
+			padding: 0;
+			position: static;
+			visibility: visible;
+		}
+
+		@if $themes == true {
+
+			.js-drop.theme-whale & a,
+			.js-drop.theme-bear & a,
+			.js-drop.theme-parrot & a,
+			.js-drop.theme-coral & a,
+			.js-drop.theme-lab & a,
+			.js-drop.theme-octopus & a {
+				color: $color-white;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+
+			.js-drop.theme-arctic & a:hover {
+				text-decoration: underline;
+			}
+
+		}
+	}
+}
+
+
+/**
+ * Navigation subnav backup
+ * Displays when JavaScript fails and nav item has sub-nav content
+ */
+
+.nav-backup {
+	@extend .margin-bottom;
+
+	&.has-hero {
+		margin-bottom: 0;
+	}
+
+	.js-drop & {
+		@extend [hidden];
+	}
+}

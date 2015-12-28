@@ -7,10 +7,10 @@
 	function keel_button_shortcode( $atts ) {
 
 		// Get user options
-		$btn = extract(shortcode_atts(array(
+		$btn = shortcode_atts(array(
 			'link'  => '',
 			'label' => ''
-		), $atts));
+		), $atts);
 
 		// Bail if no link or label is set
 		if ( empty( $btn['link'] ) || empty( $btn['label'] ) ) return;

@@ -29,14 +29,27 @@
 					<?php get_template_part( 'nav-social' ); ?>
 					<div class="grid-half text-left-medium">
 						<?php get_search_form(); ?>
-						<?php
-							if ( !empty( $options['footer'] ) ) {
-								echo stripslashes( $options['footer'] );
-							}
-						?>
-						<p class="padding-top"><a target="_blank" href="url-to-github.com">[NAME OF THEME]</a> by <a target="_blank" href="http://gomakethings.com">Go Make Things</a>.</p>
 					</div>
 				</div>
+
+				<div class="row">
+					<div class="grid-half text-left-medium">
+						<?php
+							if ( !empty( $options['footer1'] ) ) {
+								echo do_shortcode( stripslashes( $options['footer1'] ) );
+							}
+						?>
+					</div>
+					<div class="grid-half text-right-medium">
+						<?php
+							if ( !empty( $options['footer2'] ) ) {
+								echo do_shortcode( stripslashes( $options['footer2'] ) );
+							}
+						?>
+					</div>
+				</div>
+
+				<p class="padding-top text-left-medium"><a target="_blank" href="url-to-github.com">Harbor Pet Rescue Theme for WP</a> by <a target="_blank" href="http://gomakethings.com">Go Make Things</a>.</p>
 
 			</div>
 

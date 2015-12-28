@@ -7,7 +7,7 @@
 
 
 	/**
-	 * Load theme files.
+	 * Load theme files
 	 */
 	function keel_load_theme_files() {
 		$keel_theme = wp_get_theme();
@@ -19,9 +19,9 @@
 
 
 	/**
-	 * Include feature detection scripts inline in the header
+	 * Load inline header content
 	 */
-	function keel_initialize_theme_detects() {
+	function keel_load_inline_header() {
 		$keel_theme = wp_get_theme();
 		$options = keel_get_theme_options();
 		?>
@@ -41,14 +41,14 @@
 			</script>
 		<?php
 	}
-	add_action('wp_head', 'keel_initialize_theme_detects', 30);
+	add_action('wp_head', 'keel_load_inline_header', 30);
 
 
 
 	/**
-	 * Include script inits inline in the footer
+	 * Load inline footer content
 	 */
-	function keel_initialize_theme_scripts() {
+	function keel_load_inline_footer() {
 		$keel_theme = wp_get_theme();
 		?>
 			<script>
@@ -65,7 +65,7 @@
 			</script>
 		<?php
 	}
-	add_action('wp_footer', 'keel_initialize_theme_scripts', 30);
+	add_action('wp_footer', 'keel_load_inline_footer', 30);
 
 
 
@@ -598,6 +598,8 @@
 		};
 	}
 
+
+
 	// Developer Options
 	function keel_developer_options() {
 		return array(
@@ -631,3 +633,6 @@
 
 	// Button links shortcode
 	require_once( dirname( __FILE__) . '/includes/keel-button-shortcode.php' );
+
+	// Theme support
+	require_once( dirname( __FILE__) . '/includes/keel-theme-support.php' );

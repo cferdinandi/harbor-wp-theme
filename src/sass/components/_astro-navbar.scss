@@ -11,58 +11,33 @@
 	padding-bottom: calc-em(4px);
 	text-align: center;
 
-	@media (max-width: $bp-medium) {
+	@media (max-width: $bp-large) {
 		.js-astro &.nav-collapse  {
 			text-align: left;
 		}
 	}
 
-	@media (min-width: $bp-medium) {
+	@media (min-width: $bp-large) {
 		text-align: left;
 	}
 
 	@if $themes == true {
 
-		.theme-arctic & {
+		.theme-light & {
 			background-color: lighten( $color-gray-light, 5% );
 		}
 
-		.theme-whale & a,
-		.theme-bear & a,
-		.theme-parrot & a,
-		.theme-coral & a,
-		.theme-lab & a,
-		.theme-octopus & a {
-			color: $color-white;
-			text-decoration: none;
-
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-
-		.theme-whale & {
-			background-color: $color-theme-whale-primary;
-		}
-
-		.theme-bear & {
-			background-color: $color-theme-bear-primary;
-		}
-
-		.theme-parrot & {
-			background-color: $color-theme-parrot;
-		}
-
-		.theme-coral & {
-			background-color: $color-theme-coral-primary;
-		}
-
-		.theme-lab & {
+		.theme-dark & {
 			background-color: $color-black;
-		}
 
-		.theme-octopus & {
-			background-color: $color-theme-octopus;
+			a {
+				color: $color-white;
+				text-decoration: none;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
 		}
 
 	}
@@ -82,18 +57,26 @@
 		text-decoration: none;
 	}
 
-	@media (max-width: $bp-medium) {
+	@media (max-width: $bp-large) {
 		.js-astro .nav-collapse & {
 			float: left;
 		}
 	}
 
-	@media (min-width: $bp-medium) {
+	@media (min-width: $bp-large) {
 		float: left;
 	}
 
 	svg {
-		@extend .icon;
+		display: inline-block;
+		fill: currentColor;
+		height: 0;
+		width: 0;
+
+		.svg & {
+			height: auto;
+			width: auto;
+		}
 	}
 }
 
@@ -102,7 +85,7 @@
  * Navigation Menu Container
  */
 .nav-menu-navbar {
-	@media (max-width: $bp-medium) {
+	@media (max-width: $bp-large) {
 		clear: left;
 		padding-top: calc-em(8px);
 
@@ -158,13 +141,13 @@
 		// }
 	}
 
-	@media (max-width: $bp-medium) {
+	@media (max-width: $bp-large) {
 		.js-astro .nav-collapse & {
 			text-align: left;
 		}
 	}
 
-	@media (min-width: $bp-medium) {
+	@media (min-width: $bp-large) {
 		text-align: right;
 	}
 }
@@ -177,7 +160,7 @@
 	display: none;
 	visibility: hidden;
 
-	@media (max-width: $bp-medium) {
+	@media (max-width: $bp-large) {
 		.js-astro .nav-collapse & {
 			display: block;
 			float: right;

@@ -12,77 +12,28 @@
 	background-color: lighten( $color-gray-light, 5% );
 }
 
+.bg-primary {
+	background-color: lighten( $color-gray-light, 5% );
+}
+
 @if $themes == true {
 
-	.bg-primary {
-		.theme-arctic & {
-			background-color: lighten( $color-gray-light, 5% );
-		}
+	.theme-dark .bg-primary {
+		background-color: $color-black;
+		color: $color-white;
 
-		.theme-whale & {
-			background-color: $color-theme-whale-primary;
-			color: $color-white;
-
-			a {
-				color: $color-white;
-
-				&:hover,
-				&:focus,
-				&:active {
-					color: $color-theme-whale-secondary;
-				}
-			}
-		}
-
-		.theme-bear & a,
-		.theme-parrot & a,
-		.theme-coral & a,
-		.theme-lab & a,
-		.theme-octopus & a {
-			color: $color-white;
+		a {
+			color: $color-gray-light;
+			text-decoration: underline;
 
 			&:hover,
 			&:focus,
 			&:active {
-				color: $color-gray-light;
-				text-decoration: none;
+				color: $color-white;
 			}
-		}
 
-		.theme-bear & {
-			background-color: $color-theme-bear-primary;
-			color: $color-white;
-		}
-
-		.theme-parrot & {
-			background-color: $color-theme-parrot;
-			color: $color-white;
-
-			a.link-icon {
+			&.link-icon {
 				text-decoration: none;
-			}
-		}
-
-		.theme-coral & {
-			background-color: $color-theme-coral-primary;
-			color: $color-white;
-		}
-
-		.theme-lab & {
-			background-color: $color-black;
-			color: $color-white;
-		}
-
-		.theme-octopus & {
-			background-color: $color-theme-octopus;
-			color: $color-white;
-
-			a {
-				text-decoration: underline;
-
-				&.link-icon {
-					text-decoration: none;
-				}
 			}
 		}
 	}

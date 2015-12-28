@@ -15,19 +15,19 @@
 	function keel_petfinder_api_add_custom_post_type() {
 		$options = keel_petfinder_api_get_theme_options();
 		$labels = array(
-			'name'               => _x( 'Pets', 'post type general name', 'keel_petfinder_api' ),
-			'singular_name'      => _x( 'Pet', 'post type singular name', 'keel_petfinder_api' ),
-			'add_new'            => _x( 'Add New', 'course', 'keel_petfinder_api' ),
-			'add_new_item'       => __( 'Add New Pet', 'keel_petfinder_api' ),
-			'edit_item'          => __( 'Edit Pet', 'keel_petfinder_api' ),
-			'new_item'           => __( 'New Pet', 'keel_petfinder_api' ),
-			'all_items'          => __( 'All Pets', 'keel_petfinder_api' ),
-			'view_item'          => __( 'View Pet', 'keel_petfinder_api' ),
-			'search_items'       => __( 'Search Pets', 'keel_petfinder_api' ),
-			'not_found'          => __( 'No pets found', 'keel_petfinder_api' ),
-			'not_found_in_trash' => __( 'No pets found in the Trash', 'keel_petfinder_api' ),
+			'name'               => _x( 'Pets', 'post type general name', 'keel' ),
+			'singular_name'      => _x( 'Pet', 'post type singular name', 'keel' ),
+			'add_new'            => _x( 'Add New', 'course', 'keel' ),
+			'add_new_item'       => __( 'Add New Pet', 'keel' ),
+			'edit_item'          => __( 'Edit Pet', 'keel' ),
+			'new_item'           => __( 'New Pet', 'keel' ),
+			'all_items'          => __( 'All Pets', 'keel' ),
+			'view_item'          => __( 'View Pet', 'keel' ),
+			'search_items'       => __( 'Search Pets', 'keel' ),
+			'not_found'          => __( 'No pets found', 'keel' ),
+			'not_found_in_trash' => __( 'No pets found in the Trash', 'keel' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => __( 'Petfinder', 'keel_petfinder_api' ),
+			'menu_name'          => __( 'Petfinder', 'keel' ),
 		);
 		$args = array(
 			'labels'        => $labels,
@@ -712,7 +712,7 @@
 
 		// If there was an error, log it and fallback to existing data
 		if ( empty( $pets ) ) {
-			set_transient( 'keel_petfinder_api_get_pets_error', __( 'The Petfinder API returned an error the last time it was called. Data from the last successful API call is being used instead so that pets are still displayed on your site. If you just provided your developer key or shelter ID for the first time, please check that they are correct (ignore this sentence if the API was previously working for you&mdash;petfinder is probably just having some issues).', 'keel_petfinder_api' ) );
+			set_transient( 'keel_petfinder_api_get_pets_error', __( 'The Petfinder API returned an error the last time it was called. Data from the last successful API call is being used instead so that pets are still displayed on your site. If you just provided your developer key or shelter ID for the first time, please check that they are correct (ignore this sentence if the API was previously working for you&mdash;petfinder is probably just having some issues).', 'keel' ) );
 			return;
 		}
 		delete_transient( 'keel_petfinder_api_get_pets_error' );

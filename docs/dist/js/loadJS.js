@@ -2,7 +2,7 @@
  * harbor v1.0.0: A free WordPress theme for animal and pet rescue organizations
  * (c) 2015 Chris Ferdinandi
  * MIT License
- * http://github.com/cferdinandi/rescue-theme
+ * http://github.com/cferdinandi/harbor-pet-rescue-wordpress-theme
  */
 
 /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */

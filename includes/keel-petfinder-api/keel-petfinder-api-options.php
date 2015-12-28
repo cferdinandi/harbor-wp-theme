@@ -9,7 +9,7 @@
 		$options = keel_petfinder_api_get_theme_options();
 		?>
 		<input type="text" name="keel_petfinder_api_theme_options[developer_key]" class="large-text" id="developer_key" value="<?php echo esc_attr( $options['developer_key'] ); ?>" />
-		<label class="description" for="developer_key"><?php _e( '<a href="https://www.petfinder.com/developers/api-docs">Get your developer key</a> to begin using the Petfinder API', 'keel_petfinder_api' ); ?></label>
+		<label class="description" for="developer_key"><?php _e( '<a href="https://www.petfinder.com/developers/api-docs">Get your developer key</a> to begin using the Petfinder API', 'keel' ); ?></label>
 		<?php
 	}
 
@@ -17,7 +17,7 @@
 		$options = keel_petfinder_api_get_theme_options();
 		?>
 		<input type="text" name="keel_petfinder_api_theme_options[shelter_id]" id="shelter_id" value="<?php echo esc_attr( $options['shelter_id'] ); ?>" />
-		<label class="description" for="shelter_id"><?php _e( 'The Petfinder ID of the shelter to fetch data for', 'keel_petfinder_api' ); ?></label>
+		<label class="description" for="shelter_id"><?php _e( 'The Petfinder ID of the shelter to fetch data for', 'keel' ); ?></label>
 		<?php
 	}
 
@@ -25,7 +25,7 @@
 		$options = keel_petfinder_api_get_theme_options();
 		?>
 		<input type="number" min="0" name="keel_petfinder_api_theme_options[count]" id="count" value="<?php echo esc_attr( $options['count'] ); ?>" />
-		<label class="description" for="count"><?php _e( 'Number of pet entries to retrieve. Should be greater than or equal to the  number of pets you have listed in Petfinder.', 'keel_petfinder_api' ); ?></label>
+		<label class="description" for="count"><?php _e( 'Number of pet entries to retrieve. Should be greater than or equal to the  number of pets you have listed in Petfinder.', 'keel' ); ?></label>
 		<?php
 	}
 
@@ -34,7 +34,7 @@
 		?>
 		<input name="keel_petfinder_api_theme_options[slug]" id="slug" value="<?php echo esc_attr( $options['slug'] ); ?>" />
 		<label class="description" for="slug">
-			<?php _e( 'The URL path for your Petfinder listings (ex. if you put <code>pets</code>, your animals would be displayed at <code>yourwebsite.com/pets</code>)', 'keel_petfinder_api' ); ?> <strong><?php _e( 'Note:', 'keel_petfinder_api' ); ?></strong> <em><?php _e( 'It this doesn\'t work, try saving your options again. It\'s absurd, but it works.', 'keel_petfinder_api' ); ?></em>
+			<?php _e( 'The URL path for your Petfinder listings (ex. if you put <code>pets</code>, your animals would be displayed at <code>yourwebsite.com/pets</code>)', 'keel' ); ?> <strong><?php _e( 'Note:', 'keel' ); ?></strong> <em><?php _e( 'It this doesn\'t work, try saving your options again. It\'s absurd, but it works.', 'keel' ); ?></em>
 		</label>
 		<?php
 	}
@@ -44,7 +44,7 @@
 		?>
 		<input name="keel_petfinder_api_theme_options[page_title]" id="slug" value="<?php echo esc_attr( $options['page_title'] ); ?>" />
 		<label class="description" for="page_title">
-			<?php _e( 'Title to display on the page where all of your available pets are listed', 'keel_petfinder_api' ); ?>
+			<?php _e( 'Title to display on the page where all of your available pets are listed', 'keel' ); ?>
 		</label>
 		<?php
 	}
@@ -62,7 +62,7 @@
 			)
 		); ?>
 <!-- 		<textarea class="large-text" type="text" name="keel_petfinder_api_theme_options[page_content]" id="page_content" cols="50" rows="10" /><?php echo esc_textarea( $options['page_content'] ); ?></textarea> -->
-		<label class="description" for="page_content"><?php _e( 'Content to display at the top of the page where all of your available pets are listed', 'keel_petfinder_api' ); ?></label>
+		<label class="description" for="page_content"><?php _e( 'Content to display at the top of the page where all of your available pets are listed', 'keel' ); ?></label>
 		<?php
 	}
 
@@ -72,13 +72,13 @@
 		<div>
 			<input name="keel_petfinder_api_theme_options[adoption_form_url]" id="adoption_form_url" value="<?php echo esc_attr( $options['adoption_form_url'] ); ?>" />
 			<label class="description" for="adoption_form_url">
-				<?php _e( 'URL of your adoption form. If entered, will display a link to the form on individual pet profiles.', 'keel_petfinder_api' ); ?>
+				<?php _e( 'URL of your adoption form. If entered, will display a link to the form on individual pet profiles.', 'keel' ); ?>
 			</label>
 		</div>
 		<div>
 			<input name="keel_petfinder_api_theme_options[adoption_form_text]" id="adoption_form_text" value="<?php echo esc_attr( $options['adoption_form_text'] ); ?>" />
 			<label class="description" for="adoption_form_text">
-				<?php _e( 'Text for the adoption form link, if URL is set.', 'keel_petfinder_api' ); ?>
+				<?php _e( 'Text for the adoption form link, if URL is set.', 'keel' ); ?>
 			</label>
 		</div>
 		<?php
@@ -91,37 +91,37 @@
 		<div>
 			<label>
 				<input type="checkbox" name="keel_petfinder_api_theme_options[filters_animal]" id="filters_animal" <?php checked( 'on', $options['filters_animal'] ); ?> />
-				<?php _e( 'Animal', 'keel_petfinder_api' ); ?>
+				<?php _e( 'Animal', 'keel' ); ?>
 			</label>
 		</div>
 		<div>
 			<label>
 				<input type="checkbox" name="keel_petfinder_api_theme_options[filters_breed]" id="filters_breed" <?php checked( 'on', $options['filters_breed'] ); ?> />
-				<?php _e( 'Breed', 'keel_petfinder_api' ); ?>
+				<?php _e( 'Breed', 'keel' ); ?>
 			</label>
 		</div>
 		<div>
 			<label>
 				<input type="checkbox" name="keel_petfinder_api_theme_options[filters_age]" id="filters_age" <?php checked( 'on', $options['filters_age'] ); ?> />
-				<?php _e( 'Age', 'keel_petfinder_api' ); ?>
+				<?php _e( 'Age', 'keel' ); ?>
 			</label>
 		</div>
 		<div>
 			<label>
 				<input type="checkbox" name="keel_petfinder_api_theme_options[filters_size]" id="filters_" <?php checked( 'on', $options['filters_size'] ); ?> />
-				<?php _e( 'Size', 'keel_petfinder_api' ); ?>
+				<?php _e( 'Size', 'keel' ); ?>
 			</label>
 		</div>
 		<div>
 			<label>
 				<input type="checkbox" name="keel_petfinder_api_theme_options[filters_gender]" id="filters_gender" <?php checked( 'on', $options['filters_gender'] ); ?> />
-				<?php _e( 'Gender', 'keel_petfinder_api' ); ?>
+				<?php _e( 'Gender', 'keel' ); ?>
 			</label>
 		</div>
 		<div>
 			<label>
 				<input type="checkbox" name="keel_petfinder_api_theme_options[filters_other]" id="filters_other" <?php checked( 'on', $options['filters_other'] ); ?> />
-				<?php _e( 'Other Options', 'keel_petfinder_api' ); ?>
+				<?php _e( 'Other Options', 'keel' ); ?>
 			</label>
 		</div>
 		<?php
@@ -226,7 +226,7 @@
 
 		?>
 		<div class="wrap">
-			<h2><?php _e( 'Petfinder API Options', 'keel_petfinder_api' ); ?></h2>
+			<h2><?php _e( 'Petfinder API Options', 'keel' ); ?></h2>
 			<?php
 				// If required API data is not yet provided
 				if ( empty( $options['developer_key'] ) || empty( $options['shelter_id'] ) ) :
@@ -239,7 +239,7 @@
 					}
 			 ?>
 				<div class="error">
-					<p><?php _e( $message, 'keel_petfinder_api' ); ?></p>
+					<p><?php _e( $message, 'keel' ); ?></p>
 				</div>
 			<?php endif; ?>
 			<?php
@@ -257,7 +257,7 @@
 				$timestamp = get_transient( 'keel_petfinder_api_get_pets_timestamp' );
 				if ( !empty( $timestamp ) ) :
 			?>
-				<p><?php printf( __( 'Petfinder API data was last retrieved on %s at %s.', 'keel_petfinder_api' ), date( 'F j, Y', $timestamp ), date( 'g:i a', $timestamp ) ); ?></p>
+				<p><?php printf( __( 'Petfinder API data was last retrieved on %s at %s.', 'keel' ), date( 'F j, Y', $timestamp ), date( 'g:i a', $timestamp ) ); ?></p>
 			<?php endif; ?>
 
 			<form method="post" action="options.php">
@@ -300,14 +300,14 @@
 		// $callback - Function that creates the field (from the Theme Option Fields section).
 		// $page - The menu page on which to display this field.
 		// $section - The section of the settings page in which to show the field.
-		add_settings_field( 'developer_key', __( 'Developer Key', 'keel_petfinder_api' ), 'keel_petfinder_api_settings_field_developer_key', 'keel_petfinder_api_theme_options', 'general' );
-		add_settings_field( 'shelter_id', __( 'Shelter ID', 'keel_petfinder_api' ), 'keel_petfinder_api_settings_field_shelter_id', 'keel_petfinder_api_theme_options', 'general' );
-		add_settings_field( 'count', __( 'Count', 'keel_petfinder_api' ), 'keel_petfinder_api_settings_field_count', 'keel_petfinder_api_theme_options', 'general' );
-		add_settings_field( 'slug', __( 'URL Path', 'keel_petfinder_api' ), 'keel_petfinder_api_settings_field_slug', 'keel_petfinder_api_theme_options', 'display' );
-		add_settings_field( 'page_title', __( 'Page Title', 'keel_petfinder_api' ), 'keel_petfinder_api_settings_field_page_title', 'keel_petfinder_api_theme_options', 'display' );
-		add_settings_field( 'page_content', __( 'Page Content', 'keel_petfinder_api' ), 'keel_petfinder_api_settings_field_page_content', 'keel_petfinder_api_theme_options', 'display' );
-		add_settings_field( 'adoption_form', __( 'Adoption Form Link', 'keel_petfinder_api' ), 'keel_petfinder_api_settings_field_adoption_form', 'keel_petfinder_api_theme_options', 'display' );
-		add_settings_field( 'filters', __( 'Filters', 'keel_petfinder_api' ), 'keel_petfinder_api_settings_field_filters', 'keel_petfinder_api_theme_options', 'display' );
+		add_settings_field( 'developer_key', __( 'Developer Key', 'keel' ), 'keel_petfinder_api_settings_field_developer_key', 'keel_petfinder_api_theme_options', 'general' );
+		add_settings_field( 'shelter_id', __( 'Shelter ID', 'keel' ), 'keel_petfinder_api_settings_field_shelter_id', 'keel_petfinder_api_theme_options', 'general' );
+		add_settings_field( 'count', __( 'Count', 'keel' ), 'keel_petfinder_api_settings_field_count', 'keel_petfinder_api_theme_options', 'general' );
+		add_settings_field( 'slug', __( 'URL Path', 'keel' ), 'keel_petfinder_api_settings_field_slug', 'keel_petfinder_api_theme_options', 'display' );
+		add_settings_field( 'page_title', __( 'Page Title', 'keel' ), 'keel_petfinder_api_settings_field_page_title', 'keel_petfinder_api_theme_options', 'display' );
+		add_settings_field( 'page_content', __( 'Page Content', 'keel' ), 'keel_petfinder_api_settings_field_page_content', 'keel_petfinder_api_theme_options', 'display' );
+		add_settings_field( 'adoption_form', __( 'Adoption Form Link', 'keel' ), 'keel_petfinder_api_settings_field_adoption_form', 'keel_petfinder_api_theme_options', 'display' );
+		add_settings_field( 'filters', __( 'Filters', 'keel' ), 'keel_petfinder_api_settings_field_filters', 'keel_petfinder_api_theme_options', 'display' );
 	}
 	add_action( 'admin_init', 'keel_petfinder_api_theme_options_init' );
 
@@ -325,10 +325,10 @@
 		// $capability - Capability required
 		// $menu_slug - Used to uniquely identify the page
 		// $function - Function that renders the options page
-		// $theme_page = add_theme_page( __( 'Theme Options', 'keel_petfinder_api' ), __( 'Theme Options', 'keel_petfinder_api' ), 'edit_theme_options', 'keel_petfinder_api_theme_options', 'keel_petfinder_api_theme_options_render_page' );
+		// $theme_page = add_theme_page( __( 'Theme Options', 'keel' ), __( 'Theme Options', 'keel' ), 'edit_theme_options', 'keel_petfinder_api_theme_options', 'keel_petfinder_api_theme_options_render_page' );
 
-		// $theme_page = add_menu_page( __( 'Theme Options', 'keel_petfinder_api' ), __( 'Theme Options', 'keel_petfinder_api' ), 'edit_theme_options', 'keel_petfinder_api_theme_options', 'keel_petfinder_api_theme_options_render_page' );
-		$theme_page = add_submenu_page( 'edit.php?post_type=pets', __( 'Petfinder API Options', 'keel_petfinder_api' ), __( 'Options', 'keel_petfinder_api' ), 'edit_theme_options', 'keel_petfinder_api_theme_options', 'keel_petfinder_api_theme_options_render_page' );
+		// $theme_page = add_menu_page( __( 'Theme Options', 'keel' ), __( 'Theme Options', 'keel' ), 'edit_theme_options', 'keel_petfinder_api_theme_options', 'keel_petfinder_api_theme_options_render_page' );
+		$theme_page = add_submenu_page( 'edit.php?post_type=pets', __( 'Petfinder API Options', 'keel' ), __( 'Options', 'keel' ), 'edit_theme_options', 'keel_petfinder_api_theme_options', 'keel_petfinder_api_theme_options_render_page' );
 	}
 	add_action( 'admin_menu', 'keel_petfinder_api_theme_options_add_page' );
 

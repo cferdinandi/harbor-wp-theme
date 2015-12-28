@@ -11,8 +11,8 @@
 	 */
 	function keel_load_theme_files() {
 		$keel_theme = wp_get_theme();
-		// wp_enqueue_style( 'keel-theme-styles', get_template_directory_uri() . '/dist/css/main.min.' . $keel_theme->get( 'Version' ) . '.css', null, null, 'all' );
-		wp_enqueue_style( 'keel-theme-styles', get_template_directory_uri() . '/dist/css/main.css', null, null, 'all' );
+		wp_enqueue_style( 'keel-theme-styles', get_template_directory_uri() . '/dist/css/main.min.' . $keel_theme->get( 'Version' ) . '.css', null, null, 'all' );
+		// wp_enqueue_style( 'keel-theme-styles', get_template_directory_uri() . '/dist/css/main.css', null, null, 'all' );
 	}
 	add_action('wp_enqueue_scripts', 'keel_load_theme_files');
 
@@ -26,9 +26,8 @@
 		$options = keel_get_theme_options();
 		?>
 			<script>
-				<?php //echo file_get_contents( get_template_directory_uri() . '/dist/js/detects.min.' . $keel_theme->get( 'Version' ) . '.js' ); ?>
-				<?php echo file_get_contents( get_template_directory_uri() . '/dist/js/detects.js' ); ?>
-				document.createElement( 'picture' );
+				<?php echo file_get_contents( get_template_directory_uri() . '/dist/js/detects.min.' . $keel_theme->get( 'Version' ) . '.js' ); ?>
+				<?php // echo file_get_contents( get_template_directory_uri() . '/dist/js/detects.js' ); ?>
 				<?php if ( $options['typeface'] === 'open_sans' ) : ?>
 					loadCSS( '//fonts.googleapis.com/css?family=Open+Sans:400,400italic,700' );
 				<?php elseif ( $options['typeface'] === 'source_sans_pro' ) : ?>
@@ -52,15 +51,15 @@
 		$keel_theme = wp_get_theme();
 		?>
 			<script>
-				<?php //echo file_get_contents( get_template_directory_uri() . '/dist/js/loadJS.min.' . $keel_theme->get( 'Version' ) . '.js' ); ?>
-				<?php echo file_get_contents( get_template_directory_uri() . '/dist/js/loadJS.js' ); ?>
+				<?php echo file_get_contents( get_template_directory_uri() . '/dist/js/loadJS.min.' . $keel_theme->get( 'Version' ) . '.js' ); ?>
 				if ( 'querySelector' in document && 'addEventListener' in window ) {
-					// loadJS('<?php echo get_template_directory_uri() . "/dist/js/main.min." . $keel_theme->get( "Version" ) . ".js"; ?>');
-					loadJS('<?php echo get_template_directory_uri() . "/dist/js/main.js"; ?>');
-					<?php if ( is_post_type_archive( 'pets' ) || is_singular( 'pets' ) ) : ?>
-						// loadJS('<?php echo get_template_directory_uri() . "/dist/js/petfinder-api.min." . $keel_theme->get( "Version" ) . ".js"; ?>');
-						loadJS('<?php echo get_template_directory_uri() . "/dist/js/petfinder-api.js"; ?>');
-					<?php endif; ?>
+					loadJS('<?php echo get_template_directory_uri() . "/dist/js/main.min." . $keel_theme->get( "Version" ) . ".js"; ?>');
+					// loadJS('<?php echo get_template_directory_uri() . "/dist/js/main.js"; ?>');
+
+					if ( document.querySelectorAll( '[data-petfinder-sort="breeds"], [data-petfinder-sort="attributes"], [data-petfinder-sort="toggle"]' ).length > 0 ) {
+							loadJS('<?php echo get_template_directory_uri() . "/dist/js/petfinder-api.min." . $keel_theme->get( "Version" ) . ".js"; ?>');
+							// loadJS('<?php echo get_template_directory_uri() . "/dist/js/petfinder-api.js"; ?>');
+						}
 				}
 			</script>
 		<?php
@@ -169,59 +168,6 @@
 		);
 	}
 	add_action( 'init', 'keel_register_menus' );
-
-
-
-	/**
-	 * Add submenu-only display option to wp_nav_menu()
-	 * @link http://christianvarga.com/how-to-get-submenu-items-from-a-wordpress-menu-based-on-parent-or-sibling/
-	 */
-	function keel_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
-		if ( isset( $args->sub_menu ) ) {
-			$root_id = 0;
-
-			// find the current menu item
-			foreach ( $sorted_menu_items as $menu_item ) {
-				if ( $menu_item->current ) {
-					// set the root id based on whether the current menu item has a parent or not
-					$root_id = ( $menu_item->menu_item_parent ) ? $menu_item->menu_item_parent : $menu_item->ID;
-					break;
-				}
-			}
-
-			// find the top level parent
-			if ( ! isset( $args->direct_parent ) ) {
-				$prev_root_id = $root_id;
-				while ( $prev_root_id != 0 ) {
-					foreach ( $sorted_menu_items as $menu_item ) {
-						if ( $menu_item->ID == $prev_root_id ) {
-							$prev_root_id = $menu_item->menu_item_parent;
-							// don't set the root_id to 0 if we've reached the top of the menu
-							if ( $prev_root_id != 0 ) $root_id = $menu_item->menu_item_parent;
-							break;
-						}
-					}
-				}
-			}
-			$menu_item_parents = array();
-			foreach ( $sorted_menu_items as $key => $item ) {
-				// init menu_item_parents
-				if ( $item->ID == $root_id ) $menu_item_parents[] = $item->ID;
-				if ( in_array( $item->menu_item_parent, $menu_item_parents ) ) {
-					// part of sub-tree: keep!
-					$menu_item_parents[] = $item->ID;
-				} else if ( ! ( isset( $args->show_parent ) && in_array( $item->ID, $menu_item_parents ) ) ) {
-					// not part of sub-tree: away with it!
-					unset( $sorted_menu_items[$key] );
-				}
-			}
-
-			return $sorted_menu_items;
-		} else {
-			return $sorted_menu_items;
-		}
-	}
-	add_filter( 'wp_nav_menu_objects', 'keel_wp_nav_menu_objects_sub_menu', 10, 2 );
 
 
 
@@ -422,36 +368,11 @@
 
 
 	/**
-	 * Deregister picturefill.js (loaded already in main.js)
-	 */
-	function keel_dequeue_picturefill() {
-		wp_dequeue_script( 'picturefill' );
-	}
-	add_action( 'wp_enqueue_scripts', 'keel_dequeue_picturefill', 20 );
-
-
-
-	/**
 	 * Remove Jetpack front-end styles
 	 * @workaround
 	 * @todo Remove once Jetpack glitch fixed
 	 */
 	add_filter( 'jetpack_implode_frontend_css', '__return_false' );
-
-
-
-	/**
-	 * Fix Chrome Admin bug
-	 * @workaround
-	 * @link http://wordpress.stackexchange.com/questions/200096/admin-sidebar-items-overlapping-in-admin-panel
-	 * @todo Remove once WP update fixes
-	 */
-	function keel_chrome_fix() {
-		if ( strpos( $_SERVER[ 'HTTP_USER_AGENT' ], 'Chrome' ) !== false ) {
-			wp_add_inline_style( 'wp-admin', '#adminmenu { transform: translateZ(0) }' );
-		}
-	}
-	add_action( 'admin_enqueue_scripts', 'keel_chrome_fix' );
 
 
 
@@ -607,32 +528,16 @@
 		);
 	}
 
-	// Theme options
-	require_once( dirname( __FILE__) . '/includes/keel-theme-options.php' );
-
-	// Custom logo
-	require_once( dirname( __FILE__) . '/includes/keel-custom-logo.php' );
-
 	// Page width settings
 	// require_once( dirname( __FILE__) . '/includes/keel-set-page-width.php' );
 
-	// Page hero settings
-	require_once( dirname( __FILE__) . '/includes/keel-page-hero.php' );
-
-	// A GUI for grid-based layouts
-	// require_once( dirname( __FILE__) . '/includes/keel-grid-layouts.php' );
-
-	// Paypal donations
-	require_once( dirname( __FILE__) . '/includes/keel-paypal-donations/keel-paypal-donations.php' );
-
-	// Petfinder API
-	require_once( dirname( __FILE__) . '/includes/keel-petfinder-api/keel-petfinder-api.php' );
-
-	// PhotoSwipe.js
-	require_once( dirname( __FILE__) . '/includes/keel-photoswipe/keel-photoswipe.php' );
-
-	// Button links shortcode
-	require_once( dirname( __FILE__) . '/includes/keel-button-shortcode.php' );
-
-	// Theme support
-	require_once( dirname( __FILE__) . '/includes/keel-theme-support.php' );
+	// Load includes
+	require_once( dirname( __FILE__) . '/includes/keel-theme-options.php' ); // Theme options
+	require_once( dirname( __FILE__) . '/includes/keel-post-options.php' ); // Theme options
+	require_once( dirname( __FILE__) . '/includes/keel-custom-logo.php' ); // Custom logo
+	require_once( dirname( __FILE__) . '/includes/keel-page-hero.php' ); // Page hero settings
+	require_once( dirname( __FILE__) . '/includes/keel-paypal-donations/keel-paypal-donations.php' ); // Paypal donations
+	require_once( dirname( __FILE__) . '/includes/keel-petfinder-api/keel-petfinder-api.php' ); // Petfinder API
+	require_once( dirname( __FILE__) . '/includes/keel-photoswipe/keel-photoswipe.php' ); // PhotoSwipe.js
+	require_once( dirname( __FILE__) . '/includes/keel-button-shortcode.php' ); // Button links shortcode
+	require_once( dirname( __FILE__) . '/includes/keel-theme-support.php' ); // Theme support

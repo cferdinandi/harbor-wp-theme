@@ -8,7 +8,7 @@
 
 ?>
 
-<nav class="nav-wrap-navbar nav-collapse <?php if ( keel_has_hero() ) { echo 'has-hero'; } ?>">
+<nav class="nav-wrap-navbar nav-collapse <?php if ( !keel_has_hero() ) { echo 'margin-bottom'; } ?>">
 	<div class="container container-large ">
 		<a class="logo-navbar" href="<?php echo site_url(); ?>/">
 			<?php

@@ -54,30 +54,6 @@ a {
 	text-decoration: none;
 	word-wrap: break-word;
 
-	@if $themes == true {
-
-		.theme-whale & {
-			color: $color-theme-whale-secondary;
-			text-decoration: underline;
-		}
-
-		.theme-bear & {
-			color: $color-theme-bear-secondary;
-			text-decoration: underline;
-		}
-
-		.theme-coral & {
-			color: $color-theme-coral-secondary;
-			text-decoration: underline;
-		}
-
-		.theme-lab & {
-			color: $color-black;
-			text-decoration: underline;
-		}
-
-	}
-
 	/**
 	 * Improve readability when focused and also mouse hovered in all browsers.
 	 */
@@ -91,26 +67,6 @@ a {
 	&:active {
 		color: darken( $color-primary, 15% );
 		text-decoration: underline;
-
-		@if $themes == true {
-
-			.theme-whale & {
-				color: darken( $color-theme-whale-secondary, 15% );
-			}
-
-			.theme-bear & {
-				color: darken( $color-theme-bear-secondary, 15% );
-			}
-
-			.theme-coral & {
-				color: darken( $color-theme-coral-secondary, 15% );
-			}
-
-			.theme-lab & {
-				color: $color-black;
-			}
-
-		}
 	}
 
 	img {

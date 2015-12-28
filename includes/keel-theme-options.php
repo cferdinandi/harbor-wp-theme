@@ -176,21 +176,39 @@
 
 	// Footer
 
-	function keel_settings_field_footer_content() {
+	function keel_settings_field_footer_content_1() {
 		$options = keel_get_theme_options();
 		?>
 		<?php
 			wp_editor(
-				stripslashes( $options['footer'] ),
-				'footer',
+				stripslashes( $options['footer1'] ),
+				'footer1',
 				array(
 					'autop' => false,
-					'textarea_name' => 'keel_theme_options[footer]',
+					'textarea_name' => 'keel_theme_options[footer1]',
 					'textarea_rows' => 8
 				)
 			);
 		?>
-		<label class="description" for="footer"><?php _e( 'Content to show in the footer (ex. Copyright info, contact info, and so on)', 'keel' ); ?></label>
+		<label class="description" for="footer1"><?php _e( 'Content to show in the first footer area (ex. Copyright info, contact info, and so on)', 'keel' ); ?></label>
+		<?php
+	}
+
+	function keel_settings_field_footer_content_2() {
+		$options = keel_get_theme_options();
+		?>
+		<?php
+			wp_editor(
+				stripslashes( $options['footer2'] ),
+				'footer2',
+				array(
+					'autop' => false,
+					'textarea_name' => 'keel_theme_options[footer2]',
+					'textarea_rows' => 8
+				)
+			);
+		?>
+		<label class="description" for="footer1"><?php _e( 'Content to show in the second footer area (ex. Copyright info, contact info, and so on)', 'keel' ); ?></label>
 		<?php
 	}
 
@@ -241,7 +259,8 @@
 			'flickr' => '',
 
 			// Footer
-			'footer' => '',
+			'footer1' => '',
+			'footer2' => '',
 
 			// Blog
 			'blog_cta' => '',
@@ -293,8 +312,11 @@
 
 		// Footer
 
-		if ( isset( $input['footer'] ) && ! empty( $input['footer'] ) )
-			$output['footer'] = wp_filter_post_kses( $input['footer'] );
+		if ( isset( $input['footer1'] ) && ! empty( $input['footer1'] ) )
+			$output['footer1'] = wp_filter_post_kses( $input['footer1'] );
+
+		if ( isset( $input['footer2'] ) && ! empty( $input['footer2'] ) )
+			$output['footer2'] = wp_filter_post_kses( $input['footer2'] );
 
 		// Blog
 
@@ -327,12 +349,6 @@
 				?>
 			</form>
 		</div>
-
-		<script type="text/javascript">
-			jQuery(document).ready(function(){
-				jQuery( '.js-color-picker' ).wpColorPicker();
-			});
-		</script>
 		<?php
 	}
 
@@ -381,7 +397,8 @@
 		add_settings_field( 'flickr', __( 'Flickr', 'keel' ), 'keel_settings_field_social_flickr', 'keel_theme_options', 'social' );
 
 		// Footer
-		add_settings_field( 'footer', __( 'Footer', 'keel' ), 'keel_settings_field_footer_content', 'keel_theme_options', 'footer' );
+		add_settings_field( 'footer1', __( 'Footer 1', 'keel' ), 'keel_settings_field_footer_content_1', 'keel_theme_options', 'footer' );
+		add_settings_field( 'footer2', __( 'Footer 2', 'keel' ), 'keel_settings_field_footer_content_2', 'keel_theme_options', 'footer' );
 
 		// Blog
 		add_settings_field( 'blog_cta', __( 'Blog Call-To-Action', 'keel' ), 'keel_settings_field_blog_cta', 'keel_theme_options', 'blog' );

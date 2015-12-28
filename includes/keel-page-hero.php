@@ -191,14 +191,14 @@
 									</div>
 									<div class="grid-half">
 										<h1 class="margin-bottom-small"><?php the_title(); ?></h1>
-										<?php echo $hero['content']; ?>
+										<?php echo do_shortcode( $hero['content'] ); ?>
 									</div>
 								</div>
 							<?php else : ?>
 								<div class="row">
 									<div class="grid-half <?php if ( $hero['video_location_large'] === 'left' ) { echo 'grid-flip'; } ?>">
 										<h1><?php the_title(); ?></h1>
-										<?php echo $hero['content']; ?>
+										<?php echo do_shortcode( $hero['content'] ); ?>
 									</div>
 									<div class="grid-half">
 										<?php echo $hero['video']; ?>
@@ -212,7 +212,7 @@
 						?>
 							<div class="text-center">
 								<h1><?php the_title(); ?></h1>
-								<?php echo $hero['content']; ?>
+								<?php echo do_shortcode( $hero['content'] ); ?>
 								<?php echo $hero['video']; ?>
 							</div>
 						<?php

@@ -10,7 +10,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "http://github.com/cferdinandi/rescue-theme"
+		"url": "http://github.com/cferdinandi/harbor-pet-rescue-wordpress-theme"
 	},
 	"devDependencies": {
 		"gulp": "^3.9.0",

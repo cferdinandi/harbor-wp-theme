@@ -1,6 +1,6 @@
 /**
- * @section Petfinder
- * Styles for Petfinder API content.
+ * @section Pets
+ * Styles for Pets content (Petfinder API, etc.).
  */
 
 
@@ -11,7 +11,7 @@
 	display: none;
 	visibility: hidden;
 
-	@media (min-width: $bp-medium) {
+	@media (min-width: $bp-large) {
 		.js-petfinder-sort & {
 			display: block;
 			visibility: visible;
@@ -32,7 +32,7 @@
 	display: none;
 	visibility: hidden;
 
-	@media (max-width: $bp-medium) {
+	@media (max-width: $bp-large) {
 		.js-petfinder-sort & {
 			display: inline-block;
 			visibility: visible;
@@ -44,7 +44,7 @@
  * Content for "All Pets" page
  */
 .petfinder-content {
-	@media (min-width: $bp-medium) {
+	@media (min-width: $bp-large) {
 		margin-left: 25%;
 
 		.js-petfinder-sort & {

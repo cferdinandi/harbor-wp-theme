@@ -2,9 +2,31 @@
  * harbor v1.0.0: A free WordPress theme for animal and pet rescue organizations
  * (c) 2015 Chris Ferdinandi
  * MIT License
- * http://github.com/cferdinandi/rescue-theme
+ * http://github.com/cferdinandi/harbor-pet-rescue-wordpress-theme
  */
 
+/**
+ * Run code after document is ready
+ * @param  {Function} fn The function to run
+ */
+var ready = function ( fn ) {
+
+	// Sanity check
+	if ( typeof (fn) !== 'function' ) return;
+
+	// If document is already loaded, run method
+	if ( document.readyState === 'interactive' ) {
+		return fn();
+	}
+
+	// Otherwise, wait until document is loaded
+	document.onreadystatechange = function () {
+		if ( document.readyState === 'interactive' ) {
+			fn();
+		}
+	};
+
+};
 /*!
 loadCSS: load a CSS file asynchronously.
 [c]2014 @scottjehl, Filament Group, Inc.

@@ -9,7 +9,7 @@
  */
 .btn {
 	background-color: $color-primary;
-	border: calc-em(1px) solid $color-primary;
+	border: calc-em(2px) solid $color-primary;
 	border-radius: calc-em(1px);
 	color: $color-white;
 	display: inline-block;
@@ -19,6 +19,7 @@
 	margin-right: calc-em(5px);
 	margin-bottom: calc-em(5px);
 	padding: calc-em(8px) calc-em(11px);
+	text-decoration: none;
 
 	&:hover,
 	a &:hover,
@@ -32,86 +33,6 @@
 		color: $color-white;
 		text-decoration: none;
 	}
-
-	@if $themes == true {
-
-		.theme-whale & {
-			background-color: $color-theme-whale-secondary;
-			border-color: $color-theme-whale-secondary;
-
-			&:hover,
-			a &:hover,
-			&:focus,
-			a &:focus,
-			&:active,
-			a &:active,
-			&.active {
-				background-color: darken( $color-theme-whale-secondary, 15% );
-				border-color: darken( $color-theme-whale-secondary, 15% );
-			}
-		}
-
-		.theme-bear & {
-			background-color: $color-theme-bear-secondary;
-			border-color: $color-theme-bear-secondary;
-
-			&:hover,
-			a &:hover,
-			&:focus,
-			a &:focus,
-			&:active,
-			a &:active,
-			&.active {
-				background-color: darken( $color-theme-bear-secondary, 15% );
-				border-color: darken( $color-theme-bear-secondary, 15% );
-			}
-		}
-
-		.theme-coral & {
-			background-color: $color-theme-coral-secondary;
-			border-color: $color-theme-coral-secondary;
-
-			&:hover,
-			a &:hover,
-			&:focus,
-			a &:focus,
-			&:active,
-			a &:active,
-			&.active {
-				background-color: darken( $color-theme-coral-secondary, 15% );
-				border-color: darken( $color-theme-coral-secondary, 15% );
-			}
-		}
-
-		.theme-lab & {
-			background-color: $color-black;
-			border-color: $color-black;
-
-			&:hover,
-			a &:hover,
-			&:focus,
-			a &:focus,
-			&:active,
-			a &:active,
-			&.active {
-				background-color: darken( $color-black, 15% );
-				border-color: darken( $color-black, 15% );
-			}
-		}
-
-	}
-}
-
-@if $themes == true {
-
-	.theme-whale a.btn,
-	.theme-bear a.btn,
-	.theme-coral a.btn,
-	.theme-lab a.btn {
-		color: $color-white;
-		text-decoration: none;
-	}
-
 }
 
 
@@ -133,6 +54,27 @@
 // 		border-color: darken( $color-gray-dark, 15% );
 // 	}
 // }
+
+
+/**
+ * Ghosted buttons
+ */
+.btn-ghost {
+	background-color: transparent;
+	border-color: $color-white;
+
+	&:hover,
+	a &:hover,
+	&:focus,
+	a &:focus,
+	&:active,
+	a &:active,
+	&.active {
+		background-color: $color-white;
+		border-color: $color-white;
+		color: $color-black;
+	}
+}
 
 
 /**

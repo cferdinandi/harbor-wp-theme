@@ -8,6 +8,7 @@
 
 	// Load plugin options
 	require_once( dirname( __FILE__) . '/keel-petfinder-api-options.php' );
+	require_once( dirname( __FILE__) . '/fastimage.php' );
 
 
 
@@ -15,19 +16,19 @@
 	function keel_petfinder_api_add_custom_post_type() {
 		$options = keel_petfinder_api_get_theme_options();
 		$labels = array(
-			'name'               => _x( 'Pets', 'post type general name', 'keel_petfinder_api' ),
-			'singular_name'      => _x( 'Pet', 'post type singular name', 'keel_petfinder_api' ),
-			'add_new'            => _x( 'Add New', 'course', 'keel_petfinder_api' ),
-			'add_new_item'       => __( 'Add New Pet', 'keel_petfinder_api' ),
-			'edit_item'          => __( 'Edit Pet', 'keel_petfinder_api' ),
-			'new_item'           => __( 'New Pet', 'keel_petfinder_api' ),
-			'all_items'          => __( 'All Pets', 'keel_petfinder_api' ),
-			'view_item'          => __( 'View Pet', 'keel_petfinder_api' ),
-			'search_items'       => __( 'Search Pets', 'keel_petfinder_api' ),
-			'not_found'          => __( 'No pets found', 'keel_petfinder_api' ),
-			'not_found_in_trash' => __( 'No pets found in the Trash', 'keel_petfinder_api' ),
+			'name'               => _x( 'Pets', 'post type general name', 'keel' ),
+			'singular_name'      => _x( 'Pet', 'post type singular name', 'keel' ),
+			'add_new'            => _x( 'Add New', 'course', 'keel' ),
+			'add_new_item'       => __( 'Add New Pet', 'keel' ),
+			'edit_item'          => __( 'Edit Pet', 'keel' ),
+			'new_item'           => __( 'New Pet', 'keel' ),
+			'all_items'          => __( 'All Pets', 'keel' ),
+			'view_item'          => __( 'View Pet', 'keel' ),
+			'search_items'       => __( 'Search Pets', 'keel' ),
+			'not_found'          => __( 'No pets found', 'keel' ),
+			'not_found_in_trash' => __( 'No pets found in the Trash', 'keel' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => __( 'Petfinder', 'keel_petfinder_api' ),
+			'menu_name'          => __( 'Petfinder', 'keel' ),
 		);
 		$args = array(
 			'labels'        => $labels,
@@ -131,6 +132,23 @@
 			'contact_zip' => '',
 			'contact_fax' => '',
 		);
+	}
+
+
+	// http://stackoverflow.com/a/4635991
+	function keel_petfinder_api_get_image_dimensions( $url = null ) {
+
+		if ( empty($url) ) return;
+
+		// Get image dimensions
+		$image = new FastImage( $url );
+		list($width, $height) = $image->getSize();
+
+		return array(
+			'height' => $height,
+			'width' => $width,
+		);
+
 	}
 
 
@@ -536,25 +554,55 @@
 	function keel_petfinder_api_create_pet_markup( $details ) {
 		$options = keel_petfinder_api_get_theme_options();
 		$adopt = $options['adoption_form_url'] ? '<p><a class="btn" href="' . $options['adoption_form_url'] . '">' . $options['adoption_form_text'] . '</a></p>' : '';
+		$photo_sizes = array(
+			keel_petfinder_api_get_image_dimensions( $details['photos']['large'][0] ),
+			keel_petfinder_api_get_image_dimensions( $details['photos']['large'][1] ),
+			keel_petfinder_api_get_image_dimensions( $details['photos']['large'][2] ),
+		);
 
 		$imgs =
-			'<div class="text-center js-petfinder-img-container">' .
-				'<div class="js-petfinder-img"><img class="img-photo img-limit-height-large" alt="A photo of ' . $details['name'] . '" src="' . $details['photos']['large'][0] . '"></div>' .
-				'<div class="row row-start-xsmall">' .
-					'<div class="grid-third">' .
-						'<a class="js-petfinder-img-toggle" target="_blank" href="' . $details['photos']['large'][0] . '">' .
-						'	<img class="img-photo img-limit-height" alt="A photo of ' . $details['name'] . '" src="' . $details['photos']['large'][0] . '">' .
-						'</a>' .
+			'<div data-photoswipe data-pswp-uid="0" class="row row-start-xsmall text-center margin-bottom" data-masonry>' .
+				'<a class="grid-third" data-size="' . $photo_sizes[0]['width'] . 'x' . $photo_sizes[0]['height'] . '" data-masonry-content href="' . $details['photos']['large'][0] . '" >' .
+					'<img class="img-photo img-limit-height" alt="A photo of ' . $details['name'] . '" src="' . $details['photos']['large'][0] . '">' .
+				'</a>' .
+				'<a class="grid-third" data-size="' . $photo_sizes[1]['width'] . 'x' . $photo_sizes[1]['height'] . '" data-masonry-content href="' . $details['photos']['large'][1] . '">' .
+					'<img class="img-photo img-limit-height" alt="A photo of ' . $details['name'] . '" src="' . $details['photos']['large'][1] . '">' .
+				'</a>' .
+				'<a class="grid-third" data-size="' . $photo_sizes[2]['width'] . 'x' . $photo_sizes[2]['height'] . '" data-masonry-content href="' . $details['photos']['large'][2] . '">' .
+					'<img class="img-photo img-limit-height" alt="A photo of ' . $details['name'] . '" src="' . $details['photos']['large'][2] . '">' .
+				'</a>' .
+			'</div>' .
+			'<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">' .
+				'<div class="pswp__bg"></div>' .
+				'<div class="pswp__scroll-wrap">' .
+					'<div class="pswp__container">' .
+						'<div class="pswp__item"></div>' .
+						'<div class="pswp__item"></div>' .
+						'<div class="pswp__item"></div>' .
 					'</div>' .
-					'<div class="grid-third">' .
-						'<a class="js-petfinder-img-toggle" target="_blank" href="' . $details['photos']['large'][1] . '">' .
-						'	<img class="img-photo img-limit-height" alt="A photo of ' . $details['name'] . '" src="' . $details['photos']['large'][1] . '">' .
-						'</a>' .
-					'</div>' .
-					'<div class="grid-third">' .
-						'<a class="js-petfinder-img-toggle" target="_blank" href="' . $details['photos']['large'][2] . '">' .
-						'	<img class="img-photo img-limit-height" alt="A photo of ' . $details['name'] . '" src="' . $details['photos']['large'][2] . '">' .
-						'</a>' .
+					'<div class="pswp__ui pswp__ui--hidden">' .
+						'<div class="pswp__top-bar">' .
+							'<div class="pswp__counter"></div>' .
+							'<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>' .
+							'<button class="pswp__button pswp__button--share" title="Share"></button>' .
+							'<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>' .
+							'<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>' .
+							'<div class="pswp__preloader">' .
+								'<div class="pswp__preloader__icn">' .
+								'<div class="pswp__preloader__cut">' .
+									'<div class="pswp__preloader__donut"></div>' .
+								'</div>' .
+								'</div>' .
+							'</div>' .
+						'</div>' .
+						'<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">' .
+							'<div class="pswp__share-tooltip"></div>' .
+						'</div>' .
+						'<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>' .
+						'<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>' .
+						'<div class="pswp__caption">' .
+							'<div class="pswp__caption__center"></div>' .
+						'</div>' .
 					'</div>' .
 				'</div>' .
 			'</div>';
@@ -712,7 +760,7 @@
 
 		// If there was an error, log it and fallback to existing data
 		if ( empty( $pets ) ) {
-			set_transient( 'keel_petfinder_api_get_pets_error', __( 'The Petfinder API returned an error the last time it was called. Data from the last successful API call is being used instead so that pets are still displayed on your site. If you just provided your developer key or shelter ID for the first time, please check that they are correct (ignore this sentence if the API was previously working for you&mdash;petfinder is probably just having some issues).', 'keel_petfinder_api' ) );
+			set_transient( 'keel_petfinder_api_get_pets_error', __( 'The Petfinder API returned an error the last time it was called. Data from the last successful API call is being used instead so that pets are still displayed on your site. If you just provided your developer key or shelter ID for the first time, please check that they are correct (ignore this sentence if the API was previously working for you&mdash;petfinder is probably just having some issues).', 'keel' ) );
 			return;
 		}
 		delete_transient( 'keel_petfinder_api_get_pets_error' );

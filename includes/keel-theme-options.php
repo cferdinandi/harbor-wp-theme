@@ -15,37 +15,13 @@
 
 	function keel_settings_field_style_colors_choices() {
 		$colors = array(
-			'default' => array(
-				'value' => 'default',
-				'label' => __( 'Furless: a barebones color palette', 'keel' )
+			'light' => array(
+				'value' => 'light',
+				'label' => __( 'Light', 'keel' )
 			),
-			'arctic' => array(
-				'value' => 'arctic',
-				'label' => __( 'Arctic Fox: white, silver, and blue', 'keel' )
-			),
-			'whale' => array(
-				'value' => 'whale',
-				'label' => __( 'Blue Whale: blue and coral', 'keel' )
-			),
-			'bear' => array(
-				'value' => 'bear',
-				'label' => __( 'Brown Bear: brown and blue', 'keel' )
-			),
-			'parrot' => array(
-				'value' => 'parrot',
-				'label' => __( 'Parrot: red and blue', 'keel' )
-			),
-			'coral' => array(
-				'value' => 'coral',
-				'label' => __( 'Coral: teal and orange', 'keel' )
-			),
-			'lab' => array(
-				'value' => 'lab',
-				'label' => __( 'Black Lab: black', 'keel' )
-			),
-			'octopus' => array(
-				'value' => 'octopus',
-				'label' => __( 'Octopus: purple and blue', 'keel' )
+			'dark' => array(
+				'value' => 'dark',
+				'label' => __( 'Dark', 'keel' )
 			),
 		);
 
@@ -212,26 +188,6 @@
 		<?php
 	}
 
-	// Blog
-
-	function keel_settings_field_blog_cta() {
-		$options = keel_get_theme_options();
-		?>
-		<?php
-			wp_editor(
-				stripslashes( $options['blog_cta'] ),
-				'blog_cta',
-				array(
-					'autop' => false,
-					'textarea_name' => 'keel_theme_options[blog_cta]',
-					'textarea_rows' => 8
-				)
-			);
-		?>
-		<label class="description" for="blog_cta"><?php _e( 'Text to show after each blog post (ex. An invitation to sign up for a newsletter)', 'keel' ); ?></label>
-		<?php
-	}
-
 
 
 	/**
@@ -246,7 +202,7 @@
 		$defaults = array(
 
 			// Styles
-			'colors' => 'default',
+			'colors' => 'light',
 			'typeface' => 'helvetica',
 
 			// Social
@@ -261,9 +217,6 @@
 			// Footer
 			'footer1' => '',
 			'footer2' => '',
-
-			// Blog
-			'blog_cta' => '',
 
 		);
 
@@ -318,11 +271,6 @@
 		if ( isset( $input['footer2'] ) && ! empty( $input['footer2'] ) )
 			$output['footer2'] = wp_filter_post_kses( $input['footer2'] );
 
-		// Blog
-
-		if ( isset( $input['blog_cta'] ) && ! empty( $input['blog_cta'] ) )
-			$output['blog_cta'] = wp_filter_post_kses( $input['blog_cta'] );
-
 		return apply_filters( 'keel_theme_options_validate', $output, $input );
 	}
 
@@ -343,7 +291,7 @@
 
 			<form method="post" action="options.php">
 				<?php
-					settings_fields( 'keel_options' );
+					settings_fields( 'keel_theme_options' );
 					do_settings_sections( 'keel_theme_options' );
 					submit_button();
 				?>
@@ -360,7 +308,7 @@
 		// $option_group - A settings group name.
 		// $option_name - The name of an option to sanitize and save.
 		// $sanitize_callback - A callback function that sanitizes the option's value.
-		register_setting( 'keel_options', 'keel_theme_options', 'keel_theme_options_validate' );
+		register_setting( 'keel_theme_options', 'keel_theme_options', 'keel_theme_options_validate' );
 
 
 		// Register our settings field group
@@ -372,7 +320,6 @@
 		add_settings_section( 'styles', 'Styles',  '__return_false', 'keel_theme_options' );
 		add_settings_section( 'social', 'Social Media Accounts',  '__return_false', 'keel_theme_options' );
 		add_settings_section( 'footer', 'Footer Content',  '__return_false', 'keel_theme_options' );
-		add_settings_section( 'blog', 'Blog Content',  '__return_false', 'keel_theme_options' );
 
 
 		// Register our individual settings fields
@@ -399,9 +346,6 @@
 		// Footer
 		add_settings_field( 'footer1', __( 'Footer 1', 'keel' ), 'keel_settings_field_footer_content_1', 'keel_theme_options', 'footer' );
 		add_settings_field( 'footer2', __( 'Footer 2', 'keel' ), 'keel_settings_field_footer_content_2', 'keel_theme_options', 'footer' );
-
-		// Blog
-		add_settings_field( 'blog_cta', __( 'Blog Call-To-Action', 'keel' ), 'keel_settings_field_blog_cta', 'keel_theme_options', 'blog' );
 
 	}
 	add_action( 'admin_init', 'keel_theme_options_init' );
@@ -430,10 +374,10 @@
 
 
 	// Restrict access to the theme options page to admins
-	function keel_option_page_capability( $capability ) {
+	function keel_theme_option_page_capability( $capability ) {
 		return 'edit_theme_options';
 	}
-	add_filter( 'option_page_capability_keel_options', 'keel_option_page_capability' );
+	add_filter( 'option_page_capability_keel_theme_options', 'keel_theme_option_page_capability' );
 
 
 
@@ -441,7 +385,7 @@
 	 * Load the theme option styles
 	 */
 
-	function keel_options_scripts_and_styles() {
+	function keel_theme_options_scripts_and_styles() {
 
 		// Only load on Theme Options page
 		global $pagenow;
@@ -460,4 +404,4 @@
 		wp_enqueue_style( 'droid_serif', '//fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700' );
 
 	}
-	add_action( 'admin_enqueue_scripts', 'keel_options_scripts_and_styles', 10, 1 );
+	add_action( 'admin_enqueue_scripts', 'keel_theme_options_scripts_and_styles', 10, 1 );

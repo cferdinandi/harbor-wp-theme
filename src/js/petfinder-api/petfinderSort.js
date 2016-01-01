@@ -17,7 +17,6 @@
 	var petfinderSort = {}; // Object for public APIs
 	var supports = 'querySelector' in document && 'addEventListener' in root && 'classList' in document.createElement('_'); // Feature test
 	var sessionID = 'petfinderSortStates'; // sessionStorage ID
-	// var states = {}; // Object for checkbox states
 	var settings, eventTimeout, states, pets, sortBreeds, sortAttributes, sortToggles, hideAll;
 
 	// Default settings
@@ -408,10 +407,10 @@
 
 		// Variables
 		settings = extend( true, defaults, options || {} ); // Merge user options with defaults
-		pets = document.querySelectorAll('.pf-pet');
-		sortBreeds = document.querySelectorAll('[data-petfinder-sort="breeds"]');
-		sortAttributes = document.querySelectorAll('[data-petfinder-sort="attributes"]');
-		sortToggles = document.querySelectorAll('[data-petfinder-sort="toggle"]');
+		pets = document.querySelectorAll( '.pf-pet' );
+		sortBreeds = document.querySelectorAll( '[data-petfinder-sort="breeds"]' );
+		sortAttributes = document.querySelectorAll( '[data-petfinder-sort="attributes"]' );
+		sortToggles = document.querySelectorAll( '[data-petfinder-sort="toggle"]' );
 		hideAll = sortBreeds.length === 0 ? false : true;
 		if ( root.sessionStorage ) {
 			states = sessionStorage.getItem( sessionID ) ? JSON.parse( sessionStorage.getItem( sessionID ) ) : {};

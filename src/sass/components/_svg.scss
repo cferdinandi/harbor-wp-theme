@@ -47,38 +47,18 @@
 .icon-link {
 
 	@if $themes == true {
-
-		.theme-whale &,
-		.theme-bear &,
-		.theme-parrot &,
-		.theme-coral &,
-		.theme-lab &,
-		.theme-octopus & {
+		.theme-dark & {
 			fill: $color-white;
 		}
-
 	}
 
 	a:hover & {
 		fill: darken( $color-primary, 15% );
 
 		@if $themes == true {
-
-			.theme-whale & {
-				fill: $color-theme-whale-secondary;
-			}
-
-			.theme-coral & {
-				fill: $color-theme-coral-secondary;
-			}
-
-			.theme-bear &,
-			.theme-parrot &,
-			.theme-lab &,
-			.theme-octopus & {
+			.theme-dark & {
 				fill: $color-gray-light;
 			}
-
 		}
 	}
 }

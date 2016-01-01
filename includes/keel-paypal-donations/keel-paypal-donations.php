@@ -166,11 +166,11 @@ class Keel_PayPal_Donations {
 					'<td>' .
 						'<label>' .
 							'<input type="radio" name="paypal_donations_form_amount" id="paypal_donations_form_amount_other" value="other"> ' .
-							__( 'Other', 'keel_paypal_donations' ) .
+							__( 'Other', 'keel' ) .
 						'</label>' .
 					'</td>' .
 					'<td>' .
-						$options['currency'] . ' <input type="number" step="any" min="0" class="input-inline input-condensed no-margin-bottom" name="paypal_donations_form_other" id="paypal_donations_form_other" value="">' .
+						$options['currency'] . ' <input type="number" step="any" min="0" class="input-inline input-condensed input-underline no-margin-bottom" name="paypal_donations_form_other" id="paypal_donations_form_other" value="">' .
 					'</td>' .
 				'</tr>';
 		}
@@ -184,7 +184,7 @@ class Keel_PayPal_Donations {
 				$table_body .=
 					'<label>' .
 						'<input type="checkbox" id="paypal_donations_form_donate_in_honor"> ' .
-						$options['in_honor'] . ' <input type="text" class="input-inline input-condensed no-margin-bottom" name="paypal_donations_form_in_honor" id="paypal_donations_form_in_honor" value="">' .
+						$options['in_honor'] . ' <input type="text" class="input-inline input-condensed input-underline no-margin-bottom" name="paypal_donations_form_in_honor" id="paypal_donations_form_in_honor" value="">' .
 					'</label>';
 			}
 
@@ -206,8 +206,8 @@ class Keel_PayPal_Donations {
 				'<table class="table-responsive">' .
 					'<thead>' .
 						'<tr>' .
-							'<th>' . __( $options['heading_amount'], 'keel_paypal_donations' ) . '</th>' .
-							'<th>' . __( $options['heading_impact'], 'keel_paypal_donations' ) . '</th>' .
+							'<th>' . __( $options['heading_amount'], 'keel' ) . '</th>' .
+							'<th>' . __( $options['heading_impact'], 'keel' ) . '</th>' .
 						'</tr>' .
 					'</thead>' .
 					'<tbody>' .

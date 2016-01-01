@@ -21,7 +21,7 @@
 ?>
 
 <?php if ( $has_facebook || $has_twitter || $has_youtube || $has_google || $has_instagram || $has_pinterest || $has_flickr ) : ?>
-	<div class="grid-half grid-flip text-right-medium">
+	<div class="grid-half grid-flip text-right-large">
 		<ul class="list-inline">
 			<?php if ( $has_facebook ) : ?>
 				<li>

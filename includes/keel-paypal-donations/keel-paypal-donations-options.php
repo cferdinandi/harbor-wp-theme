@@ -9,7 +9,7 @@
 		$options = keel_paypal_donations_get_theme_options();
 		?>
 		<input type="text" name="keel_paypal_donations_theme_options[email]" id="email" value="<?php echo esc_attr( $options['email'] ); ?>" />
-		<label class="description" for="email"><?php _e( 'PayPal account email address or username (donations are sent to this account)', 'keel_paypal_donations' ); ?></label>
+		<label class="description" for="email"><?php _e( 'PayPal account email address or username (donations are sent to this account)', 'keel' ); ?></label>
 		<?php
 	}
 
@@ -17,7 +17,7 @@
 		$options = keel_paypal_donations_get_theme_options();
 		?>
 		<input type="text" name="keel_paypal_donations_theme_options[currency]" id="currency" value="<?php echo esc_attr( $options['currency'] ); ?>" />
-		<label class="description" for="currency"><?php _e( 'Currency prefix to use before amounts', 'keel_paypal_donations' ); ?></label>
+		<label class="description" for="currency"><?php _e( 'Currency prefix to use before amounts', 'keel' ); ?></label>
 		<?php
 	}
 
@@ -26,12 +26,12 @@
 		?>
 		<div>
 			<input type="text" name="keel_paypal_donations_theme_options[heading_amount]" id="heading_amount" value="<?php echo esc_attr( $options['heading_amount'] ); ?>" />
-			<label class="description" for="heading_amount"><?php _e( 'Table heading for the amount', 'keel_paypal_donations' ); ?></label>
+			<label class="description" for="heading_amount"><?php _e( 'Table heading for the amount', 'keel' ); ?></label>
 		</div>
 		<br>
 		<div>
 			<input type="text" name="keel_paypal_donations_theme_options[heading_impact]" id="heading_impact" value="<?php echo esc_attr( $options['heading_impact'] ); ?>" />
-			<label class="description" for="heading_impact"><?php _e( 'Table heading for the impact of that amount', 'keel_paypal_donations' ); ?></label>
+			<label class="description" for="heading_impact"><?php _e( 'Table heading for the impact of that amount', 'keel' ); ?></label>
 		</div>
 		<?php
 	}
@@ -40,7 +40,7 @@
 		$options = keel_paypal_donations_get_theme_options();
 		?>
 		<input type="checkbox" name="keel_paypal_donations_theme_options[show_other]" id="show_other" <?php checked( 'on', $options['show_other'] ); ?> />
-		<label for="show_other"><?php _e( 'Show "Other" field for users to fill in their own amount', 'keel_paypal_donations' ); ?></label>
+		<label for="show_other"><?php _e( 'Show "Other" field for users to fill in their own amount', 'keel' ); ?></label>
 		<?php
 	}
 
@@ -49,12 +49,12 @@
 		?>
 		<div>
 			<input type="checkbox" name="keel_paypal_donations_theme_options[show_in_honor]" id="show_in_honor" <?php checked( 'on', $options['show_in_honor'] ); ?> />
-			<label for="show_in_honor"><?php _e( 'Show "In Honor/Memory Of" field', 'keel_paypal_donations' ); ?></label>
+			<label for="show_in_honor"><?php _e( 'Show "In Honor/Memory Of" field', 'keel' ); ?></label>
 		</div>
 		<br>
 		<div>
 			<input type="text" name="keel_paypal_donations_theme_options[in_honor]" class="large-text" id="in_honor" value="<?php echo esc_attr( $options['in_honor'] ); ?>" />
-			<label class="description" for="in_honor"><?php _e( 'Language to describe "in honor/memory of" donations', 'keel_paypal_donations' ); ?></label>
+			<label class="description" for="in_honor"><?php _e( 'Language to describe "in honor/memory of" donations', 'keel' ); ?></label>
 		</div>
 		<?php
 	}
@@ -64,12 +64,12 @@
 		?>
 		<div>
 			<input type="checkbox" name="keel_paypal_donations_theme_options[show_recurring]" id="show_recurring" <?php checked( 'on', $options['show_recurring'] ); ?> />
-			<label for="show_recurring"><?php _e( 'Provide an option for recurring monthly donations', 'keel_paypal_donations' ); ?></label>
+			<label for="show_recurring"><?php _e( 'Provide an option for recurring monthly donations', 'keel' ); ?></label>
 		</div>
 		<br>
 		<div>
 			<input type="text" name="keel_paypal_donations_theme_options[recurring]" class="large-text" id="recurring" value="<?php echo esc_attr( $options['recurring'] ); ?>" />
-			<label class="description" for="recurring"><?php _e( 'Language to describe recurring monthly donation', 'keel_paypal_donations' ); ?></label>
+			<label class="description" for="recurring"><?php _e( 'Language to describe recurring monthly donation', 'keel' ); ?></label>
 		</div>
 		<?php
 	}
@@ -78,7 +78,7 @@
 		$options = keel_paypal_donations_get_theme_options();
 		?>
 		<input type="text" name="keel_paypal_donations_theme_options[donate]" id="donate" value="<?php echo esc_attr( $options['donate'] ); ?>" />
-		<label class="description" for="donate"><?php _e( 'Donate button text', 'keel_paypal_donations' ); ?></label>
+		<label class="description" for="donate"><?php _e( 'Donate button text', 'keel' ); ?></label>
 		<?php
 	}
 
@@ -86,7 +86,7 @@
 		$options = keel_paypal_donations_get_theme_options();
 		?>
 		<input type="text" name="keel_paypal_donations_theme_options[success_link]" class="regular-text" id="success_link" value="<?php echo esc_attr( $options['success_link'] ); ?>" />
-		<label class="description" for="success_link"><?php _e( 'Link to send donors to after donation is completed', 'keel_paypal_donations' ); ?></label>
+		<label class="description" for="success_link"><?php _e( 'Link to send donors to after donation is completed', 'keel' ); ?></label>
 		<?php
 	}
 
@@ -97,12 +97,12 @@
 			<div data-paypal-amount="<?php echo $args['id']; ?>">
 				<div>
 					<input type="number" step="any" min="0" name="keel_paypal_donations_theme_options[amounts][<?php echo $args['id']; ?>][amount]" id="amount-<?php echo $args['id']; ?>" value="<?php echo esc_attr( $amount['amount'] ); ?>" />
-					<label class="description" for="amount-<?php echo $args['id']; ?>"><?php _e( 'Amount in dollars, no <code>$</code> needed. (ex. <code>25</code>)', 'keel_paypal_donations' ); ?></label>
+					<label class="description" for="amount-<?php echo $args['id']; ?>"><?php _e( 'Amount in dollars, no <code>$</code> needed. (ex. <code>25</code>)', 'keel' ); ?></label>
 				</div>
 				<br>
 				<div>
 					<input type="text" name="keel_paypal_donations_theme_options[amounts][<?php echo $args['id']; ?>][description]" class="large-text" id="description-<?php echo $args['id']; ?>" value="<?php echo esc_attr( $amount['description'] ); ?>" />
-					<label class="description" for="description-<?php echo $args['id']; ?>"><?php _e( 'Description of what the donation can provide (ex. <code>Provides food for one animal for a month</code>)', 'keel_paypal_donations' ); ?></label>
+					<label class="description" for="description-<?php echo $args['id']; ?>"><?php _e( 'Description of what the donation can provide (ex. <code>Provides food for one animal for a month</code>)', 'keel' ); ?></label>
 				</div>
 			</div>
 		<?php
@@ -210,15 +210,15 @@
 
 		?>
 		<div class="wrap">
-			<h2><?php _e( 'PayPal Donations Options', 'keel_paypal_donations' ); ?></h2>
+			<h2><?php _e( 'PayPal Donations Options', 'keel' ); ?></h2>
 			<?php if ( empty( $options['email'] ) ) : ?>
 				<div class="error">
-					<p><?php _e( 'Please enter a PayPal account email address or ID to beging accepting PayPal donations on your site.', 'keel_paypal_donations' ); ?></p>
+					<p><?php _e( 'Please enter a PayPal account email address or ID to beging accepting PayPal donations on your site.', 'keel' ); ?></p>
 				</div>
 			<?php endif; ?>
 			<?php settings_errors(); ?>
-			<p><?php printf( __( 'You can display your donations form on any page by using the %s shortcode. You can also create one-off PayPal donation buttons using the %s.', 'keel_paypal_donations' ), '<code>[paypal_donations_form]</code>', '<code>[paypal_donations_button]</code>' ); ?></p>
-			<p><?php printf( __( ' Example: %s. Only %s is required. All other fields are options. %s makes the donation recurring. %s is what is displayed on PayPal.com.', 'keel_paypal_donations' ), '<code>[paypal_donations_button amount="25" label="Donate $25" recurring="true" description="Donate $25 to the Special Fund"]</code>', '<code>amount</code>', '<code>recurring="true"</code>', '<code>description</code>' ); ?></p>
+			<p><?php printf( __( 'You can display your donations form on any page by using the %s shortcode. You can also create one-off PayPal donation buttons using the %s.', 'keel' ), '<code>[paypal_donations_form]</code>', '<code>[paypal_donations_button]</code>' ); ?></p>
+			<p><?php printf( __( ' Example: %s. Only %s is required. All other fields are options. %s makes the donation recurring. %s is what is displayed on PayPal.com.', 'keel' ), '<code>[paypal_donations_button amount="25" label="Donate $25" recurring="true" description="Donate $25 to the Special Fund"]</code>', '<code>amount</code>', '<code>recurring="true"</code>', '<code>description</code>' ); ?></p>
 			<form method="post" action="options.php">
 				<?php
 					settings_fields( 'keel_paypal_donations_options' );
@@ -303,16 +303,16 @@
 		// $page - The menu page on which to display this field.
 		// $section - The section of the settings page in which to show the field.
 		// update_option( 'keel_paypal_donations_theme_options', '' );
-		add_settings_field( 'email', __( 'PayPal Account ID', 'keel_paypal_donations' ), 'keel_paypal_donations_settings_field_email', 'keel_paypal_donations_theme_options', 'general' );
-		add_settings_field( 'currency', __( 'Currency', 'keel_paypal_donations' ), 'keel_paypal_donations_settings_field_currency', 'keel_paypal_donations_theme_options', 'general' );
-		add_settings_field( 'headings', __( 'Table Headings', 'keel_paypal_donations' ), 'keel_paypal_donations_settings_field_headings', 'keel_paypal_donations_theme_options', 'details' );
-		add_settings_field( 'show_other', __( 'Other Amount', 'keel_paypal_donations' ), 'keel_paypal_donations_settings_field_show_other', 'keel_paypal_donations_theme_options', 'details' );
-		add_settings_field( 'in_honor', __( 'In Honor/Memory', 'keel_paypal_donations' ), 'keel_paypal_donations_settings_field_show_in_honor', 'keel_paypal_donations_theme_options', 'details' );
-		add_settings_field( 'recurring', __( 'Recurring Donations', 'keel_paypal_donations' ), 'keel_paypal_donations_settings_field_show_recurring', 'keel_paypal_donations_theme_options', 'details' );
-		add_settings_field( 'donate', __( 'Donate Button', 'keel_paypal_donations' ), 'keel_paypal_donations_settings_field_donate_text', 'keel_paypal_donations_theme_options', 'details' );
-		add_settings_field( 'success_link', __( 'Success URL', 'keel_paypal_donations' ), 'keel_paypal_donations_settings_field_success_link', 'keel_paypal_donations_theme_options', 'details' );
+		add_settings_field( 'email', __( 'PayPal Account ID', 'keel' ), 'keel_paypal_donations_settings_field_email', 'keel_paypal_donations_theme_options', 'general' );
+		add_settings_field( 'currency', __( 'Currency', 'keel' ), 'keel_paypal_donations_settings_field_currency', 'keel_paypal_donations_theme_options', 'general' );
+		add_settings_field( 'headings', __( 'Table Headings', 'keel' ), 'keel_paypal_donations_settings_field_headings', 'keel_paypal_donations_theme_options', 'details' );
+		add_settings_field( 'show_other', __( 'Other Amount', 'keel' ), 'keel_paypal_donations_settings_field_show_other', 'keel_paypal_donations_theme_options', 'details' );
+		add_settings_field( 'in_honor', __( 'In Honor/Memory', 'keel' ), 'keel_paypal_donations_settings_field_show_in_honor', 'keel_paypal_donations_theme_options', 'details' );
+		add_settings_field( 'recurring', __( 'Recurring Donations', 'keel' ), 'keel_paypal_donations_settings_field_show_recurring', 'keel_paypal_donations_theme_options', 'details' );
+		add_settings_field( 'donate', __( 'Donate Button', 'keel' ), 'keel_paypal_donations_settings_field_donate_text', 'keel_paypal_donations_theme_options', 'details' );
+		add_settings_field( 'success_link', __( 'Success URL', 'keel' ), 'keel_paypal_donations_settings_field_success_link', 'keel_paypal_donations_theme_options', 'details' );
 		foreach ($options['amounts'] as $key => $amount) {
-			add_settings_field( 'amounts_' . $key, __( 'Donation Value ', 'keel_paypal_donations' ) . ($key + 1), 'keel_paypal_donations_settings_field_amounts', 'keel_paypal_donations_theme_options', 'amounts', array( 'id' => $key ) );
+			add_settings_field( 'amounts_' . $key, __( 'Donation Value ', 'keel' ) . ($key + 1), 'keel_paypal_donations_settings_field_amounts', 'keel_paypal_donations_theme_options', 'amounts', array( 'id' => $key ) );
 		}
 	}
 	add_action( 'admin_init', 'keel_paypal_donations_theme_options_init' );
@@ -331,10 +331,10 @@
 		// $capability - Capability required
 		// $menu_slug - Used to uniquely identify the page
 		// $function - Function that renders the options page
-		// $theme_page = add_theme_page( __( 'Theme Options', 'keel_paypal_donations' ), __( 'Theme Options', 'keel_paypal_donations' ), 'edit_theme_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_render_page' );
+		// $theme_page = add_theme_page( __( 'Theme Options', 'keel' ), __( 'Theme Options', 'keel' ), 'edit_theme_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_render_page' );
 
-		$theme_page = add_menu_page( __( 'PayPal Donations', 'keel_paypal_donations' ), __( 'PayPal Donations', 'keel_paypal_donations' ), 'edit_theme_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_render_page', 'dashicons-heart' );
-		// $theme_page = add_submenu_page( 'tools.php', __( 'Theme Options', 'keel_paypal_donations' ), __( 'Theme Options', 'keel_paypal_donations' ), 'edit_theme_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_render_page' );
+		$theme_page = add_menu_page( __( 'PayPal Donations', 'keel' ), __( 'PayPal Donations', 'keel' ), 'edit_theme_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_render_page', 'dashicons-heart' );
+		// $theme_page = add_submenu_page( 'tools.php', __( 'Theme Options', 'keel' ), __( 'Theme Options', 'keel' ), 'edit_theme_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_render_page' );
 	}
 	add_action( 'admin_menu', 'keel_paypal_donations_theme_options_add_page' );
 
@@ -345,30 +345,3 @@
 		return 'edit_theme_options';
 	}
 	add_filter( 'option_page_capability_keel_paypal_donations_options', 'keel_paypal_donations_option_page_capability' );
-
-
-
-	/**
-	 * Add the color picker script and styles
-	 */
-
-	// function keel_options_scripts_and_styles() {
-
-	// 	// Only load on Theme Options page
-	// 	global $pagenow;
-	// 	if ( !isset( $_GET['page'] ) ) return;
-	// 	if ( $pagenow !== '/themes.php' && $_GET['page'] !== 'keel_theme_options' ) return;
-
-	// 	// Load color picker
-	// 	wp_enqueue_script( 'wp-color-picker' );
-	// 	wp_enqueue_style( 'wp-color-picker' );
-
-	// 	// Load typefaces
-	// 	// wp_enqueue_style( $handle, $src, $deps, $ver, $media );
-	// 	wp_enqueue_style( 'open_sans', '//fonts.googleapis.com/css?family=Open+Sans:400,400italic,700' );
-	// 	wp_enqueue_style( 'source_sans_pro', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700' );
-	// 	wp_enqueue_style( 'lora', '//fonts.googleapis.com/css?family=Lora:400,400italic,700' );
-	// 	wp_enqueue_style( 'droid_serif', '//fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700' );
-
-	// }
-	// add_action( 'admin_enqueue_scripts', 'keel_options_scripts_and_styles', 10, 1 );

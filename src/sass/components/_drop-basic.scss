@@ -10,28 +10,22 @@
 .nav-navbar .menu-item-has-children {
 	position: relative;
 
-	@media (max-width: $bp-large) {
-		.js-drop & > a {
-			cursor: not-allowed;
-			pointer-events: none;
+	& > a:after {
+		content: "+";
+		display: inline-block;
+		margin-left: calc-em(4px);
+		width: calc-em(8px);
+
+		.js-astro.js-drop & {
+			@media (max-width: $bp-large) {
+				content: "";
+			}
 		}
 	}
 
-	@media (min-width: $bp-large) {
-		.js-drop & > a {
-
-			&:after {
-				content: "+";
-				display: inline-block;
-				margin-left: calc-em(4px);
-				width: calc-em(8px);
-			}
-
-			&.active:after {
-				content: "\2013";
-			}
-
-		}
+	.no-js-drop &:hover > a:after,
+	.js-drop & > a.active:after {
+		content: "\2013";
 	}
 }
 
@@ -40,176 +34,101 @@
  * Dropdown content
  */
 // .dropdown-menu-basic,
-.menu-item-has-children .sub-menu {
-	border: calc-em(1px) solid lighten( $color-gray-dark, 22% );
-	border-radius: calc-em(1px);
-	box-shadow: 0 calc-em(4px) calc-em(8px) rgba(0, 0, 0, 0.2);
-	box-sizing: border-box;
-	display: none;
-	float: left;
-	list-style: none;
-	margin-top: calc-em(8px);
-	margin-left: 0;
-	min-width: 10em;
-	padding-top: calc-em(8px);
-	padding-bottom: calc-em(8px);
-	position: absolute;
-	right: 0;
-	text-align: left;
-	top: 100%;
-	visibility: hidden;
-	z-index: 1000;
+.menu-item-has-children {
+	.sub-menu {
+		background-color: $color-white;
+		border: calc-em(1px) solid lighten( $color-gray-dark, 22% );
+		border-radius: calc-em(1px);
+		box-shadow: 0 calc-em(4px) calc-em(8px) rgba(0, 0, 0, 0.2);
+		box-sizing: border-box;
+		display: none;
+		float: left;
+		margin-left: 0;
+		min-width: 10em;
+		padding-top: calc-em(8px);
+		padding-bottom: calc-em(8px);
+		position: absolute;
+		right: 0;
+		text-align: left;
+		top: 100%;
+		visibility: hidden;
+		z-index: 1000;
 
-	&.active {
-		display: block;
-		visibility: visible;
-	}
-
-	@media (max-width: $bp-medium) {
-		margin-left: calc-em(32px);
-	}
-
-	@media (min-width: $bp-medium) {
 		.js-drop & {
-			background-color: $color-white;
+			margin-top: calc-em(8px);
 		}
-	}
 
-	a {
-		display: block;
-		padding-left: calc-em(8px);
-		padding-right: calc-em(8px);
-
-		@if $themes == true {
-
-			.theme-whale & {
-				color: $color-theme-whale-secondary;
+		.js-astro.js-drop & {
+			@media (max-width: $bp-large) {
+				margin-top: 0;
 			}
+		}
 
-			.theme-bear & {
-				color: $color-theme-bear-secondary;
-			}
+		ul,
+		ol {
+			list-style: none;
+			margin-left: 0;
+		}
 
-			.theme-parrot & {
-				color: $color-primary;
-			}
-
-			.theme-coral & {
-				color: $color-theme-coral-secondary;
-			}
-
-			.theme-lab & {
-				color: $color-black;
-			}
-
-			.theme-octopus & {
-				color: $color-theme-octopus;
-			}
+		a {
+			color: $color-primary;
+			display: block;
+			padding-left: calc-em(8px);
+			padding-right: calc-em(8px);
 
 			&:hover {
-				.theme-arctic &,
-				.theme-whale &,
-				.theme-bear &,
-				.theme-parrot &,
-				.theme-coral &,
-				.theme-lab &,
-				.theme-octopus & {
-					text-decoration: none;
-				}
-
-				.theme-whale &,
-				.theme-bear &,
-				.theme-parrot &,
-				.theme-coral &,
-				.theme-lab &,
-				.theme-octopus & {
-					color: $color-white;
-				}
-
-				.theme-arctic & {
-					background-color: lighten( $color-gray-light, 5% );
-				}
-
-				.theme-whale & {
-					background-color: $color-theme-whale-primary;
-				}
-
-				.theme-bear & {
-					background-color: $color-theme-bear-primary;
-				}
-
-				.theme-parrot & {
-					background-color: $color-theme-parrot;
-				}
-
-				.theme-coral & {
-					background-color: $color-theme-coral-primary;
-				}
-
-				.theme-lab & {
-					background-color: $color-black;
-				}
-
-				.theme-octopus & {
-					background-color: $color-theme-octopus;
-				}
+				background-color: $color-primary;
+				color: $color-white;
+				text-decoration: none;
 			}
 
-		}
-	}
-
-	/**
-	 * Switch up styling on small viewports
-	 */
-	@media (max-width: $bp-medium) {
-		.js-drop & {
-			border: none;
-			box-shadow: none;
-			display: block;
-			float: none;
-			min-width: 100%;
-			padding: 0;
-			position: static;
-			visibility: visible;
-		}
-
-		@if $themes == true {
-
-			.js-drop.theme-whale & a,
-			.js-drop.theme-bear & a,
-			.js-drop.theme-parrot & a,
-			.js-drop.theme-coral & a,
-			.js-drop.theme-lab & a,
-			.js-drop.theme-octopus & a {
-				color: $color-white;
-
-				&:hover {
+			@media (max-width: $bp-large) {
+				.js-astro.js-drop &:hover {
+					background-color: transparent;
+					color: darken( $color-primary, 15% );
 					text-decoration: underline;
 				}
-			}
 
-			.js-drop.theme-arctic & a:hover {
-				text-decoration: underline;
+				@if $themes == true {
+					.js-astro.js-drop.theme-dark & {
+						color: $color-white;
+					}
+				}
 			}
+		}
 
+		/**
+		 * Switch up styling on JS-supported small viewports
+		 */
+		@media (max-width: $bp-large) {
+			.js-astro.js-drop & {
+				background-color: transparent;
+				border: none;
+				box-shadow: none;
+				display: block;
+				float: none;
+				margin-left: calc-em(24px);
+				min-width: 100%;
+				position: static;
+				visibility: visible;
+
+				&.active {
+					padding: 0;
+				}
+			}
 		}
 	}
-}
 
-
-/**
- * Navigation subnav backup
- * Displays when JavaScript fails and nav item has sub-nav content
- */
-
-.nav-backup {
-	@extend .margin-bottom;
-
-	&.has-hero {
-		margin-bottom: 0;
+	@media (max-width: $bp-large) {
+		.js-astro.js-drop & > a {
+			cursor: not-allowed;
+			pointer-events: none;
+		}
 	}
 
-	.js-drop & {
-		@extend [hidden];
+	.no-js-drop &:hover .sub-menu,
+	.sub-menu.active {
+		display: block;
+		visibility: visible;
 	}
 }

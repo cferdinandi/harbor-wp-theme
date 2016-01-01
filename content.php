@@ -5,9 +5,12 @@
  * Template for post content.
  */
 
+// Get post options
+$options = keel_get_post_options();
+
 ?>
 
-<article class="<?php if ( is_singular() ) { echo 'container'; } ?>">
+<article class="container">
 
 	<header>
 		<?php
@@ -16,23 +19,21 @@
 			 * Unlinked h1 for invidual blog posts. Linked h1 for collections of posts.
 			 */
 		?>
-		<?php if ( is_single() ) : ?>
-			<h1 class="no-margin-bottom"><?php the_title(); ?></h1>
-		<?php else : ?>
-			<h1 class="<?php if ( get_post_type() !== 'pets' ) { echo 'no-margin-bottom'; } ?>"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-		<?php endif; ?>
 
-		<?php if ( get_post_type() !== 'pets' ) : ?>
-			<aside class="text-muted">
-				<p>
-					<time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_time( 'F j, Y' ) ?></time> by <a href="<?php echo get_author_posts_url( get_the_author_meta('ID') ); ?>"><?php the_author(); ?> </a>/
-					<a href="<?php comments_link(); ?>">
-						<?php comments_number( __( 'Comment', 'keel' ), __( '1 Comment', 'keel' ), __( '% Comments', 'keel' ) ); ?>
-					</a>
-					<?php edit_post_link( __( 'Edit', 'keel' ), ' / ', '' ); ?>
-				</p>
-			</aside>
-		<?php endif; ?>
+		<h1 class="no-margin-bottom">
+			<?php if ( is_single() ) : ?>
+				<?php the_title(); ?>
+			<?php else : ?>
+				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+			<?php endif; ?>
+		</h1>
+
+		<aside class="text-muted">
+			<p>
+				<time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_time( 'F j, Y' ) ?></time> by <a href="<?php echo get_author_posts_url( get_the_author_meta('ID') ); ?>"><?php the_author(); ?> </a>
+				<?php edit_post_link( __( 'Edit', 'keel' ), ' / ', '' ); ?>
+			</p>
+		</aside>
 	</header>
 
 	<?php
@@ -45,17 +46,18 @@
 
 		<?php
 			// Add call-to-action after individual blog posts
-			$options = keel_get_theme_options();
-			if ( !empty( $options['blog_cta'] ) ) :
+			if ( array_key_exists( 'blog_posts_message', $options ) && !empty( $options['blog_posts_message'] ) ) :
 		?>
 			<div class="padding-top padding-bottom">
-				<?php echo stripslashes( $options['blog_cta'] ); ?>
+				<?php echo stripslashes( $options['blog_posts_message'] ); ?>
 			</div>
 		<?php endif; ?>
 
 		<?php
 			// Add comments template to blog posts
-			comments_template();
+			if ( $options['disable_comments'] !== 'on' ) {
+				comments_template();
+			}
 		?>
 	<?php endif; ?>
 

@@ -98,7 +98,7 @@ $grid-breakpoints: (
 	// $breakpoint - {string|variable} the breakpoint
 	// $prefix-class - {string|optional} class to be used with `.row` to activate grid
 	// $include-offsets - {boolean} if true, include offset classes at this breakpoint
-	// ($bp-xsmall, ".row-start-xsmall", false),
+	($bp-xsmall, ".row-start-xsmall", false),
 	// ($bp-small, ".row-start-small", false),
 	($bp-large, null, true),
 );

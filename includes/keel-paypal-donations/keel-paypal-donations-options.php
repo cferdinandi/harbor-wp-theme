@@ -345,30 +345,3 @@
 		return 'edit_theme_options';
 	}
 	add_filter( 'option_page_capability_keel_paypal_donations_options', 'keel_paypal_donations_option_page_capability' );
-
-
-
-	/**
-	 * Add the color picker script and styles
-	 */
-
-	// function keel_options_scripts_and_styles() {
-
-	// 	// Only load on Theme Options page
-	// 	global $pagenow;
-	// 	if ( !isset( $_GET['page'] ) ) return;
-	// 	if ( $pagenow !== '/themes.php' && $_GET['page'] !== 'keel_theme_options' ) return;
-
-	// 	// Load color picker
-	// 	wp_enqueue_script( 'wp-color-picker' );
-	// 	wp_enqueue_style( 'wp-color-picker' );
-
-	// 	// Load typefaces
-	// 	// wp_enqueue_style( $handle, $src, $deps, $ver, $media );
-	// 	wp_enqueue_style( 'open_sans', '//fonts.googleapis.com/css?family=Open+Sans:400,400italic,700' );
-	// 	wp_enqueue_style( 'source_sans_pro', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700' );
-	// 	wp_enqueue_style( 'lora', '//fonts.googleapis.com/css?family=Lora:400,400italic,700' );
-	// 	wp_enqueue_style( 'droid_serif', '//fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700' );
-
-	// }
-	// add_action( 'admin_enqueue_scripts', 'keel_options_scripts_and_styles', 10, 1 );

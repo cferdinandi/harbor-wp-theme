@@ -56,10 +56,18 @@
 					loadJS('<?php echo get_template_directory_uri() . "/dist/js/main.min." . $keel_theme->get( "Version" ) . ".js"; ?>');
 					// loadJS('<?php echo get_template_directory_uri() . "/dist/js/main.js"; ?>');
 
+					// Load Pet scripts
 					if ( document.querySelectorAll( '[data-petfinder-sort="breeds"], [data-petfinder-sort="attributes"], [data-petfinder-sort="toggle"]' ).length > 0 ) {
 							loadJS('<?php echo get_template_directory_uri() . "/dist/js/petfinder-api.min." . $keel_theme->get( "Version" ) . ".js"; ?>');
 							// loadJS('<?php echo get_template_directory_uri() . "/dist/js/petfinder-api.js"; ?>');
-						}
+					}
+
+					// Load PhotoSwipe scripts
+					if ( document.querySelector( '[data-photoswipe' ) ) {
+						loadJS('<?php echo get_template_directory_uri() . "/dist/js/photoswipe.min." . $keel_theme->get( "Version" ) . ".js"; ?>');
+						// loadJS('<?php echo get_template_directory_uri() . "/dist/js/photoswipe.js"; ?>');
+					}
+
 				}
 			</script>
 		<?php
@@ -535,7 +543,7 @@
 	require_once( dirname( __FILE__) . '/includes/keel-theme-options.php' ); // Theme options
 	require_once( dirname( __FILE__) . '/includes/keel-post-options.php' ); // Theme options
 	require_once( dirname( __FILE__) . '/includes/keel-custom-logo.php' ); // Custom logo
-	require_once( dirname( __FILE__) . '/includes/keel-page-hero.php' ); // Page hero settings
+	require_once( dirname( __FILE__) . '/includes/keel-page-hero/keel-page-hero.php' ); // Page hero settings
 	require_once( dirname( __FILE__) . '/includes/keel-paypal-donations/keel-paypal-donations.php' ); // Paypal donations
 	require_once( dirname( __FILE__) . '/includes/keel-petfinder-api/keel-petfinder-api.php' ); // Petfinder API
 	require_once( dirname( __FILE__) . '/includes/keel-photoswipe/keel-photoswipe.php' ); // PhotoSwipe.js

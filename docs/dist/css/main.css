@@ -239,6 +239,33 @@ figure {
 /**
  * Add columns to grid on bigger screens
  */
+@media (min-width: 20em) {
+  /* line 53, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_grid.scss */
+  .row-start-xsmall .grid-fourth {
+    width: 25%;
+  }
+  /* line 53, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_grid.scss */
+  .row-start-xsmall .grid-third {
+    width: 33.33333%;
+  }
+  /* line 53, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_grid.scss */
+  .row-start-xsmall .grid-half {
+    width: 50%;
+  }
+  /* line 53, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_grid.scss */
+  .row-start-xsmall .grid-two-thirds {
+    width: 66.66667%;
+  }
+  /* line 53, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_grid.scss */
+  .row-start-xsmall .grid-three-fourths {
+    width: 75%;
+  }
+  /* line 53, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_grid.scss */
+  .row-start-xsmall .grid-full {
+    width: 100%;
+  }
+}
+
 @media (min-width: 60em) {
   /* line 53, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_grid.scss */
   .grid-fourth {
@@ -889,7 +916,7 @@ pre code {
 /* line 10, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn, #submit {
   background-color: #0088cc;
-  border: 1px solid #0088cc;
+  border: 0.125em solid #0088cc;
   border-radius: 1px;
   color: #ffffff;
   display: inline-block;
@@ -899,9 +926,10 @@ pre code {
   margin-right: 0.3125em;
   margin-bottom: 0.3125em;
   padding: 0.5em 0.6875em;
+  text-decoration: none;
 }
 
-/* line 23, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 24, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn:hover, #submit:hover,
 a .btn:hover, .link-block-styled .btn:hover,
 a #submit:hover, .link-block-styled #submit:hover, .btn:focus, #submit:focus,
@@ -916,9 +944,52 @@ a #submit:active, .link-block-styled #submit:active, .btn.active, .active#submit
 }
 
 /**
+ * Ghosted buttons
+ */
+/* line 62, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+.btn-ghost, .bg-dark .btn, .theme-dark .bg-primary .btn, .bg-dark #submit, .theme-dark .bg-primary #submit {
+  background-color: transparent;
+  border-color: #ffffff;
+}
+
+/* line 66, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+.btn-ghost:hover, .bg-dark .btn:hover, .theme-dark .bg-primary .btn:hover, .bg-dark #submit:hover, .theme-dark .bg-primary #submit:hover,
+a .btn-ghost:hover, .link-block-styled .btn-ghost:hover,
+a .bg-dark .btn:hover, .bg-dark
+a .btn:hover, .link-block-styled .bg-dark .btn:hover, .bg-dark .link-block-styled .btn:hover,
+a .theme-dark .bg-primary .btn:hover, .theme-dark .bg-primary
+a .btn:hover, .link-block-styled .theme-dark .bg-primary .btn:hover, .theme-dark .bg-primary .link-block-styled .btn:hover,
+a .bg-dark #submit:hover, .bg-dark
+a #submit:hover, .link-block-styled .bg-dark #submit:hover, .bg-dark .link-block-styled #submit:hover,
+a .theme-dark .bg-primary #submit:hover, .theme-dark .bg-primary
+a #submit:hover, .link-block-styled .theme-dark .bg-primary #submit:hover, .theme-dark .bg-primary .link-block-styled #submit:hover, .btn-ghost:focus, .bg-dark .btn:focus, .theme-dark .bg-primary .btn:focus, .bg-dark #submit:focus, .theme-dark .bg-primary #submit:focus,
+a .btn-ghost:focus, .link-block-styled .btn-ghost:focus,
+a .bg-dark .btn:focus, .bg-dark
+a .btn:focus, .link-block-styled .bg-dark .btn:focus, .bg-dark .link-block-styled .btn:focus,
+a .theme-dark .bg-primary .btn:focus, .theme-dark .bg-primary
+a .btn:focus, .link-block-styled .theme-dark .bg-primary .btn:focus, .theme-dark .bg-primary .link-block-styled .btn:focus,
+a .bg-dark #submit:focus, .bg-dark
+a #submit:focus, .link-block-styled .bg-dark #submit:focus, .bg-dark .link-block-styled #submit:focus,
+a .theme-dark .bg-primary #submit:focus, .theme-dark .bg-primary
+a #submit:focus, .link-block-styled .theme-dark .bg-primary #submit:focus, .theme-dark .bg-primary .link-block-styled #submit:focus, .btn-ghost:active, .bg-dark .btn:active, .theme-dark .bg-primary .btn:active, .bg-dark #submit:active, .theme-dark .bg-primary #submit:active,
+a .btn-ghost:active, .link-block-styled .btn-ghost:active,
+a .bg-dark .btn:active, .bg-dark
+a .btn:active, .link-block-styled .bg-dark .btn:active, .bg-dark .link-block-styled .btn:active,
+a .theme-dark .bg-primary .btn:active, .theme-dark .bg-primary
+a .btn:active, .link-block-styled .theme-dark .bg-primary .btn:active, .theme-dark .bg-primary .link-block-styled .btn:active,
+a .bg-dark #submit:active, .bg-dark
+a #submit:active, .link-block-styled .bg-dark #submit:active, .bg-dark .link-block-styled #submit:active,
+a .theme-dark .bg-primary #submit:active, .theme-dark .bg-primary
+a #submit:active, .link-block-styled .theme-dark .bg-primary #submit:active, .theme-dark .bg-primary .link-block-styled #submit:active, .btn-ghost.active, .bg-dark .active.btn, .theme-dark .bg-primary .active.btn, .bg-dark .active#submit, .theme-dark .bg-primary .active#submit {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #272727;
+}
+
+/**
  * Active state
  */
-/* line 61, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 83, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn:active, #submit:active,
 .btn.active,
 .active#submit {
@@ -929,7 +1000,7 @@ a #submit:active, .link-block-styled #submit:active, .btn.active, .active#submit
 /**
  * Disabled state
  */
-/* line 71, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 93, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn.disabled, .disabled#submit,
 .btn[disabled],
 [disabled]#submit {
@@ -942,7 +1013,7 @@ a #submit:active, .link-block-styled #submit:active, .btn.active, .active#submit
 /**
  * Button size
  */
-/* line 83, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 105, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn-large {
   font-size: 1em;
   line-height: normal;
@@ -952,7 +1023,7 @@ a #submit:active, .link-block-styled #submit:active, .btn.active, .active#submit
 /**
  * Block-level buttons
  */
-/* line 93, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 115, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn-block,
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
@@ -967,7 +1038,7 @@ input[type="button"].btn-block {
 /**
  * General styles
  */
-/* line 108, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 130, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn, #submit,
 button,
 html input[type="button"],
@@ -986,7 +1057,7 @@ input[type="submit"] {
 /**
  * Remove right margin on last element and inputs
  */
-/* line 129, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 151, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn:last-child, #submit:last-child,
 input.btn,
 input#submit {
@@ -1162,6 +1233,16 @@ select:focus {
 }
 
 /**
+ * Underlined inputs
+ */
+/* line 152, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+.input-underline {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+/**
  * Search
  */
 /**
@@ -1169,7 +1250,7 @@ select:focus {
  * Safari (but not Chrome) clips the cancel button when the search input has
  * padding (and `textfield` appearance).
  */
-/* line 158, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 168, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
@@ -1178,7 +1259,7 @@ input[type="search"]::-webkit-search-decoration {
 /**
  * Create rounded search bar
  */
-/* line 167, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 177, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .input-search {
   width: 85%;
   padding-left: 0.9375em;
@@ -1188,13 +1269,13 @@ input[type="search"]::-webkit-search-decoration {
           transition: width 300ms ease-in;
 }
 
-/* line 174, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 184, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .svg .input-search {
   padding-right: 2.5em;
 }
 
 @media (min-width: 40em) {
-  /* line 167, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+  /* line 177, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
   .input-search {
     width: 65%;
   }
@@ -1203,7 +1284,7 @@ input[type="search"]::-webkit-search-decoration {
 /**
  * Special styling for search icon as button
  */
-/* line 187, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 197, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .btn-search {
   display: inline;
   color: #808080;
@@ -1213,22 +1294,22 @@ input[type="search"]::-webkit-search-decoration {
   margin-bottom: 0;
 }
 
-/* line 195, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 205, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .svg .btn-search {
   margin-left: -2.5em;
 }
 
-/* line 199, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 209, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .btn-search .icon {
   fill: #808080;
 }
 
-/* line 203, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 213, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .btn-search:hover {
   color: #5a5a5a;
 }
 
-/* line 206, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 216, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .btn-search:hover .icon {
   fill: #5a5a5a;
 }
@@ -1546,20 +1627,21 @@ td {
 /* line 26, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .theme-light .nav-wrap-navbar {
   background-color: #f2f2f2;
+  border-bottom: 1px solid #e5e5e5;
 }
 
-/* line 30, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 31, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .theme-dark .nav-wrap-navbar {
   background-color: #272727;
 }
 
-/* line 33, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 34, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .theme-dark .nav-wrap-navbar a, .theme-dark .nav-wrap-navbar .link-block-styled {
   color: #ffffff;
   text-decoration: none;
 }
 
-/* line 37, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 38, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .theme-dark .nav-wrap-navbar a:hover, .theme-dark .nav-wrap-navbar .link-block-styled:hover, .theme-dark .nav-wrap-navbar .link-block:hover .link-block-styled, .link-block:hover .theme-dark .nav-wrap-navbar .link-block-styled {
   text-decoration: underline;
 }
@@ -1567,7 +1649,7 @@ td {
 /**
  * Logo
  */
-/* line 50, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 51, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .logo-navbar {
   display: inline-block;
   font-size: 1.2em;
@@ -1575,26 +1657,26 @@ td {
   text-decoration: none;
 }
 
-/* line 56, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 57, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .logo-navbar:hover {
   text-decoration: none;
 }
 
 @media (max-width: 60em) {
-  /* line 61, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+  /* line 62, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
   .js-astro .nav-collapse .logo-navbar {
     float: left;
   }
 }
 
 @media (min-width: 60em) {
-  /* line 50, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+  /* line 51, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
   .logo-navbar {
     float: left;
   }
 }
 
-/* line 70, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 71, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .logo-navbar svg {
   display: inline-block;
   fill: currentColor;
@@ -1602,7 +1684,7 @@ td {
   width: 0;
 }
 
-/* line 76, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 77, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .svg .logo-navbar svg {
   height: auto;
   width: auto;
@@ -1612,22 +1694,22 @@ td {
  * Navigation Menu Container
  */
 @media (max-width: 60em) {
-  /* line 87, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+  /* line 88, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
   .nav-menu-navbar {
     clear: left;
     padding-top: 0.5em;
   }
-  /* line 92, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+  /* line 93, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
   .js-astro .nav-collapse .nav-menu-navbar {
     box-sizing: border-box;
     display: none;
     width: 100%;
   }
-  /* line 97, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+  /* line 98, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
   .js-astro .nav-collapse .nav-menu-navbar.active {
     display: block;
   }
-  /* line 101, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+  /* line 102, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
   .js-astro .nav-collapse .nav-menu-navbar li {
     display: block;
     width: 100%;
@@ -1635,13 +1717,13 @@ td {
     padding-bottom: 0.25em;
     box-sizing: border-box;
   }
-  /* line 110, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+  /* line 111, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
   .nav-menu-navbar a, .nav-menu-navbar .link-block-styled {
     display: block;
   }
 }
 
-/* line 115, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 116, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .nav-menu-navbar ul {
   list-style: none;
 }
@@ -1649,14 +1731,14 @@ td {
 /**
  * Navigation Menu
  */
-/* line 124, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 125, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .nav-navbar {
   list-style: none;
   margin: 0 -0.5em;
   padding: 0;
 }
 
-/* line 129, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 130, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .nav-navbar > li {
   display: inline-block;
   float: none;
@@ -1665,14 +1747,14 @@ td {
 }
 
 @media (max-width: 60em) {
-  /* line 145, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+  /* line 146, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
   .js-astro .nav-collapse .nav-navbar {
     text-align: left;
   }
 }
 
 @media (min-width: 60em) {
-  /* line 124, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+  /* line 125, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
   .nav-navbar {
     text-align: right;
   }
@@ -1681,14 +1763,14 @@ td {
 /**
  * Navigation Toggle
  */
-/* line 159, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 160, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .nav-toggle-navbar {
   display: none;
   visibility: hidden;
 }
 
 @media (max-width: 60em) {
-  /* line 164, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+  /* line 165, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
   .js-astro .nav-collapse .nav-toggle-navbar {
     display: block;
     float: right;
@@ -1699,14 +1781,14 @@ td {
 /**
  * Clearfix
  */
-/* line 177, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 178, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .nav-wrap-navbar:before,
 .nav-wrap-navbar:after {
   display: table;
   content: "";
 }
 
-/* line 183, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
+/* line 184, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_astro-navbar.scss */
 .nav-wrap-navbar:after {
   clear: both;
 }
@@ -1718,12 +1800,12 @@ td {
 /**
  * Set dropdown link to relative positioning
  */
-/* line 11, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+/* line 10, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
 .nav-navbar .menu-item-has-children {
   position: relative;
 }
 
-/* line 14, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+/* line 13, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
 .nav-navbar .menu-item-has-children > a:after, .nav-navbar .menu-item-has-children > .link-block-styled:after {
   content: "+";
   display: inline-block;
@@ -1731,39 +1813,24 @@ td {
   width: 0.5em;
 }
 
-/* line 21, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.nav-navbar .menu-item-has-children:hover > a:after, .nav-navbar .menu-item-has-children:hover > .link-block-styled:after {
-  content: "\2013";
+@media (max-width: 60em) {
+  /* line 19, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+  .js-astro.js-drop .nav-navbar .menu-item-has-children > a:after, .js-astro.js-drop .nav-navbar .menu-item-has-children > .link-block-styled:after {
+    content: "";
+  }
 }
 
 /* line 26, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.js-drop .nav-navbar .menu-item-has-children > a:after, .js-drop .nav-navbar .menu-item-has-children > .link-block-styled:after {
-  content: normal;
-}
-
-@media (max-width: 60em) {
-  /* line 25, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-drop .nav-navbar .menu-item-has-children > a, .js-drop .nav-navbar .menu-item-has-children > .link-block-styled {
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-}
-
-@media (min-width: 60em) {
-  /* line 37, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-drop .nav-navbar .menu-item-has-children > a:after, .js-drop .nav-navbar .menu-item-has-children > .link-block-styled:after {
-    content: "+";
-  }
-  /* line 41, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-drop .nav-navbar .menu-item-has-children > a.active:after, .js-drop .nav-navbar .menu-item-has-children > .active.link-block-styled:after {
-    content: "\2013";
-  }
+.no-js-drop .nav-navbar .menu-item-has-children:hover > a:after, .no-js-drop .nav-navbar .menu-item-has-children:hover > .link-block-styled:after,
+.js-drop .nav-navbar .menu-item-has-children > a.active:after,
+.js-drop .nav-navbar .menu-item-has-children > .active.link-block-styled:after {
+  content: "\2013";
 }
 
 /**
  * Dropdown content
  */
-/* line 56, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+/* line 38, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
 .menu-item-has-children .sub-menu {
   background-color: #ffffff;
   border: 1px solid #b8b8b8;
@@ -1772,7 +1839,6 @@ td {
   box-sizing: border-box;
   display: none;
   float: left;
-  list-style: none;
   margin-left: 0;
   min-width: 10em;
   padding-top: 0.5em;
@@ -1784,28 +1850,30 @@ td {
   visibility: hidden;
   z-index: 1000;
   /**
-		 * Switch up styling on small viewports
+		 * Switch up styling on JS-supported small viewports
 		 */
 }
 
-/* line 76, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+/* line 57, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
 .js-drop .menu-item-has-children .sub-menu {
   margin-top: 0.5em;
 }
 
 @media (max-width: 60em) {
-  /* line 56, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .menu-item-has-children .sub-menu {
-    margin-left: 1.5em;
-  }
-  /* line 83, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-drop .menu-item-has-children .sub-menu {
-    background-color: transparent;
-    margin-top: 0.5em;
+  /* line 61, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+  .js-astro.js-drop .menu-item-has-children .sub-menu {
+    margin-top: 0;
   }
 }
 
-/* line 89, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+/* line 67, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+.menu-item-has-children .sub-menu ul,
+.menu-item-has-children .sub-menu ol {
+  list-style: none;
+  margin-left: 0;
+}
+
+/* line 73, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
 .menu-item-has-children .sub-menu a, .menu-item-has-children .sub-menu .link-block-styled {
   color: #0088cc;
   display: block;
@@ -1813,7 +1881,7 @@ td {
   padding-right: 0.5em;
 }
 
-/* line 95, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+/* line 79, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
 .menu-item-has-children .sub-menu a:hover, .menu-item-has-children .sub-menu .link-block-styled:hover, .menu-item-has-children .sub-menu .link-block:hover .link-block-styled, .link-block:hover .menu-item-has-children .sub-menu .link-block-styled {
   background-color: #0088cc;
   color: #ffffff;
@@ -1821,38 +1889,48 @@ td {
 }
 
 @media (max-width: 60em) {
-  /* line 101, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-drop .menu-item-has-children .sub-menu a:hover, .js-drop .menu-item-has-children .sub-menu .link-block-styled:hover, .js-drop .menu-item-has-children .sub-menu .link-block:hover .link-block-styled, .link-block:hover .js-drop .menu-item-has-children .sub-menu .link-block-styled {
+  /* line 86, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+  .js-astro.js-drop .menu-item-has-children .sub-menu a:hover, .js-astro.js-drop .menu-item-has-children .sub-menu .link-block-styled:hover, .js-astro.js-drop .menu-item-has-children .sub-menu .link-block:hover .link-block-styled, .link-block:hover .js-astro.js-drop .menu-item-has-children .sub-menu .link-block-styled {
     background-color: transparent;
     color: #005580;
     text-decoration: underline;
   }
+  /* line 93, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+  .js-astro.js-drop.theme-dark .menu-item-has-children .sub-menu a, .js-astro.js-drop.theme-dark .menu-item-has-children .sub-menu .link-block-styled {
+    color: #ffffff;
+  }
 }
 
 @media (max-width: 60em) {
-  /* line 114, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-drop .menu-item-has-children .sub-menu {
+  /* line 104, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+  .js-astro.js-drop .menu-item-has-children .sub-menu {
+    background-color: transparent;
     border: none;
     box-shadow: none;
     display: block;
     float: none;
+    margin-left: 1.5em;
     min-width: 100%;
-    padding: 0;
     position: static;
     visibility: visible;
   }
+  /* line 115, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+  .js-astro.js-drop .menu-item-has-children .sub-menu.active {
+    padding: 0;
+  }
 }
 
-/* line 127, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.js-drop .menu-item-has-children:hover .sub-menu {
-  display: none;
-  visibility: hidden;
+@media (max-width: 60em) {
+  /* line 123, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+  .js-astro.js-drop .menu-item-has-children > a, .js-astro.js-drop .menu-item-has-children > .link-block-styled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
 
-/* line 132, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.menu-item-has-children:hover .sub-menu,
-.menu-item-has-children .sub-menu.active,
-.js-drop .menu-item-has-children:hover .sub-menu.active {
+/* line 129, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+.no-js-drop .menu-item-has-children:hover .sub-menu,
+.menu-item-has-children .sub-menu.active {
   display: block;
   visibility: visible;
 }
@@ -1915,6 +1993,875 @@ td {
   }
 }
 
+/*! PhotoSwipe Default UI CSS by Dmitry Semenov | photoswipe.com | MIT license */
+/*
+
+	Contents:
+
+	1. Buttons
+	2. Share modal and links
+	3. Index indicator ("1 of X" counter)
+	4. Caption
+	5. Loading indicator
+	6. Additional styles (root element, top bar, idle state, hidden state, etc.)
+
+*/
+/*
+
+	1. Buttons
+
+ */
+/* <button> css reset */
+/* line 20, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button {
+  width: 44px;
+  height: 44px;
+  position: relative;
+  background: none;
+  cursor: pointer;
+  overflow: visible;
+  -webkit-appearance: none;
+  display: block;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  float: right;
+  opacity: 0.75;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  box-shadow: none;
+}
+
+/* line 38, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button:focus,
+.pswp__button:hover {
+  opacity: 1;
+}
+
+/* line 41, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button:active {
+  outline: none;
+  opacity: 0.9;
+}
+
+/* line 44, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+/* pswp__ui--over-close class it added when mouse is over element that should close gallery */
+/* line 49, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__ui--over-close .pswp__button--close {
+  opacity: 1;
+}
+
+/* line 52, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button,
+.pswp__button--arrow--left:before,
+.pswp__button--arrow--right:before {
+  background: url(../img/default-skin.png) 0 0 no-repeat;
+  background-size: 264px 88px;
+  width: 44px;
+  height: 44px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
+  /* Serve SVG sprite if browser supports SVG and resolution is more than 105dpi */
+  /* line 62, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+  .pswp--svg .pswp__button,
+  .pswp--svg .pswp__button--arrow--left:before,
+  .pswp--svg .pswp__button--arrow--right:before {
+    background-image: url(../svg/default-skin.svg);
+  }
+  /* line 66, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+  .pswp--svg .pswp__button--arrow--left,
+  .pswp--svg .pswp__button--arrow--right {
+    background: none;
+  }
+}
+
+/* line 70, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button--close {
+  background-position: 0 -44px;
+}
+
+/* line 73, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button--share {
+  background-position: -44px -44px;
+}
+
+/* line 76, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button--fs {
+  display: none;
+}
+
+/* line 79, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--supports-fs .pswp__button--fs {
+  display: block;
+}
+
+/* line 82, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--fs .pswp__button--fs {
+  background-position: -44px 0;
+}
+
+/* line 85, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button--zoom {
+  display: none;
+  background-position: -88px 0;
+}
+
+/* line 89, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--zoom-allowed .pswp__button--zoom {
+  display: block;
+}
+
+/* line 92, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--zoomed-in .pswp__button--zoom {
+  background-position: -132px 0;
+}
+
+/* no arrows on touch screens */
+/* line 96, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--touch .pswp__button--arrow--left,
+.pswp--touch .pswp__button--arrow--right {
+  visibility: hidden;
+}
+
+/*
+	Arrow buttons hit area
+	(icon is added to :before pseudo-element)
+*/
+/* line 104, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button--arrow--left,
+.pswp__button--arrow--right {
+  background: none;
+  top: 50%;
+  margin-top: -50px;
+  width: 70px;
+  height: 100px;
+  position: absolute;
+}
+
+/* line 113, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button--arrow--left {
+  left: 0;
+}
+
+/* line 116, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button--arrow--right {
+  right: 0;
+}
+
+/* line 119, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button--arrow--left:before,
+.pswp__button--arrow--right:before {
+  content: '';
+  top: 35px;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 30px;
+  width: 32px;
+  position: absolute;
+}
+
+/* line 128, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button--arrow--left:before {
+  left: 6px;
+  background-position: -138px -44px;
+}
+
+/* line 132, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__button--arrow--right:before {
+  right: 6px;
+  background-position: -94px -44px;
+}
+
+/*
+
+	2. Share modal/popup and links
+
+ */
+/* line 141, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__counter,
+.pswp__share-modal {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* line 148, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__share-modal {
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  position: absolute;
+  z-index: 1600;
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease-out;
+  transition: opacity 0.25s ease-out;
+  -webkit-backface-visibility: hidden;
+  will-change: opacity;
+}
+
+/* line 164, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__share-modal--hidden {
+  display: none;
+}
+
+/* line 167, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__share-tooltip {
+  z-index: 1620;
+  position: absolute;
+  background: #FFF;
+  top: 56px;
+  border-radius: 2px;
+  display: block;
+  width: auto;
+  right: 44px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  -webkit-transform: translateY(6px);
+  transform: translateY(6px);
+  -webkit-transition: -webkit-transform 0.25s;
+  transition: transform 0.25s;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* line 185, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__share-tooltip a, .pswp__share-tooltip .link-block-styled {
+  display: block;
+  padding: 8px 12px;
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+/* line 192, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__share-tooltip a:hover, .pswp__share-tooltip .link-block-styled:hover, .pswp__share-tooltip .link-block:hover .link-block-styled, .link-block:hover .pswp__share-tooltip .link-block-styled {
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 195, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__share-tooltip a:first-child, .pswp__share-tooltip .link-block-styled:first-child {
+  /* round corners on the first/last list item */
+  border-radius: 2px 2px 0 0;
+}
+
+/* line 198, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__share-tooltip a:last-child, .pswp__share-tooltip .link-block-styled:last-child {
+  border-radius: 0 0 2px 2px;
+}
+
+/* line 201, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__share-modal--fade-in {
+  opacity: 1;
+}
+
+/* line 203, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__share-modal--fade-in .pswp__share-tooltip {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+/* increase size of share links on touch devices */
+/* line 209, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--touch .pswp__share-tooltip a, .pswp--touch .pswp__share-tooltip .link-block-styled {
+  padding: 16px 12px;
+}
+
+/* line 212, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+a.pswp__share--facebook:before, .pswp__share--facebook.link-block-styled:before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -12px;
+  right: 15px;
+  border: 6px solid transparent;
+  border-bottom-color: #FFF;
+  -webkit-pointer-events: none;
+  -moz-pointer-events: none;
+  pointer-events: none;
+}
+
+/* line 226, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+a.pswp__share--facebook:hover, .pswp__share--facebook.link-block-styled:hover, .link-block:hover .pswp__share--facebook.link-block-styled {
+  background: #3E5C9A;
+  color: #FFF;
+}
+
+/* line 229, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+a.pswp__share--facebook:hover:before, .pswp__share--facebook.link-block-styled:hover:before, .link-block:hover .pswp__share--facebook.link-block-styled:before {
+  border-bottom-color: #3E5C9A;
+}
+
+/* line 232, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+a.pswp__share--twitter:hover, .pswp__share--twitter.link-block-styled:hover, .link-block:hover .pswp__share--twitter.link-block-styled {
+  background: #55ACEE;
+  color: #FFF;
+}
+
+/* line 236, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+a.pswp__share--pinterest:hover, .pswp__share--pinterest.link-block-styled:hover, .link-block:hover .pswp__share--pinterest.link-block-styled {
+  background: #CCC;
+  color: #CE272D;
+}
+
+/* line 240, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .link-block:hover .pswp__share--download.link-block-styled {
+  background: #DDD;
+}
+
+/*
+
+	3. Index indicator ("1 of X" counter)
+
+ */
+/* line 248, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__counter {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 44px;
+  font-size: 13px;
+  line-height: 44px;
+  color: #FFF;
+  opacity: 0.75;
+  padding: 0 10px;
+}
+
+/*
+
+	4. Caption
+
+ */
+/* line 264, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__caption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 44px;
+}
+
+/* line 276, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__caption__center {
+  text-align: left;
+  max-width: 420px;
+  margin: 0 auto;
+  font-size: 13px;
+  padding: 10px;
+  line-height: 20px;
+  color: #CCC;
+}
+
+/* line 285, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__caption--empty {
+  display: none;
+}
+
+/* Fake caption element, used to calculate height of next/prev image */
+/* line 289, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__caption--fake {
+  visibility: hidden;
+}
+
+/*
+
+	5. Loading indicator (preloader)
+
+	You can play with it here - http://codepen.io/dimsemenov/pen/yyBWoR
+
+ */
+/* line 299, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__preloader {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -22px;
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease-out;
+  transition: opacity 0.25s ease-out;
+  will-change: opacity;
+  direction: ltr;
+}
+
+/* line 312, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__preloader__icn {
+  width: 20px;
+  height: 20px;
+  margin: 12px;
+}
+
+/* line 317, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__preloader--active {
+  opacity: 1;
+}
+
+/* line 319, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__preloader--active .pswp__preloader__icn {
+  /* We use .gif in browsers that don't support CSS animation */
+  background: url(../img/preloader.gif) 0 0 no-repeat;
+}
+
+/* line 323, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--css_animation .pswp__preloader--active {
+  opacity: 1;
+}
+
+/* line 325, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--css_animation .pswp__preloader--active .pswp__preloader__icn {
+  -webkit-animation: clockwise 500ms linear infinite;
+  animation: clockwise 500ms linear infinite;
+}
+
+/* line 328, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--css_animation .pswp__preloader--active .pswp__preloader__donut {
+  -webkit-animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite;
+  animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite;
+}
+
+/* line 332, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--css_animation .pswp__preloader__icn {
+  background: none;
+  opacity: 0.75;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  margin: 0;
+}
+
+/* line 342, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--css_animation .pswp__preloader__cut {
+  /*
+			The idea of animating inner circle is based on Polymer ("material") loading indicator
+			 by Keanu Lee https://blog.keanulee.com/2014/10/20/the-tale-of-three-spinners.html
+		*/
+  position: relative;
+  width: 7px;
+  height: 14px;
+  overflow: hidden;
+}
+
+/* line 352, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--css_animation .pswp__preloader__donut {
+  box-sizing: border-box;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #FFF;
+  border-radius: 50%;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none;
+  margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  /* line 368, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+  .pswp__preloader {
+    position: relative;
+    left: auto;
+    top: auto;
+    margin: 0;
+    float: right;
+  }
+}
+
+@-webkit-keyframes clockwise {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes clockwise {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes donut-rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  50% {
+    -webkit-transform: rotate(-140deg);
+    transform: rotate(-140deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+}
+
+@keyframes donut-rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  50% {
+    -webkit-transform: rotate(-140deg);
+    transform: rotate(-140deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+}
+
+/*
+
+	6. Additional styles
+
+ */
+/* root element of UI */
+/* line 419, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__ui {
+  -webkit-font-smoothing: auto;
+  visibility: visible;
+  opacity: 1;
+  z-index: 1550;
+}
+
+/* top black bar with buttons and "1 of X" indicator */
+/* line 426, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__top-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 44px;
+  width: 100%;
+}
+
+/* line 433, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__caption,
+.pswp__top-bar,
+.pswp--has_mouse .pswp__button--arrow--left,
+.pswp--has_mouse .pswp__button--arrow--right {
+  -webkit-backface-visibility: hidden;
+  will-change: opacity;
+  -webkit-transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+  transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+}
+
+/* pswp--has_mouse class is added only when two subsequent mousemove events occur */
+/* line 443, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--has_mouse .pswp__button--arrow--left,
+.pswp--has_mouse .pswp__button--arrow--right {
+  visibility: visible;
+}
+
+/* line 447, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__top-bar,
+.pswp__caption {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* pswp__ui--fit class is added when main image "fits" between top bar and bottom bar (caption) */
+/* line 452, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__ui--fit .pswp__top-bar,
+.pswp__ui--fit .pswp__caption {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* pswp__ui--idle class is added when mouse isn't moving for several seconds (JS option timeToIdle) */
+/* line 457, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__ui--idle .pswp__top-bar {
+  opacity: 0;
+}
+
+/* line 460, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__ui--idle .pswp__button--arrow--left,
+.pswp__ui--idle .pswp__button--arrow--right {
+  opacity: 0;
+}
+
+/*
+	pswp__ui--hidden class is added when controls are hidden
+	e.g. when user taps to toggle visibility of controls
+*/
+/* line 468, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__ui--hidden .pswp__top-bar,
+.pswp__ui--hidden .pswp__caption,
+.pswp__ui--hidden .pswp__button--arrow--left,
+.pswp__ui--hidden .pswp__button--arrow--right {
+  /* Force paint & create composition layer for controls. */
+  opacity: 0.001;
+}
+
+/* pswp__ui--one-slide class is added when there is just one item in gallery */
+/* line 476, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__ui--one-slide .pswp__button--arrow--left,
+.pswp__ui--one-slide .pswp__button--arrow--right,
+.pswp__ui--one-slide .pswp__counter {
+  display: none;
+}
+
+/* line 481, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp__element--disabled {
+  display: none !important;
+}
+
+/* line 484, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe-default-skin.scss */
+.pswp--minimal--dark .pswp__top-bar {
+  background: none;
+}
+
+/*! PhotoSwipe main CSS by Dmitry Semenov | photoswipe.com | MIT license */
+/*
+	Styles for basic PhotoSwipe functionality (sliding area, open/close transitions)
+*/
+/* pswp = photoswipe */
+/* line 6, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  -ms-touch-action: none;
+  touch-action: none;
+  z-index: 1500;
+  -webkit-text-size-adjust: 100%;
+  /* create separate layer, to avoid paint on window.onscroll in webkit/blink */
+  -webkit-backface-visibility: hidden;
+  outline: none;
+}
+
+/* line 21, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp * {
+  box-sizing: border-box;
+}
+
+/* line 24, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp img {
+  max-width: none;
+}
+
+/* style is added when JS option showHideOpacity is set to true */
+/* line 28, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp--animate_opacity {
+  /* 0.001, because opacity:0 doesn't trigger Paint action, which causes lag at start of transition */
+  opacity: 0.001;
+  will-change: opacity;
+  /* for open/close transition */
+  -webkit-transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+  transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+}
+
+/* line 36, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp--open {
+  display: block;
+}
+
+/* line 39, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp--zoom-allowed .pswp__img {
+  /* autoprefixer: off */
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+}
+
+/* line 45, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp--zoomed-in .pswp__img {
+  /* autoprefixer: off */
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+}
+
+/* line 51, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp--dragging .pswp__img {
+  /* autoprefixer: off */
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
+
+/*
+	Background is added as a separate element.
+	As animating opacity is much faster than animating rgba() background-color.
+*/
+/* line 61, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  -webkit-backface-visibility: hidden;
+  will-change: opacity;
+}
+
+/* line 72, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__scroll-wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* line 80, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__container,
+.pswp__zoom-wrap {
+  -ms-touch-action: none;
+  touch-action: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/* Prevent selection and tap highlights */
+/* line 91, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__container,
+.pswp__img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* line 100, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__zoom-wrap {
+  position: absolute;
+  width: 100%;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  /* for open/close transition */
+  -webkit-transition: -webkit-transform 333ms cubic-bezier(0.4, 0, 0.22, 1);
+  transition: transform 333ms cubic-bezier(0.4, 0, 0.22, 1);
+}
+
+/* line 110, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__bg {
+  will-change: opacity;
+  /* for open/close transition */
+  -webkit-transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+  transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+}
+
+/* line 116, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp--animated-in .pswp__bg,
+.pswp--animated-in .pswp__zoom-wrap {
+  -webkit-transition: none;
+  transition: none;
+}
+
+/* line 121, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__container,
+.pswp__zoom-wrap {
+  -webkit-backface-visibility: hidden;
+}
+
+/* line 125, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__item {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+/* line 133, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  top: 0;
+  left: 0;
+}
+
+/*
+	stretched thumbnail or div placeholder element (see below)
+	style is added to avoid flickering in webkit/blink when layers overlap
+*/
+/* line 144, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__img--placeholder {
+  -webkit-backface-visibility: hidden;
+}
+
+/*
+	div element that matches size of large image
+	large image loads on top of it
+*/
+/* line 151, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__img--placeholder--blank {
+  background: #222;
+}
+
+/* line 154, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp--ie .pswp__img {
+  width: 100% !important;
+  height: auto !important;
+  left: 0;
+  top: 0;
+}
+
+/*
+	Error message appears when image is not loaded
+	(JS option errorMsg controls markup)
+*/
+/* line 164, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__error-msg {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+  margin-top: -8px;
+  color: #CCC;
+}
+
+/* line 175, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.pswp__error-msg a, .pswp__error-msg .link-block-styled {
+  color: #CCC;
+  text-decoration: underline;
+}
+
+/* line 179, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_photoswipe.scss */
+.js-photoswipe .media-modal-content .gallery-settings {
+  display: none;
+}
+
 /**
  * @section Overrides
  * Nudge and tweak alignment, spacing, and visibility.
@@ -1928,33 +2875,44 @@ td {
 }
 
 /* line 15, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
-.bg-primary {
-  background-color: #f2f2f2;
-}
-
-/* line 21, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
-.theme-dark .bg-primary {
-  background-color: #272727;
+.bg-dark, .theme-dark .bg-primary {
+  background-color: #005580;
   color: #ffffff;
 }
 
-/* line 25, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
-.theme-dark .bg-primary a, .theme-dark .bg-primary .link-block-styled {
+/* line 19, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+.bg-dark a, .theme-dark .bg-primary a, .bg-dark .link-block-styled, .theme-dark .bg-primary .link-block-styled {
   color: #e5e5e5;
   text-decoration: underline;
 }
 
-/* line 29, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
-.theme-dark .bg-primary a:hover, .theme-dark .bg-primary .link-block-styled:hover, .theme-dark .bg-primary .link-block:hover .link-block-styled, .link-block:hover .theme-dark .bg-primary .link-block-styled, .theme-dark .bg-primary a:focus, .theme-dark .bg-primary .link-block-styled:focus, .theme-dark .bg-primary a:active, .theme-dark .bg-primary .link-block-styled:active {
+/* line 23, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+.bg-dark a:active, .theme-dark .bg-primary a:active, .bg-dark .link-block-styled:active, .theme-dark .bg-primary .link-block-styled:active, .bg-dark a:focus, .theme-dark .bg-primary a:focus, .bg-dark .link-block-styled:focus, .theme-dark .bg-primary .link-block-styled:focus, .bg-dark a:hover, .theme-dark .bg-primary a:hover, .bg-dark .link-block-styled:hover, .theme-dark .bg-primary .link-block-styled:hover, .bg-dark .link-block:hover .link-block-styled, .link-block:hover .bg-dark .link-block-styled, .theme-dark .bg-primary .link-block:hover .link-block-styled, .link-block:hover .theme-dark .bg-primary .link-block-styled {
   color: #ffffff;
 }
 
-/* line 35, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
-.theme-dark .bg-primary a.link-icon, .theme-dark .bg-primary .link-icon.link-block-styled {
+/* line 29, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+.bg-dark a.link-icon, .theme-dark .bg-primary a.link-icon, .bg-dark .link-icon.link-block-styled, .theme-dark .bg-primary .link-icon.link-block-styled {
   text-decoration: none;
 }
 
-/* line 43, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 34, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+.bg-dark .btn, .theme-dark .bg-primary .btn, .bg-dark #submit, .theme-dark .bg-primary #submit {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* line 41, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+.bg-primary {
+  background-color: #f2f2f2;
+}
+
+/* line 47, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+.theme-dark .bg-primary {
+  background-color: #272727;
+}
+
+/* line 54, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .bg-hero {
   background-position: bottom center;
   background-size: cover;
@@ -1964,19 +2922,19 @@ td {
 /**
  * Text sizes
  */
-/* line 54, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 65, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .text-small {
   font-size: 0.9375em;
 }
 
-/* line 58, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 69, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .text-large {
   font-size: 1.1875em;
   line-height: 1.4;
 }
 
 @media (min-width: 40em) {
-  /* line 58, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+  /* line 69, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
   .text-large {
     font-size: 1.3125em;
   }
@@ -1985,7 +2943,7 @@ td {
 /**
  * Text colors
  */
-/* line 72, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 83, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .text-muted {
   color: #808080;
 }
@@ -1993,32 +2951,32 @@ td {
 /**
  * Text alignment
  */
-/* line 81, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 92, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 85, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 96, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .text-right {
   text-align: right;
 }
 
-/* line 89, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 100, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .text-left {
   text-align: left;
 }
 
-@media (min-width: 40em) {
-  /* line 94, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
-  .text-center-medium {
+@media (min-width: 60em) {
+  /* line 105, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+  .text-center-large {
     text-align: center;
   }
-  /* line 98, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
-  .text-right-medium {
+  /* line 109, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+  .text-right-large {
     text-align: right;
   }
-  /* line 102, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
-  .text-left-medium {
+  /* line 113, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+  .text-left-large {
     text-align: left;
   }
 }
@@ -2026,19 +2984,19 @@ td {
 /**
  * Floats
  */
-/* line 112, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 123, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .float-left {
   float: left;
 }
 
-/* line 116, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 127, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .float-center {
   float: none;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 122, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 133, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .float-right {
   float: right;
 }
@@ -2046,32 +3004,32 @@ td {
 /**
  * Margins
  */
-/* line 131, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 142, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .no-margin-top {
   margin-top: 0;
 }
 
-/* line 135, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 146, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .no-margin-bottom {
   margin-bottom: 0;
 }
 
-/* line 139, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 150, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .margin-top {
   margin-top: 1.5625em;
 }
 
-/* line 143, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 154, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .margin-bottom {
   margin-bottom: 1.5625em;
 }
 
-/* line 147, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 158, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .margin-bottom-small {
   margin-bottom: 0.5em;
 }
 
-/* line 151, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 162, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .margin-bottom-large {
   margin-bottom: 2em;
 }
@@ -2079,52 +3037,52 @@ td {
 /**
  * Padding
  */
-/* line 160, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 171, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .no-padding-top {
   padding-top: 0;
 }
 
-/* line 164, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 175, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .no-padding-bottom {
   padding-bottom: 0;
 }
 
-/* line 168, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 179, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .padding-top {
   padding-top: 1.5625em;
 }
 
-/* line 172, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 183, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .padding-top-small {
   padding-top: 0.5em;
 }
 
-/* line 176, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 187, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .padding-top-large {
   padding-top: 2em;
 }
 
-/* line 180, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 191, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .padding-top-xlarge {
   padding-top: 4em;
 }
 
-/* line 184, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 195, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .padding-bottom {
   padding-bottom: 1.5625em;
 }
 
-/* line 188, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 199, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .padding-bottom-small {
   padding-bottom: 0.5em;
 }
 
-/* line 192, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 203, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .padding-bottom-large {
   padding-bottom: 2em;
 }
 
-/* line 196, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 207, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .padding-bottom-xlarge {
   padding-bottom: 4em;
 }
@@ -2137,7 +3095,7 @@ td {
  * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
  * @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
  */
-/* line 210, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 221, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .screen-reader, .svg .icon-fallback-text {
   border: 0;
   clip: rect(0 0 0 0);
@@ -2154,7 +3112,7 @@ td {
  * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
  * @link https://www.drupal.org/node/897638
  */
-/* line 226, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 237, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .screen-reader-focusable:active,
 .screen-reader-focusable:focus {
   clip: auto;
@@ -2170,8 +3128,8 @@ td {
  * @affected IE 8/9/10
  * @link http://juicystudio.com/article/screen-readers-display-none.php
  */
-/* line 241, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
-[hidden], template, .tarpit {
+/* line 252, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+[hidden], template, .tarpit, .pswp__caption small {
   display: none;
   visibility: hidden;
 }
@@ -2181,7 +3139,7 @@ td {
  * The space content is one way to avoid an Opera bug when the `contenteditable` attribute is included anywhere else in the document.
  * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
  */
-/* line 253, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 264, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .clearfix:before, .container:before,
 .row:before,
 .clearfix:after,
@@ -2191,7 +3149,7 @@ td {
   content: " ";
 }
 
-/* line 259, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
+/* line 270, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .clearfix:after, .container:after,
 .row:after {
   clear: both;

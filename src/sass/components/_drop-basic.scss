@@ -7,43 +7,25 @@
  * Set dropdown link to relative positioning
  */
 // .dropdown-basic,
-.nav-navbar {
-	.menu-item-has-children {
-		position: relative;
+.nav-navbar .menu-item-has-children {
+	position: relative;
 
-		& > a:after {
-			content: "+";
-			display: inline-block;
-			margin-left: calc-em(4px);
-			width: calc-em(8px);
-		}
+	& > a:after {
+		content: "+";
+		display: inline-block;
+		margin-left: calc-em(4px);
+		width: calc-em(8px);
 
-		&:hover > a:after {
-			content: "\2013";
-		}
-
-		.js-drop & > a {
-			&:after {
-				content: normal;
-			}
-
+		.js-astro.js-drop & {
 			@media (max-width: $bp-large) {
-				cursor: not-allowed;
-				pointer-events: none;
-			}
-
-			@media (min-width: $bp-large) {
-
-				&:after {
-					content: "+";
-				}
-
-				&.active:after {
-					content: "\2013";
-				}
-
+				content: "";
 			}
 		}
+	}
+
+	.no-js-drop &:hover > a:after,
+	.js-drop & > a.active:after {
+		content: "\2013";
 	}
 }
 
@@ -61,7 +43,6 @@
 		box-sizing: border-box;
 		display: none;
 		float: left;
-		list-style: none;
 		margin-left: 0;
 		min-width: 10em;
 		padding-top: calc-em(8px);
@@ -77,13 +58,16 @@
 			margin-top: calc-em(8px);
 		}
 
-		@media (max-width: $bp-large) {
-			margin-left: calc-em(24px);
-
-			.js-drop & {
-				background-color: transparent;
-				margin-top: calc-em(8px);
+		.js-astro.js-drop & {
+			@media (max-width: $bp-large) {
+				margin-top: 0;
 			}
+		}
+
+		ul,
+		ol {
+			list-style: none;
+			margin-left: 0;
 		}
 
 		a {
@@ -96,42 +80,54 @@
 				background-color: $color-primary;
 				color: $color-white;
 				text-decoration: none;
+			}
 
-				@media (max-width: $bp-large) {
-					.js-drop & {
-						background-color: transparent;
-						color: darken( $color-primary, 15% );
-						text-decoration: underline;
+			@media (max-width: $bp-large) {
+				.js-astro.js-drop &:hover {
+					background-color: transparent;
+					color: darken( $color-primary, 15% );
+					text-decoration: underline;
+				}
+
+				@if $themes == true {
+					.js-astro.js-drop.theme-dark & {
+						color: $color-white;
 					}
 				}
 			}
 		}
 
 		/**
-		 * Switch up styling on small viewports
+		 * Switch up styling on JS-supported small viewports
 		 */
 		@media (max-width: $bp-large) {
-			.js-drop & {
+			.js-astro.js-drop & {
+				background-color: transparent;
 				border: none;
 				box-shadow: none;
 				display: block;
 				float: none;
+				margin-left: calc-em(24px);
 				min-width: 100%;
-				padding: 0;
 				position: static;
 				visibility: visible;
+
+				&.active {
+					padding: 0;
+				}
 			}
 		}
 	}
 
-	.js-drop &:hover .sub-menu {
-		display: none;
-		visibility: hidden;
+	@media (max-width: $bp-large) {
+		.js-astro.js-drop & > a {
+			cursor: not-allowed;
+			pointer-events: none;
+		}
 	}
 
-	&:hover .sub-menu,
-	.sub-menu.active,
-	.js-drop &:hover .sub-menu.active {
+	.no-js-drop &:hover .sub-menu,
+	.sub-menu.active {
 		display: block;
 		visibility: visible;
 	}

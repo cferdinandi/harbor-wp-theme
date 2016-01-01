@@ -47,12 +47,8 @@
 	// Get the current options from the database. If none are specified, use these defaults.
 	function keel_photoswipe_get_theme_options() {
 		$saved = (array) get_option( 'keel_photoswipe_theme_options' );
-		$dev_options = keel_developer_options();
 		$defaults = array(
 			'activate' => 'on',
-			'wrapper_atts' => $dev_options['photoswipe_options'] ? '' : 'class="row" data-masonry',
-			'link_atts' => $dev_options['photoswipe_options'] ? '' : 'class="grid-third" data-masonry-content',
-			'caption_atts' => $dev_options['photoswipe_options'] ? '' : 'hidden',
 		);
 
 		$defaults = apply_filters( 'keel_photoswipe_default_theme_options', $defaults );
@@ -71,15 +67,6 @@
 
 		if ( !isset( $input['activate'] ) )
 			$output['activate'] = 'off';
-
-		if ( isset( $input['wrapper_atts'] ) && ! empty( $input['wrapper_atts'] ) )
-			$output['wrapper_atts'] = wp_filter_post_kses( $input['wrapper_atts'] );
-
-		if ( isset( $input['link_atts'] ) && ! empty( $input['link_atts'] ) )
-			$output['link_atts'] = wp_filter_post_kses( $input['link_atts'] );
-
-		if ( isset( $input['caption_atts'] ) && ! empty( $input['caption_atts'] ) )
-			$output['caption_atts'] = wp_filter_post_kses( $input['caption_atts'] );
 
 		return apply_filters( 'keel_photoswipe_theme_options_validate', $output, $input );
 	}
@@ -116,11 +103,6 @@
 		// $section - The section of the settings page in which to show the field.
 
 		add_settings_field( 'keel_photoswipe_activate', __( 'Activate', 'keel_photoswipe' ), 'keel_photoswipe_settings_field_activate', 'keel_photoswipe_theme_options', 'general' );
-		if ( $dev_options['photoswipe_options'] ) {
-			add_settings_field( 'keel_photoswipe_wrapper_atts', __( 'Wrapper Attributes', 'keel_photoswipe' ), 'keel_photoswipe_settings_field_wrapper_atts', 'keel_photoswipe_theme_options', 'general' );
-			add_settings_field( 'keel_photoswipe_link_atts', __( 'Link Attributes', 'keel_photoswipe' ), 'keel_photoswipe_settings_field_link_atts', 'keel_photoswipe_theme_options', 'general' );
-			add_settings_field( 'keel_photoswipe_caption_atts', __( 'Caption Attributes', 'keel_photoswipe' ), 'keel_photoswipe_settings_field_caption_atts', 'keel_photoswipe_theme_options', 'general' );
-		}
 	}
 	add_action( 'admin_init', 'keel_photoswipe_theme_options_init' );
 

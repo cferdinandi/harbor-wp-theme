@@ -25,6 +25,7 @@
 
 		.theme-light & {
 			background-color: lighten( $color-gray-light, 5% );
+			border-bottom: calc-em(1px) solid $color-gray-light;
 		}
 
 		.theme-dark & {

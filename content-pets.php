@@ -8,8 +8,10 @@
 ?>
 
 <?php
-	// Get pet details
-	$details = get_post_meta( $post->ID, 'keel_petfinder_api_pet_details', true );
+	// Variables
+	$options = keel_pet_listings_get_theme_options(); // Pet Listings options
+	$details = get_post_meta( $post->ID, 'keel_pet_listings_pet_details', true ); // Details for this pet
+	$imgs = get_post_meta( $post->ID, 'keel_pet_listings_pet_imgs', true ); // Images for this pet
 ?>
 
 <?php
@@ -25,6 +27,30 @@
 			<h1 class="no-margin-bottom"><?php the_title(); ?></h1>
 			<aside><p><a href="<?php echo get_post_type_archive_link( 'pets' ); ?>">&larr; <?php _e( 'Back to All Pets', 'keel' ); ?></a></p></aside>
 		</header>
+
+		<?php
+			// Pet images
+			if ( !empty( $imgs ) ) {
+				echo $imgs;
+			}
+		?>
+
+		<?php
+			// Key pet info
+		?>
+		<ul class="list-unstyled">
+			<li><strong><?php _e( 'Size', 'keel' ); ?>:</strong> <?php echo esc_attr( $details['size'] ); ?></li>
+			<li><strong><?php _e( 'Age', 'keel' ); ?>:</strong> <?php echo esc_attr( $details['age'] ); ?></li>
+			<li><strong><?php _e( 'Gender', 'keel' ); ?>:</strong> <?php echo esc_attr( $details['gender'] ); ?></li>
+			<li><strong><?php _e( 'Breeds', 'keel' ); ?>:</strong> <?php echo esc_attr( $details['breeds'] ); ?></li>
+			<?php echo ( empty( $details['options']['multi'] ) ? '' : '<li><em>' . esc_attr( $details['options']['multi'] ) . '</em></li>' ); ?>
+			<?php echo ( empty( $details['options']['special_needs'] ) ? '' : '<li><em>' . esc_attr( $details['options']['special_needs'] ) . '</em></li>' ); ?>
+		</ul>
+
+		<?php
+			// Adoption application button
+			echo ( $options['adoption_form_url'] ? '<p><a class="btn" href="' . esc_url( $options['adoption_form_url'] ) . '">' . esc_attr( $options['adoption_form_text'] ) . '</a></p>' : '' );
+		?>
 
 		<?php
 			// The page or post content

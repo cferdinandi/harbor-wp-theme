@@ -46,14 +46,14 @@ get_header(); ?>
 
 	<?php
 		// Previous/next page navigation
-		get_template_part( 'nav-page', 'Page Navigation' );
+		get_template_part( 'nav', 'page' );
 	?>
 
 
 <?php else : ?>
 	<?php
 		// If no content, include the "No post found" template
-		get_template_part( 'no-posts', 'No Posts Template' );
+		get_template_part( 'content', 'none' );
 	?>
 <?php endif; ?>
 

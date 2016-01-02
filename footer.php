@@ -26,7 +26,7 @@
 				<?php get_template_part( 'nav', 'secondary' ); ?>
 
 				<div class="row">
-					<?php get_template_part( 'nav-social' ); ?>
+					<?php get_template_part( 'nav', 'social' ); ?>
 					<div class="grid-half text-left-large">
 						<?php get_search_form(); ?>
 					</div>

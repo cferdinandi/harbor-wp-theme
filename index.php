@@ -23,7 +23,7 @@ get_header(); ?>
 
 	<?php
 		// Previous/next page navigation
-		get_template_part( 'nav-page', 'Page Navigation' );
+		get_template_part( 'nav', 'page' );
 	?>
 
 

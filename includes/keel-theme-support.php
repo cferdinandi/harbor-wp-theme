@@ -21,7 +21,7 @@
 			<h2><?php _e( 'Theme Support', 'keel_theme_support' ); ?></h2>
 			<p>Need help? There are a few ways to get support.</p>
 			<ol>
-				<li>Create an <a target="_blank" href="https://github.com/cferdinandi/harbor-pet-rescue-wordpress-theme">issue on GitHub</a> (<em>don't forget to search through the closed issues first</em>).</li>
+				<li>Create an <a target="_blank" href="https://github.com/cferdinandi/harbor-wp-theme">issue on GitHub</a> (<em>don't forget to search through the closed issues first</em>).</li>
 				<li>For premium, 1-on-1 support, contact me at <a target="_blank" href="http://gomakethings.com">GoMakeThings.com</a>.</li>
 			</ol>
 		</div>

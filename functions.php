@@ -545,7 +545,7 @@
 	require_once( dirname( __FILE__) . '/includes/keel-custom-logo.php' ); // Custom logo
 	require_once( dirname( __FILE__) . '/includes/keel-page-hero/keel-page-hero.php' ); // Page hero settings
 	require_once( dirname( __FILE__) . '/includes/keel-paypal-donations/keel-paypal-donations.php' ); // Paypal donations
-	require_once( dirname( __FILE__) . '/includes/keel-petfinder-api/keel-petfinder-api.php' ); // Petfinder API
+	require_once( dirname( __FILE__) . '/includes/keel-pet-listings/keel-pet-listings.php' ); // Petfinder API
 	require_once( dirname( __FILE__) . '/includes/keel-photoswipe/keel-photoswipe.php' ); // PhotoSwipe.js
 	require_once( dirname( __FILE__) . '/includes/keel-button-shortcode.php' ); // Button links shortcode
 	require_once( dirname( __FILE__) . '/includes/keel-theme-support.php' ); // Theme support

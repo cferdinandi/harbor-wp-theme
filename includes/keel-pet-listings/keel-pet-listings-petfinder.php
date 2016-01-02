@@ -6,63 +6,8 @@
  */
 
 
-	// Load plugin options
-	require_once( dirname( __FILE__) . '/keel-petfinder-api-options.php' );
+	// Load required files
 	require_once( dirname( __FILE__) . '/fastimage.php' );
-
-
-
-	// Add custom post type
-	function keel_petfinder_api_add_custom_post_type() {
-		$options = keel_petfinder_api_get_theme_options();
-		$labels = array(
-			'name'               => _x( 'Pets', 'post type general name', 'keel' ),
-			'singular_name'      => _x( 'Pet', 'post type singular name', 'keel' ),
-			'add_new'            => _x( 'Add New', 'course', 'keel' ),
-			'add_new_item'       => __( 'Add New Pet', 'keel' ),
-			'edit_item'          => __( 'Edit Pet', 'keel' ),
-			'new_item'           => __( 'New Pet', 'keel' ),
-			'all_items'          => __( 'All Pets', 'keel' ),
-			'view_item'          => __( 'View Pet', 'keel' ),
-			'search_items'       => __( 'Search Pets', 'keel' ),
-			'not_found'          => __( 'No pets found', 'keel' ),
-			'not_found_in_trash' => __( 'No pets found in the Trash', 'keel' ),
-			'parent_item_colon'  => '',
-			'menu_name'          => __( 'Petfinder', 'keel' ),
-		);
-		$args = array(
-			'labels'        => $labels,
-			'description'   => 'Holds our pets and pet-specific data from Petfinder',
-			'public'        => true,
-			// 'menu_position' => 5,
-			'menu_icon'     => 'dashicons-screenoptions',
-			// 'supports'      => array(),
-			'has_archive'   => true,
-			'rewrite' => array(
-				'slug' => $options['slug'],
-			),
-			'map_meta_cap'  => true,
-			'capabilities' => array(
-				'create_posts' => false,
-				'edit_published_posts' => false,
-				'delete_posts' => false,
-				'delete_published_posts' => false,
-			)
-		);
-		register_post_type( 'pets', $args );
-	}
-	add_action( 'init', 'keel_petfinder_api_add_custom_post_type' );
-
-
-
-	/**
-	 * Show all pets on pets archive page
-	 */
-	function keel_petfinder_api_filter_pets_query( $query ) {
-		if ( !isset( $query->query['post_type'] ) || $query->query['post_type'] !== 'pets' ) return;
-		$query->set( 'posts_per_page', '-1' );
-	}
-	add_action( 'pre_get_posts', 'keel_petfinder_api_filter_pets_query' );
 
 
 
@@ -135,7 +80,13 @@
 	}
 
 
-	// http://stackoverflow.com/a/4635991
+
+	/**
+	 * Get dimensions of remote images
+	 * @param  String $url The image URL
+	 * @return Array       Image height and width
+	 * @link http://stackoverflow.com/a/4635991
+	 */
 	function keel_petfinder_api_get_image_dimensions( $url = null ) {
 
 		if ( empty($url) ) return;
@@ -153,6 +104,13 @@
 
 
 
+	/**
+	 * Get pet options
+	 * @param  Array  $pet     The pet data
+	 * @param  String $option  The option you want the value of
+	 * @param  String $value   The default value
+	 * @return String          The option value
+	 */
 	function keel_petfinder_api_get_pet_option( $pet, $option, $value ) {
 		if ( !array_key_exists( 'options', $pet ) || !array_key_exists( 'option', $pet['options'] ) || empty( $pet['options']['option'] ) ) return;
 		foreach ( $pet['options']['option'] as $opt ) {
@@ -167,6 +125,13 @@
 
 
 
+	/**
+	 * Get pet attribute
+	 * @param  Array  $pet   The pet data
+	 * @param  String $type  The attribute type
+	 * @param  String $start Default attribute value
+	 * @return String        The attribute
+	 */
 	function keel_petfinder_api_get_pet_attribute( $pet, $type, $start = '' ) {
 
 		$settings = keel_petfinder_api_get_settings();
@@ -255,6 +220,13 @@
 
 
 
+	/**
+	 * Get pet photo URLs
+	 * @param  Array  $pet   The pet data
+	 * @param  String  $size The image size to retrieve
+	 * @param  Integer $num  The image number to return (1 - 3)
+	 * @return String        The image URL
+	 */
 	function keel_petfinder_api_get_pet_photo( $pet, $size = 'medium', $num = 1 ) {
 
 		$settings = keel_petfinder_api_get_settings();
@@ -285,6 +257,12 @@
 
 
 
+	/**
+	 * Get pet contact info
+	 * @param  Array  $pet   The pet data
+	 * @param  String $type  Type of contact info to get
+	 * @return String        The contact info
+	 */
 	function keel_petfinder_api_get_pet_contact( $pet, $type ) {
 		$settings = keel_petfinder_api_get_settings();
 		$info = array_key_exists( $type, $pet['contact'] ) && array_key_exists( '$t', $pet['contact'][$type] ) ? $pet['contact'][$type]['$t'] : $settings['contact_' . $type];
@@ -293,7 +271,14 @@
 
 
 
-	// https://gist.github.com/jasny/2000705
+	/**
+	 * Add links to pet description
+	 * @param  String $value      The description
+	 * @param  Array  $protocols  Protocols to look for
+	 * @param  Array  $attributes
+	 * @return String             Linkified description
+	 * @link   https://gist.github.com/jasny/2000705
+	 */
 	function keel_petfinder_api_linkify( $value, $protocols = array('http', 'https', 'mail'), array $attributes = array() ) {
 
 		// Link attributes
@@ -324,6 +309,11 @@
 
 
 
+	/**
+	 * Remove unwanted characters from the pet description
+	 * @param  String $text Description to sanitize
+	 * @return String       Sanitized description
+	 */
 	function keel_petfinder_api_sanitize_description( $text ) {
 		if ( !$text || empty( $text ) ) return;
 
@@ -358,6 +348,12 @@
 
 
 
+	/**
+	 * Remove whitespace from a string
+	 * @param  String         $text    String to condense
+	 * @param  Boolean|String $prefix  If string, use as a prefix on the output
+	 * @return String                  Condensed string
+	 */
 	function keel_petfinder_api_condense_string( $text, $prefix = false ) {
 
 		$settings = keel_petfinder_api_get_settings();
@@ -392,6 +388,12 @@
 
 
 
+	/**
+	 * Remove whitespace from all values in an array
+	 * @param  Array          $arr     The array
+	 * @param  Boolean|String $prefix  If a string, use as a prefix on the output
+	 * @return String                  Condensed values
+	 */
 	function keel_petfinder_api_condense_array( $arr, $prefix = false ) {
 		$text = '';
 		foreach ( $arr as $value ) {
@@ -402,6 +404,12 @@
 
 
 
+	/**
+	 * Get the breeds of a pet
+	 * @param  Array          $pet     The pet data
+	 * @param  Boolean|String $prefix  If a string, use as a prefix on the output
+	 * @return Array                   An array of breeds
+	 */
 	function get_breeds( $pet, $prefix = false ) {
 		$breeds = array();
 		if ( !is_array( $pet['breeds']['breed'] ) ) {
@@ -416,6 +424,11 @@
 
 
 
+	/**
+	 * Create a string of classes for a pet
+	 * @param  Array  $pet  The pet data
+	 * @return String       The classes
+	 */
 	function keel_petfinder_api_get_pet_classes( $pet ) {
 		$settings = keel_petfinder_api_get_settings();
 
@@ -441,6 +454,13 @@
 
 
 
+	/**
+	 * Create an array of existing attributes for pets
+	 * @param  Array  $pets   The pet data
+	 * @param  String $type   Attribute to create a list for
+	 * @param  String $start  Default value
+	 * @return Array          Pet attributes
+	 */
 	function keel_petfinder_api_create_list( $pets, $type, $start = '' ) {
 
 		$settings = keel_petfinder_api_get_settings();
@@ -498,6 +518,13 @@
 
 
 
+	/**
+	 * Create a set of list items for all pets
+	 * @param  Array  $pets  The pet data
+	 * @param  String $type  The attribute to create the list for
+	 * @param  String $start The default value
+	 * @return String        The list items
+	 */
 	function keel_petfinder_api_create_list_items( $pets, $type, $start = '' ) {
 
 		// Variables
@@ -515,6 +542,15 @@
 	}
 
 
+
+	/**
+	 * Create checkboxes for all pets
+	 * @param  Array  $pets    The pet data
+	 * @param  String  $type   The type of attribute to create checkboxes for
+	 * @param  String  $start  The default value
+	 * @param  Boolean $toggle If true, add a "toggle all" checkbox
+	 * @return String          The checkboxes
+	 */
 	function keel_petfinder_api_create_checkboxes( $pets, $type, $start = '', $toggle = false ) {
 
 		$settings = keel_petfinder_api_get_settings();
@@ -551,24 +587,27 @@
 
 
 
-	function keel_petfinder_api_create_pet_markup( $details ) {
-		$options = keel_petfinder_api_get_theme_options();
-		$adopt = $options['adoption_form_url'] ? '<p><a class="btn" href="' . $options['adoption_form_url'] . '">' . $options['adoption_form_text'] . '</a></p>' : '';
+	/**
+	 * Create markup for a pet
+	 * @param  Array $details Details for the pet
+	 * @return String         The markup
+	 */
+	function keel_petfinder_api_create_pet_img_markup( $details ) {
+
 		$photo_sizes = array(
 			keel_petfinder_api_get_image_dimensions( $details['photos']['large'][0] ),
 			keel_petfinder_api_get_image_dimensions( $details['photos']['large'][1] ),
 			keel_petfinder_api_get_image_dimensions( $details['photos']['large'][2] ),
 		);
-
 		$imgs =
-			'<div data-photoswipe data-pswp-uid="0" class="row row-start-xsmall text-center margin-bottom" data-masonry>' .
-				'<a class="grid-third" data-size="' . $photo_sizes[0]['width'] . 'x' . $photo_sizes[0]['height'] . '" data-masonry-content href="' . $details['photos']['large'][0] . '" >' .
+			'<div data-photoswipe data-pswp-uid="0" class="row row-start-xsmall text-center margin-bottom-small">' .
+				'<a class="grid-third" data-size="' . $photo_sizes[0]['width'] . 'x' . $photo_sizes[0]['height'] . '" href="' . $details['photos']['large'][0] . '" >' .
 					'<img class="img-photo img-limit-height" alt="A photo of ' . $details['name'] . '" src="' . $details['photos']['large'][0] . '">' .
 				'</a>' .
-				'<a class="grid-third" data-size="' . $photo_sizes[1]['width'] . 'x' . $photo_sizes[1]['height'] . '" data-masonry-content href="' . $details['photos']['large'][1] . '">' .
+				'<a class="grid-third" data-size="' . $photo_sizes[1]['width'] . 'x' . $photo_sizes[1]['height'] . '" href="' . $details['photos']['large'][1] . '">' .
 					'<img class="img-photo img-limit-height" alt="A photo of ' . $details['name'] . '" src="' . $details['photos']['large'][1] . '">' .
 				'</a>' .
-				'<a class="grid-third" data-size="' . $photo_sizes[2]['width'] . 'x' . $photo_sizes[2]['height'] . '" data-masonry-content href="' . $details['photos']['large'][2] . '">' .
+				'<a class="grid-third" data-size="' . $photo_sizes[2]['width'] . 'x' . $photo_sizes[2]['height'] . '" href="' . $details['photos']['large'][2] . '">' .
 					'<img class="img-photo img-limit-height" alt="A photo of ' . $details['name'] . '" src="' . $details['photos']['large'][2] . '">' .
 				'</a>' .
 			'</div>' .
@@ -607,30 +646,22 @@
 				'</div>' .
 			'</div>';
 
-		$other = empty( $details['options']['multi'] ) ? '' : '<li><em>' . $details['options']['multi'] . '</em></li>';
-		$special_needs = empty( $details['options']['special_needs'] ) ? '' : '<li><em>' . $details['options']['special_needs'] . '</em></li>';
-
-		$highlights =
-			'<ul class="list-unstyled">' .
-				'<li><strong>Size:</strong> ' . $details['size'] . '</li>' .
-				'<li><strong>Age:</strong> ' . $details['age'] . '</li>' .
-				'<li><strong>Gender:</strong> ' . $details['gender'] . '</li>' .
-				'<li><strong>Breeds:</strong> ' . $details['breeds'] . '</li>' .
-				$other .
-				$special_needs .
-			'</ul>' .
-			$adopt;
-
-		return $imgs . $highlights . $details['description'];
+		return $imgs;
 
 	}
 
 
 
-	function keel_petfinder_api_get_pet_details( $pets, $single = null ) {
+	/**
+	 * An array with all of the details
+	 * @param  Array  $pets     The pet data
+	 * @param  Boolean $single  If true, this is a single pet
+	 * @return Array            The details
+	 */
+	function keel_petfinder_api_get_pet_details( $pets, $single = false ) {
 
 		$settings = keel_petfinder_api_get_settings();
-		$options = keel_petfinder_api_get_theme_options();
+		$options = keel_pet_listings_get_theme_options();
 
 		// Return individual pet details
 		if ( $single ) {
@@ -718,11 +749,17 @@
 
 	}
 
+
+
+	/**
+	 * Retrieve pet data from Petfinder
+	 * @return Array  Pet data
+	 */
 	function keel_petfinder_api_get_pet_data() {
 
 		// Get settings
 		$settings = keel_petfinder_api_get_settings();
-		$options = keel_petfinder_api_get_theme_options();
+		$options = keel_pet_listings_get_theme_options();
 		if ( empty( $options['developer_key'] ) || empty( $options['shelter_id'] ) ) return;
 
 		// Variables
@@ -753,6 +790,10 @@
 
 
 
+	/**
+	 * Extract pet data from API return
+	 * @return Array  The pet data
+	 */
 	function keel_petfinder_api_get_pets() {
 
 		// Get pet data
@@ -797,11 +838,11 @@
 			$details = keel_petfinder_api_get_pet_details( $pet, true );
 
 			// Create post content
-			$content = keel_petfinder_api_create_pet_markup( $details );
+			$imgs = keel_petfinder_api_create_pet_img_markup( $details );
 
 			// Create post
 			$post = wp_insert_post(array(
-				'post_content'   => $content, // The full text of the post
+				'post_content'   => $details['description'], // The full text of the post
 				'post_title'     => $details['name'], // The title of the post
 				'post_status'    => 'publish', // Default 'draft'
 				'post_type'      => 'pets', // Default 'post'
@@ -809,7 +850,8 @@
 
 			// Save extra info to post meta
 			if ( $post === 0 ) continue;
-			update_post_meta( $post, 'keel_petfinder_api_pet_details', $details );
+			update_post_meta( $post, 'keel_pet_listings_pet_details', $details );
+			update_post_meta( $post, 'keel_pet_listings_pet_imgs', $imgs );
 
 		}
 
@@ -817,6 +859,7 @@
 
 
 
+	// Schedule API data fetches
 	function keel_petfinder_api_schedule_get_pets() {
 		keel_petfinder_api_get_pets();
 		wp_schedule_event( time(), 'hourly', 'keel_petfinder_api_do_get_pets' );
@@ -827,6 +870,7 @@
 
 
 
+	// Unschedule API data fetches
 	function keel_petfinder_api_unschedule_get_pets() {
 		wp_clear_scheduled_hook( 'keel_petfinder_api_do_get_pets' );
 	}
@@ -835,8 +879,9 @@
 
 
 
+	// Refresh API data fetch schedules
 	function keel_petfinder_api_refresh_get_pets( $option ) {
-		if ( $option === 'keel_petfinder_api_theme_options' ) {
+		if ( $option === 'keel_pet_listings_theme_options' ) {
 			flush_rewrite_rules();
 			keel_petfinder_api_get_pets();
 		}
@@ -845,9 +890,10 @@
 
 
 
+	// Update pet data URL
 	function keel_petfinder_api_refresh_pet_slug() {
 		if ( isset( $_POST['keel_petfinder_api_update_options_process'] ) ) {
-			if ( wp_verify_nonce( $_POST['keel_petfinder_api_update_options_process'], 'keel_petfinder_api_update_options_nonce' ) ) {
+			if ( wp_verify_nonce( $_POST['keel_pet_listings_update_options_process'], 'keel_pet_listings_update_options_nonce' ) ) {
 				keel_petfinder_api_unschedule_get_pets();
 				keel_petfinder_api_schedule_get_pets();
 				flush_rewrite_rules();

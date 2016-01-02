@@ -28,9 +28,9 @@ get_header(); ?>
 					<?php _e( 'Year:', 'keel' ); ?> <?php the_time('Y'); ?>...
 				<?php elseif ( is_author() ) : // If this is an author archive ?>
 					<?php _e( 'Author Archive', 'keel' ); ?>
-				<?php elseif ( is_post_type_archive( 'pets' ) ) : // If this is an author archive ?>
+				<?php elseif ( is_post_type_archive( 'pets' ) ) : // If this is the Pets archive ?>
 					<?php
-						$options = keel_petfinder_api_get_theme_options();
+						$options = keel_pet_listings_get_theme_options();
 						if ( $options ) {
 							_e( $options['page_title'], 'keel' );
 						}
@@ -50,7 +50,7 @@ get_header(); ?>
 			if ( is_post_type_archive( 'pets' ) ) :
 		?>
 			<?php
-				$options = keel_petfinder_api_get_theme_options();
+				$options = keel_pet_listings_get_theme_options();
 				$filters = get_transient( 'keel_petfinder_api_filters' );
 				$has_filters = $options['filters_animal'] === 'on' || $options['filters_breed'] === 'on' || $options['filters_age'] === 'on' || $options['filters_size'] === 'on' || $options['filters_gender'] === 'on' || $options['filters_other'] === 'on' ? true : false;
 				$grid_content = $has_filters ? 'grid-three-fourths petfinder-content' : 'grid-full';
@@ -113,9 +113,9 @@ get_header(); ?>
 					<header>
 						<h1>
 							<?php
-								$options = keel_petfinder_api_get_theme_options();
+								$options = keel_pet_listings_get_theme_options();
 								if ( $options ) {
-									_e( $options['page_title'], 'keel' );
+									_e( esc_attr( $options['page_title'], 'keel' ) );
 								}
 							?>
 						</h1>
@@ -150,7 +150,7 @@ get_header(); ?>
 
 	<?php
 		// Previous/next page navigation
-		get_template_part( 'nav-page', 'Page Navigation' );
+		get_template_part( 'nav', 'page' );
 	?>
 
 

@@ -191,22 +191,22 @@
 		if ( isset( $input['adoption_form_text'] ) && ! empty( $input['adoption_form_text'] ) )
 			$output['adoption_form_text'] = wp_filter_nohtml_kses( $input['adoption_form_text'] );
 
-		if ( !isset( $input['filters_animal'] ) )
+		if ( !isset( $input['filters_animal'] ) || empty( $input['filters_animal'] ) )
 			$output['filters_animal'] = 'off';
 
-		if ( !isset( $input['filters_breed'] ) )
+		if ( !isset( $input['filters_breed'] ) || empty( $input['filters_breed'] ) )
 			$output['filters_breed'] = 'off';
 
-		if ( !isset( $input['filters_age'] ) )
+		if ( !isset( $input['filters_age'] ) || empty( $input['filters_age'] ) )
 			$output['filters_age'] = 'off';
 
-		if ( !isset( $input['filters_size'] ) )
+		if ( !isset( $input['filters_size'] ) || empty( $input['filters_size'] ) )
 			$output['filters_size'] = 'off';
 
-		if ( !isset( $input['filters_gender'] ) )
+		if ( !isset( $input['filters_gender'] ) || empty( $input['filters_gender'] ) )
 			$output['filters_gender'] = 'off';
 
-		if ( !isset( $input['filters_other'] ) )
+		if ( !isset( $input['filters_other'] ) || empty( $input['filters_other'] ) )
 			$output['filters_other'] = 'off';
 
 		return apply_filters( 'keel_pet_listings_theme_options_validate', $output, $input );

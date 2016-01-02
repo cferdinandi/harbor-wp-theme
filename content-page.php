@@ -25,6 +25,11 @@
 	?>
 
 	<div class="<?php echo $container; ?>">
+
+		<?php if ( !keel_has_hero() ) : ?>
+			<h1><?php the_title(); ?></h1>
+		<?php endif; ?>
+
 		<?php
 			// The page or post content
 			the_content( '<p>' . __( 'Read More...', 'keel' ) . '</p>' );

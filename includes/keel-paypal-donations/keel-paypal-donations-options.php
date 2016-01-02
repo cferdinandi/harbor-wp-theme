@@ -164,16 +164,16 @@
 		if ( isset( $input['heading_impact'] ) && ! empty( $input['heading_impact'] ) )
 			$output['heading_impact'] = wp_filter_nohtml_kses( $input['heading_impact'] );
 
-		if ( !isset( $input['show_other'] ) )
+		if ( !isset( $input['show_other'] ) || empty( $input['show_other'] ) )
 			$output['show_other'] = 'off';
 
-		if ( !isset( $input['show_in_honor'] ) )
+		if ( !isset( $input['show_in_honor'] ) || empty( $input['show_in_honor'] ) )
 			$output['show_in_honor'] = 'off';
 
 		if ( isset( $input['in_honor'] ) && ! empty( $input['in_honor'] ) )
 			$output['in_honor'] = wp_filter_nohtml_kses( $input['in_honor'] );
 
-		if ( !isset( $input['show_recurring'] ) )
+		if ( !isset( $input['show_recurring'] ) || empty( $input['show_recurring'] ) )
 			$output['show_recurring'] = 'off';
 
 		if ( isset( $input['recurring'] ) && ! empty( $input['recurring'] ) )

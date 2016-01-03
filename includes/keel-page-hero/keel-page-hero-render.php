@@ -96,7 +96,7 @@
 							// If there's no content or video
 							else :
 						?>
-							<h1><?php the_title(); ?></h1>
+							<h1 class="text-center"><?php the_title(); ?></h1>
 						<?php endif; ?>
 					</div>
 				</header>

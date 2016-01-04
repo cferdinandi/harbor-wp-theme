@@ -121,12 +121,13 @@
 
 			// Image data
 			$img_full = wp_get_attachment_image_src( $id, 'full' );
-			$img = wp_get_attachment_image( $id, 'large' );
+			$img_medium = wp_get_attachment_image_src( $id, 'medium' );
+			$img = wp_get_attachment_image( $id, 'medium' );
 			$caption = $attachment->post_excerpt;
 			$figure = empty( $caption ) ? '' : '<figure hidden>' . $caption . '</figure>';
 
 			$gallery .=
-				'<a data-size="' . $img_full[1] . 'x' . $img_full[2] . '" href="' . $img_full[0] . '" class="grid-' . $grid . '" data-masonry-content>' .
+				'<a data-size="' . $img_full[1] . 'x' . $img_full[2] . '" data-med="' . $img_medium[0] . '" data-med-size="' . $img_medium[1] . 'x' . $img_medium[2] . '" href="' . $img_full[0] . '" class="grid-' . $grid . '" data-masonry-content>' .
 					$img .
 					$figure .
 				'</a>';

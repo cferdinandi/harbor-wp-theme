@@ -1,5 +1,5 @@
 /*!
- * harbor v1.0.2: A free WordPress theme for animal and pet rescue organizations
+ * harbor v1.0.3: A free WordPress theme for animal and pet rescue organizations
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/harbor-pet-rescue-wordpress-theme
@@ -1910,25 +1910,24 @@ td {
     display: block;
     float: none;
     margin-left: 1.5em;
-    min-width: 100%;
     position: static;
     visibility: visible;
   }
-  /* line 115, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+  /* line 114, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
   .js-astro.js-drop .menu-item-has-children .sub-menu.active {
     padding: 0;
   }
 }
 
 @media (max-width: 60em) {
-  /* line 123, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+  /* line 122, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
   .js-astro.js-drop .menu-item-has-children > a, .js-astro.js-drop .menu-item-has-children > .link-block-styled {
     cursor: not-allowed;
     pointer-events: none;
   }
 }
 
-/* line 129, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
+/* line 128, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
 .no-js-drop .menu-item-has-children:hover .sub-menu,
 .menu-item-has-children .sub-menu.active {
   display: block;

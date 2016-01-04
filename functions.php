@@ -63,7 +63,7 @@
 					}
 
 					// Load PhotoSwipe scripts
-					if ( document.querySelector( '[data-photoswipe' ) ) {
+					if ( document.querySelector( '[data-photoswipe]' ) ) {
 						loadJS('<?php echo get_template_directory_uri() . "/dist/js/photoswipe.min." . $keel_theme->get( "Version" ) . ".js"; ?>');
 						// loadJS('<?php echo get_template_directory_uri() . "/dist/js/photoswipe.js"; ?>');
 					}

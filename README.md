@@ -50,6 +50,6 @@ In lieu of a formal style guide, take care to maintain the existing coding style
 
 
 
-## License
+## Licenses
 
-The code is available under the [MIT License](LICENSE.md).
+The code is available under the [MIT License](LICENSE.md). The screenshot logo by [Katrine Kolström](https://thenounproject.com/search/?q=harbor&i=155968) and [licensed under Creative Commons](http://creativecommons.org/licenses/by/3.0/us/).

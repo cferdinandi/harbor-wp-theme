@@ -1,5 +1,5 @@
 /*!
- * harbor v1.0.2: A free WordPress theme for animal and pet rescue organizations
+ * harbor v1.0.3: A free WordPress theme for animal and pet rescue organizations
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/harbor-pet-rescue-wordpress-theme
@@ -8720,16 +8720,16 @@ ready(function () {
 				  }
 				}
 
-				// var mediumSrc = el.getAttribute('data-med');
-				// if(mediumSrc) {
-				// 	size = el.getAttribute('data-med-size').split('x');
-				// 	// "medium-sized" image
-				// 	item.m = {
-				// 		src: mediumSrc,
-				// 		w: parseInt(size[0], 10),
-				// 		h: parseInt(size[1], 10)
-				// 	};
-				// }
+				var mediumSrc = el.getAttribute('data-med');
+				if(mediumSrc) {
+					size = el.getAttribute('data-med-size').split('x');
+					// "medium-sized" image
+					item.m = {
+						src: mediumSrc,
+						w: parseInt(size[0], 10),
+						h: parseInt(size[1], 10)
+					};
+				}
 
 				// original image
 				item.o = {
@@ -8938,7 +8938,7 @@ ready(function () {
 			});
 
 			gallery.listen('gettingData', function(index, item) {
-				if( useLargeImages ) {
+				if( useLargeImages || !('m' in item) ) {
 					item.src = item.o.src;
 					item.w = item.o.w;
 					item.h = item.o.h;

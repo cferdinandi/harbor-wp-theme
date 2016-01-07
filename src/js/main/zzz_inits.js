@@ -4,13 +4,20 @@ drop.init({
     selectorMenu: '.sub-menu'
 });
 stickyFooter.init();
-rightHeight.init();
+
+ready(function () {
+	var rh = document.querySelector( '[data-right-height]' );
+	if ( !rh ) return;
+	imagesLoaded(rh, function () {
+		rightHeight.init();
+	});
+});
 
 fluidvids.init({
 	selector: ['iframe', 'object'],
 	players: ['www.youtube.com', 'player.vimeo.com', 'www.slideshare.net']
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+ready(function () {
 	FastClick.attach(document.body);
-}, false);
+});

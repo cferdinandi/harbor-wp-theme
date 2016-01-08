@@ -540,6 +540,7 @@
 	// require_once( dirname( __FILE__) . '/includes/keel-set-page-width.php' );
 
 	// Load includes
+	require_once( dirname( __FILE__) . '/includes/github-updater/github-updater.php' ); // Update theme from GitHub
 	require_once( dirname( __FILE__) . '/includes/keel-theme-options.php' ); // Theme options
 	require_once( dirname( __FILE__) . '/includes/keel-post-options.php' ); // Theme options
 	require_once( dirname( __FILE__) . '/includes/keel-custom-logo.php' ); // Custom logo

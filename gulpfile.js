@@ -104,7 +104,7 @@ var banner = {
 		' */\n',
 	theme :
 		'/**\n' +
-		' * Theme Name: <%= package.name %> v<%= package.version %>\n' +
+		' * Theme Name: <%= package.name %>\n' +
 		' * Theme URI: <%= package.repository.url %>\n' +
 		' * GitHub Theme URI: <%= package.repository.url %>\n' +
 		' * Description: <%= package.description %>\n' +

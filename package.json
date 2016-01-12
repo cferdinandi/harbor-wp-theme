@@ -13,7 +13,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "http://github.com/cferdinandi/harbor-wp-theme"
+		"url": "https://github.com/cferdinandi/harbor-wp-theme"
 	},
 	"devDependencies": {
 		"gulp": "^3.9.0",

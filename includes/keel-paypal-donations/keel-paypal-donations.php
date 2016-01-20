@@ -134,6 +134,10 @@ class Keel_PayPal_Donations {
 	 */
 	public static function render_donations_table() {
 
+		// Check that feature is activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['paypal'] ) return '';
+
 		// Options and settings
 		$options = keel_paypal_donations_get_theme_options();
 		$table = '';
@@ -250,16 +254,18 @@ class Keel_PayPal_Donations {
 	 */
 	public static function render_donations_button( $atts ) {
 
+		// Check that feature is activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['paypal'] ) return '';
+
 		// Shortcode values
 		$paypal = shortcode_atts( array(
 			'amount' => '',
 			'label' => '',
 			'recurring' => false,
 			'description' => '',
+			'size' => '',
 		), $atts );
-
-		// If no amount was specific, do nothing
-		if ( empty( $paypal['amount'] ) ) return;
 
 		// Options and settings
 		$options = keel_paypal_donations_get_theme_options();
@@ -278,7 +284,7 @@ class Keel_PayPal_Donations {
 				$recurring .
 				$description .
 				wp_nonce_field( 'keel_paypal_donations_button_nonce', 'keel_paypal_donations_button_process' ) .
-				'<button class="btn">' . $label . '</button>' .
+				'<button class="btn btn-' . $paypal['size'] . '">' . $label . '</button>' .
 			'</form>';
 
 		return $form;

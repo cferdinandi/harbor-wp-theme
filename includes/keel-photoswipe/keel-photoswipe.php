@@ -17,6 +17,10 @@
 	 */
 	function keel_photoswipe_gallery( $output, $attr ) {
 
+		// Check that feature is activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['gallery'] ) return;
+
 		// Initialize
 		global $post;
 
@@ -112,7 +116,7 @@
 		} elseif ( $count === 2 ) {
 			$grid = 'half';
 		} else {
-			$grid = 'third';
+			$grid = 'dynamic';
 		}
 
 		// Generate gallery

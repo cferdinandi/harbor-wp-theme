@@ -466,8 +466,8 @@
 		$settings = keel_petfinder_api_get_settings();
 
 		// Variables
-		$list = [];
-		$listTemp = [];
+		$list = array();
+		$listTemp = array();
 
 		// Loop through pet attributes and push unique attributes to an array
 		foreach ( $pets as $pet ) {
@@ -882,21 +882,25 @@
 	// Refresh API data fetch schedules
 	function keel_petfinder_api_refresh_get_pets( $option ) {
 		if ( $option === 'keel_pet_listings_theme_options' ) {
-			flush_rewrite_rules();
-			keel_petfinder_api_get_pets();
+			// flush_rewrite_rules();
+			// keel_petfinder_api_get_pets();
+			keel_petfinder_api_unschedule_get_pets();
+			keel_petfinder_api_schedule_get_pets();
 		}
 	}
-	add_action( 'updated_option', 'keel_petfinder_api_refresh_get_pets', 10, 1 );
+	// add_action( 'updated_option', 'keel_petfinder_api_refresh_get_pets', 10, 1 );
 
 
 
 	// Update pet data URL
 	function keel_petfinder_api_refresh_pet_slug() {
-		if ( isset( $_POST['keel_petfinder_api_update_options_process'] ) ) {
+		if ( isset( $_POST['keel_pet_listings_update_options_process'] ) ) {
 			if ( wp_verify_nonce( $_POST['keel_pet_listings_update_options_process'], 'keel_pet_listings_update_options_nonce' ) ) {
+				flush_rewrite_rules();
+				delete_transient( 'keel_petfinder_api_pets' );
+				delete_transient( 'keel_petfinder_api_filters' );
 				keel_petfinder_api_unschedule_get_pets();
 				keel_petfinder_api_schedule_get_pets();
-				flush_rewrite_rules();
 			}
 		}
 	}

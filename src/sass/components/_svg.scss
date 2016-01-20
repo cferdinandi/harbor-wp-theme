@@ -46,25 +46,28 @@
 
 .icon-link {
 
-	@if $themes == true {
-		.theme-dark & {
-			fill: $color-white;
-		}
+	.bg-dark & {
+		fill: $color-white;
 	}
 
 	a:hover & {
 		fill: darken( $color-primary, 15% );
 
-		@if $themes == true {
-			.theme-dark & {
-				fill: $color-gray-light;
-			}
+		.bg-dark & {
+			fill: $color-gray-light;
 		}
 	}
 }
 
 a.link-icon {
 	text-decoration: none;
+
+	.bg-dark &,
+	.bg-dark &:active,
+	.bg-dark &:focus,
+	.bg-dark &:hover {
+		text-decoration: none;
+	}
 }
 
 

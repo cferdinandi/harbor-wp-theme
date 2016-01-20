@@ -11,17 +11,13 @@
 			</main><!-- /#main -->
 		</div><!-- /[data-sticky-wrap] -->
 
-		<footer class="padding-top-large padding-bottom bg-primary" data-sticky-footer>
+		<footer class="padding-top-large padding-bottom bg-dark" data-sticky-footer>
 
 			<?php
 				$options = keel_get_theme_options();
 			?>
 
 			<div class="container container-large text-center" >
-
-				<?php if ( $options['colors'] === 'default' ) : ?>
-					<hr>
-				<?php endif; ?>
 
 				<?php get_template_part( 'nav', 'secondary' ); ?>
 

@@ -7,6 +7,7 @@
  * Text alignment
  */
 .nav-wrap-navbar {
+	background-color: $color-black;
 	padding-top: calc-em(4px);
 	padding-bottom: calc-em(4px);
 	text-align: center;
@@ -21,26 +22,13 @@
 		text-align: left;
 	}
 
-	@if $themes == true {
+	a {
+		color: $color-white;
+		text-decoration: none;
 
-		.theme-light & {
-			background-color: lighten( $color-gray-light, 5% );
-			border-bottom: calc-em(1px) solid $color-gray-light;
+		&:hover {
+			text-decoration: underline;
 		}
-
-		.theme-dark & {
-			background-color: $color-black;
-
-			a {
-				color: $color-white;
-				text-decoration: none;
-
-				&:hover {
-					text-decoration: underline;
-				}
-			}
-		}
-
 	}
 }
 

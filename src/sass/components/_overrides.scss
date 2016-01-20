@@ -13,21 +13,25 @@
 }
 
 .bg-dark {
-	background-color: darken( $color-primary, 15% );
+	background-color: $color-primary;
 	color: $color-white;
 
 	a {
 		color: $color-gray-light;
 		text-decoration: underline;
 
+		&.link-block {
+			text-decoration: none;
+		}
+
+		&.link-block-styled {
+			text-decoration: underline;
+		}
+
 		&:active,
 		&:focus,
 		&:hover {
 			color: $color-white;
-		}
-
-		&.link-icon {
-			text-decoration: none;
 		}
 	}
 
@@ -38,23 +42,27 @@
 	}
 }
 
-.bg-primary {
-	background-color: lighten( $color-gray-light, 5% );
-}
-
-@if $themes == true {
-
-	.theme-dark .bg-primary {
-		@extend .bg-dark;
-		background-color: $color-black;
-	}
-
-}
-
 .bg-hero {
 	background-position: center;
 	background-size: cover;
 	width: 100%;
+}
+
+
+/**
+ * Borders
+ */
+
+.border {
+	border: calc-em(1px) solid $color-gray-light;
+}
+
+
+/**
+ * Text shadow
+ */
+.text-shadow {
+	text-shadow: 1px 1px 1px $color-black;
 }
 
 
@@ -174,6 +182,10 @@
 
 .no-padding-bottom {
 	padding-bottom: 0;
+}
+
+.padding {
+	padding: $spacing;
 }
 
 .padding-top {

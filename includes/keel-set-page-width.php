@@ -6,7 +6,13 @@
 
 	// Create a metabox
 	function keel_set_page_width_box() {
+
+		// Check that feature is activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['page_width'] ) return;
+
 		add_meta_box( 'keel_set_page_width_checkbox', 'Page Width & Header', 'keel_set_page_width_checkbox', 'page', 'side', 'default');
+
 	}
 	add_action('add_meta_boxes', 'keel_set_page_width_box');
 

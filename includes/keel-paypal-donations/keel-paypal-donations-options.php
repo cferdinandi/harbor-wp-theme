@@ -323,18 +323,13 @@
 	// Use add_submenu_page() to add to another tab.
 	function keel_paypal_donations_theme_options_add_page() {
 
-		// add_theme_page( $page_title, $menu_title, $capability, $menu_slug, $function );
-		// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function );
-		// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
-		// $page_title - Name of page
-		// $menu_title - Label in menu
-		// $capability - Capability required
-		// $menu_slug - Used to uniquely identify the page
-		// $function - Function that renders the options page
-		// $theme_page = add_theme_page( __( 'Theme Options', 'keel' ), __( 'Theme Options', 'keel' ), 'edit_theme_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_render_page' );
+		// Check that feature is activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['paypal'] ) return '';
 
 		$theme_page = add_menu_page( __( 'PayPal Donations', 'keel' ), __( 'PayPal Donations', 'keel' ), 'edit_theme_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_render_page', 'dashicons-heart' );
 		// $theme_page = add_submenu_page( 'tools.php', __( 'Theme Options', 'keel' ), __( 'Theme Options', 'keel' ), 'edit_theme_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_render_page' );
+
 	}
 	add_action( 'admin_menu', 'keel_paypal_donations_theme_options_add_page' );
 

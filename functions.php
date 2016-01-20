@@ -7,6 +7,29 @@
 
 
 	/**
+	 * Developer Features
+	 * Set to false to deactive a feature.
+	 */
+	function keel_developer_options() {
+		return array(
+			'fonts' => true,
+			'social' => true,
+			'footer' => true,
+			'pets' => true,
+			'paypal' => true,
+			'gallery' => true,
+			'hero' => true,
+			'page_width' => false,
+			'custom_logo' => true,
+			'button_shortcode' => true,
+			'svg_shortcode' => true,
+			'theme_support' => true,
+		);
+	}
+
+
+
+	/**
 	 * Load theme files
 	 */
 	function keel_load_theme_files() {
@@ -528,24 +551,17 @@
 	}
 
 
-
-	// Developer Options
-	function keel_developer_options() {
-		return array(
-			'photoswipe_options' => false,
-		);
-	}
-
-	// Page width settings
-	// require_once( dirname( __FILE__) . '/includes/keel-set-page-width.php' );
-
-	// Load includes
-	require_once( dirname( __FILE__) . '/includes/keel-theme-options.php' ); // Theme options
-	require_once( dirname( __FILE__) . '/includes/keel-post-options.php' ); // Theme options
+	/**
+	 * Load includes
+	 */
+	require_once( dirname( __FILE__) . '/includes/keel-options/keel-theme-options.php' ); // Theme options
+	require_once( dirname( __FILE__) . '/includes/keel-options/keel-post-options.php' ); // Post options
 	require_once( dirname( __FILE__) . '/includes/keel-custom-logo.php' ); // Custom logo
 	require_once( dirname( __FILE__) . '/includes/keel-page-hero/keel-page-hero.php' ); // Page hero settings
 	require_once( dirname( __FILE__) . '/includes/keel-paypal-donations/keel-paypal-donations.php' ); // Paypal donations
-	require_once( dirname( __FILE__) . '/includes/keel-pet-listings/keel-pet-listings.php' ); // Petfinder API
-	require_once( dirname( __FILE__) . '/includes/keel-photoswipe/keel-photoswipe.php' ); // PhotoSwipe.js
-	require_once( dirname( __FILE__) . '/includes/keel-button-shortcode.php' ); // Button links shortcode
-	require_once( dirname( __FILE__) . '/includes/keel-theme-support.php' ); // Theme support
+	require_once( dirname( __FILE__) . '/includes/keel-pet-listings/keel-pet-listings.php' ); // Pet listings
+	require_once( dirname( __FILE__) . '/includes/keel-photoswipe/keel-photoswipe.php' ); // PhotoSwipe.js image galleries
+	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-button-shortcode.php' ); // Button links shortcode
+	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-svg-shortcode.php' ); // Inline SVG shortcode
+	require_once( dirname( __FILE__) . '/includes/keel-set-page-width.php' ); // Custom page widths
+	require_once( dirname( __FILE__) . '/includes/keel-options/keel-theme-support.php' ); // Theme support

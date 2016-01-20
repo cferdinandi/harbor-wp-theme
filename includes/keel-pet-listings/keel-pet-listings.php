@@ -14,6 +14,11 @@
 
 	// Add custom post type
 	function keel_pet_listings_add_custom_post_type() {
+
+		// Check that feature is activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['pets'] ) return;
+
 		$options = keel_pet_listings_get_theme_options();
 		$labels = array(
 			'name'               => _x( 'Pets', 'post type general name', 'keel' ),

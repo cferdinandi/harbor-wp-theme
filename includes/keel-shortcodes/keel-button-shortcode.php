@@ -6,6 +6,10 @@
 
 	function keel_button_shortcode( $atts ) {
 
+		// Check that feature is activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['button_shortcode'] ) return '';
+
 		// Get user options
 		$btn = shortcode_atts(array(
 			'link'  => '',

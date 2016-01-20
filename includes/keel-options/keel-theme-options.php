@@ -5,43 +5,10 @@
  * @link https://gist.github.com/mfields/4678999
  */
 
-
 	/**
 	 * Theme Options Fields
 	 * Each option field requires its own uniquely named function. Select options and radio buttons also require an additional uniquely named function with an array of option choices.
 	 */
-
-	// Color Palettes
-
-	function keel_settings_field_style_colors_choices() {
-		$colors = array(
-			'light' => array(
-				'value' => 'light',
-				'label' => __( 'Light', 'keel' )
-			),
-			'dark' => array(
-				'value' => 'dark',
-				'label' => __( 'Dark', 'keel' )
-			),
-		);
-
-		return $colors;
-	}
-
-	function keel_settings_field_style_colors() {
-		$options = keel_get_theme_options();
-
-		foreach ( keel_settings_field_style_colors_choices() as $button ) {
-		?>
-		<div class="layout">
-			<label class="description">
-				<input type="radio" name="keel_theme_options[colors]" value="<?php echo esc_attr( $button['value'] ); ?>" <?php checked( $options['colors'], $button['value'] ); ?> />
-				<?php echo $button['label']; ?>
-			</label>
-		</div>
-		<?php
-		}
-	}
 
 	// Typefaces
 
@@ -150,6 +117,14 @@
 		<?php
 	}
 
+	function keel_settings_field_social_newsletter() {
+		$options = keel_get_theme_options();
+		?>
+		<input type="text" name="keel_theme_options[newsletter]" id="newsletter" value="<?php echo esc_attr( $options['newsletter'] ); ?>" />
+		<label class="description" for="newsletter"><?php _e( 'Newsletter sign-up form URL (ex. <code>http://mailchimp.com/12345</code>', 'keel' ); ?></label>
+		<?php
+	}
+
 	// Footer
 
 	function keel_settings_field_footer_content_1() {
@@ -201,8 +176,7 @@
 		$saved = (array) get_option( 'keel_theme_options' );
 		$defaults = array(
 
-			// Styles
-			'colors' => 'light',
+			// Fonts
 			'typeface' => 'helvetica',
 
 			// Social
@@ -213,6 +187,7 @@
 			'instagram' => '',
 			'pinterest' => '',
 			'flickr' => '',
+			'newsletter' => '',
 
 			// Footer
 			'footer1' => '',
@@ -233,9 +208,6 @@
 		$output = array();
 
 		// Styles
-
-		if ( isset( $input['colors'] ) && array_key_exists( $input['colors'], keel_settings_field_style_colors_choices() ) )
-			$output['colors'] = $input['colors'];
 
 		if ( isset( $input['typeface'] ) && array_key_exists( $input['typeface'], keel_settings_field_style_typeface_choices() ) )
 			$output['typeface'] = $input['typeface'];
@@ -262,6 +234,9 @@
 
 		if ( isset( $input['flickr'] ) && ! empty( $input['flickr'] ) )
 			$output['flickr'] = wp_filter_nohtml_kses( $input['flickr'] );
+
+		if ( isset( $input['newsletter'] ) && ! empty( $input['newsletter'] ) )
+			$output['newsletter'] = wp_filter_nohtml_kses( $input['newsletter'] );
 
 		// Footer
 
@@ -303,6 +278,9 @@
 	// Register the theme options page and its fields
 	function keel_theme_options_init() {
 
+		// Developer Options
+		$dev_options = keel_developer_options();
+
 		// Register a setting and its sanitization callback
 		// register_setting( $option_group, $option_name, $sanitize_callback );
 		// $option_group - A settings group name.
@@ -317,9 +295,15 @@
 		// $title - Section title
 		// $callback - // Section callback (we don't want anything)
 		// $page - // Menu slug, used to uniquely identify the page. See keel_theme_options_add_page().
-		add_settings_section( 'styles', 'Styles',  '__return_false', 'keel_theme_options' );
-		add_settings_section( 'social', 'Social Media Accounts',  '__return_false', 'keel_theme_options' );
-		add_settings_section( 'footer', 'Footer Content',  '__return_false', 'keel_theme_options' );
+		if ( $dev_options['fonts'] ) {
+			add_settings_section( 'fonts', 'Fonts',  '__return_false', 'keel_theme_options' );
+		}
+		if ( $dev_options['social'] ) {
+			add_settings_section( 'social', 'Social Media Accounts',  '__return_false', 'keel_theme_options' );
+		}
+		if ( $dev_options['footer'] ) {
+			add_settings_section( 'footer', 'Footer Content',  '__return_false', 'keel_theme_options' );
+		}
 
 
 		// Register our individual settings fields
@@ -330,9 +314,8 @@
 		// $page - The menu page on which to display this field.
 		// $section - The section of the settings page in which to show the field.
 
-		// Styles
-		add_settings_field( 'colors', __( 'Color Palette', 'keel' ), 'keel_settings_field_style_colors', 'keel_theme_options', 'styles' );
-		add_settings_field( 'typeface', __( 'Typeface', 'keel' ), 'keel_settings_field_style_typeface', 'keel_theme_options', 'styles' );
+		// Fonts
+		add_settings_field( 'typeface', __( 'Typeface', 'keel' ), 'keel_settings_field_style_typeface', 'keel_theme_options', 'fonts' );
 
 		// Social
 		add_settings_field( 'facebook', __( 'Facebook', 'keel' ), 'keel_settings_field_social_facebook', 'keel_theme_options', 'social' );
@@ -342,6 +325,7 @@
 		add_settings_field( 'instagram', __( 'Instagram', 'keel' ), 'keel_settings_field_social_instagram', 'keel_theme_options', 'social' );
 		add_settings_field( 'pinterest', __( 'Pinterest', 'keel' ), 'keel_settings_field_social_pinterest', 'keel_theme_options', 'social' );
 		add_settings_field( 'flickr', __( 'Flickr', 'keel' ), 'keel_settings_field_social_flickr', 'keel_theme_options', 'social' );
+		add_settings_field( 'newsletter', __( 'Newsletter', 'keel' ), 'keel_settings_field_social_newsletter', 'keel_theme_options', 'social' );
 
 		// Footer
 		add_settings_field( 'footer1', __( 'Footer 1', 'keel' ), 'keel_settings_field_footer_content_1', 'keel_theme_options', 'footer' );

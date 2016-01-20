@@ -1,5 +1,5 @@
 /*!
- * harbor v2.0.0: A free WordPress theme for animal and pet rescue organizations
+ * harbor v2.0.1: A free WordPress theme for animal and pet rescue organizations
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * https://github.com/cferdinandi/harbor-wp-theme
@@ -2669,7 +2669,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
 
 /* line 15, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_overrides.scss */
 .bg-dark {
-  background-color: #0088cc;
+  background-color: #272727;
   color: #ffffff;
 }
 

@@ -186,15 +186,15 @@ class Keel_PayPal_Donations {
 
 			if ( $show_in_honor ) {
 				$table_body .=
-					'<label>' .
-						'<input type="checkbox" id="paypal_donations_form_donate_in_honor"> ' .
+					'<label class="padding-top">' .
+						// '<input type="checkbox" id="paypal_donations_form_donate_in_honor"> ' .
 						$options['in_honor'] . ' <input type="text" class="input-inline input-condensed input-underline no-margin-bottom" name="paypal_donations_form_in_honor" id="paypal_donations_form_in_honor" value="">' .
 					'</label>';
 			}
 
 			if ( $show_recurring ) {
 				$table_body .=
-					'<label>' .
+					'<label class="padding-top">' .
 						'<input type="checkbox" name="paypal_donations_form_recurring" value="on"> ' .
 						$options['recurring'] .
 					'</label>';

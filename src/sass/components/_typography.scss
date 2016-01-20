@@ -6,7 +6,7 @@
 body {
 	background: $color-white;
 	color: $color-black;
-	font-family: $font-helvetica;
+	font-family: $font-primary;
 	font-size: $font-size;
 	line-height: 1.5;
 
@@ -174,23 +174,6 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 1em;
 	padding: 1em 0 0;
 	word-wrap: break-word;
-
-	@if $themes == true {
-
-		.theme-whale & a,
-		.theme-bear & a,
-		.theme-coral & a,
-		.theme-lab & a {
-			text-decoration: none;
-
-			&:active,
-			&:focus,
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-
-	}
 }
 
 h1,

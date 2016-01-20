@@ -1,5 +1,5 @@
 /*!
- * harbor v1.2.0: A free WordPress theme for animal and pet rescue organizations
+ * harbor v2.0.0: A free WordPress theme for animal and pet rescue organizations
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * https://github.com/cferdinandi/harbor-wp-theme
@@ -2817,6 +2817,9 @@ function makeArray( obj ) {
 		wrap = document.querySelector( settings.selectorWrap );
 		footer = document.querySelector( settings.selectorFooter );
 
+		// Sanity check
+		if ( !wrap || !footer ) return;
+
 		// Stick footer
 		document.documentElement.style.minHeight = '100%';
 		document.body.style.minHeight = '100%';
@@ -2850,7 +2853,7 @@ ready(function () {
 
 fluidvids.init({
 	selector: ['iframe', 'object'],
-	players: ['www.youtube.com', 'player.vimeo.com', 'www.slideshare.net']
+	players: ['www.youtube.com', 'player.vimeo.com', 'www.slideshare.net', 'www.google.com/maps']
 });
 
 ready(function () {

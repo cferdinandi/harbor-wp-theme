@@ -10,7 +10,7 @@ $options = keel_get_post_options();
 
 ?>
 
-<article class="container">
+<article <?php if ( is_single() ) { echo 'class="container"'; } ?>>
 
 	<header>
 		<?php

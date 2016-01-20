@@ -9,7 +9,7 @@
 <?php
 	$options = keel_get_theme_options();
 ?>
-<html <?php language_attributes(); ?> class="theme-<?php echo $options['colors']; ?> <?php echo $options['typeface']; ?>">
+<html <?php language_attributes(); ?> class="<?php echo $options['typeface']; ?>">
 
 	<head>
 		<meta charset="<?php bloginfo('charset'); ?>">

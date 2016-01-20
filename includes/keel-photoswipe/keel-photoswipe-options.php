@@ -14,30 +14,6 @@
 		<?php
 	}
 
-	function keel_photoswipe_settings_field_wrapper_atts() {
-		$options = keel_photoswipe_get_theme_options();
-		?>
-		<input type="text" name="keel_photoswipe_theme_options[wrapper_atts]" id="ps-wrapper-atts" value="<?php echo stripslashes( esc_attr( $options['wrapper_atts'] ) ); ?>" /><br />
-		<label class="description" for="ps-wrapper-atts"><?php _e( 'Attributes to apply to the PhotoSwipe wrapper', 'keel_photoswipe' ); ?></label>
-		<?php
-	}
-
-	function keel_photoswipe_settings_field_link_atts() {
-		$options = keel_photoswipe_get_theme_options();
-		?>
-		<input type="text" name="keel_photoswipe_theme_options[link_atts]" id="ps-link-atts" value="<?php echo stripslashes( esc_attr( $options['link_atts'] ) ); ?>" /><br />
-		<label class="description" for="ps-link-atts"><?php _e( 'Attributes to apply to individual photo links', 'keel_photoswipe' ); ?></label>
-		<?php
-	}
-
-	function keel_photoswipe_settings_field_caption_atts() {
-		$options = keel_photoswipe_get_theme_options();
-		?>
-		<input type="text" name="keel_photoswipe_theme_options[caption_atts]" id="ps-caption-atts" value="<?php echo stripslashes( esc_attr( $options['caption_atts'] ) ); ?>" /><br />
-		<label class="description" for="ps-caption-atts"><?php _e( 'Attributes to apply to photo captions', 'keel_photoswipe' ); ?></label>
-		<?php
-	}
-
 
 
 	/**
@@ -78,8 +54,6 @@
 
 	// Register the theme options page and its fields
 	function keel_photoswipe_theme_options_init() {
-		$dev_options = keel_developer_options();
-
 		register_setting(
 			'keel_photoswipe_options', // Options group, see settings_fields() call in keel_photoswipe_theme_options_render_page()
 			'keel_photoswipe_theme_options', // Database option, see keel_photoswipe_get_theme_options()
@@ -132,6 +106,11 @@
 
 	// Add the theme options page to the admin menu
 	function keel_photoswipe_theme_options_add_page() {
+
+		// Check that feature is activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['gallery'] ) return;
+
 		$theme_page = add_submenu_page(
 			'upload.php', // parent slug
 			'Photo Galleries', // Label in menu
@@ -140,6 +119,7 @@
 			'keel_photoswipe_theme_options', // Menu slug, used to uniquely identify the page
 			'keel_photoswipe_theme_options_render_page' // Function that renders the options page
 		);
+
 	}
 	add_action( 'admin_menu', 'keel_photoswipe_theme_options_add_page' );
 

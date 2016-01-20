@@ -15,7 +15,7 @@ ready(function () {
 
 fluidvids.init({
 	selector: ['iframe', 'object'],
-	players: ['www.youtube.com', 'player.vimeo.com', 'www.slideshare.net']
+	players: ['www.youtube.com', 'player.vimeo.com', 'www.slideshare.net', 'www.google.com/maps']
 });
 
 ready(function () {

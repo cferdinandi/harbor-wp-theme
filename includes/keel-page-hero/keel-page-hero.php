@@ -7,7 +7,13 @@
 
 	// Create a metabox
 	function keel_page_hero_box() {
+
+		// Check that feature is activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['hero'] ) return;
+
 		add_meta_box( 'keel_page_hero_textarea', 'Page Hero', 'keel_page_hero_textarea', 'page', 'normal', 'default' );
+
 	}
 	add_action( 'add_meta_boxes', 'keel_page_hero_box' );
 
@@ -48,24 +54,20 @@
 				<button type="button" class="button" id="keel_page_hero_image_upload_btn" data-keel-page-hero="#keel_page_hero_image"><?php _e( 'Select an Image or Video', 'keel' )?></button>
 			</fieldset>
 
-			<h3>Text and Background Color</h3>
+			<h3>Background Images</h3>
 
 			<p>To add a background image to your hero banner, set a <em>Featured Image</em>.</p>
 
 			<fieldset>
-				<input type="radio" id="keel_page_hero_color_light" name="keel_page_hero_color" value="muted" <?php echo ( ( array_key_exists( 'color', (array) $hero ) && $hero['color'] === 'muted' ) || !array_key_exists( 'color', (array) $hero ) ? 'checked' : '' ); ?>>
-				<label for="keel_page_hero_color_light"><?php _e( 'Light background with dark text', 'keel' ); ?></label>
-				<br>
-
-				<input type="radio" id="keel_page_hero_color_dark" name="keel_page_hero_color" value="dark" <?php checked( 'dark', ( array_key_exists( 'color', (array) $hero ) ? $hero['color'] : '' ) ); ?>>
-				<label for="keel_page_hero_color_dark"><?php _e( 'Dark background with light text', 'keel' ); ?></label>
-			</fieldset>
-
-			<h3>Background Image Overlay</h3>
-
-			<fieldset>
 				<input type="checkbox" id="keel_page_hero_overlay" name="keel_page_hero_overlay" value="on" <?php checked( 'on',  ( array_key_exists( 'overlay', (array) $hero ) ? $hero['overlay'] : '' ) ); ?>>
 				<label for="keel_page_hero_overlay"><?php _e( 'Add a semi-transparent overlay to the background image to make the text easier to read', 'keel' ); ?></label>
+			</fieldset>
+
+			<h3>Minimum Height</h3>
+
+			<fieldset>
+				<label for="keel_page_hero_image_upload"><?php printf( __( '[Optional] Make sure the hero never gets too small by providing a minimum height. Example: %s', 'keel' ), '<code>300px</code>' ); ?></label>
+				<input type="text" class="large-text" name="keel_page_hero_min_height" id="keel_page_hero_min_height" value="<?php echo ( array_key_exists( 'min_height', (array) $hero ) ? stripslashes( esc_attr( $hero['min_height'] ) ) : '' ); ?>">
 			</fieldset>
 
 		<?php
@@ -109,6 +111,10 @@
 			$hero['overlay'] = wp_filter_nohtml_kses( $_POST['keel_page_hero_overlay'] );
 		}
 
+		if ( isset( $_POST['keel_page_hero_min_height'] ) ) {
+			$hero['min_height'] = wp_filter_nohtml_kses( $_POST['keel_page_hero_min_height'] );
+		}
+
 		// Update hero settings
 		update_post_meta( $post->ID, 'keel_page_hero', $hero );
 
@@ -147,6 +153,10 @@
 				if ( array_key_exists( 'overlay', $hero ) ) {
 					add_metadata( 'post', $post_id, 'keel_page_hero_overlay', $hero['overlay'] );
 				}
+
+				if ( array_key_exists( 'min_height', $hero ) ) {
+					add_metadata( 'post', $post_id, 'keel_page_hero_min_height', $hero['min_height'] );
+				}
 			}
 
 		}
@@ -167,6 +177,7 @@
 		$hero_image = get_metadata( 'post', $revision->ID, 'keel_page_hero_image', true );
 		$hero_color = get_metadata( 'post', $revision->ID, 'keel_page_hero_color', true );
 		$hero_overlay = get_metadata( 'post', $revision->ID, 'keel_page_hero_overlay', true );
+		$hero_min_height = get_metadata( 'post', $revision->ID, 'keel_page_hero_min_height', true );
 
 		// Update content
 		if ( !empty( $hero_content ) ) {
@@ -181,6 +192,9 @@
 		if ( !empty( $hero_overlay ) ) {
 			$hero['overlay'] = $hero_overlay;
 		}
+		if ( !empty( $hero_overlay ) ) {
+			$hero['min_height'] = $hero_min_height;
+		}
 		update_post_meta( $post_id, 'keel_page_hero', $hero );
 
 	}
@@ -194,6 +208,7 @@
 		$fields['keel_page_hero_image'] = 'Page Hero Image or Video';
 		$fields['keel_page_hero_color'] = 'Page Hero Background and Text Color';
 		$fields['keel_page_hero_overlay'] = 'Page Hero Background Overlay';
+		$fields['keel_page_hero_min_height'] = 'Page Hero Minimum Height';
 		return $fields;
 	}
 	add_filter( '_wp_post_revision_fields', 'keel_get_revisions_field_page_hero_textarea' );
@@ -211,6 +226,11 @@
 
 	// Load required scripts and styles
 	function keel_add_page_hero_scripts( $hook ) {
+
+		// Check that feature is activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['hero'] ) return;
+
 		global $typenow;
 		if ( in_array( $typenow, array( 'page', 'post' ) ) ) {
 			wp_enqueue_media();
@@ -225,6 +245,7 @@
 			);
 			wp_enqueue_script( 'meta-box-image' );
 		}
+
 	}
 	add_action( 'admin_enqueue_scripts', 'keel_add_page_hero_scripts', 10, 1 );
 

@@ -6,17 +6,10 @@
 // 1px, 4px, 5px, 8px, 9px, 11px, 12px, 13px, 15px, 16px, 19px, 21px, 24px, 28px, 32px, 48px, 64px, 80px, 96px
 // line height: 1.5em on small screens, 1.5625em on big screens
 
-// Theme-specific customizations
-// - astro-navbar.scss
-// - overrides.scss
-// - svgs.scss
-// - typography.scss
-
 // Font-specific customization
 // - typography.scss
 
 // Developer Options
-$themes: true;
 $fonts: true;
 
 // Colors
@@ -116,5 +109,5 @@ $grid-dynamic: (
 
 	(".grid-dynamic", $bp-xsmall, map-get($grid-sizes, half))
 	(".grid-dynamic", $bp-medium, map-get($grid-sizes, third))
-	(".grid-dynamic", $bp-xlarge, map-get($grid-sizes, fourth))
+	// (".grid-dynamic", $bp-xlarge, map-get($grid-sizes, fourth))
 );

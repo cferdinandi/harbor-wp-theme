@@ -85,14 +85,12 @@
 			@media (max-width: $bp-large) {
 				.js-astro.js-drop &:hover {
 					background-color: transparent;
-					color: darken( $color-primary, 15% );
+					// color: darken( $color-primary, 15% );
 					text-decoration: underline;
 				}
 
-				@if $themes == true {
-					.js-astro.js-drop.theme-dark & {
-						color: $color-white;
-					}
+				.js-astro.js-drop & {
+					color: $color-white;
 				}
 			}
 		}

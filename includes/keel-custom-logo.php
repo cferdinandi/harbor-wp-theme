@@ -8,6 +8,11 @@
 
 
 	function keel_add_custom_logo_support( $wp_customize ) {
+
+		// Check if activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['custom_logo'] ) return;
+
 		$wp_customize->add_section( 'keel_logo_section' , array(
 			'title'       => __( 'Logo', 'keel' ),
 			'priority'    => 30,

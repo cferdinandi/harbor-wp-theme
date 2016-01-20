@@ -17,6 +17,7 @@
 	$has_instagram = !empty( $options['instagram'] );
 	$has_pinterest = !empty( $options['pinterest'] );
 	$has_flickr = !empty( $options['flickr'] );
+	$has_newsletter = !empty( $options['newsletter'] );
 
 ?>
 
@@ -76,6 +77,13 @@
 					<a class="link-icon" href="http://flickr.com/<?php echo $options['flickr']; ?>">
 						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-large icon-flickr icon-link" viewBox="0 0 16 16"><path d="M0 8.5C0 6.567 1.567 5 3.5 5S7 6.567 7 8.5 5.433 12 3.5 12 0 10.433 0 8.5zm9 0C9 6.567 10.567 5 12.5 5S16 6.567 16 8.5 14.433 12 12.5 12 9 10.433 9 8.5z"/></svg>
 						<span class="icon-fallback-text">Flickr</span>
+					</a>
+				</li>
+			<?php endif; ?>
+			<?php if ( $has_newsletter ) : ?>
+				<li>
+					<a class="link-icon" href="<?php echo $options['newsletter']; ?>">
+						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-large icon-link" viewBox="0 0 16 16"><path d="M15 2H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h14c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 2v.72L8 8.254 2 4.72V4h12zM2 12V6.46l6 3.536 6-3.536V12H2z"/></svg>
 					</a>
 				</li>
 			<?php endif; ?>

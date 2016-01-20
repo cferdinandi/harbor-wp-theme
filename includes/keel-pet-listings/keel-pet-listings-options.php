@@ -147,12 +147,12 @@
 			'page_content' => '',
 			'adoption_form_url' => '',
 			'adoption_form_text' => 'Fill out an adoption form',
-			'filters_animal' => 'on',
-			'filters_breed' => 'on',
-			'filters_age' => 'on',
-			'filters_size' => 'on',
-			'filters_gender' => 'on',
-			'filters_other' => 'on',
+			'filters_animal' => 'off',
+			'filters_breed' => 'off',
+			'filters_age' => 'off',
+			'filters_size' => 'off',
+			'filters_gender' => 'off',
+			'filters_other' => 'off',
 		);
 
 		$defaults = apply_filters( 'keel_pet_listings_default_theme_options', $defaults );
@@ -191,23 +191,23 @@
 		if ( isset( $input['adoption_form_text'] ) && ! empty( $input['adoption_form_text'] ) )
 			$output['adoption_form_text'] = wp_filter_nohtml_kses( $input['adoption_form_text'] );
 
-		if ( !isset( $input['filters_animal'] ) || empty( $input['filters_animal'] ) )
-			$output['filters_animal'] = 'off';
+		if ( isset( $input['filters_animal'] ) )
+			$output['filters_animal'] = 'on';
 
-		if ( !isset( $input['filters_breed'] ) || empty( $input['filters_breed'] ) )
-			$output['filters_breed'] = 'off';
+		if ( isset( $input['filters_breed'] ) )
+			$output['filters_breed'] = 'on';
 
-		if ( !isset( $input['filters_age'] ) || empty( $input['filters_age'] ) )
-			$output['filters_age'] = 'off';
+		if ( isset( $input['filters_age'] ) )
+			$output['filters_age'] = 'on';
 
-		if ( !isset( $input['filters_size'] ) || empty( $input['filters_size'] ) )
-			$output['filters_size'] = 'off';
+		if ( isset( $input['filters_size'] ) )
+			$output['filters_size'] = 'on';
 
-		if ( !isset( $input['filters_gender'] ) || empty( $input['filters_gender'] ) )
-			$output['filters_gender'] = 'off';
+		if ( isset( $input['filters_gender'] ) )
+			$output['filters_gender'] = 'on';
 
-		if ( !isset( $input['filters_other'] ) || empty( $input['filters_other'] ) )
-			$output['filters_other'] = 'off';
+		if ( isset( $input['filters_other'] ) )
+			$output['filters_other'] = 'on';
 
 		return apply_filters( 'keel_pet_listings_theme_options_validate', $output, $input );
 	}
@@ -317,18 +317,13 @@
 	// Use add_submenu_page() to add to another tab.
 	function keel_pet_listings_theme_options_add_page() {
 
-		// add_theme_page( $page_title, $menu_title, $capability, $menu_slug, $function );
-		// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function );
-		// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
-		// $page_title - Name of page
-		// $menu_title - Label in menu
-		// $capability - Capability required
-		// $menu_slug - Used to uniquely identify the page
-		// $function - Function that renders the options page
-		// $theme_page = add_theme_page( __( 'Theme Options', 'keel' ), __( 'Theme Options', 'keel' ), 'edit_theme_options', 'keel_pet_listings_theme_options', 'keel_pet_listings_theme_options_render_page' );
+		// Check that feature is activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['pets'] ) return;
 
 		// $theme_page = add_menu_page( __( 'Theme Options', 'keel' ), __( 'Theme Options', 'keel' ), 'edit_theme_options', 'keel_pet_listings_theme_options', 'keel_pet_listings_theme_options_render_page' );
 		$theme_page = add_submenu_page( 'edit.php?post_type=pets', __( 'Pet Listings Options', 'keel' ), __( 'Options', 'keel' ), 'edit_theme_options', 'keel_pet_listings_theme_options', 'keel_pet_listings_theme_options_render_page' );
+
 	}
 	add_action( 'admin_menu', 'keel_pet_listings_theme_options_add_page' );
 

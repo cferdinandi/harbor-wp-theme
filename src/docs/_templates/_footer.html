@@ -1,13 +1,41 @@
+					</section><!-- /.container -->
 
-			</section>
-		</main>
+					<footer class="bg-muted padding-top padding-bottom">
+
+							<hr>
+
+							<p class="text-small text-muted margin-bottom-small">Harbor WP Theme by <a href="http://gomakethings.com">Go Make Things</a>. The code is available under the <a href="https://github.com/cferdinandi/kraken/blob/master/LICENSE.md">MIT License</a>.</p>
+
+							<p class="text-small text-muted">Harbor logo by <a href="https://thenounproject.com/term/alvsborg-bridge/155968">Katrine Kolström from the Noun Project</a>.</p>
+
+					</footer>
+				</main>
+			</div><!-- /.row -->
+		</div><!-- /.container -->
 
 		<!-- Javascript -->
-		<script src="dist/js/main.js"></script>
+		<script src="assets/js/toc.js"></script>
+		<script src="assets/js/highlight-active-nav.js"></script>
+		<script src="assets/js/smooth-scroll.js"></script>
+		<script src="assets/js/prism.js"></script>
 		<script>
-			// myplugin.init();
+			tableOfContents.init({
+				heading: 'In This Section',
+				headingClass: 'h3',
+				navClass: 'list-unstyled',
+				linkClass: 'js-smooth-scroll',
+				callback: function () {
+					var links = document.querySelectorAll( '.js-smooth-scroll' );
+					for (var i = 0, len = links.length; i < len; i++) {
+						links[i].setAttribute( 'data-scroll', true );
+					}
+					smoothScroll.init();
+				}
+			});
+			// highlightActiveNav.init({
+			// 	urlPrefix: '/kraken/'
+			// });
 		</script>
-
 
 	</body>
 </html>

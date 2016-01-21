@@ -1,5 +1,5 @@
 /*!
- * harbor v2.1.0: A free WordPress theme for animal and pet rescue organizations
+ * harbor v2.2.0: A free WordPress theme for animal and pet rescue organizations
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * https://github.com/cferdinandi/harbor-wp-theme
@@ -745,18 +745,19 @@ a #submit:active, .link-block-styled #submit:active, .btn.active, .active#submit
   border-color: #005580;
   color: #ffffff;
   text-decoration: none;
+  text-shadow: none;
 }
 
 /**
  * Ghosted buttons
  */
-/* line 62, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 63, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn-ghost, .bg-dark .btn, .bg-dark #submit {
   background-color: transparent;
   border-color: #ffffff;
 }
 
-/* line 66, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 67, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn-ghost:hover, .bg-dark .btn:hover, .bg-dark #submit:hover,
 a .btn-ghost:hover, .link-block-styled .btn-ghost:hover,
 a .bg-dark .btn:hover, .bg-dark
@@ -781,7 +782,7 @@ a #submit:active, .link-block-styled .bg-dark #submit:active, .bg-dark .link-blo
 /**
  * Active state
  */
-/* line 83, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 84, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn:active, #submit:active,
 .btn.active,
 .active#submit {
@@ -792,7 +793,7 @@ a #submit:active, .link-block-styled .bg-dark #submit:active, .bg-dark .link-blo
 /**
  * Disabled state
  */
-/* line 93, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 94, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn.disabled, .disabled#submit,
 .btn[disabled],
 [disabled]#submit {
@@ -805,7 +806,7 @@ a #submit:active, .link-block-styled .bg-dark #submit:active, .bg-dark .link-blo
 /**
  * Button size
  */
-/* line 105, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 106, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn-large {
   font-size: 1em;
   line-height: normal;
@@ -815,7 +816,7 @@ a #submit:active, .link-block-styled .bg-dark #submit:active, .bg-dark .link-blo
 /**
  * Block-level buttons
  */
-/* line 115, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 116, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn-block,
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
@@ -830,7 +831,7 @@ input[type="button"].btn-block {
 /**
  * General styles
  */
-/* line 130, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 131, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn, #submit,
 button,
 html input[type="button"],
@@ -849,7 +850,7 @@ input[type="submit"] {
 /**
  * Remove right margin on last element and inputs
  */
-/* line 151, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
+/* line 152, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_buttons.scss */
 .btn:last-child, #submit:last-child,
 input.btn,
 input#submit {

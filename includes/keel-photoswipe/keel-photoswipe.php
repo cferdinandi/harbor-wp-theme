@@ -126,7 +126,7 @@
 			// Image data
 			$img_full = wp_get_attachment_image_src( $id, 'full' );
 			$img_medium = wp_get_attachment_image_src( $id, 'medium' );
-			$img = wp_get_attachment_image( $id, 'medium' );
+			$img = wp_get_attachment_image( $id, 'medium', 0, array('class' => 'img-photo') );
 			$caption = $attachment->post_excerpt;
 			$figure = empty( $caption ) ? '' : '<figure hidden>' . $caption . '</figure>';
 

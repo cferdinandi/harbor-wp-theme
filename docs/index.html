@@ -3,8 +3,15 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Keel</title>
+		<title>Harbor Docs</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Harbor: A free mobile-friendly WordPress theme built specifically for animal rescue organizations">
+
+		<!-- Icons -->
+		<link rel="shortcut icon" type="image/ico" href="assets/img/icons/favicon.ico">
+
+		<!-- Feature dection -->
+		<script src="dist/js/detects.js"></script>
 
 		<!-- stylesheets -->
 		<link rel="stylesheet" href="dist/css/main.css" type="text/css">
@@ -13,29 +20,208 @@
 
 	<body>
 
-		<main class="container">
+		<!-- Old Browser Warning -->
+		<!--[if lt IE 9]>
+		    <section class="container">
+		        Did you know that your web browser is a bit old? Some of the content on this site might not work right as a result. <a href="http://whatbrowser.org">Upgrade your browser</a> for a faster, better, and safer web experience.
+		    </section>
+		<![endif]-->
 
-			<nav>
-				<h1>Keel</h1>
-				<p><a href="https://github.com/USERNAME/keel">GitHub</a></p>
-				<hr>
-			</nav>
+		<!-- Skip Nav Link -->
+		<nav>
+			<a class="screen-reader screen-reader-focusable" href="#main">Skip to content</a>
+		</nav>
 
-			<section>
-<nav>
-	Navigation elements that should appear on all pages...
-</nav>
+		<div class="container container-large">
+			<div class="row">
 
-<p>Content...</p>
-			</section>
-		</main>
+					<header class="grid-fourth sticky-header padding-top ">
+						<p>
+							<strong>
+								<a href="index.html">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-docs-logo" viewBox="0 0 40 50"><path d="M39.01 23.216c-.005-.275-.23-.546-.5-.602l-1.363-.284c-3.545-4.104-5.874-7.36-7.258-9.486-1.098-1.688-1.766-2.908-2.126-3.613v-.467c0-.275-.225-.5-.5-.5h-1c-.275 0-.5.225-.5.5V8.9c-.632.23-1.6.542-2.957.89-.066-.198-.248-.345-.468-.345h-1c-.276 0-.5.225-.5.5v.31c-4.066.884-10.462 1.837-19.853 2.143l.014.367c2.123-.07 4.078-.173 5.894-.3v1.083c-1.775.234-3.72.45-5.884.628l.03.366c2.14-.175 4.075-.39 5.854-.624v2.108l-5.417-1.13c-.27-.055-.49.124-.49.4v2.154c0 .275.224.534.495.576L20.84 20.99v9.4c-.1.026-.19.063-.306.063-.607 0-.798-.393-.804-.404-.02-.046-.483-1.1-1.82-1.1-1.124.003-1.77 1.03-1.796 1.075l-.023.04c-.01.02-.237.444-.825.444-.608 0-.792-.386-.803-.41l-.024-.046c-.024-.043-.61-1.045-1.804-1.05-1.07 0-1.572.675-1.737.96l-.045.076-.02.043c-.008.016-.205.414-.813.414-.607 0-.8-.395-.805-.404-.02-.043-.48-1.1-1.822-1.1-1.128.008-1.77 1.033-1.795 1.076l-.023.042c-.01.018-.243.44-.827.44l-.443-.004c-.324 0-.586.262-.586.586s.26.586.585.586l.443.015h.002c1.15 0 1.674-.82 1.784-1.023.053-.074.394-.535.867-.537.58 0 .784.377.8.412.05.113.522 1.094 1.818 1.094 1.21 0 1.7-.847 1.8-1.048l.027-.045c.068-.12.284-.402.794-.402.505.004.79.398.836.47.104.208.587 1.034 1.79 1.034 1.15 0 1.677-.827 1.786-1.026.05-.07.384-.53.867-.533.594 0 .79.397.794.405.02.045.484 1.1 1.82 1.1.258 0 .507-.04.734-.12l.013-.007c.02.002.038.012.058.012h1c.275 0 .5-.225.5-.5v-8.712c.94-.07 2.02-.097 2.925-.105v8.818c0 .276.225.5.5.5h1c.275 0 .5-.224.5-.5v-8.97l2.233.343c0 .006-.004.012-.004.02v8.243c0 .275.225.5.5.5s.498-.225.498-.5v-8.11l3.004.46v7.25c0 .274.225.5.5.5s.5-.226.5-.5v-7.097l3.533.54c.27.04.49-.15.483-.425v-.06zm-2.454-1.01l-2.135-.444c-2.058-2.58-3.536-4.685-4.528-6.21-1.098-1.69-1.767-2.91-2.127-3.614v-1.93c1.095 2.013 3.688 6.242 8.79 12.2zM12.874 12.58c-.846.167-1.756.336-2.77.502v-.874c.974-.09 1.898-.188 2.77-.29v.662zm.218-.687c.988-.116 1.912-.24 2.77-.365v.4c-.79.19-1.712.397-2.77.61v-.644zm-.218 1.058v4.324l-2.77-.578V13.45c1-.163 1.912-.332 2.77-.502zm.218-.042c1.026-.206 1.947-.41 2.77-.61v5.6l-2.77-.578v-4.412zm2.99-.663c1.12-.276 2.032-.534 2.77-.76v7.035l-2.77-.577v-5.697zm.14-.405l-.14.033v-.378c1.013-.15 1.937-.306 2.77-.458v.07c-.7.218-1.564.467-2.63.734zm2.848-.845l.312-.06c-.103.035-.198.067-.312.103v-.043zm3.77 8.356v-9.185c.785-.2 1.45-.39 1.99-.56v10.158l-1.99-.414zm2.924.608l-.714-.148V9.534c.27-.087.508-.167.714-.24v10.664zM7.114 12.45c.966-.067 1.89-.143 2.77-.223v.888c-.86.14-1.79.274-2.77.405v-1.07zm0 1.44c.972-.13 1.905-.265 2.77-.404v3.163l-2.77-.578V13.89zm11.956 4.673v-7.147c.873-.273 1.46-.49 1.77-.61v8.126l-1.77-.37zm8.694-5.847c.885 1.623 2.742 4.686 6.097 8.93l-6.096-1.27v-7.66z"/></svg><br>
+									<span class="text-large">Harbor Docs</span>
+								</a>
+							</strong>
+						</p>
+						<nav class="nav">
+							<ul class="list-unstyled nav-primary" data-nav-highlight>
+								<li><a href="https://github.com/cferdinandi/harbor-wp-theme/archive/master.zip">Download</a></li>
+								<li><a href="index.html">Documentation</a></li>
+								<li><a href="web-developer-features.html">Web Developer Features</a></li>
+								<li><a href="https://github.com/cferdinandi/harbor-wp-theme">GitHub</a></li>
+							</ul>
+
+							<div class="nav-section" data-toc></div>
+						</nav>
+					</header>
+
+				<main class="grid-three-fourths padding-top sticky-body" data-toc-content><h1 id="documentation">Documentation</h1>
+<h2 id="getting-started">Getting Started</h2>
+<ol>
+<li><a href="https://github.com/cferdinandi/harbor-wp-theme/archive/master.zip">Download Harbor.</a></li>
+<li>Upload Harbor to your site via FTP or the WordPress theme installer.</li>
+<li>Activate Harbor in the WordPress theme dashboard.</li>
+</ol>
+<p>To make sure you always get the latest updates, it&#39;s recommended that you also install the <a href="https://github.com/afragen/github-updater">GitHub Updater plugin</a>.</p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#basic-appearance">Basic Appearance</a><ul>
+<li><a href="#picking-a-typeface">Picking a typeface</a></li>
+<li><a href="#adding-a-logo">Adding a logo</a></li>
+<li><a href="#adding-a-site-icon">Adding a site icon</a></li>
+<li><a href="#creating-a-menu">Creating a menu</a></li>
+</ul>
+</li>
+<li><a href="#donations">Donations</a><ul>
+<li><a href="#donations-form">Donations form</a></li>
+<li><a href="#donations-buttons">Donations buttons</a></li>
+</ul>
+</li>
+<li><a href="#petfinder">Petfinder</a></li>
+<li><a href="#page-and-post-content">Page and Post Content</a><ul>
+<li><a href="#add-a-hero-image-header">Add a hero image header</a></li>
+<li><a href="#create-an-image-gallery">Create an image gallery</a></li>
+<li><a href="#create-a-button-link">Create a button link</a></li>
+<li><a href="#add-a-call-to-action-at-the-end-of-blog-posts">Add a call-to-action at the end of blog posts</a></li>
+<li><a href="#disable-comments-site-wide">Disable comments site-wide</a></li>
+</ul>
+</li>
+<li><a href="#footer-content">Footer Content</a></li>
+<li><a href="#recommendations">Recommendations</a><ul>
+<li><a href="#plugins">Plugins</a></li>
+<li><a href="#web-hosting">Web Hosting</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="basic-appearance">Basic Appearance</h2>
+<h3 id="picking-a-typeface">Picking a typeface</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/xHBd6xKhfjs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>From the WordPress Admin Dashboard, visit <code>Appearance &gt; Theme Options</code>, and select your preferred font. Click <code>Save</code> at the bottom of the page when you&#39;re done.</p>
+<h3 id="adding-a-logo">Adding a logo</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/qYdGlF_mOds?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>From the WordPress Admin Dashboard, visit <code>Appearance &gt; Customize</code>, and select <code>Logo</code>. Click <code>Select Image</code>, and upload your preferred logo image. Click <code>Save &amp; Publish</code> at the top of the page when you&#39;re done.</p>
+<h3 id="adding-a-site-icon">Adding a site icon</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/mHcJIu70GGU?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>From the WordPress Admin Dashboard, visit <code>Appearance &gt; Customize</code>, and select <code>Site Identity</code>. Click <code>Select Image</code>, and upload your preferred icon image. Click <code>Save &amp; Publish</code> at the top of the page when you&#39;re done.</p>
+<h3 id="creating-a-menu">Creating a menu</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/sosfcXx2uwA?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>Harbor uses WordPress&#39;s built-in menu functionality. Visit <code>Appearance &gt; Menus</code> to get started. <code>Primary</code> is the header navigation, and <code>Secondary</code> is the footer navigation.</p>
+<h2 id="donations">Donations</h2>
+<p>From the WordPress Admin Dashboard, visit <code>PayPal Donations</code>. Add your information, and click <code>Save</code> at the bottom of the page when you&#39;re done.</p>
+<h3 id="donations-form">Donations Form</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/bKATL2cypZw?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>Display your donations form on any page by using the <code>[[paypal_donations_form]]</code> shortcode. <a href="http://harbor.gomakethings.com/donate/">View the live donation form demo.</a></p>
+<h3 id="donations-buttons">Donations Buttons</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/MIA27R-GYKY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>You can also create one-off PayPal donation buttons using the <code>[[paypal_donations_button]]</code> shortcode.</p>
+<p><strong>Example:</strong></p>
+<p>[paypal_donations_button amount=&quot;25&quot; label=&quot;Donate $25&quot; recurring=&quot;true&quot; description=&quot;Donate $25 to the Special Fund&quot;]</p>
+<pre><code class="lang-lang-php">[[paypal_donations_button amount=&quot;25&quot; label=&quot;Donate $25&quot; recurring=&quot;true&quot; description=&quot;Donate $25 to the Special Fund&quot;]]
+</code></pre>
+<p>If <code>amount</code> is left blank, donors will be asked to write in their own amount when they&#39;re sent to PayPal. All other fields are optional. <code>recurring=&quot;true&quot;</code> makes the donation recurring. <code>description</code> is what is displayed on PayPal.com.</p>
+<h2 id="petfinder">Petfinder</h2>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/BDGlBVhJE74?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>From the WordPress Admin Dashboard, visit <code>Pet Listings &gt; Options</code>. Add your information, select which filters should be visible, and click <code>Save</code> at the bottom of the page when you&#39;re done.</p>
+<p>By default, your list of adoptable animals is displayed at <code>http://yourwebsite.com/pets</code>. This can be changed in the options.</p>
+<p><a href="http://harbor.gomakethings.com/pets/">View the live pet listings demo.</a></p>
+<h2 id="page-and-post-content">Page and Post Content</h2>
+<h3 id="add-a-hero-image-header">Add a hero image header</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/7KWSOeJr63c?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>Underneath the content section is a <code>Page Hero</code> section. Add your hero content there. In addition to text, you can also add an image or video.</p>
+<p>To apply a background image to the hero, use the <code>Featured Image</code> section in the sidebar. If text is hard to read on the background image, check the box to add a <code>Background Image Overlay</code>.</p>
+<h3 id="create-an-image-gallery">Create an image gallery</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/X5EFKavGKnY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>Create beautiful, mosaic image galleries using the <code>[[gallery]]</code> shortcode, or the built-in gallery feature in the WordPress editor. View the <a href="http://harbor.gomakethings.com/gallery/">Image Galleries page</a> to see a working example.</p>
+<h3 id="create-a-button-link">Create a button link</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/FIHBKyGNYsQ?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>Add bold calls to action in your content with the <code>[[button]]</code> shortcode:</p>
+<p>[button link=&quot;#create-a-button-link&quot; label=&quot;Click Me&quot;]</p>
+<pre><code class="lang-lang-markup">[[button link=&quot;#create-a-button-link&quot; label=&quot;Click Me&quot;]]
+</code></pre>
+<p>To make a button extra large, also include the <code>size</code> attribute with the value <code>large</code>:</p>
+<p>[button link=&quot;#create-a-button-link&quot; label=&quot;Large Click Me&quot; size=&quot;large&quot;]</p>
+<pre><code class="lang-lang-markup">[[button link=&quot;#create-a-button-link&quot; label=&quot;Large Click Me&quot; size=&quot;large&quot;]]
+</code></pre>
+<h3 id="add-a-call-to-action-at-the-end-of-blog-posts">Add a call-to-action at the end of blog posts</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/xSKWL_TA_5A?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>From the WordPress Admin Dashboard, visit <code>Posts &gt; Post Options</code>, and add your content. Click <code>Save</code> at the bottom of the page when you&#39;re done.</p>
+<h3 id="disable-comments-site-wide">Disable comments site-wide</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/cXSrhQZj05s?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>From the WordPress Admin Dashboard, visit <code>Posts &gt; Post Options</code>, and click <code>Disable comments on all blog posts</code>. Click <code>Save</code> at the bottom of the page when you&#39;re done.</p>
+<h2 id="footer-content">Footer Content</h2>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/uUDDyqpZ8ZI?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<p>From the WordPress Admin Dashboard, visit <code>Appearance &gt; Theme Options</code>, and add links to your accounts. Items left blank will be skipped. You can also add footer content. Click <code>Save</code> at the bottom of the page when you&#39;re done.</p>
+<h2 id="recommendations">Recommendations</h2>
+<p>Recommended plugins and services to get the most impact out of your site.</p>
+<h3 id="plugins">Plugins</h3>
+<ul>
+<li><a href="https://github.com/afragen/github-updater">GitHub Updater</a> will allow you to automatically update your website when new versions of this theme come out.</li>
+<li><a href="https://wordpress.org/plugins/jetpack/">JetPack</a> adds a ton of useful features, including contact forms and automatic plugin updates.</li>
+<li><a href="https://wordpress.org/plugins/manual-control/">Manual Control for JetPack</a> prevents JetPack from automatically enabling new features when you update the plugin.</li>
+<li><a href="http://contactform7.com/">Contact Form 7</a> is an amazing contact form plugin for WordPress.</li>
+<li><a href="https://theeventscalendar.com/">The Events Calendar</a> is a robust, feature-rich events calendar.</li>
+<li><a href="https://wordpress.org/plugins/zencache/">ZenCache</a> makes your website load a lot faster.</li>
+</ul>
+<h3 id="web-hosting">Web Hosting</h3>
+<h4 id="if-you-have-no-in-house-web-digital-team-and-no-idea-what-you-re-doing-">If you have no in-house web/digital team and no idea what you&#39;re doing...</h4>
+<p><a href="https://www.godaddy.com/pro/managed-wordpress-hosting">GoDaddy&#39;s Managed WordPress hosting</a> is inexpensive, easy to use, and comes with great customer support. There&#39;s a lot to hate about GoDaddy (from their sexist advertising to their elephant-hunting CEO), but if you want cheap, reliable hosting with some nice security features built in, they&#39;re hard to beat.</p>
+<h4 id="if-you-have-a-web-digital-team-and-want-something-better-">If you have a web/digital team and want something better...</h4>
+<p>I cannot say enough great things about <a href="https://m.do.co/c/08a079d9bd9a">DigitalOcean</a>. Their plans start at just $5 a month and all of the sites I host with them are lightning fast. <a href="https://m.do.co/c/08a079d9bd9a">Use my referral link</a> and you&#39;ll get a free $10 credit.</p>
+<p>I use <a href="https://serverpilot.io/">ServerPilot</a> with DigitalOcean. ServerPilot automates a lot of the &quot;getting setup&quot; stuff involved in working with DigitalOcean.</p>
+<p>For domain registration, I like <a href="https://www.namecheap.com/">Namecheap</a>. They&#39;re inexpensive and really easy to work with.</p>
+					</section><!-- /.container -->
+
+					<footer class="bg-muted padding-top padding-bottom">
+
+							<hr>
+
+							<p class="text-small text-muted margin-bottom-small">Harbor WP Theme by <a href="http://gomakethings.com">Go Make Things</a>. The code is available under the <a href="https://github.com/cferdinandi/kraken/blob/master/LICENSE.md">MIT License</a>.</p>
+
+							<p class="text-small text-muted">Harbor logo by <a href="https://thenounproject.com/term/alvsborg-bridge/155968">Katrine Kolström from the Noun Project</a>.</p>
+
+					</footer>
+				</main>
+			</div><!-- /.row -->
+		</div><!-- /.container -->
 
 		<!-- Javascript -->
-		<script src="dist/js/main.js"></script>
+		<script src="assets/js/toc.js"></script>
+		<script src="assets/js/highlight-active-nav.js"></script>
+		<script src="assets/js/smooth-scroll.js"></script>
+		<script src="assets/js/prism.js"></script>
 		<script>
-			// myplugin.init();
+			tableOfContents.init({
+				heading: 'In This Section',
+				headingClass: 'h3',
+				navClass: 'list-unstyled',
+				linkClass: 'js-smooth-scroll',
+				callback: function () {
+					var links = document.querySelectorAll( '.js-smooth-scroll' );
+					for (var i = 0, len = links.length; i < len; i++) {
+						links[i].setAttribute( 'data-scroll', true );
+					}
+					smoothScroll.init();
+				}
+			});
+			// highlightActiveNav.init({
+			// 	urlPrefix: '/kraken/'
+			// });
 		</script>
-
 
 	</body>
 </html>

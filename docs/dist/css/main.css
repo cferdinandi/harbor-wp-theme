@@ -1,5 +1,5 @@
 /*!
- * harbor v2.2.0: A free WordPress theme for animal and pet rescue organizations
+ * harbor v2.3.0: A free WordPress theme for animal and pet rescue organizations
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * https://github.com/cferdinandi/harbor-wp-theme
@@ -1590,143 +1590,152 @@ td {
 }
 
 /**
- * @section Dropdowns
- * Styling for the dropdown navigation.
+ * Dropdown links
  */
-/**
- * Set dropdown link to relative positioning
- */
-/* line 10, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.nav-navbar .menu-item-has-children {
+/* line 5, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+.menu-item-has-children {
   position: relative;
 }
 
-/* line 13, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.nav-navbar .menu-item-has-children > a:after, .nav-navbar .menu-item-has-children > .link-block-styled:after {
+/* line 8, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+.menu-item-has-children > a:after, .menu-item-has-children > .link-block-styled:after {
   content: "+";
   display: inline-block;
   margin-left: 0.25em;
   width: 0.5em;
 }
 
-@media (max-width: 60em) {
-  /* line 19, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-astro.js-drop .nav-navbar .menu-item-has-children > a:after, .js-astro.js-drop .nav-navbar .menu-item-has-children > .link-block-styled:after {
+@media (max-width: 40em) {
+  /* line 14, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+  .js-astro .menu-item-has-children > a:after, .js-astro .menu-item-has-children > .link-block-styled:after {
     content: "";
   }
 }
 
-/* line 26, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.no-js-drop .nav-navbar .menu-item-has-children:hover > a:after, .no-js-drop .nav-navbar .menu-item-has-children:hover > .link-block-styled:after,
-.js-drop .nav-navbar .menu-item-has-children > a.active:after,
-.js-drop .nav-navbar .menu-item-has-children > .active.link-block-styled:after {
+@media (max-width: 40em) {
+  /* line 22, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+  .js-astro .menu-item-has-children > a, .js-astro .menu-item-has-children > .link-block-styled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+/* line 28, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+.menu-item-has-children:focus > a:after, .menu-item-has-children:focus > .link-block-styled:after,
+.menu-item-has-children:hover > a:after,
+.menu-item-has-children:hover > .link-block-styled:after,
+.menu-item-has-children.active > a:after,
+.menu-item-has-children.active > .link-block-styled:after {
   content: "\2013";
+}
+
+@media (max-width: 40em) {
+  /* line 34, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+  .js-astro .menu-item-has-children:focus > a:after, .js-astro .menu-item-has-children:focus > .link-block-styled:after, .js-astro
+  .menu-item-has-children:hover > a:after, .js-astro
+  .menu-item-has-children:hover > .link-block-styled:after, .js-astro
+  .menu-item-has-children.active > a:after, .js-astro
+  .menu-item-has-children.active > .link-block-styled:after {
+    content: "";
+  }
 }
 
 /**
  * Dropdown content
  */
-/* line 38, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.menu-item-has-children .sub-menu {
+/* line 46, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+.sub-menu {
   background-color: #ffffff;
-  border: 1px solid #b8b8b8;
+  border: 0;
   border-radius: 1px;
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  display: none;
+  clip: rect(0 0 0 0);
   float: left;
-  margin-left: 0;
+  height: 1px;
+  margin: -1px;
   min-width: 10em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  overflow: hidden;
+  padding: 0;
   position: absolute;
   right: 0;
   text-align: left;
   top: 100%;
-  visibility: hidden;
+  width: 1px;
   z-index: 1000;
   /**
-		 * Switch up styling on JS-supported small viewports
-		 */
+	 * Switch up styling on JS-supported small viewports
+	 */
 }
 
-/* line 57, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.js-drop .menu-item-has-children .sub-menu {
-  margin-top: 0.5em;
-}
-
-@media (max-width: 60em) {
-  /* line 61, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-astro.js-drop .menu-item-has-children .sub-menu {
-    margin-top: 0;
-  }
-}
-
-/* line 67, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.menu-item-has-children .sub-menu ul,
-.menu-item-has-children .sub-menu ol {
+/* line 66, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+.sub-menu ul,
+.sub-menu ol {
   list-style: none;
   margin-left: 0;
 }
 
-/* line 73, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.menu-item-has-children .sub-menu a, .menu-item-has-children .sub-menu .link-block-styled {
+/* line 72, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+.sub-menu a, .sub-menu .link-block-styled {
   color: #0088cc;
   display: block;
   padding-left: 0.5em;
   padding-right: 0.5em;
 }
 
-/* line 79, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.menu-item-has-children .sub-menu a:hover, .menu-item-has-children .sub-menu .link-block-styled:hover, .menu-item-has-children .sub-menu .link-block:hover .link-block-styled, .link-block:hover .menu-item-has-children .sub-menu .link-block-styled {
+/* line 78, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+.sub-menu a:focus, .sub-menu .link-block-styled:focus, .sub-menu a:hover, .sub-menu .link-block-styled:hover, .sub-menu .link-block:hover .link-block-styled, .link-block:hover .sub-menu .link-block-styled {
   background-color: #0088cc;
   color: #ffffff;
   text-decoration: none;
 }
 
-@media (max-width: 60em) {
-  /* line 86, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-astro.js-drop .menu-item-has-children .sub-menu a:hover, .js-astro.js-drop .menu-item-has-children .sub-menu .link-block-styled:hover, .js-astro.js-drop .menu-item-has-children .sub-menu .link-block:hover .link-block-styled, .link-block:hover .js-astro.js-drop .menu-item-has-children .sub-menu .link-block-styled {
-    background-color: transparent;
-    text-decoration: underline;
-  }
-  /* line 92, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-astro.js-drop .menu-item-has-children .sub-menu a, .js-astro.js-drop .menu-item-has-children .sub-menu .link-block-styled {
-    color: #ffffff;
+/* line 89, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+.menu-item-has-children:focus .sub-menu,
+.menu-item-has-children:hover .sub-menu,
+.menu-item-has-children.active .sub-menu {
+  border: 1px solid #b8b8b8;
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  width: auto;
+}
+
+/* line 101, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+.js-drop .menu-item-has-children:focus .sub-menu, .js-drop
+.menu-item-has-children:hover .sub-menu, .js-drop
+.menu-item-has-children.active .sub-menu {
+  margin-top: 0.5em;
+}
+
+@media (max-width: 40em) {
+  /* line 105, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+  .js-astro.js-drop .menu-item-has-children:focus .sub-menu, .js-astro.js-drop
+  .menu-item-has-children:hover .sub-menu, .js-astro.js-drop
+  .menu-item-has-children.active .sub-menu {
+    margin-top: 0;
   }
 }
 
-@media (max-width: 60em) {
-  /* line 102, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-astro.js-drop .menu-item-has-children .sub-menu {
+@media (max-width: 40em) {
+  /* line 116, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+  .js-astro .sub-menu,
+  .js-astro .menu-item-has-children.active .sub-menu {
     background-color: transparent;
-    border: none;
+    border: 0;
     box-shadow: none;
-    display: block;
+    clip: auto;
     float: none;
-    margin-left: 1.5em;
-    position: static;
-    visibility: visible;
-  }
-  /* line 112, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-astro.js-drop .menu-item-has-children .sub-menu.active {
+    height: auto;
+    margin: 0 0 1.5em;
+    overflow: visible;
     padding: 0;
+    position: static;
+    width: auto;
   }
-}
-
-@media (max-width: 60em) {
-  /* line 120, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-  .js-astro.js-drop .menu-item-has-children > a, .js-astro.js-drop .menu-item-has-children > .link-block-styled {
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-}
-
-/* line 126, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop-basic.scss */
-.no-js-drop .menu-item-has-children:hover .sub-menu,
-.menu-item-has-children .sub-menu.active {
-  display: block;
-  visibility: visible;
 }
 
 /**

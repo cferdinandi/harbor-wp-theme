@@ -1,11 +1,47 @@
 /*!
- * harbor v2.2.0: A free WordPress theme for animal and pet rescue organizations
+ * harbor v2.3.0: A free WordPress theme for animal and pet rescue organizations
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * https://github.com/cferdinandi/harbor-wp-theme
  * Open Source Credits: https://github.com/ftlabs/fastclick, https://github.com/toddmotto/fluidvids, http://photoswipe.com, http://masonry.desandro.com, http://imagesloaded.desandro.com
  */
 
+/**
+ * focusin/focusout polyfill for Firefox
+ * @author Tobias Buschor
+ * @link https://gist.github.com/nuxodin/9250e56a3ce6c0446efa
+ */
+
+;(function (w, d, undefined) {
+
+	'use strict';
+
+	if( w.onfocusin === undefined ){
+		d.addEventListener('focus'    ,addPolyfill    ,true);
+		d.addEventListener('blur'     ,addPolyfill    ,true);
+		d.addEventListener('focusin'  ,removePolyfill ,true);
+		d.addEventListener('focusout' ,removePolyfill ,true);
+	}
+	function addPolyfill(e){
+		var type = e.type === 'focus' ? 'focusin' : 'focusout';
+		var event = new CustomEvent(type, { bubbles:true, cancelable:false });
+		event.c1Generated = true;
+		e.target.dispatchEvent( event );
+	}
+	function removePolyfill(e){
+		if(!e.c1Generated){ // focus after focusin, so chrome will the first time trigger tow times focusin
+			d.removeEventListener('focus'    ,addPolyfill    ,true);
+			d.removeEventListener('blur'     ,addPolyfill    ,true);
+			d.removeEventListener('focusin'  ,removePolyfill ,true);
+			d.removeEventListener('focusout' ,removePolyfill ,true);
+		}
+		setTimeout(function(){
+			d.removeEventListener('focusin'  ,removePolyfill ,true);
+			d.removeEventListener('focusout' ,removePolyfill ,true);
+		});
+	}
+
+})(window, document);
 /*!
  * imagesLoaded PACKAGED v3.1.8
  * JavaScript is all like "You images are done yet or what?"
@@ -1142,12 +1178,9 @@ function makeArray( obj ) {
 
 	// Default settings
 	var defaults = {
-		selectorDropdown: '[data-dropdown]',
-		selectorMenu: '[data-dropdown-menu]',
-		toggleActiveClass: 'active',
-		contentActiveClass: 'active',
+		selector: '[data-dropdown]',
+		activeClass: 'active',
 		initClass: 'js-drop',
-		noJSClass: 'no-js-drop',
 		callback: function () {}
 	};
 
@@ -1223,29 +1256,6 @@ function makeArray( obj ) {
 	};
 
 	/**
-	 * Get siblings of an element
-	 * @private
-	 * @param  {Element} elem
-	 * @return {NodeList}
-	 */
-	var getSiblings = function ( elem ) {
-
-		// Variables
-		var siblings = [];
-		var sibling = elem.parentNode.firstChild;
-
-		// Loop through all sibling nodes
-		for ( ; sibling; sibling = sibling.nextSibling ) {
-			if ( sibling.nodeType === 1 && sibling !== elem ) {
-				siblings.push( sibling );
-			}
-		}
-
-		return siblings;
-
-	};
-
-	/**
 	 * Get closest DOM element up the tree that contains a class or data attribute
 	 * @param  {Element} elem The base element
 	 * @param  {String} selector The class or data attribute to look for
@@ -1317,90 +1327,96 @@ function makeArray( obj ) {
 	};
 
 	/**
-	 * Toggle a dropdown menu
+	 * Close all dropdown menus
+	 * @param {Object} options Custom settings
 	 * @public
-	 * @param  {Element} toggle Element that triggered the expand or collapse
-	 * @param  {Object} settings
-	 * @param  {Event} event
 	 */
-	drop.toggleDrop = function ( toggle, options, event ) {
+	drop.closeDrops = function () {
 
-		// Selectors and variables
-		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
-		var toggleMenu = toggle.nextElementSibling;
-		var toggleParent = toggle.parentNode;
-		var toggleSiblings = getSiblings(toggleParent);
+		// Get dropdowns
+		var drops = document.querySelectorAll( settings.selector );
 
-		// Add/remove '.active' class from dropdown item
-		toggle.classList.toggle( settings.toggleActiveClass );
-		toggleMenu.classList.toggle( settings.contentActiveClass );
-		toggleParent.classList.toggle( settings.toggleActiveClass );
-
-		// For each toggle, remove the active class
-		forEach(toggleSiblings, function (sibling) {
-			var siblingContent = sibling.children;
-			sibling.classList.remove( settings.toggleActiveClass );
-			forEach(siblingContent, function (content) {
-				content.classList.remove( settings.contentActiveClass );
-			});
+		// Close all the dropdowns
+		forEach(drops, function (drop) {
+			drop.classList.remove( settings.activeClass );
 		});
-
-		settings.callback( toggle ); // Run callbacks after drop toggle
 
 	};
 
 	/**
-	 * Close all dropdown menus
+	 * Open a dropdown menu
 	 * @public
-	 * @param  {Object} settings
+	 * @param  {Element} toggle  Element that triggered the expand or collapse
+	 * @param  {Object}  options Custom settings
 	 */
-	drop.closeDrops = function () {
+	drop.openDrop = function ( toggle, options ) {
 
 		// Selectors and variables
-		var dropToggle = document.querySelectorAll( settings.selectorDropdown + ' > a.' + settings.toggleActiveClass );
-		var dropWrapper = document.querySelectorAll( settings.selectorDropdown + '.' + settings.toggleActiveClass);
-		var dropContent = document.querySelectorAll( settings.selectorMenu + '.' + settings.contentActiveClass );
+		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
 
-		if ( dropToggle.length > 0 || dropWrapper.length > 0 || dropContent.length > 0 ) {
+		// Close any open dropdown menus
+		drop.closeDrops();
 
-			// For each dropdown toggle, remove '.active' class
-			forEach(dropToggle, function (toggle) {
-				toggle.classList.remove( settings.toggleActiveClass );
-			});
+		// Open the toggled dropdown menu
+		toggle.classList.add( settings.activeClass );
 
-			// For each dropdown toggle wrapper, remove '.active' class
-			forEach(dropWrapper, function (wrapper) {
-				wrapper.classList.remove( settings.toggleActiveClass );
-			});
-
-			// For each dropdown content area, remove '.active' class
-			forEach(dropContent, function (content) {
-				content.classList.remove( settings.contentActiveClass );
-			});
-
-			settings.callback(); // Run callbacks after drop close
-
-		}
+		// Run callbacks after drop toggle
+		settings.callback( toggle );
 
 	};
 
 	/**
 	 * Handle toggle and document click events
+	 * @param {Event} event
 	 * @private
 	 */
-	var eventHandler = function (event) {
+	var clickHandler = function (event) {
+
+		// Variables
 		var toggle = event.target;
-		var menu = getClosest( toggle, settings.selectorMenu );
-		if ( toggle !== document.documentElement && getClosest( toggle, settings.selectorMenu ) ) {
+		var menu = getClosest( toggle, settings.selector );
+
+		if ( menu ) {
 			// If dropdown menu, do nothing
 			return;
-		} else if ( toggle !== document.documentElement && getClosest( toggle, settings.selectorDropdown ) ) {
-			// If dropdown toggle element, toggle dropdown menu
-			event.preventDefault();
-			drop.toggleDrop(toggle, settings);
 		} else {
 			// If document body, close open dropdown menus
 			drop.closeDrops();
+		}
+
+	};
+
+	var focusHandler = function (event) {
+
+		// Variables
+		var target = event.target;
+		var toggle = getClosest( target, settings.selector );
+
+		// If focused element isn't dropdown, close all dropdowns and end
+		if ( !toggle ) {
+			drop.closeDrops();
+			return;
+		}
+
+		// If focused element is currently active dropdown, end
+		if ( toggle.classList.contains( settings.activeClass ) ) {
+			return;
+		}
+
+		// Otherwise, activate the dropdown
+		drop.openDrop(toggle, settings);
+
+	};
+
+	var hoverHandler = function (event) {
+
+		// Variables
+		var target = event.target;
+		var toggle = getClosest( target, settings.selector );
+
+		// If a dropdown menu, activate it
+		if ( toggle && !toggle.classList.contains( settings.activeClass ) ) {
+			drop.openDrop(toggle, settings); // Open this dropdown
 		}
 	};
 
@@ -1409,11 +1425,23 @@ function makeArray( obj ) {
 	 * @public
 	 */
 	drop.destroy = function () {
+
 		if ( !settings ) return;
+
+		// Remove init class
 		document.documentElement.classList.remove( settings.initClass );
-		document.removeEventListener('click', eventHandler, false);
+
+		// Remove event listeners
+		document.removeEventListener('click', clickHandler, false);
+		document.removeEventListener('focusin', focusHandler, false);
+		document.removeEventListener('mouseover', hoverHandler, false);
+
+		// Close all dropdowns
 		drop.closeDrops();
+
+		// Reset variables
 		settings = null;
+
 	};
 
 	/**
@@ -1431,18 +1459,15 @@ function makeArray( obj ) {
 
 		// Selectors and variables
 		settings = extend( defaults, options || {} ); // Merge user options with defaults
-
-		// Remove noJS class to deactivate base styles
-		var noJS = document.querySelector( '.' + settings.noJSClass );
-		if ( noJS ) {
-			noJS.classList.remove( settings.noJSClass );
-		}
+		var toggles = document.querySelectorAll( settings.selector + ' > a' );
 
 		// Add class to HTML element to activate conditional CSS
 		document.documentElement.classList.add( settings.initClass );
 
-		// Listen for all click events
-		document.addEventListener('click', eventHandler, false);
+		// Event listeners
+		document.addEventListener('click', clickHandler, false);
+		document.addEventListener('focusin', focusHandler, false);
+		document.addEventListener('mouseover', hoverHandler, false);
 
 	};
 
@@ -2838,8 +2863,7 @@ function makeArray( obj ) {
 });
 astro.init();
 drop.init({
-	selectorDropdown: '.menu-item-has-children',
-    selectorMenu: '.sub-menu'
+	selector: '.menu-item-has-children',
 });
 stickyFooter.init();
 

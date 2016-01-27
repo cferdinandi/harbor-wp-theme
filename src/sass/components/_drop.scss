@@ -81,6 +81,19 @@
 			color: $color-white;
 			text-decoration: none;
 		}
+
+
+		@media (max-width: $bp-large) {
+			.js-astro.js-drop &:hover {
+				background-color: transparent;
+				// color: darken( $color-primary, 15% );
+				text-decoration: underline;
+			}
+
+			.js-astro.js-drop & {
+				color: $color-white;
+			}
+		}
 	}
 
 	// .dropdown-basic:focus &,
@@ -122,7 +135,7 @@
 			clip: auto;
 			float: none;
 			height: auto;
-			margin: 0 0 calc-em(24px);
+			margin: 0 0 0 calc-em(24px);
 			overflow: visible;
 			padding: 0;
 			position: static;

@@ -61,6 +61,10 @@
 		global $post;
 		$post_id = $post_id ? $post_id : $post->ID;
 
+		// Check that feature is activated
+		$dev_options = keel_developer_options();
+		if ( !$dev_options['hero'] ) return false;
+
 		// Get hero
 		$hero = keel_get_hero_content( $post_id );
 		$page_header = get_post_meta( $post->ID, 'keel_page_header', true );

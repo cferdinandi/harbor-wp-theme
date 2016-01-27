@@ -1,5 +1,5 @@
 /*!
- * harbor v2.3.0: A free WordPress theme for animal and pet rescue organizations
+ * harbor v2.3.1: A free WordPress theme for animal and pet rescue organizations
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * https://github.com/cferdinandi/harbor-wp-theme
@@ -1690,7 +1690,19 @@ td {
   text-decoration: none;
 }
 
-/* line 89, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+@media (max-width: 60em) {
+  /* line 87, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+  .js-astro.js-drop .sub-menu a:hover, .js-astro.js-drop .sub-menu .link-block-styled:hover, .js-astro.js-drop .sub-menu .link-block:hover .link-block-styled, .link-block:hover .js-astro.js-drop .sub-menu .link-block-styled {
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  /* line 93, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+  .js-astro.js-drop .sub-menu a, .js-astro.js-drop .sub-menu .link-block-styled {
+    color: #ffffff;
+  }
+}
+
+/* line 102, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
 .menu-item-has-children:focus .sub-menu,
 .menu-item-has-children:hover .sub-menu,
 .menu-item-has-children.active .sub-menu {
@@ -1704,7 +1716,7 @@ td {
   width: auto;
 }
 
-/* line 101, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+/* line 114, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
 .js-drop .menu-item-has-children:focus .sub-menu, .js-drop
 .menu-item-has-children:hover .sub-menu, .js-drop
 .menu-item-has-children.active .sub-menu {
@@ -1712,7 +1724,7 @@ td {
 }
 
 @media (max-width: 40em) {
-  /* line 105, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+  /* line 118, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
   .js-astro.js-drop .menu-item-has-children:focus .sub-menu, .js-astro.js-drop
   .menu-item-has-children:hover .sub-menu, .js-astro.js-drop
   .menu-item-has-children.active .sub-menu {
@@ -1721,7 +1733,7 @@ td {
 }
 
 @media (max-width: 40em) {
-  /* line 116, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
+  /* line 129, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_drop.scss */
   .js-astro .sub-menu,
   .js-astro .menu-item-has-children.active .sub-menu {
     background-color: transparent;
@@ -1730,7 +1742,7 @@ td {
     clip: auto;
     float: none;
     height: auto;
-    margin: 0 0 1.5em;
+    margin: 0 0 0 1.5em;
     overflow: visible;
     padding: 0;
     position: static;

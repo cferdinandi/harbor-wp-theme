@@ -15,9 +15,6 @@
 	function keel_petfinder_api_get_settings() {
 		return array(
 
-			// General Settings
-			'newest_first' => true,
-
 			// Lists & Checkboxes
 			'class_prefix' => 'pf-',
 			'toggle_all' => 'Select/Unselect All',
@@ -783,8 +780,8 @@
 		// If there was an error, return null
 		if ( intval( $data['petfinder']['header']['status']['code']['$t'] ) !== 100 ) return null;
 
-		// If set to display newest first, reverse pet order
-		return ( $settings['newest_first'] ? array_reverse( $data['petfinder']['pets']['pet'] ) : $data['petfinder']['pets']['pet'] );
+		// Return the pet data
+		return $data['petfinder']['pets']['pet'];
 
 	}
 

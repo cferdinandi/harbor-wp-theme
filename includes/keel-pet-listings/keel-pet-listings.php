@@ -61,10 +61,12 @@
 
 
 	/**
-	 * Show all pets on pets archive page
+	 * Show all pets on pets archive page and update the sort order
 	 */
 	function keel_pet_listings_filter_pets_query( $query ) {
 		if ( !isset( $query->query['post_type'] ) || $query->query['post_type'] !== 'pets' ) return;
+		$options = keel_pet_listings_get_theme_options();
 		$query->set( 'posts_per_page', '-1' );
+		$query->set( 'order', ( $options['oldest_first'] ? 'ASC' : 'DESC' ) );
 	}
 	add_action( 'pre_get_posts', 'keel_pet_listings_filter_pets_query' );

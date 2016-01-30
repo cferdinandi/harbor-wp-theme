@@ -61,7 +61,6 @@
 				'textarea_rows' => 4,
 			)
 		); ?>
-<!-- 		<textarea class="large-text" type="text" name="keel_pet_listings_theme_options[page_content]" id="page_content" cols="50" rows="10" /><?php echo esc_textarea( $options['page_content'] ); ?></textarea> -->
 		<label class="description" for="page_content"><?php _e( 'Content to display at the top of the page where all of your available pets are listed', 'keel' ); ?></label>
 		<?php
 	}
@@ -79,6 +78,18 @@
 			<input name="keel_pet_listings_theme_options[adoption_form_text]" id="adoption_form_text" value="<?php echo esc_attr( $options['adoption_form_text'] ); ?>" />
 			<label class="description" for="adoption_form_text">
 				<?php _e( 'Text for the adoption form link, if URL is set.', 'keel' ); ?>
+			</label>
+		</div>
+		<?php
+	}
+
+	function keel_pet_listings_settings_field_oldest_first() {
+		$options = keel_pet_listings_get_theme_options();
+		?>
+		<div>
+			<label>
+				<input type="checkbox" name="keel_pet_listings_theme_options[oldest_first]" id="oldest_first" <?php checked( 'on', $options['oldest_first'] ); ?> />
+				<?php _e( 'Display the oldest animals first', 'keel' ); ?>
 			</label>
 		</div>
 		<?php
@@ -147,6 +158,7 @@
 			'page_content' => '',
 			'adoption_form_url' => '',
 			'adoption_form_text' => 'Fill out an adoption form',
+			'oldest_first' => '',
 			'filters_animal' => 'off',
 			'filters_breed' => 'off',
 			'filters_age' => 'off',
@@ -190,6 +202,9 @@
 
 		if ( isset( $input['adoption_form_text'] ) && ! empty( $input['adoption_form_text'] ) )
 			$output['adoption_form_text'] = wp_filter_nohtml_kses( $input['adoption_form_text'] );
+
+		if ( isset( $input['oldest_first'] ) )
+			$output['oldest_first'] = 'on';
 
 		if ( isset( $input['filters_animal'] ) )
 			$output['filters_animal'] = 'on';
@@ -307,6 +322,7 @@
 		add_settings_field( 'page_title', __( 'Page Title', 'keel' ), 'keel_pet_listings_settings_field_page_title', 'keel_pet_listings_theme_options', 'display' );
 		add_settings_field( 'page_content', __( 'Page Content', 'keel' ), 'keel_pet_listings_settings_field_page_content', 'keel_pet_listings_theme_options', 'display' );
 		add_settings_field( 'adoption_form', __( 'Adoption Form Link', 'keel' ), 'keel_pet_listings_settings_field_adoption_form', 'keel_pet_listings_theme_options', 'display' );
+		add_settings_field( 'oldest_first', __( 'Sort Order', 'keel' ), 'keel_pet_listings_settings_field_oldest_first', 'keel_pet_listings_theme_options', 'display' );
 		add_settings_field( 'filters', __( 'Filters', 'keel' ), 'keel_pet_listings_settings_field_filters', 'keel_pet_listings_theme_options', 'display' );
 	}
 	add_action( 'admin_init', 'keel_pet_listings_theme_options_init' );

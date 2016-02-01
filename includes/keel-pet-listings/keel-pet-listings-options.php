@@ -338,7 +338,7 @@
 		if ( !$dev_options['pets'] ) return;
 
 		// $theme_page = add_menu_page( __( 'Theme Options', 'keel' ), __( 'Theme Options', 'keel' ), 'edit_theme_options', 'keel_pet_listings_theme_options', 'keel_pet_listings_theme_options_render_page' );
-		$theme_page = add_submenu_page( 'edit.php?post_type=pets', __( 'Pet Listings Options', 'keel' ), __( 'Options', 'keel' ), 'edit_theme_options', 'keel_pet_listings_theme_options', 'keel_pet_listings_theme_options_render_page' );
+		$theme_page = add_submenu_page( 'edit.php?post_type=keel-pets', __( 'Pet Listings Options', 'keel' ), __( 'Options', 'keel' ), 'edit_theme_options', 'keel_pet_listings_theme_options', 'keel_pet_listings_theme_options_render_page' );
 
 	}
 	add_action( 'admin_menu', 'keel_pet_listings_theme_options_add_page' );

@@ -25,7 +25,7 @@
 
 		<header>
 			<h1 class="no-margin-bottom"><?php the_title(); ?></h1>
-			<aside><p><a href="<?php echo get_post_type_archive_link( 'pets' ); ?>">&larr; <?php _e( 'Back to All Pets', 'keel' ); ?></a></p></aside>
+			<aside><p><a href="<?php echo get_post_type_archive_link( 'keel-pets' ); ?>">&larr; <?php _e( 'Back to All Pets', 'keel' ); ?></a></p></aside>
 		</header>
 
 		<?php

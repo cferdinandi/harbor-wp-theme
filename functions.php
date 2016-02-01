@@ -169,7 +169,13 @@
 	 * @return string       New read more string
 	 */
 	function keel_excerpt_more( $more ) {
-		return '... <a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'keel') . '</a>';
+		return
+			'... <a href="'. get_permalink( get_the_ID() ) . '">' .
+			sprintf(
+				__( 'Ready more %s', 'keel' ),
+				'<span class="screen-reader">of ' . get_the_title() . '</span>'
+			) .
+			'</a>';
 	}
 	add_filter( 'excerpt_more', 'keel_excerpt_more' );
 

@@ -38,7 +38,14 @@ $options = keel_get_post_options();
 
 	<?php
 		// The page or post content
-		the_content( '<p>' . __( 'Read More...', 'keel' ) . '</p>' );
+		the_content(
+			'<p>' .
+			sprintf(
+				__( 'Read More%s...', 'keel' ),
+				'<span class="screen-reader"> of ' . get_the_title() . '</span>'
+			) .
+			'</p>'
+		);
 	?>
 
 

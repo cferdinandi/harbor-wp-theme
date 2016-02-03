@@ -11,8 +11,8 @@ get_header(); ?>
 <?php if (have_posts()) : ?>
 
 	<?php
-		// Create pet listings grid
-		if ( !is_post_type_archive( 'keel-pets' ) ) :
+		// Skip if pet listings or events
+		if ( !is_post_type_archive( array( 'keel-pets', 'keel-events' ) ) ) :
 	?>
 		<header>
 			<h1>
@@ -28,13 +28,6 @@ get_header(); ?>
 					<?php _e( 'Year:', 'keel' ); ?> <?php the_time('Y'); ?>...
 				<?php elseif ( is_author() ) : // If this is an author archive ?>
 					<?php _e( 'Author Archive', 'keel' ); ?>
-				<?php elseif ( is_post_type_archive( 'keel-pets' ) ) : // If this is the Pets archive ?>
-					<?php
-						$options = keel_pet_listings_get_theme_options();
-						if ( $options ) {
-							_e( $options['page_title'], 'keel' );
-						}
-					?>
 				<?php elseif (isset($_GET['paged']) && !empty($_GET['paged'])) : // If this is a paged archive ?>
 					<?php _e( 'Blog Archive', 'keel' ); ?>
 				<?php endif; ?>
@@ -50,9 +43,9 @@ get_header(); ?>
 			if ( is_post_type_archive( 'keel-pets' ) ) :
 		?>
 			<?php
-				$options = keel_pet_listings_get_theme_options();
+				$pets_options = keel_pet_listings_get_theme_options();
 				$filters = get_transient( 'keel_petfinder_api_filters' );
-				$has_filters = $options['filters_animal'] === 'on' || $options['filters_breed'] === 'on' || $options['filters_age'] === 'on' || $options['filters_size'] === 'on' || $options['filters_gender'] === 'on' || $options['filters_other'] === 'on' ? true : false;
+				$has_filters = $pets_options['filters_animal'] === 'on' || $pets_options['filters_breed'] === 'on' || $pets_options['filters_age'] === 'on' || $pets_options['filters_size'] === 'on' || $pets_options['filters_gender'] === 'on' || $pets_options['filters_other'] === 'on' ? true : false;
 				$grid_content = $has_filters ? 'grid-three-fourths petfinder-content' : 'grid-full';
 			?>
 			<div class="row">
@@ -61,42 +54,42 @@ get_header(); ?>
 						<div class="petfinder-filters" id="petfinder-filters">
 							<span class="screen-reader">Use these checkboxes to filter the list of available animals:</span>
 
-							<?php if ( $options['filters_animal'] === 'on' ) : ?>
+							<?php if ( $pets_options['filters_animal'] === 'on' ) : ?>
 								<div class="margin-bottom">
 									<h2 class="no-padding-top">Animal</h2>
 									<?php echo $filters['checkboxes']['animals']; ?>
 								</div>
 							<?php endif; ?>
 
-							<?php if ( $options['filters_breed'] === 'on' ) : ?>
+							<?php if ( $pets_options['filters_breed'] === 'on' ) : ?>
 								<div class="margin-bottom">
 									<h2 class="no-padding-top">Breed</h2>
 									<?php echo $filters['checkboxes']['breeds']; ?>
 								</div>
 							<?php endif; ?>
 
-							<?php if ( $options['filters_age'] === 'on' ) : ?>
+							<?php if ( $pets_options['filters_age'] === 'on' ) : ?>
 								<div class="margin-bottom">
 									<h2 class="no-padding-top">Age</h2>
 									<?php echo $filters['checkboxes']['ages']; ?>
 								</div>
 							<?php endif; ?>
 
-							<?php if ( $options['filters_size'] === 'on' ) : ?>
+							<?php if ( $pets_options['filters_size'] === 'on' ) : ?>
 								<div class="margin-bottom">
 									<h2 class="no-padding-top">Size</h2>
 									<?php echo $filters['checkboxes']['sizes']; ?>
 								</div>
 							<?php endif; ?>
 
-							<?php if ( $options['filters_gender'] === 'on' ) : ?>
+							<?php if ( $pets_options['filters_gender'] === 'on' ) : ?>
 								<div class="margin-bottom">
 									<h2 class="no-padding-top">Gender</h2>
 									<?php echo $filters['checkboxes']['genders']; ?>
 								</div>
 							<?php endif; ?>
 
-							<?php if ( $options['filters_other'] === 'on' ) : ?>
+							<?php if ( $pets_options['filters_other'] === 'on' ) : ?>
 								<div class="margin-bottom">
 									<h2 class="no-padding-top">Other Options</h2>
 									<?php echo $filters['checkboxes']['options']; ?>
@@ -112,18 +105,34 @@ get_header(); ?>
 
 					<header>
 						<h1>
-							<?php
-								$options = keel_pet_listings_get_theme_options();
-								if ( $options ) {
-									_e( esc_attr( $options['page_title'], 'keel' ) );
-								}
-							?>
+							<?php echo esc_html( $pets_options['page_title'] ); ?>
 						</h1>
 					</header>
 
-					<?php echo stripslashes( $options['page_content'] ); ?>
+					<?php echo stripslashes( $pets_options['page_content'] ); ?>
 
 					<div class="row" data-right-height>
+		<?php endif; ?>
+
+		<?php if ( is_post_type_archive( 'keel-events' ) ) : ?>
+
+			<?php
+				$events_options = keel_events_get_theme_options();
+				$events_date = get_query_var( 'date' );
+
+				if ( !empty( $events_date ) ) :
+			?>
+
+				<header>
+					<h1>
+						<?php echo esc_html( $events_options['page_title_' . $events_date] ); ?>
+					</h1>
+				</header>
+
+				<?php echo stripslashes( $events_options['page_content_' . $events_date] ); ?>
+
+			<?php endif; ?>
+
 		<?php endif; ?>
 
 					<?php

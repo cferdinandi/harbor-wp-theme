@@ -304,8 +304,8 @@
 		// $title - Section title
 		// $callback - // Section callback (we don't want anything)
 		// $page - // Menu slug, used to uniquely identify the page. See keel_pet_listings_theme_options_add_page().
-		add_settings_section( 'petfinder', 'Petfinder API Settings',  '__return_false', 'keel_pet_listings_theme_options' );
-		add_settings_section( 'display', 'Display Settings',  '__return_false', 'keel_pet_listings_theme_options' );
+		add_settings_section( 'petfinder', __( 'Petfinder API', 'keel' ),  '__return_false', 'keel_pet_listings_theme_options' );
+		add_settings_section( 'page_content', __( 'Page Content', 'keel' ),  '__return_false', 'keel_pet_listings_theme_options' );
 
 
 		// Register our individual settings fields
@@ -318,12 +318,12 @@
 		add_settings_field( 'petfinder_api_developer_key', __( 'Developer Key', 'keel' ), 'keel_pet_listings_settings_field_developer_key', 'keel_pet_listings_theme_options', 'petfinder' );
 		add_settings_field( 'petfinder_api_shelter_id', __( 'Shelter ID', 'keel' ), 'keel_pet_listings_settings_field_shelter_id', 'keel_pet_listings_theme_options', 'petfinder' );
 		add_settings_field( 'petfinder_api_count', __( 'Count', 'keel' ), 'keel_pet_listings_settings_field_count', 'keel_pet_listings_theme_options', 'petfinder' );
-		add_settings_field( 'slug', __( 'URL Path', 'keel' ), 'keel_pet_listings_settings_field_slug', 'keel_pet_listings_theme_options', 'display' );
-		add_settings_field( 'page_title', __( 'Page Title', 'keel' ), 'keel_pet_listings_settings_field_page_title', 'keel_pet_listings_theme_options', 'display' );
-		add_settings_field( 'page_content', __( 'Page Content', 'keel' ), 'keel_pet_listings_settings_field_page_content', 'keel_pet_listings_theme_options', 'display' );
-		add_settings_field( 'adoption_form', __( 'Adoption Form Link', 'keel' ), 'keel_pet_listings_settings_field_adoption_form', 'keel_pet_listings_theme_options', 'display' );
-		add_settings_field( 'oldest_first', __( 'Sort Order', 'keel' ), 'keel_pet_listings_settings_field_oldest_first', 'keel_pet_listings_theme_options', 'display' );
-		add_settings_field( 'filters', __( 'Filters', 'keel' ), 'keel_pet_listings_settings_field_filters', 'keel_pet_listings_theme_options', 'display' );
+		add_settings_field( 'slug', __( 'URL Path', 'keel' ), 'keel_pet_listings_settings_field_slug', 'keel_pet_listings_theme_options', 'page_content' );
+		add_settings_field( 'page_title', __( 'Page Title', 'keel' ), 'keel_pet_listings_settings_field_page_title', 'keel_pet_listings_theme_options', 'page_content' );
+		add_settings_field( 'page_content', __( 'Page Content', 'keel' ), 'keel_pet_listings_settings_field_page_content', 'keel_pet_listings_theme_options', 'page_content' );
+		add_settings_field( 'adoption_form', __( 'Adoption Form Link', 'keel' ), 'keel_pet_listings_settings_field_adoption_form', 'keel_pet_listings_theme_options', 'page_content' );
+		add_settings_field( 'oldest_first', __( 'Sort Order', 'keel' ), 'keel_pet_listings_settings_field_oldest_first', 'keel_pet_listings_theme_options', 'page_content' );
+		add_settings_field( 'filters', __( 'Filters', 'keel' ), 'keel_pet_listings_settings_field_filters', 'keel_pet_listings_theme_options', 'page_content' );
 	}
 	add_action( 'admin_init', 'keel_pet_listings_theme_options_init' );
 

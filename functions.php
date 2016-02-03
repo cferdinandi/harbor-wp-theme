@@ -17,6 +17,7 @@
 			'footer' => true,
 			'pets' => true,
 			'paypal' => true,
+			'events' => true,
 			'gallery' => true,
 			'hero' => true,
 			'page_width' => false,
@@ -169,10 +170,19 @@
 	 * @return string       New read more string
 	 */
 	function keel_excerpt_more( $more ) {
+
+		global $post_type;
+
+		// If events post type
+		if ( 'keel-events' === $post_type ) {
+			return '...';
+		}
+
+		// Else
 		return
 			'... <a href="'. get_permalink( get_the_ID() ) . '">' .
 			sprintf(
-				__( 'Ready more %s', 'keel' ),
+				__( 'Read more %s', 'keel' ),
 				'<span class="screen-reader">of ' . get_the_title() . '</span>'
 			) .
 			'</a>';
@@ -566,6 +576,7 @@
 	require_once( dirname( __FILE__) . '/includes/keel-page-hero/keel-page-hero.php' ); // Page hero settings
 	require_once( dirname( __FILE__) . '/includes/keel-paypal-donations/keel-paypal-donations.php' ); // Paypal donations
 	require_once( dirname( __FILE__) . '/includes/keel-pet-listings/keel-pet-listings.php' ); // Pet listings
+	require_once( dirname( __FILE__) . '/includes/keel-events/keel-events.php' ); // Events
 	require_once( dirname( __FILE__) . '/includes/keel-photoswipe/keel-photoswipe.php' ); // PhotoSwipe.js image galleries
 	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-button-shortcode.php' ); // Button links shortcode
 	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-svg-shortcode.php' ); // Inline SVG shortcode

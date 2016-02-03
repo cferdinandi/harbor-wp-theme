@@ -23,7 +23,7 @@
 		$labels = array(
 			'name'               => _x( 'Pets', 'post type general name', 'keel' ),
 			'singular_name'      => _x( 'Pet', 'post type singular name', 'keel' ),
-			'add_new'            => _x( 'Add New', 'course', 'keel' ),
+			'add_new'            => _x( 'Add New', 'keel-pets', 'keel' ),
 			'add_new_item'       => __( 'Add New Pet', 'keel' ),
 			'edit_item'          => __( 'Edit Pet', 'keel' ),
 			'new_item'           => __( 'New Pet', 'keel' ),

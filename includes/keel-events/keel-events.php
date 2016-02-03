@@ -538,10 +538,10 @@
 	 */
 	function keel_events_generate_ical_invite() {
 
-		if ( !get_query_var( 'ical' ) && !isset( $_GET['ical'] ) ) return;
+		if ( !get_query_var( 'ical' ) ) return;
 
 		// Variables
-		$event_id = ( empty( get_query_var( 'ical' ) ) ? $_GET['ical'] : get_query_var( 'ical' ) );
+		$event_id = get_query_var( 'ical' );
 		$event = get_post( $event_id );
 		$start_date = get_post_meta( $event_id, 'keel_events_start_date', true ); // Event start date
 		$end_date = get_post_meta( $event_id, 'keel_events_end_date', true ); // Event end date

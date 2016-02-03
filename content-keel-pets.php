@@ -1,7 +1,7 @@
 <?php
 
 /**
- * content-pets.php
+ * content-keel-pets.php
  * Template for "pets" custom post type content.
  */
 

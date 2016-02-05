@@ -41,7 +41,11 @@
 			'public'        => true,
 			// 'menu_position' => 5,
 			'menu_icon'     => 'dashicons-calendar-alt',
-			// 'supports'      => array(),
+			'supports'      => array(
+				'title',
+				'editor',
+				'revisions',
+			),
 			'has_archive'   => true,
 			'rewrite' => array(
 				'slug' => $options['page_slug'],
@@ -69,11 +73,9 @@
 	 */
 	function keel_events_metabox_defaults() {
 		return array(
-			'date_start' => '',
 			'time_start_hour' => '',
 			'time_start_minutes' => '',
 			'time_start_ampm' => '',
-			'date_end' => '',
 			'time_end_hour' => '',
 			'time_end_minutes' => '',
 			'time_end_ampm' => '',
@@ -116,7 +118,7 @@
 			<!-- Start Date -->
 			<div>
 				<label for="keel_events_date_start"><?php _e( 'Start Date', 'keel' ); ?></label>
-				<input type="text" class="medium-text keel-events-datepicker" id="keel_events_date_start" name="keel_events_date_start" value="<?php echo ( empty( $start_date ) ? '' : esc_attr( date( 'm/d/Y', $start_date ) ) ); ?>" placeholder="MM/DD/YYYY">
+				<input type="text" class="medium-text keel-events-datepicker" id="keel_events_date_start" name="keel_events_date_start" value="<?php echo ( empty( $start_date ) ? esc_attr( date( 'm/d/Y', current_time( 'timestamp' ) ) ) : esc_attr( date( 'm/d/Y', $start_date ) ) ); ?>" placeholder="MM/DD/YYYY">
 
 				@
 
@@ -126,14 +128,13 @@
 					<?php
 						foreach ( range( 1, 12 ) as $num ) :
 					?>
-						<option <?php selected( $details['time_start_hour'], $num ); ?> value="<?php echo esc_attr( $num ); ?>"><?php echo esc_html( $num ); ?></option>
+						<option <?php selected( $details['time_start_hour'], $num ); if ( empty( $details['time_start_hour'] ) && $num === 8 ) { echo 'selected'; } ?> value="<?php echo esc_attr( $num ); ?>"><?php echo esc_html( $num ); ?></option>
 					<?php endforeach; ?>
 				</select>
 
 				<label class="screen-reader-text" for="keel_events_time_start_minutes"><?php _e( 'Start Time Minutes', 'keel' ); ?></label>
 				<select id="keel_events_time_start_minutes" name="keel_events[time_start_minutes]">
-					<option <?php selected( $details['time_start_minutes'], '' ); ?> value="">MM</option>
-					<option <?php selected( $details['time_start_minutes'], '00' ); ?> value="00">00</option>
+					<option <?php selected( $details['time_start_minutes'], '00' ); selected( $details['time_start_minutes'], '' ); ?> value="00">00</option>
 					<option <?php selected( $details['time_start_minutes'], '15' ); ?> value="15">15</option>
 					<option <?php selected( $details['time_start_minutes'], '30' ); ?> value="30">30</option>
 					<option <?php selected( $details['time_start_minutes'], '45' ); ?> value="45">45</option>
@@ -141,8 +142,7 @@
 
 				<label class="screen-reader-text" for="keel_events_time_start_ampm"><?php _e( 'Start Time AM/PM', 'keel' ); ?></label>
 				<select id="keel_events_time_start_ampm" name="keel_events[time_start_ampm]">
-					<option <?php selected( $details['time_start_ampm'], '' ); ?> value="">am/pm</option>
-					<option <?php selected( $details['time_start_ampm'], 'am' ); ?> value="am">am</option>
+					<option <?php selected( $details['time_start_ampm'], 'am' ); selected( $details['time_start_ampm'], '' ); ?> value="am">am</option>
 					<option <?php selected( $details['time_start_ampm'], 'pm' ); ?> value="pm">pm</option>
 				</select>
 			</div>
@@ -161,14 +161,13 @@
 					<?php
 						foreach ( range( 1, 12 ) as $num ) :
 					?>
-						<option <?php selected( $details['time_end_hour'], $num ); ?> value="<?php echo esc_attr( $num ); ?>"><?php echo esc_html( $num ); ?></option>
+						<option <?php selected( $details['time_start_hour'], $num ); if ( empty( $details['time_end_hour'] ) && $num === 5 ) { echo 'selected'; } ?> value="<?php echo esc_attr( $num ); ?>"><?php echo esc_html( $num ); ?></option>
 					<?php endforeach; ?>
 				</select>
 
 				<label class="screen-reader-text" for="keel_events_time_end_minutes"><?php _e( 'End Time Minutes', 'keel' ); ?></label>
 				<select id="keel_events_time_end_minutes" name="keel_events[time_end_minutes]">
-					<option <?php selected( $details['time_end_minutes'], '' ); ?> value="">MM</option>
-					<option <?php selected( $details['time_start_minutes'], '00' ); ?> value="00">00</option>
+					<option <?php selected( $details['time_start_minutes'], '00' ); selected( $details['time_end_minutes'], '' ); ?> value="00">00</option>
 					<option <?php selected( $details['time_start_minutes'], '15' ); ?> value="15">15</option>
 					<option <?php selected( $details['time_start_minutes'], '30' ); ?> value="30">30</option>
 					<option <?php selected( $details['time_start_minutes'], '45' ); ?> value="45">45</option>
@@ -176,9 +175,8 @@
 
 				<label class="screen-reader-text" for="keel_events_time_end_ampm"><?php _e( 'End Time AM/PM', 'keel' ); ?></label>
 				<select id="keel_events_time_end_ampm" name="keel_events[time_end_ampm]">
-					<option <?php selected( $details['time_end_ampm'], '' ); ?> value="">am/pm</option>
-					<option <?php selected( $details['time_end_ampm'], 'am' ); ?> value="am">am</option>
-					<option <?php selected( $details['time_end_ampm'], 'pm' ); ?> value="pm">pm</option>
+					<option <?php selected( $details['time_start_ampm'], 'am' ); ?> value="am">am</option>
+					<option <?php selected( $details['time_start_ampm'], 'pm' ); selected( $details['time_end_ampm'], '' ); ?> value="pm">pm</option>
 				</select>
 			</div>
 			<br>
@@ -338,6 +336,115 @@
 
 
 	/**
+	 * Save events data to revisions
+	 * @param  Number $post_id The post ID
+	 */
+	function keel_events_save_revisions( $post_id ) {
+
+		// Check if it's a revision
+		$parent_id = wp_is_post_revision( $post_id );
+
+		// If is revision
+		if ( $parent_id ) {
+
+			// Get the data
+			$parent = get_post( $parent_id );
+			$event_start_date = get_post_meta( $parent->ID, 'keel_events_start_date', true );
+			$event_end_date = get_post_meta( $parent->ID, 'keel_events_end_date', true );
+			$event_details = get_post_meta( $parent->ID, 'keel_events_details', true );
+
+			// If data exists, add to revision
+			if ( !empty( $event_start_date ) ) {
+				add_metadata( 'post', $post_id, 'keel_events_start_date', $event_start_date );
+			}
+
+			if ( !empty( $event_end_date ) ) {
+				add_metadata( 'post', $post_id, 'keel_events_end_date', $event_end_date );
+			}
+
+			if ( !empty( $event_details ) && is_array( $event_details ) ) {
+				$event_defaults = keel_events_metabox_defaults();
+				foreach ( $event_defaults as $key => $value ) {
+					if ( array_key_exists( $key, $event_details ) ) {
+						add_metadata( 'post', $post_id, 'keel_events_details_' . $key, $event_details[$key] );
+					}
+				}
+			}
+
+		}
+
+	}
+	add_action( 'save_post', 'keel_events_save_revisions' );
+
+
+
+	/**
+	 * Restore events data with post revisions
+	 * @param  Number $post_id     The post ID
+	 * @param  Number $revision_id The revision ID
+	 */
+	function keel_events_restore_revisions( $post_id, $revision_id ) {
+
+		// Variables
+		$post = get_post( $post_id );
+		$revision = get_post( $revision_id );
+		$event_start_date = get_metadata( 'post', $revision->ID, 'keel_events_start_date', true );
+		$event_end_date = get_metadata( 'post', $revision->ID, 'keel_events_end_date', true );
+		$event_defaults = keel_events_metabox_defaults();
+		$event_details = array();
+
+		// Update content
+		if ( !empty( $event_start_date ) ) {
+			update_post_meta( $post_id, 'keel_events_start_date', $event_start_date );
+		}
+		if ( !empty( $event_end_date ) ) {
+			update_post_meta( $post_id, 'keel_events_end_date', $event_end_date );
+		}
+		foreach ( $event_defaults as $key => $value ) {
+			$event_detail_revision = get_metadata( 'post', $revision->ID, 'keel_events_details_' . $key, true );
+			if ( isset( $event_detail_revision ) ) {
+				$event_details[$key] = $event_detail_revision;
+			}
+		}
+		update_post_meta( $post_id, 'keel_events_details', $event_details );
+
+	}
+	add_action( 'wp_restore_post_revision', 'keel_events_restore_revisions', 10, 2 );
+
+
+
+	/**
+	 * Get the data to display on the revisions page
+	 * @param  Array $fields The fields
+	 * @return Array The fields
+	 */
+	function keel_events_get_revisions_fields( $fields ) {
+		$event_defaults = keel_events_metabox_defaults();
+		$fields['keel_events_start_date'] = 'Event Start Date';
+		$fields['keel_events_end_date'] = 'Event End Date';
+		foreach ( $event_defaults as $key => $value ) {
+			$fields['keel_events_details_' . $key] = ucfirst( $key );
+		}
+		return $fields;
+	}
+	add_filter( '_wp_post_revision_fields', 'keel_events_get_revisions_fields' );
+
+
+
+	/**
+	 * Display the data on the revisions page
+	 * @param  String|Array $value The field value
+	 * @param  Array        $field The field
+	 */
+	function keel_events_display_revisions_fields( $value, $field ) {
+		global $revision;
+		return get_metadata( 'post', $revision->ID, $field, true );
+	}
+	add_filter( '_wp_post_revision_field_my_meta', 'keel_events_display_revisions_fields', 10, 2 );
+
+
+
+	/**
 	 * Load jQuery date-picker
 	 */
 	function keel_events_load_cpt_events_scripts() {
@@ -367,18 +474,26 @@
 		if ( $query->query['date'] === 'past' ) {
 			//Add our meta query to the original meta queries
 			$meta_query[] = array(
-				'relation' => 'OR',
+				'relation' => 'AND',
 				array(
-					'key' => 'keel_events_start_date',
-					'value' => strtotime( 'today', current_time( 'timestamp' ) ),
-					'compare' => '<',
-					'type' => 'NUMERIC',
+					'relation' => 'OR',
+					array(
+						'key' => 'keel_events_start_date',
+						'value' => strtotime( 'today', current_time( 'timestamp' ) ),
+						'compare' => '<',
+						'type' => 'NUMERIC',
+					),
+					array(
+						'key' => 'keel_events_end_date',
+						'value' => strtotime( 'today', current_time( 'timestamp' ) ),
+						'compare' => '<',
+						'type' => 'NUMERIC',
+					),
 				),
 				array(
-					'key' => 'keel_events_end_date',
-					'value' => strtotime( 'today', current_time( 'timestamp' ) ),
-					'compare' => '<',
-					'type' => 'NUMERIC',
+					'key' => 'keel_events_start_date',
+					'value' => array(''),
+					'compare' => 'NOT IN',
 				),
 			);
 			$query->set( 'meta_query', $meta_query );
@@ -391,18 +506,26 @@
 		if ( $query->query['date'] === 'upcoming' ) {
 			//Add our meta query to the original meta queries
 			$meta_query[] = array(
-				'relation' => 'OR',
+				'relation' => 'AND',
 				array(
-					'key' => 'keel_events_start_date',
-					'value' => strtotime( 'today', current_time( 'timestamp' ) ),
-					'compare' => '>=',
-					'type' => 'NUMERIC',
+					'relation' => 'OR',
+					array(
+						'key' => 'keel_events_start_date',
+						'value' => strtotime( 'today', current_time( 'timestamp' ) ),
+						'compare' => '>=',
+						'type' => 'NUMERIC',
+					),
+					array(
+						'key' => 'keel_events_end_date',
+						'value' => strtotime( 'today', current_time( 'timestamp' ) ),
+						'compare' => '>=',
+						'type' => 'NUMERIC',
+					),
 				),
 				array(
-					'key' => 'keel_events_end_date',
-					'value' => strtotime( 'today', current_time( 'timestamp' ) ),
-					'compare' => '>=',
-					'type' => 'NUMERIC',
+					'key' => 'keel_events_start_date',
+					'value' => array(''),
+					'compare' => 'NOT IN',
 				),
 			);
 			$query->set( 'meta_query', $meta_query );

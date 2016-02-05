@@ -13,11 +13,11 @@
 		<?php
 	}
 
-	function keel_paypal_donations_settings_field_currency() {
+	function keel_paypal_donations_settings_field_notify_url() {
 		$options = keel_paypal_donations_get_theme_options();
 		?>
-		<input type="text" name="keel_paypal_donations_theme_options[currency]" id="currency" value="<?php echo esc_attr( $options['currency'] ); ?>" />
-		<label class="description" for="currency"><?php _e( 'Currency prefix to use before amounts', 'keel' ); ?></label>
+		<input type="text" name="keel_paypal_donations_theme_options[notify_url]" id="notify_url" value="<?php echo esc_attr( $options['notify_url'] ); ?>" />
+		<label class="description" for="notify_url"><?php printf( __( 'Notification URL for %sPayPal IPN%s [optional]', 'keel' ), '<a href="https://developer.paypal.com/docs/classic/products/instant-payment-notification/">', '</a>' ); ?></label>
 		<?php
 	}
 
@@ -33,6 +33,14 @@
 			<input type="text" name="keel_paypal_donations_theme_options[heading_impact]" id="heading_impact" value="<?php echo esc_attr( $options['heading_impact'] ); ?>" />
 			<label class="description" for="heading_impact"><?php _e( 'Table heading for the impact of that amount', 'keel' ); ?></label>
 		</div>
+		<?php
+	}
+
+	function keel_paypal_donations_settings_field_currency() {
+		$options = keel_paypal_donations_get_theme_options();
+		?>
+		<input type="text" name="keel_paypal_donations_theme_options[currency]" id="currency" value="<?php echo esc_attr( $options['currency'] ); ?>" />
+		<label class="description" for="currency"><?php _e( 'Currency prefix to use before amounts', 'keel' ); ?></label>
 		<?php
 	}
 
@@ -121,9 +129,10 @@
 		$saved = (array) get_option( 'keel_paypal_donations_theme_options' );
 		$defaults = array(
 			'email' => '',
-			'currency' => '$',
+			'notify_url' => '',
 			'heading_amount' => 'Amount',
 			'heading_impact' => 'Impact',
+			'currency' => '$',
 			'show_other' => 'on',
 			'show_in_honor' => 'on',
 			'in_honor' => 'Make donation in honor or memory of:',
@@ -155,14 +164,17 @@
 		if ( isset( $input['email'] ) && ! empty( $input['email'] ) )
 			$output['email'] = wp_filter_nohtml_kses( $input['email'] );
 
-		if ( isset( $input['currency'] ) && ! empty( $input['currency'] ) )
-			$output['currency'] = wp_filter_nohtml_kses( $input['currency'] );
+		if ( isset( $input['notify_url'] ) && ! empty( $input['notify_url'] ) )
+			$output['notify_url'] = wp_filter_nohtml_kses( $input['notify_url'] );
 
 		if ( isset( $input['heading_amount'] ) && ! empty( $input['heading_amount'] ) )
 			$output['heading_amount'] = wp_filter_nohtml_kses( $input['heading_amount'] );
 
 		if ( isset( $input['heading_impact'] ) && ! empty( $input['heading_impact'] ) )
 			$output['heading_impact'] = wp_filter_nohtml_kses( $input['heading_impact'] );
+
+		if ( isset( $input['currency'] ) && ! empty( $input['currency'] ) )
+			$output['currency'] = wp_filter_nohtml_kses( $input['currency'] );
 
 		if ( !isset( $input['show_other'] ) || empty( $input['show_other'] ) )
 			$output['show_other'] = 'off';
@@ -218,7 +230,7 @@
 			<?php endif; ?>
 			<?php settings_errors(); ?>
 			<p><?php printf( __( 'You can display your donations form on any page by using the %s shortcode. You can also create one-off PayPal donation buttons using the %s.', 'keel' ), '<code>[paypal_donations_form]</code>', '<code>[paypal_donations_button]</code>' ); ?></p>
-			<p><?php printf( __( ' Example: %s. Only %s is required. All other fields are options. %s makes the donation recurring. %s is what is displayed on PayPal.com.', 'keel' ), '<code>[paypal_donations_button amount="25" label="Donate $25" recurring="true" description="Donate $25 to the Special Fund"]</code>', '<code>amount</code>', '<code>recurring="true"</code>', '<code>description</code>' ); ?></p>
+			<p><?php printf( __( ' Example: %s. Only %s is required. All other fields are options. %s makes the donation recurring. %s is what is displayed on PayPal.com.', 'keel' ), '<code>[paypal_donations_button amount="25" label="Donate $25" recurring="true" description="Donate $25 to the Special Fund" notify_url="http://example.com/12345"]</code>', '<code>amount</code>', '<code>recurring="true"</code>', '<code>description</code>' ); ?></p>
 			<form method="post" action="options.php">
 				<?php
 					settings_fields( 'keel_paypal_donations_options' );
@@ -277,43 +289,29 @@
 		$options = keel_paypal_donations_get_theme_options();
 
 		// Register a setting and its sanitization callback
-		// register_setting( $option_group, $option_name, $sanitize_callback );
-		// $option_group - A settings group name.
-		// $option_name - The name of an option to sanitize and save.
-		// $sanitize_callback - A callback function that sanitizes the option's value.
 		register_setting( 'keel_paypal_donations_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_validate' );
 
-
-		// Register our settings field group
-		// add_settings_section( $id, $title, $callback, $page );
-		// $id - Unique identifier for the settings section
-		// $title - Section title
-		// $callback - // Section callback (we don't want anything)
-		// $page - // Menu slug, used to uniquely identify the page. See keel_paypal_donations_theme_options_add_page().
+		// General
 		add_settings_section( 'general', 'General Settings',  '__return_false', 'keel_paypal_donations_theme_options' );
-		add_settings_section( 'details', 'Form Details',  '__return_false', 'keel_paypal_donations_theme_options' );
-		add_settings_section( 'amounts', 'Donation Values',  '__return_false', 'keel_paypal_donations_theme_options' );
-
-
-		// Register our individual settings fields
-		// add_settings_field( $id, $title, $callback, $page, $section );
-		// $id - Unique identifier for the field.
-		// $title - Setting field title.
-		// $callback - Function that creates the field (from the Theme Option Fields section).
-		// $page - The menu page on which to display this field.
-		// $section - The section of the settings page in which to show the field.
-		// update_option( 'keel_paypal_donations_theme_options', '' );
 		add_settings_field( 'email', __( 'PayPal Account ID', 'keel' ), 'keel_paypal_donations_settings_field_email', 'keel_paypal_donations_theme_options', 'general' );
-		add_settings_field( 'currency', __( 'Currency', 'keel' ), 'keel_paypal_donations_settings_field_currency', 'keel_paypal_donations_theme_options', 'general' );
+		add_settings_field( 'notify_url', __( 'Notification URL', 'keel' ), 'keel_paypal_donations_settings_field_notify_url', 'keel_paypal_donations_theme_options', 'general' );
+
+		// Details
+		add_settings_section( 'details', 'Form Details',  '__return_false', 'keel_paypal_donations_theme_options' );
 		add_settings_field( 'headings', __( 'Table Headings', 'keel' ), 'keel_paypal_donations_settings_field_headings', 'keel_paypal_donations_theme_options', 'details' );
+		add_settings_field( 'currency', __( 'Currency', 'keel' ), 'keel_paypal_donations_settings_field_currency', 'keel_paypal_donations_theme_options', 'details' );
 		add_settings_field( 'show_other', __( 'Other Amount', 'keel' ), 'keel_paypal_donations_settings_field_show_other', 'keel_paypal_donations_theme_options', 'details' );
 		add_settings_field( 'in_honor', __( 'In Honor/Memory', 'keel' ), 'keel_paypal_donations_settings_field_show_in_honor', 'keel_paypal_donations_theme_options', 'details' );
 		add_settings_field( 'recurring', __( 'Recurring Donations', 'keel' ), 'keel_paypal_donations_settings_field_show_recurring', 'keel_paypal_donations_theme_options', 'details' );
 		add_settings_field( 'donate', __( 'Donate Button', 'keel' ), 'keel_paypal_donations_settings_field_donate_text', 'keel_paypal_donations_theme_options', 'details' );
 		add_settings_field( 'success_link', __( 'Success URL', 'keel' ), 'keel_paypal_donations_settings_field_success_link', 'keel_paypal_donations_theme_options', 'details' );
+
+		// Amounts
+		add_settings_section( 'amounts', 'Donation Values',  '__return_false', 'keel_paypal_donations_theme_options' );
 		foreach ($options['amounts'] as $key => $amount) {
 			add_settings_field( 'amounts_' . $key, __( 'Donation Value ', 'keel' ) . ($key + 1), 'keel_paypal_donations_settings_field_amounts', 'keel_paypal_donations_theme_options', 'amounts', array( 'id' => $key ) );
 		}
+
 	}
 	add_action( 'admin_init', 'keel_paypal_donations_theme_options_init' );
 

@@ -65,6 +65,7 @@ class Keel_PayPal_Donations {
 						'src' => 1,
 						'return' => $return,
 						'cancel_return' => $referer,
+						'notify_url' => $options['notify_url'],
 					)
 				);
 				$url = $base_url . $queries;
@@ -98,6 +99,7 @@ class Keel_PayPal_Donations {
 				$amount = isset( $_POST['paypal_donations_button_amount'] ) ? $_POST['paypal_donations_button_amount'] : '';
 				$currency = empty( $amount ) ? '' : ': ' . $options['currency'] . $amount;
 				$return = empty( $options['success_link'] ) ? $referer : $options['success_link'];
+				$notify_url = isset( $_POST['paypal_donations_button_notify_url'] ) ? $_POST['paypal_donations_button_notify_url'] : '';
 
 
 				// Construct PayPal URL
@@ -114,6 +116,7 @@ class Keel_PayPal_Donations {
 						'src' => 1,
 						'return' => $return,
 						'cancel_return' => $referer,
+						'notify_url' => $notify_url,
 					)
 				);
 				$url = $base_url . $queries;
@@ -265,6 +268,7 @@ class Keel_PayPal_Donations {
 			'recurring' => false,
 			'description' => '',
 			'size' => '',
+			'notify_url' => '',
 		), $atts );
 
 		// Options and settings
@@ -281,6 +285,7 @@ class Keel_PayPal_Donations {
 		$form =
 			'<form class="paypal-donations-button" id="paypal-donations-table-' . $amount . '" name="paypal-donations-table" action="" method="post">' .
 				'<input type="hidden" name="paypal_donations_button_amount" value="' . $amount . '">' .
+				'<input type="hidden" name="paypal_donations_button_notify_url" value="' . $atts['notify_url'] . '">' .
 				$recurring .
 				$description .
 				wp_nonce_field( 'keel_paypal_donations_button_nonce', 'keel_paypal_donations_button_process' ) .

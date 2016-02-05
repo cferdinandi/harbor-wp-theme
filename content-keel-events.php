@@ -84,7 +84,7 @@
 						<br>
 					<?php endif; ?>
 
-					<?php echo esc_html( $details['location_venue'] ); ?><?php if ( !empty( $details['location_venue'] ) && ( !empty( $details['location_city'] ) || !empty( $details['location_state'] ) ) ) : ?>,<?php endif; ?> <?php echo esc_html( $details['location_city'] ); ?><?php if ( !empty( $details['location_city'] ) && !empty( $details['location_state'] ) ) : ?>,<?php endif; ?> <?php echo esc_html( $details['location_state'] ); ?>
+					<?php if ( !empty( $details['location_venue'] && !empty( $details['location_venue_url'] ) ) ) : ?><a href="<?php echo esc_url( $details['location_venue_url'] ); ?>"><?php endif; ?><?php echo esc_html( $details['location_venue'] ); ?><?php if ( !empty( $details['location_venue'] && !empty( $details['location_venue_url'] ) ) ) : ?></a><?php endif; ?><?php if ( !empty( $details['location_venue'] ) && ( !empty( $details['location_city'] ) || !empty( $details['location_state'] ) ) ) : ?>,<?php endif; ?> <?php echo esc_html( $details['location_city'] ); ?><?php if ( !empty( $details['location_city'] ) && !empty( $details['location_state'] ) ) : ?>,<?php endif; ?> <?php echo esc_html( $details['location_state'] ); ?>
 				</p>
 			</div>
 			<div class="grid-half">

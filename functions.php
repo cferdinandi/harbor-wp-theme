@@ -24,6 +24,7 @@
 			'custom_logo' => true,
 			'button_shortcode' => true,
 			'svg_shortcode' => true,
+			'asm_forms_shortcode' => true,
 			'theme_support' => true,
 		);
 	}
@@ -580,5 +581,6 @@
 	require_once( dirname( __FILE__) . '/includes/keel-photoswipe/keel-photoswipe.php' ); // PhotoSwipe.js image galleries
 	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-button-shortcode.php' ); // Button links shortcode
 	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-svg-shortcode.php' ); // Inline SVG shortcode
+	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-animal-shelter-manager-forms-shortcode.php' ); // ASM forms shortcode
 	require_once( dirname( __FILE__) . '/includes/keel-set-page-width.php' ); // Custom page widths
 	require_once( dirname( __FILE__) . '/includes/keel-options/keel-theme-support.php' ); // Theme support

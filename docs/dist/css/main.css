@@ -1,5 +1,5 @@
 /*!
- * harbor v2.10.0: A free WordPress theme for animal and pet rescue organizations
+ * harbor v2.11.0: A free WordPress theme for animal and pet rescue organizations
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * https://github.com/cferdinandi/harbor-wp-theme
@@ -891,13 +891,19 @@ label {
   padding: 0;
 }
 
+/* line 24, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+legend {
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
 /**
  * 1. Correct color not being inherited.
  *    Known issue: affects color of disabled elements.
  * 2. Correct font properties not being inherited.
  * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
  */
-/* line 30, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 35, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 button,
 input,
 optgroup,
@@ -915,7 +921,7 @@ textarea {
 /**
  * Address `overflow` set to `hidden` in IE 8/9/10/11.
  */
-/* line 44, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 49, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 button {
   overflow: visible;
 }
@@ -926,13 +932,13 @@ button {
  * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
  * Correct `select` style inheritance in Firefox.
  */
-/* line 54, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 59, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 button,
 select {
   text-transform: none;
 }
 
-/* line 59, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 64, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 input,
 textarea,
 select {
@@ -945,7 +951,7 @@ select {
 }
 
 @media (min-width: 40em) {
-  /* line 59, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+  /* line 64, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
   input,
   textarea,
   select {
@@ -957,24 +963,24 @@ select {
  * Don't inherit the `font-weight` (applied by a rule above).
  * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
  */
-/* line 78, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 83, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 optgroup {
   font-weight: bold;
 }
 
-/* line 82, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 87, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 form button,
 form .button {
   margin-bottom: 1.1875em;
 }
 
-/* line 87, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 92, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 textarea {
   height: 12em;
   overflow: auto;
 }
 
-/* line 92, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 97, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 input[type="image"],
 input[type="checkbox"],
 input[type="radio"] {
@@ -991,13 +997,13 @@ input[type="radio"] {
  * `font-size` values of the `input`, it causes the cursor style of the
  * decrement button to change from `default` to `text`.
  */
-/* line 108, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 113, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
-/* line 113, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 118, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 input:focus,
 textarea:focus {
   border-color: rgba(82, 168, 236, 0.8);
@@ -1006,7 +1012,7 @@ textarea:focus {
   outline: thin dotted \9;
 }
 
-/* line 121, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 126, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 input[type="file"]:focus,
 input[type="checkbox"]:focus,
 select:focus {
@@ -1018,7 +1024,7 @@ select:focus {
 /**
  * Inline inputs
  */
-/* line 133, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 138, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .input-inline, #submit {
   display: inline-block;
   vertical-align: middle;
@@ -1028,7 +1034,7 @@ select:focus {
 /**
  * Condensed inputs
  */
-/* line 143, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 148, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .input-condensed {
   padding: 1px 0.3125em;
   font-size: 0.9375em;
@@ -1037,7 +1043,7 @@ select:focus {
 /**
  * Underlined inputs
  */
-/* line 152, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 157, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .input-underline {
   border-top: 0;
   border-left: 0;
@@ -1052,7 +1058,7 @@ select:focus {
  * Safari (but not Chrome) clips the cancel button when the search input has
  * padding (and `textfield` appearance).
  */
-/* line 168, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 173, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
@@ -1061,7 +1067,7 @@ input[type="search"]::-webkit-search-decoration {
 /**
  * Create rounded search bar
  */
-/* line 177, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 182, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .input-search {
   width: 85%;
   padding-left: 0.9375em;
@@ -1071,13 +1077,13 @@ input[type="search"]::-webkit-search-decoration {
           transition: width 300ms ease-in;
 }
 
-/* line 184, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 189, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .svg .input-search {
   padding-right: 2.5em;
 }
 
 @media (min-width: 40em) {
-  /* line 177, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+  /* line 182, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
   .input-search {
     width: 65%;
   }
@@ -1086,7 +1092,7 @@ input[type="search"]::-webkit-search-decoration {
 /**
  * Special styling for search icon as button
  */
-/* line 197, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 202, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .btn-search {
   display: inline;
   color: #808080;
@@ -1096,22 +1102,22 @@ input[type="search"]::-webkit-search-decoration {
   margin-bottom: 0;
 }
 
-/* line 205, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 210, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .svg .btn-search {
   margin-left: -2.5em;
 }
 
-/* line 209, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 214, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .btn-search .icon {
   fill: #808080;
 }
 
-/* line 213, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 218, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .btn-search:hover {
   color: #5a5a5a;
 }
 
-/* line 216, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
+/* line 221, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_forms.scss */
 .btn-search:hover .icon {
   fill: #5a5a5a;
 }

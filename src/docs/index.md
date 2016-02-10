@@ -166,7 +166,8 @@ Recommended plugins and services to get the most impact out of your site.
 - [JetPack](https://wordpress.org/plugins/jetpack/) adds a ton of useful features, including contact forms and automatic plugin updates.
 - [Manual Control for JetPack](https://wordpress.org/plugins/manual-control/) prevents JetPack from automatically enabling new features when you update the plugin.
 - [Contact Form 7](http://contactform7.com/) is an amazing contact form plugin for WordPress.
-- [The Events Calendar](https://theeventscalendar.com/) is a robust, feature-rich events calendar.
+- [WooCommerce](https://wordpress.org/plugins/woocommerce/) makes is robust ecommerce plugin that makes it easier to supplement your donation revenue with earned income.
+- [VaultPress](https://vaultpress.com/) provides simple, automated backups from the folks who built WordPress.
 - [ZenCache](https://wordpress.org/plugins/zencache/) makes your website load a lot faster.
 
 ### Web Hosting

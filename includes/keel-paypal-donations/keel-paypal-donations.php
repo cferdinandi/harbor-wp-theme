@@ -285,7 +285,7 @@ class Keel_PayPal_Donations {
 		$form =
 			'<form class="paypal-donations-button" id="paypal-donations-table-' . $amount . '" name="paypal-donations-table" action="" method="post">' .
 				'<input type="hidden" name="paypal_donations_button_amount" value="' . $amount . '">' .
-				'<input type="hidden" name="paypal_donations_button_notify_url" value="' . $atts['notify_url'] . '">' .
+				'<input type="hidden" name="paypal_donations_button_notify_url" value="' . $paypal['notify_url'] . '">' .
 				$recurring .
 				$description .
 				wp_nonce_field( 'keel_paypal_donations_button_nonce', 'keel_paypal_donations_button_process' ) .

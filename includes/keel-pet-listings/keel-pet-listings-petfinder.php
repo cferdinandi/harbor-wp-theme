@@ -316,14 +316,22 @@
 
 		// Things to look for
 		$patterns = array(
-			'/<p><\/p>/',
-			'/<p> <\/p>/',
-			'/<p>&nbsp;<\/p>/',
-			'/&nbsp;/',
-			'/<span>/',
-			'/<\/span>/',
-			'/<font>/',
-			'/<\/font>/',
+			// '/<p><\/p>/',
+			// '/<p> <\/p>/',
+			// '/<p>&nbsp;<\/p>/',
+			// '/&nbsp;/',
+			// '/<span>/',
+			// '/<\/span>/',
+			// '/<font>/',
+			// '/<\/font>/',
+			'<p></p>/',
+			'<p> </p>/',
+			'<p>&nbsp;</p>/',
+			'&nbsp;',
+			'<span>',
+			'</span>',
+			'<font>',
+			'</font>',
 		);
 
 		// Things to replace them with
@@ -339,7 +347,8 @@
 		);
 
 		// Sanitize text
-		return preg_replace( $patterns, $replacements, $text );
+		// return preg_replace( $patterns, $replacements, $text );
+		return str_replace( $patterns, $replacements, $text );
 
 	}
 

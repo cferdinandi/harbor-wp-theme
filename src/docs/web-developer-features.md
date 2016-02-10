@@ -30,6 +30,7 @@ function keel_developer_options() {
 		'custom_logo' => true, // Custom logo support
 		'button_shortcode' => true, // [button] shortcode
 		'svg_shortcode' => true, // [svg] shortcode
+		'asm_forms_shortcode' => true, // Animal Shelter Manager forms shortcode
 		'theme_support' => true, // Theme support link under "Appearance"
 	);
 }
@@ -54,5 +55,5 @@ Harbor adds Media Library support for SVGs. While SVGs can be used as the `src` 
 An `id` or `url` attribute must be passed in. You can also add classes to the SVG with the `class` attribute.
 
 ```lang-php
-[[svg url="http://harbor.gomakethings.com/some-image.svg" class="icon icon-large"]]
+[[svg url="http://localhost:8888/harbor/wordpress/some-image.svg" class="icon icon-large"]]
 ```

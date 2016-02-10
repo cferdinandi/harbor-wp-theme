@@ -13,6 +13,7 @@
 
 
 // Hack for WP form button
+input[type="submit"],
 #submit {
 	@extend .btn;
 	@extend .input-inline;

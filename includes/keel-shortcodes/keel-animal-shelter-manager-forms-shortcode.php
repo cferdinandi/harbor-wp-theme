@@ -29,7 +29,7 @@
 		$data = $dom->getElementsByTagName( 'form' );
 		$form = $data[0]->ownerDocument->saveHTML($data[0]);
 
-		// Clean up the default markup for Harbor
+		// Add Harbor's grid and layout to the form
 
 		$find = array(
 			'<table class="asm-onlineform-table">',
@@ -68,8 +68,12 @@
 		);
 
 		$form = str_replace( $find, $replace, $form );
-		$form = preg_replace( '#<select class="asm-onlineform-yesno" name="(.*?)"(.*?)>(.*?)<\/select>#is', '<radiogroup><label><input type="radio" name="$1" value="Yes" $2> Yes</label><label><input type="radio" name="$1" value="No" $2> No</label></radiogroup>', $form );
-		$form = preg_replace( '#<input class="asm-onlineform-text" type="text" name="(.*?)email(.*?)"(.*?)>#is', '<input type="email" name="$1email$2" $3>', $form );
+
+		// Replace yes/no selects with radio buttons
+		// $form = preg_replace( '#<select class="asm-onlineform-yesno" name="(.*?)"(.*?)>(.*?)<\/select>#is', '<radiogroup><label><input type="radio" name="$1" value="No" checked $2> No</label><label><input type="radio" name="$1" value="Yes" $2> Yes</label></radiogroup>', $form );
+
+		// Add type="email" to email fields
+		// $form = preg_replace( '#<input class="asm-onlineform-text" type="text" name="(.*?)email(.*?)"(.*?)>#is', '<input type="email" name="$1email$2" $3>', $form );
 
 		return $form;
 

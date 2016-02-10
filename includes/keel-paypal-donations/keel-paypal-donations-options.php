@@ -98,6 +98,15 @@
 		<?php
 	}
 
+	function keel_paypal_donations_settings_field_default_amount() {
+		$options = keel_paypal_donations_get_theme_options();
+		?>
+		<label class="description">
+			<input type="radio" name="keel_paypal_donations_theme_options[default_amount]" value="" <?php checked( $options['default_amount'], '' ); ?> /> <?php _e( 'No default amount', 'keel' ); ?>
+		</label>
+		<?php
+	}
+
 	function keel_paypal_donations_settings_field_amounts( $args ) {
 		$options = keel_paypal_donations_get_theme_options();
 		$amount = $options['amounts'][$args['id']];
@@ -111,6 +120,12 @@
 				<div>
 					<input type="text" name="keel_paypal_donations_theme_options[amounts][<?php echo $args['id']; ?>][description]" class="large-text" id="description-<?php echo $args['id']; ?>" value="<?php echo esc_attr( $amount['description'] ); ?>" />
 					<label class="description" for="description-<?php echo $args['id']; ?>"><?php _e( 'Description of what the donation can provide (ex. <code>Provides food for one animal for a month</code>)', 'keel' ); ?></label>
+				</div>
+				<br>
+				<div>
+					<label class="description">
+						<input type="radio" name="keel_paypal_donations_theme_options[default_amount]" value="<?php echo $args['id']; ?>" <?php checked( $options['default_amount'], $args['id'] ); ?> /> <?php _e( 'Make this the default amount', 'keel' ); ?>
+					</label>
 				</div>
 			</div>
 		<?php
@@ -143,9 +158,10 @@
 			'amounts' => array(
 				0 => array(
 					'amount' => '',
-					'description' =>''
+					'description' =>'',
 				),
 			),
+			'default_amount' => '',
 		);
 
 		$defaults = apply_filters( 'keel_paypal_donations_default_theme_options', $defaults );
@@ -205,6 +221,12 @@
 				);
 		}
 
+		if ( isset( $input['default_amount'] ) && array_key_exists( $input['default_amount'], $input['amounts'] ) ) {
+			$output['default_amount'] = $input['default_amount'];
+		} else {
+			$output['default_amount'] = '';
+		}
+
 		return apply_filters( 'keel_paypal_donations_theme_options_validate', $output, $input );
 	}
 
@@ -255,6 +277,12 @@
 										'<div>' +
 											'<input type="text" name="keel_paypal_donations_theme_options[amounts][' + id + '][description]" class="large-text" id="description-' + id + '" value="" />' +
 											'<label class="description" for="description-' + id + '">Description of what the donation can provide (ex. <code>Provides food for one animal for a month</code>)</label>' +
+										'</div>' +
+										'<br>' +
+										'<div>' +
+											'<label class="description">' +
+												'<input type="radio" name="keel_paypal_donations_theme_options[default_amount]" value="' + id + '" /> Make this the default amount' +
+											'</label>' +
 										'</div>' +
 									'</div>' +
 								'</td>' +
@@ -308,6 +336,7 @@
 
 		// Amounts
 		add_settings_section( 'amounts', 'Donation Values',  '__return_false', 'keel_paypal_donations_theme_options' );
+		add_settings_field( 'default_amount', __( 'No Default Amount', 'keel' ), 'keel_paypal_donations_settings_field_default_amount', 'keel_paypal_donations_theme_options', 'amounts' );
 		foreach ($options['amounts'] as $key => $amount) {
 			add_settings_field( 'amounts_' . $key, __( 'Donation Value ', 'keel' ) . ($key + 1), 'keel_paypal_donations_settings_field_amounts', 'keel_paypal_donations_theme_options', 'amounts', array( 'id' => $key ) );
 		}
@@ -325,7 +354,7 @@
 		$dev_options = keel_developer_options();
 		if ( !$dev_options['paypal'] ) return '';
 
-		$theme_page = add_menu_page( __( 'PayPal Donations', 'keel' ), __( 'PayPal Donations', 'keel' ), 'edit_theme_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_render_page', 'dashicons-heart' );
+		$theme_page = add_menu_page( __( 'PayPal Donations', 'keel' ), __( 'PayPal Donations', 'keel' ), 'edit_theme_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_render_page', 'dashicons-heart', 25 );
 		// $theme_page = add_submenu_page( 'tools.php', __( 'Theme Options', 'keel' ), __( 'Theme Options', 'keel' ), 'edit_theme_options', 'keel_paypal_donations_theme_options', 'keel_paypal_donations_theme_options_render_page' );
 
 	}

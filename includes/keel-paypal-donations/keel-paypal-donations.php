@@ -155,7 +155,7 @@ class Keel_PayPal_Donations {
 				'<tr>' .
 					'<td>' .
 						'<label>' .
-							'<input type="radio" name="paypal_donations_form_amount" id="paypal_donations_form_amount_' . $key . '" value="' . $amount['amount'] . '"> ' .
+							'<input type="radio" name="paypal_donations_form_amount" id="paypal_donations_form_amount_' . $key . '" value="' . $amount['amount'] . '" ' . checked( $options['default_amount'], $key ) . '> ' .
 							$options['currency'] . $amount['amount'] .
 						'</label>' .
 					'</td>' .

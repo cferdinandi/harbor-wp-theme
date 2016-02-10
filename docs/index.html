@@ -86,6 +86,7 @@
 <li><a href="#create-a-button-link">Create a button link</a></li>
 <li><a href="#add-a-call-to-action-at-the-end-of-blog-posts">Add a call-to-action at the end of blog posts</a></li>
 <li><a href="#disable-comments-site-wide">Disable comments site-wide</a></li>
+<li><a href="#animal-shelter-manager-forms">Animal Shelter Manager forms</a></li>
 </ul>
 </li>
 <li><a href="#footer-content">Footer Content</a></li>
@@ -111,13 +112,13 @@
 <h3 id="creating-a-menu">Creating a menu</h3>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/sosfcXx2uwA?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-<p>Harbor uses WordPress&#39;s built-in menu functionality. Visit <code>Appearance &gt; Menus</code> to get started. <code>Primary</code> is the header navigation, and <code>Secondary</code> is the footer navigation.</p>
+<p>Harbor uses WordPress&#39;s built-in menu functionality. Visit <code>Appearance &gt; Menus</code> to get started. <code>Primary</code> is the header navigation, and <code>Secondary</code> is the footer navigation. The primary navigation supports one level of submenus (as dropdown menus). The secondary navigation only supports a flat navigation structure.</p>
 <h2 id="donations">Donations</h2>
 <p>From the WordPress Admin Dashboard, visit <code>PayPal Donations</code>. Add your information, and click <code>Save</code> at the bottom of the page when you&#39;re done.</p>
 <h3 id="donations-form">Donations Form</h3>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/bKATL2cypZw?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-<p>Display your donations form on any page by using the <code>[[paypal_donations_form]]</code> shortcode. <a href="http://harbor.gomakethings.com/donate/">View the live donation form demo.</a></p>
+<p>Display your donations form on any page by using the <code>[[paypal_donations_form]]</code> shortcode. <a href="http://localhost:8888/harbor/wordpress/donate/">View the live donation form demo.</a></p>
 <h3 id="donations-buttons">Donations Buttons</h3>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/MIA27R-GYKY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
@@ -132,7 +133,7 @@
 
 <p>From the WordPress Admin Dashboard, visit <code>Pet Listings &gt; Options</code>. Add your information, select which filters should be visible, and click <code>Save</code> at the bottom of the page when you&#39;re done.</p>
 <p>By default, your list of adoptable animals is displayed at <code>http://yourwebsite.com/pets</code>. This can be changed in the options.</p>
-<p><a href="http://harbor.gomakethings.com/pets/">View the live pet listings demo.</a></p>
+<p><a href="http://localhost:8888/harbor/wordpress/pets/">View the live pet listings demo.</a></p>
 <h2 id="page-and-post-content">Page and Post Content</h2>
 <h3 id="add-a-hero-image-header">Add a hero image header</h3>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/7KWSOeJr63c?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
@@ -142,7 +143,7 @@
 <h3 id="create-an-image-gallery">Create an image gallery</h3>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/X5EFKavGKnY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-<p>Create beautiful, mosaic image galleries using the <code>[[gallery]]</code> shortcode, or the built-in gallery feature in the WordPress editor. View the <a href="http://harbor.gomakethings.com/gallery/">Image Galleries page</a> to see a working example.</p>
+<p>Create beautiful, mosaic image galleries using the <code>[[gallery]]</code> shortcode, or the built-in gallery feature in the WordPress editor. View the <a href="http://localhost:8888/harbor/wordpress/gallery/">Image Galleries page</a> to see a working example.</p>
 <h3 id="create-a-button-link">Create a button link</h3>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/FIHBKyGNYsQ?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
@@ -162,6 +163,10 @@
 <iframe width="420" height="315" src="https://www.youtube.com/embed/cXSrhQZj05s?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
 <p>From the WordPress Admin Dashboard, visit <code>Posts &gt; Post Options</code>, and click <code>Disable comments on all blog posts</code>. Click <code>Save</code> at the bottom of the page when you&#39;re done.</p>
+<h3 id="animal-shelter-manager-forms">Animal Shelter Manager forms</h3>
+<p>If you use <a href="http://sheltermanager.com">Animal Shelter Manager</a> to manager your pets, Harbor includes a shortcode that makes it easy to embed adoption applications and other forms with the <code>[[asm_forms]]</code> shortcode. Just include the URL for the form and Harbor handles the rest.</p>
+<pre><code class="lang-lang-markup">[[asm_forms url=&quot;https://us2.sheltermanager.com/service?account=aa1111&amp;method=online_form_html&amp;formid=1&quot;]]
+</code></pre>
 <h2 id="footer-content">Footer Content</h2>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/uUDDyqpZ8ZI?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 

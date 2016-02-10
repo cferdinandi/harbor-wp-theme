@@ -26,6 +26,7 @@ To make sure you always get the latest updates, it's recommended that you also i
     - [Create a button link](#create-a-button-link)
     - [Add a call-to-action at the end of blog posts](#add-a-call-to-action-at-the-end-of-blog-posts)
     - [Disable comments site-wide](#disable-comments-site-wide)
+    - [Animal Shelter Manager forms](#animal-shelter-manager-forms)
 - [Footer Content](#footer-content)
 - [Recommendations](#recommendations)
     - [Plugins](#plugins)
@@ -55,7 +56,7 @@ From the WordPress Admin Dashboard, visit `Appearance > Customize`, and select `
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/sosfcXx2uwA?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-Harbor uses WordPress's built-in menu functionality. Visit `Appearance > Menus` to get started. `Primary` is the header navigation, and `Secondary` is the footer navigation.
+Harbor uses WordPress's built-in menu functionality. Visit `Appearance > Menus` to get started. `Primary` is the header navigation, and `Secondary` is the footer navigation. The primary navigation supports one level of submenus (as dropdown menus). The secondary navigation only supports a flat navigation structure.
 
 ## Donations
 
@@ -65,7 +66,7 @@ From the WordPress Admin Dashboard, visit `PayPal Donations`. Add your informati
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/bKATL2cypZw?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-Display your donations form on any page by using the `[[paypal_donations_form]]` shortcode. [View the live donation form demo.](http://harbor.gomakethings.com/donate/)
+Display your donations form on any page by using the `[[paypal_donations_form]]` shortcode. [View the live donation form demo.](http://localhost:8888/harbor/wordpress/donate/)
 
 ### Donations Buttons
 
@@ -91,7 +92,7 @@ From the WordPress Admin Dashboard, visit `Pet Listings > Options`. Add your inf
 
 By default, your list of adoptable animals is displayed at `http://yourwebsite.com/pets`. This can be changed in the options.
 
-[View the live pet listings demo.](http://harbor.gomakethings.com/pets/)
+[View the live pet listings demo.](http://localhost:8888/harbor/wordpress/pets/)
 
 ## Page and Post Content
 
@@ -107,7 +108,7 @@ To apply a background image to the hero, use the `Featured Image` section in the
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/X5EFKavGKnY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-Create beautiful, mosaic image galleries using the `[[gallery]]` shortcode, or the built-in gallery feature in the WordPress editor. View the [Image Galleries page](http://harbor.gomakethings.com/gallery/) to see a working example.
+Create beautiful, mosaic image galleries using the `[[gallery]]` shortcode, or the built-in gallery feature in the WordPress editor. View the [Image Galleries page](http://localhost:8888/harbor/wordpress/gallery/) to see a working example.
 
 ### Create a button link
 
@@ -140,6 +141,14 @@ From the WordPress Admin Dashboard, visit `Posts > Post Options`, and add your c
 <iframe width="420" height="315" src="https://www.youtube.com/embed/cXSrhQZj05s?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
 From the WordPress Admin Dashboard, visit `Posts > Post Options`, and click `Disable comments on all blog posts`. Click `Save` at the bottom of the page when you're done.
+
+### Animal Shelter Manager forms
+
+If you use [Animal Shelter Manager](http://sheltermanager.com) to manager your pets, Harbor includes a shortcode that makes it easy to embed adoption applications and other forms with the `[[asm_forms]]` shortcode. Just include the URL for the form and Harbor handles the rest.
+
+```lang-markup
+[[asm_forms url="https://us2.sheltermanager.com/service?account=aa1111&method=online_form_html&formid=1"]]
+```
 
 ## Footer Content
 

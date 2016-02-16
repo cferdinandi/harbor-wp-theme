@@ -19,13 +19,17 @@
 		?>
 		<div class="wrap">
 			<h2><?php _e( 'Theme Support', 'keel' ); ?></h2>
-			<p>Need help? There are a few ways to get support.</p>
-			<ol>
-				<li>Check out <a target="_blank" href="http://harbor.gomakethings.com">the live demo and documentation</a>.</li>
-				<li>Create an <a target="_blank" href="https://github.com/cferdinandi/harbor-wp-theme">issue on GitHub</a> (<em>don't forget to search through the closed issues first</em>).</li>
-				<li>For premium, 1-on-1 support, contact me at <a target="_blank" href="http://gomakethings.com">GoMakeThings.com</a>.</li>
-			</ol>
-			<p>Do you want to learn how to learn how to provide your supporters with an amazing experience on whatever device they have with them? <strong>Sign-up for a free 7 lesson email course and learn the essentials of mobile strategy at <a href="http://gomakethings.com/course">http://gomakethings.com/course</a>.</strong></p>
+
+			<p><?php printf( __( 'Need help? Please %screate an issue on GitHub%s.', 'keel' ), '<a target="_blank" href="https://github.com/cferdinandi/harbor-wp-theme/issues">', '</a>' ) ?></p>
+			<p>(<em><?php _e( 'Don’t forget to search through the existing and closed issues first.', 'keel' ); ?></em>)</p>
+
+			<h3><?php _e( 'Customize This Theme', 'keel' ); ?></h3>
+
+			<p><?php printf( __( 'Interested in this theme but require customization to satisfy your particular use case? This theme can be customized to suit your specific needs. %sLet’s schedule a quick call%s to talk about about your organization, your goals, and how we might work together.', 'keel' ), '<a target="_blank" href="http://gomakethings.com/schedule-a-call/">', '</a>' ); ?></p>
+
+			<h3><?php _e( 'Free Course', 'keel' ); ?></h3>
+
+			<p><?php _e( 'Sign up for my free email course on digital fundraising for animal rescue, and learn how to use technology to raise more money for your animal rescue at <a target="_blank" href="http://gomakethings.com/course">http://gomakethings.com/course</a>.', 'keel' ); ?></p>
 		</div>
 		<?php
 	}

@@ -132,7 +132,7 @@
 		?>
 		<?php
 			wp_editor(
-				stripslashes( $options['footer1'] ),
+				stripslashes( keel_get_jetpack_markdown( $options, 'footer1' ) ),
 				'footer1',
 				array(
 					'autop' => false,
@@ -150,7 +150,7 @@
 		?>
 		<?php
 			wp_editor(
-				stripslashes( $options['footer2'] ),
+				stripslashes( keel_get_jetpack_markdown( $options, 'footer2' ) ),
 				'footer2',
 				array(
 					'autop' => false,
@@ -191,7 +191,9 @@
 
 			// Footer
 			'footer1' => '',
+			'footer1_markdown' => '',
 			'footer2' => '',
+			'footer2_markdown' => '',
 
 		);
 
@@ -209,8 +211,9 @@
 
 		// Styles
 
-		if ( isset( $input['typeface'] ) && array_key_exists( $input['typeface'], keel_settings_field_style_typeface_choices() ) )
+		if ( isset( $input['typeface'] ) && array_key_exists( $input['typeface'], keel_settings_field_style_typeface_choices() ) ) {
 			$output['typeface'] = $input['typeface'];
+		}
 
 		// Social
 
@@ -240,11 +243,15 @@
 
 		// Footer
 
-		if ( isset( $input['footer1'] ) && ! empty( $input['footer1'] ) )
-			$output['footer1'] = wp_filter_post_kses( $input['footer1'] );
+		if ( isset( $input['footer1'] ) && ! empty( $input['footer1'] ) ) {
+			$output['footer1'] = keel_process_jetpack_markdown( wp_filter_post_kses( $input['footer1'] ) );
+			$output['footer1_markdown'] = wp_filter_post_kses( $input['footer1'] );
+		}
 
-		if ( isset( $input['footer2'] ) && ! empty( $input['footer2'] ) )
-			$output['footer2'] = wp_filter_post_kses( $input['footer2'] );
+		if ( isset( $input['footer2'] ) && ! empty( $input['footer2'] ) ) {
+			$output['footer2'] = keel_process_jetpack_markdown( wp_filter_post_kses( $input['footer2'] ) );
+			$output['footer2_markdown'] = wp_filter_post_kses( $input['footer2'] );
+		}
 
 		return apply_filters( 'keel_theme_options_validate', $output, $input );
 	}

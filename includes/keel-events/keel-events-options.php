@@ -78,7 +78,7 @@
 		$options = keel_events_get_theme_options();
 		?>
 		<?php wp_editor(
-			stripslashes( $options['page_content_upcoming'] ),
+			stripslashes( keel_get_jetpack_markdown( $options, 'page_content_upcoming' ) ),
 			'page_content_upcoming',
 			array(
 				'wpautop' => false,
@@ -104,7 +104,7 @@
 		$options = keel_events_get_theme_options();
 		?>
 		<?php wp_editor(
-			stripslashes( $options['page_content_past'] ),
+			stripslashes( keel_get_jetpack_markdown( $options, 'page_content_past' ) ),
 			'page_content_past',
 			array(
 				'wpautop' => false,
@@ -135,8 +135,10 @@
 			'page_slug' => 'events',
 			'page_title_upcoming' => 'Upcoming Events',
 			'page_content_upcoming' => '',
+			'page_content_upcoming_markdown' => '',
 			'page_title_past' => 'Past Events',
 			'page_content_past' => '',
+			'page_content_past_markdown' => '',
 		);
 
 		$defaults = apply_filters( 'keel_events_default_theme_options', $defaults );
@@ -175,14 +177,18 @@
 		if ( isset( $input['page_title_upcoming'] ) && ! empty( $input['page_title_upcoming'] ) )
 			$output['page_title_upcoming'] = wp_filter_nohtml_kses( $input['page_title_upcoming'] );
 
-		if ( isset( $input['page_content_upcoming'] ) && ! empty( $input['page_content_upcoming'] ) )
-			$output['page_content_upcoming'] = wp_filter_post_kses( $input['page_content_upcoming'] );
+		if ( isset( $input['page_content_upcoming'] ) && ! empty( $input['page_content_upcoming'] ) ) {
+			$output['page_content_upcoming'] = keel_process_jetpack_markdown( wp_filter_post_kses( $input['page_content_upcoming'] ) );
+			$output['page_content_upcoming_markdown'] = wp_filter_post_kses( $input['page_content_upcoming'] );
+		}
 
 		if ( isset( $input['page_title_past'] ) && ! empty( $input['page_title_past'] ) )
 			$output['page_title_past'] = wp_filter_nohtml_kses( $input['page_title_past'] );
 
-		if ( isset( $input['page_content_past'] ) && ! empty( $input['page_content_past'] ) )
-			$output['page_content_past'] = wp_filter_post_kses( $input['page_content_past'] );
+		if ( isset( $input['page_content_past'] ) && ! empty( $input['page_content_past'] ) ) {
+			$output['page_content_past'] = keel_process_jetpack_markdown( wp_filter_post_kses( $input['page_content_past'] ) );
+			$output['page_content_past_markdown'] = wp_filter_post_kses( $input['page_content_past'] );
+		}
 
 		return apply_filters( 'keel_events_theme_options_validate', $output, $input );
 	}

@@ -53,7 +53,7 @@
 		$options = keel_pet_listings_get_theme_options();
 		?>
 		<?php wp_editor(
-			stripslashes( $options['page_content'] ),
+			stripslashes( keel_get_jetpack_markdown( $options, 'page_content' ) ),
 			'page_content',
 			array(
 				'wpautop' => false,
@@ -156,6 +156,7 @@
 			'slug' => 'pets',
 			'page_title' => 'Our Pets',
 			'page_content' => '',
+			'page_content_markdown' => '',
 			'adoption_form_url' => '',
 			'adoption_form_text' => 'Fill out an adoption form',
 			'oldest_first' => '',
@@ -194,8 +195,10 @@
 		if ( isset( $input['page_title'] ) && ! empty( $input['page_title'] ) )
 			$output['page_title'] = wp_filter_nohtml_kses( $input['page_title'] );
 
-		if ( isset( $input['page_content'] ) && ! empty( $input['page_content'] ) )
-			$output['page_content'] = wp_filter_post_kses( $input['page_content'] );
+		if ( isset( $input['page_content'] ) && ! empty( $input['page_content'] ) ) {
+			$output['page_content'] = keel_process_jetpack_markdown( wp_filter_post_kses( $input['page_content'] ) );
+			$output['page_content_markdown'] = wp_filter_post_kses( $input['page_content'] );
+		}
 
 		if ( isset( $input['adoption_form_url'] ) && ! empty( $input['adoption_form_url'] ) )
 			$output['adoption_form_url'] = wp_filter_nohtml_kses( esc_url( $input['adoption_form_url'] ) );

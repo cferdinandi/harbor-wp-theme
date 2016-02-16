@@ -45,6 +45,7 @@
 				'title',
 				'editor',
 				'revisions',
+				'wpcom-markdown',
 			),
 			'has_archive'   => true,
 			'rewrite' => array(

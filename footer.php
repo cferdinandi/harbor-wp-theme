@@ -29,17 +29,17 @@
 				</div>
 
 				<div class="row">
-					<div class="grid-half text-left-large margin-bottom">
+					<div class="grid-half text-left-large">
 						<?php
 							if ( !empty( $options['footer1'] ) ) {
-								echo do_shortcode( stripslashes( $options['footer1'] ) );
+								echo do_shortcode( wpautop( stripslashes( $options['footer1'] ) ) );
 							}
 						?>
 					</div>
-					<div class="grid-half text-right-large margin-bottom">
+					<div class="grid-half text-right-large">
 						<?php
 							if ( !empty( $options['footer2'] ) ) {
-								echo do_shortcode( stripslashes( $options['footer2'] ) );
+								echo do_shortcode( wpautop( stripslashes( $options['footer2'] ) ) );
 							}
 						?>
 					</div>

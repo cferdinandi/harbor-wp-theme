@@ -109,7 +109,7 @@ get_header(); ?>
 						</h1>
 					</header>
 
-					<?php echo do_shortcode( stripslashes( $pets_options['page_content'] ) ); ?>
+					<?php echo do_shortcode( wpautop( stripslashes( $pets_options['page_content'] ) ) ); ?>
 
 					<div class="row" data-right-height>
 		<?php endif; ?>
@@ -129,7 +129,7 @@ get_header(); ?>
 					</h1>
 				</header>
 
-				<?php echo do_shortcode( stripslashes( $events_options['page_content_' . $events_date] ) ); ?>
+				<?php echo do_shortcode( wpautop( stripslashes( $events_options['page_content_' . $events_date] ) ) ); ?>
 
 			<?php endif; ?>
 

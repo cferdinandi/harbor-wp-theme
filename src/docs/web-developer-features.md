@@ -57,3 +57,7 @@ An `id` or `url` attribute must be passed in. You can also add classes to the SV
 ```lang-php
 [[svg url="http://localhost:8888/harbor/wordpress/some-image.svg" class="icon icon-large"]]
 ```
+
+## Helper functions
+
+There are a numerous helper functions in the `functions.php` file. There are too many to list and document here, but they're all documented using the PHPDoc format.

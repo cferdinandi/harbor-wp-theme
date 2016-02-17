@@ -44,6 +44,7 @@
 			'supports'      => array(
 				'title',
 				'editor',
+				'excerpt',
 				'revisions',
 				'wpcom-markdown',
 			),

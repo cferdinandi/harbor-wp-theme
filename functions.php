@@ -482,7 +482,9 @@
 	function keel_optimize_woocommerce_scripts_and_styles() {
 
 		//remove generator meta tag
-		remove_action( 'wp_head', array( $GLOBALS['woocommerce'], 'generator' ) );
+		if ( array_key_exists( 'woocommerce', $GLOBALS ) ) {
+			remove_action( 'wp_head', array( $GLOBALS['woocommerce'], 'generator' ) );
+		}
 
 		//first check that woo exists to prevent fatal errors
 		if ( function_exists( 'is_woocommerce' ) ) {

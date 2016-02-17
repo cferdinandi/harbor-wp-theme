@@ -60,65 +60,118 @@
 			<h1><?php the_title(); ?></h1>
 		</header>
 
-		<aside class="row">
-			<div class="grid-half">
-				<p>
-					<?php if ( $has_start_date ) : ?>
-						<?php echo esc_html( date( 'l, F j, Y', $start_date ) ); ?>
-						<?php if ( $has_end_date && $end_date !== $start_date ) : ?>
-							&ndash;<br><?php echo esc_html( date( 'l, F j, Y', $end_date ) ); ?>
+		<aside>
+			<div class="row">
+				<div class="<?php echo ( $has_location ? 'grid-half' : 'grid-full' ); ?>">
+					<p>
+						<?php if ( $has_start_date ) : ?>
+							<?php echo esc_html( date( 'l, F j, Y', $start_date ) ); ?>
+							<?php if ( $has_end_date && $end_date !== $start_date ) : ?>
+								&ndash;<br><?php echo esc_html( date( 'l, F j, Y', $end_date ) ); ?>
+							<?php endif; ?>
 						<?php endif; ?>
-					<?php endif; ?>
 
-					<?php if ( $has_start_date && $has_start_time ) : ?>
-						<br>
-					<?php endif; ?>
-
-					<?php if ( $has_start_time ) : ?>
-						<?php echo esc_html( $details['time_start_hour'] . ':' . $details['time_start_minutes'] . ' ' . $details['time_start_ampm'] ); ?>
-						<?php if ( $has_end_time ) : ?>
-							&ndash; <?php echo esc_html( $details['time_end_hour'] . ':' . $details['time_end_minutes'] . ' ' . $details['time_end_ampm'] ); ?>
+						<?php if ( $has_start_date && $has_start_time ) : ?>
+							<br>
 						<?php endif; ?>
-					<?php endif; ?>
 
-					<?php if ( ( $has_start_date || $has_start_time ) && $has_location ) : ?>
-						<br>
-					<?php endif; ?>
-
-					<?php if ( !empty( $details['location_venue'] ) && !empty( $details['location_venue_url'] ) ) : ?><a href="<?php echo esc_url( $details['location_venue_url'] ); ?>"><?php endif; ?><?php echo esc_html( $details['location_venue'] ); ?><?php if ( !empty( $details['location_venue'] ) && !empty( $details['location_venue_url'] ) ) : ?></a><?php endif; ?><?php if ( !empty( $details['location_venue'] ) && ( !empty( $details['location_city'] ) || !empty( $details['location_state'] ) ) ) : ?>,<?php endif; ?> <?php echo esc_html( $details['location_city'] ); ?><?php if ( !empty( $details['location_city'] ) && !empty( $details['location_state'] ) ) : ?>,<?php endif; ?> <?php echo esc_html( $details['location_state'] ); ?>
-				</p>
-			</div>
-			<div class="grid-half">
-				<?php if ( $upcoming_event ) : ?>
-					<?php if ( $has_registration || $show_google_calendar || $show_ical_invite ) : ?>
+						<?php if ( $has_start_time ) : ?>
+							<?php echo esc_html( $details['time_start_hour'] . ':' . $details['time_start_minutes'] . ' ' . $details['time_start_ampm'] ); ?>
+							<?php if ( $has_end_time ) : ?>
+								&ndash; <?php echo esc_html( $details['time_end_hour'] . ':' . $details['time_end_minutes'] . ' ' . $details['time_end_ampm'] ); ?>
+							<?php endif; ?>
+						<?php endif; ?>
+					</p>
+				</div>
+				<?php if ( $has_location ) : ?>
+					<div class="grid-half">
 						<p>
-							<?php if ( $has_registration ) : ?>
-								<a class="btn" href="<?php echo esc_url( $details['register_url'] ); ?>">
-									<?php echo esc_html( empty( $details['register_text'] ) ? $options['labels_register'] : $details['register_text'] ); ?>
+							<?php
+								/**
+								 * Venue
+								 */
+							?>
+							<?php if ( !empty( $details['location_venue'] ) && !empty( $details['location_venue_url'] ) ) : ?>
+								<a href="<?php echo esc_url( $details['location_venue_url'] ); ?>">
+							<?php endif; ?>
+								<?php echo esc_html( $details['location_venue'] ); ?>
+							<?php if ( !empty( $details['location_venue'] ) && !empty( $details['location_venue_url'] ) ) : ?>
 								</a>
 							<?php endif; ?>
 
-							<?php if ( $has_registration && ( $show_google_calendar || $show_ical_invite ) ) : ?>
+							<?php
+								// 'location_venue' => '',
+								// 'location_venue_url' => '',
+								// 'location_address' => '',
+								// 'location_city' => '',
+								// 'location_state' => '',
+								// 'location_zip' => '',
+								// 'location_country' => '',
+							?>
+
+							<?php
+								/**
+								 * Address
+								 */
+							?>
+							<?php if ( !empty( $details['location_venue'] ) && !empty( $details['location_address'] ) ) : ?>
 								<br>
 							<?php endif; ?>
+							<?php echo esc_html( $details['location_address'] ); ?>
 
-							<?php if ( $show_google_calendar ) : ?>
-								<a target="blank" rel="nofollow" href="http://www.google.com/calendar/event?action=TEMPLATE&text=<?php the_title(); ?>&dates=<?php echo esc_attr( $calendar_timestamp_start ); ?>/<?php echo esc_attr( $calendar_timestamp_end ); ?>&ctz=<?php echo esc_attr( $calendar_timezone ); ?>&details=<?php the_permalink(); ?>&location=<?php echo esc_attr( $calendar_location ); ?>&trp=false&sprop=website:<?php echo site_url(); ?>">+ <?php _e( 'Google Calendar', 'keel' ); ?></a>
-							<?php endif; ?>
-
-							<?php if ( $show_google_calendar && $show_ical_invite ) : ?>
+							<?php
+								/**
+								 * City, State, Zip
+								 */
+							?>
+							<?php if ( !empty( $details['location_address'] ) && ( !empty( $details['location_city'] ) || !empty( $details['location_state'] ) || !empty( $details['location_zip'] ) ) ) : ?>
 								<br>
 							<?php endif; ?>
+							<?php echo esc_html( $details['location_city'] ); ?><?php if ( !empty( $details['location_city'] ) && !empty( $details['location_state'] ) ) : ?>,<?php endif; ?> <?php echo esc_html( $details['location_state'] ); ?><?php if ( !empty( $details['location_state'] ) && !empty( $details['location_zip'] ) ) : ?>,<?php endif; ?> <?php echo esc_html( $details['location_zip'] ); ?>
 
-							<?php if ( $show_ical_invite ) : ?>
-								<a target="blank" rel="nofollow"  href="<?php the_permalink(); ?>?ical=<?php echo esc_attr( $post->ID ); ?>">+ <?php _e( 'iCal Invite', 'keel' ); ?></a>
+							<?php
+								/**
+								 * Country
+								 */
+							?>
+							<?php if ( ( !empty( $details['location_city'] ) || !empty( $details['location_state'] ) || !empty( $details['location_zip'] ) ) && !empty( $details['location_country'] ) ) : ?>
+								<br>
 							<?php endif; ?>
+							<?php echo esc_html( $details['location_country'] ); ?>
 						</p>
-					<?php endif; ?>
-				<?php else : ?>
-					<p><em><?php _e( 'This event has ended.', 'keel' ); ?></em></p>
+					</div>
 				<?php endif; ?>
 			</div>
+
+			<?php if ( $upcoming_event ) : ?>
+				<?php if ( $has_registration || $show_google_calendar || $show_ical_invite ) : ?>
+					<p>
+						<?php if ( $has_registration ) : ?>
+							<a class="btn" href="<?php echo esc_url( $details['register_url'] ); ?>">
+								<?php echo esc_html( empty( $details['register_text'] ) ? $options['labels_register'] : $details['register_text'] ); ?>
+							</a>
+						<?php endif; ?>
+
+						<?php if ( $has_registration && ( $show_google_calendar || $show_ical_invite ) ) : ?>
+							&nbsp;
+						<?php endif; ?>
+
+						<?php if ( $show_google_calendar ) : ?>
+							<a target="blank" rel="nofollow" href="http://www.google.com/calendar/event?action=TEMPLATE&text=<?php the_title(); ?>&dates=<?php echo esc_attr( $calendar_timestamp_start ); ?>/<?php echo esc_attr( $calendar_timestamp_end ); ?>&ctz=<?php echo esc_attr( $calendar_timezone ); ?>&details=<?php the_permalink(); ?>&location=<?php echo esc_attr( $calendar_location ); ?>&trp=false&sprop=website:<?php echo site_url(); ?>">+ <?php _e( 'Google Calendar', 'keel' ); ?></a>
+						<?php endif; ?>
+
+						<?php if ( $show_google_calendar && $show_ical_invite ) : ?>
+							&nbsp;
+						<?php endif; ?>
+
+						<?php if ( $show_ical_invite ) : ?>
+							<a target="blank" rel="nofollow"  href="<?php the_permalink(); ?>?ical=<?php echo esc_attr( $post->ID ); ?>">+ <?php _e( 'iCal Invite', 'keel' ); ?></a>
+						<?php endif; ?>
+					</p>
+				<?php endif; ?>
+			<?php else : ?>
+				<p><em><?php _e( 'This event has ended.', 'keel' ); ?></em></p>
+			<?php endif; ?>
 		</aside>
 
 		<?php the_content(); ?>

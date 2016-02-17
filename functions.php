@@ -172,21 +172,23 @@
 	 */
 	function keel_excerpt_more( $more ) {
 
-		global $post_type;
+		return '...';
 
-		// If events post type
-		if ( 'keel-events' === $post_type ) {
-			return '...';
-		}
+		// global $post_type;
 
-		// Else
-		return
-			'... <a href="'. get_permalink( get_the_ID() ) . '">' .
-			sprintf(
-				__( 'Read more %s', 'keel' ),
-				'<span class="screen-reader">of ' . get_the_title() . '</span>'
-			) .
-			'</a>';
+		// // If events post type
+		// if ( 'keel-events' === $post_type ) {
+		// 	return '...';
+		// }
+
+		// // Else
+		// return
+		// 	'... <a href="'. get_permalink( get_the_ID() ) . '">' .
+		// 	sprintf(
+		// 		__( 'Read more %s', 'keel' ),
+		// 		'<span class="screen-reader">of ' . get_the_title() . '</span>'
+		// 	) .
+		// 	'</a>';
 	}
 	add_filter( 'excerpt_more', 'keel_excerpt_more' );
 

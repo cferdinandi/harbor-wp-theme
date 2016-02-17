@@ -144,7 +144,7 @@
 
 		<a class="link-block" href="<?php the_permalink(); ?>">
 			<header>
-				<h1 class="link-block-styled no-margin-bottom"><?php the_title(); ?></h1>
+				<h2 class="h1 link-block-styled no-margin-bottom"><?php the_title(); ?></h2>
 			</header>
 
 			<aside class="margin-bottom-small">

@@ -71,7 +71,7 @@
 		<header>
 			<a href="<?php the_permalink(); ?>">
 				<figure><img class="img-photo img-limit-height" src="<?php echo $details['photos']['medium'][0]; ?>"></figure>
-				<h1 class="h3 no-padding-top no-margin-bottom"><?php the_title(); ?></h1>
+				<h2 class="h3 no-padding-top no-margin-bottom"><?php the_title(); ?></h2>
 			</a>
 		</header>
 		<aside class="text-small">

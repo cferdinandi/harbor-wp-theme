@@ -100,21 +100,11 @@
 							<?php endif; ?>
 
 							<?php
-								// 'location_venue' => '',
-								// 'location_venue_url' => '',
-								// 'location_address' => '',
-								// 'location_city' => '',
-								// 'location_state' => '',
-								// 'location_zip' => '',
-								// 'location_country' => '',
-							?>
-
-							<?php
 								/**
 								 * Address
 								 */
 							?>
-							<?php if ( !empty( $details['location_venue'] ) && !empty( $details['location_address'] ) ) : ?>
+							<?php if ( !empty( $details['location_venue'] ) && ( !empty( $details['location_address'] ) || !empty( $details['location_city'] ) || !empty( $details['location_state'] ) || !empty( $details['location_zip'] ) || !empty( $details['location_country'] ) ) ) : ?>
 								<br>
 							<?php endif; ?>
 							<?php echo esc_html( $details['location_address'] ); ?>
@@ -124,7 +114,7 @@
 								 * City, State, Zip
 								 */
 							?>
-							<?php if ( !empty( $details['location_address'] ) && ( !empty( $details['location_city'] ) || !empty( $details['location_state'] ) || !empty( $details['location_zip'] ) ) ) : ?>
+							<?php if ( !empty( $details['location_address'] ) && ( !empty( $details['location_city'] ) || !empty( $details['location_state'] ) || !empty( $details['location_zip'] ) || !empty( $details['location_country'] ) ) ) : ?>
 								<br>
 							<?php endif; ?>
 							<?php echo esc_html( $details['location_city'] ); ?><?php if ( !empty( $details['location_city'] ) && !empty( $details['location_state'] ) ) : ?>,<?php endif; ?> <?php echo esc_html( $details['location_state'] ); ?><?php if ( !empty( $details['location_state'] ) && !empty( $details['location_zip'] ) ) : ?>,<?php endif; ?> <?php echo esc_html( $details['location_zip'] ); ?>

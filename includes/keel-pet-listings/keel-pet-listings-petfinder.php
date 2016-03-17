@@ -138,7 +138,8 @@
 
 		// Sanitize description and add links
 		if ( $type === 'description' ) {
-			$attribute = keel_petfinder_api_sanitize_description( $pet['description']['$t'] );
+			if (isset($pet['description']['$t']))
+				$attribute = keel_petfinder_api_sanitize_description( $pet['description']['$t'] );
 			$attribute = keel_petfinder_api_linkify( $attribute );
 		}
 

@@ -293,7 +293,7 @@
 					var last = jQuery( '[data-paypal-amount]' ).last();
 					last.closest('tbody').after( '<tr><th>&nbsp;</th><td><p><button class="button js-paypal-add-amount">Add Another Amount</button></p></td></tr>' );
 
-					jQuery( '.js-paypal-add-amount' ).click(function() {
+					jQuery( '.js-paypal-add-amount' ).click(function( event ) {
 
 						// Variables
 						var last = jQuery( '[data-paypal-amount]' ).last();

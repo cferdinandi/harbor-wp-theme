@@ -149,11 +149,12 @@ class Keel_PayPal_Donations {
 		$show_recurring = $options['show_recurring'] === 'on';
 
 		if ( empty( $options['email'] ) || empty( $options['amounts'][0]['amount'] ) || empty( $options['amounts'][0]['description'] ) ) return $table;
+
 		foreach ($options['amounts'] as $key => $amount) {
 			$table_body .=
 				'<tr>' .
-					'<td>' . 
-						'<label>' . 
+					'<td>' .
+						'<label>' .
 							'<input type="radio" name="paypal_donations_form_amount" id="paypal_donations_form_amount_' . $key . '" value="' . $amount['amount'] . '" ' . checked( $options['default_amount'], $key, False ) . '> ' .
 							$options['currency'] . $amount['amount'] .
 						'</label>' .

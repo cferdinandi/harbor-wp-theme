@@ -138,9 +138,10 @@
 
 		// Sanitize description and add links
 		if ( $type === 'description' ) {
-			if (isset($pet['description']['$t']))
+			if ( array_key_exists( '$t', $pet['description'] ) && !empty( $pet['description']['$t'] ) ) {
 				$attribute = keel_petfinder_api_sanitize_description( $pet['description']['$t'] );
-			$attribute = keel_petfinder_api_linkify( $attribute );
+				$attribute = keel_petfinder_api_linkify( $attribute );
+			}
 		}
 
 		// Generate string of breeds, separated by a delimiter

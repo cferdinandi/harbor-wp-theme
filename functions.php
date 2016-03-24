@@ -219,7 +219,36 @@
 	}
 	add_action( 'init', 'keel_register_menus' );
 
+//Mike iLL
+/**
+ * Register our sidebars and widgetized areas.
+ *
+ */
+function keel_widgets_init() {
 
+register_sidebar( array(
+'name' => 'Footer Widgets',
+'id' => 'keel_footer_1',
+'description' => 'Appears in the footer area',
+'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+'after_widget' => '</aside>',
+'before_title' => '<h3 class="widget-title">',
+'after_title' => '</h3>',
+) );
+
+}
+add_action( 'widgets_init', 'keel_widgets_init' );
+?>
+<?php 
+function keel_footer_widget() {
+	if ( is_active_sidebar( 'keel_footer_1' ) ) : ?>
+		<div id="primary-sidebar" class="primary-sidebar widget-area" role="complementary">
+			<?php dynamic_sidebar( 'keel_footer_1' ); ?>
+		</div><!-- #primary-sidebar -->
+	<?php endif; 
+}
+add_action( 'wp_footer', 'keel_footer_widget' );
+//Mike iLL
 
 	/**
 	 * Adds support for featured post images
@@ -680,6 +709,8 @@
 	require_once( dirname( __FILE__) . '/includes/keel-photoswipe/keel-photoswipe.php' ); // PhotoSwipe.js image galleries
 	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-button-shortcode.php' ); // Button links shortcode
 	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-svg-shortcode.php' ); // Inline SVG shortcode
+	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-featured-pet-shortcode.php' ); // Featured Pet shortcode
+	require_once( dirname( __FILE__) . '/includes/keel-featured-pet.php' ); // Featured Pet
 	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-animal-shelter-manager-forms-shortcode.php' ); // ASM forms shortcode
 	require_once( dirname( __FILE__) . '/includes/keel-set-page-width.php' ); // Custom page widths
 	require_once( dirname( __FILE__) . '/includes/keel-options/keel-theme-support.php' ); // Theme support

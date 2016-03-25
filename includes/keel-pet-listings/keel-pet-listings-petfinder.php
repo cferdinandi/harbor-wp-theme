@@ -142,6 +142,12 @@
 				$attribute = keel_petfinder_api_sanitize_description( $pet['description']['$t'] );
 			$attribute = keel_petfinder_api_linkify( $attribute );
 		}
+				
+		// Sanitize description and add links
+		elseif ( $type === 'id' ) {
+			if (isset($pet['id']['$t']))
+				$attribute = $pet['id']['$t'];
+		}
 
 		// Generate string of breeds, separated by a delimiter
 		elseif ( $type === 'breeds' ) {
@@ -681,6 +687,7 @@
 				'size' => keel_petfinder_api_get_pet_attribute( $pets, 'size', $settings['size_unknown'] ),
 				'breeds' => keel_petfinder_api_get_pet_attribute( $pets, 'breeds' ),
 				'description' => keel_petfinder_api_get_pet_attribute( $pets, 'description' ),
+				'id' => keel_petfinder_api_get_pet_attribute( $pets, 'id' ),
 				'photos' => array(
 					'large' => array(
 						keel_petfinder_api_get_pet_photo( $pets, 'large', 1 ),

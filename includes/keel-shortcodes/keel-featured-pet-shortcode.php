@@ -7,125 +7,70 @@
 	class Featured_Pet {
 	
 		private static $options;
-		private $featured_pet;
-		private $featured_pet_backup;
+		
+		private $type;
 
 		function keel_featured_pet_shortcode( $atts ) {
 
 			$atts = shortcode_atts( array(
 			'type' => 'small'
 				), $atts );
-		$type = $atts['type'];
+			$this->type = $atts['type'];
 
-			global $wp_query, $post;
+			$featured_pets = get_option( 'keel_featured_pet_selections', '');
+
+			if(isset($featured_pets['featured_pet_details']['name']) && $featured_pets['featured_pet_details']['name'] != ''):
+				return $this->generate_pet($featured_pets['featured_pet_details'], $featured_pets['featured_pet_post_id']);
+			elseif(isset($featured_pets['featured_pet_details']['name']) && $featured_pets['featured_pet_details']['name'] != ''):
+				return $this->generate_pet($featured_pets['featured_pet_backup_details'], $featured_pets['featured_pet_backup_post_id']);
+			endif;
 			
-			$featured_pets = get_option( 'keel_featured_pet_selections' );
+			//TODO Show oldest pet listing
+			return "Nothing to see here, folks.";
+
+		}
+		
+		private function generate_pet($pet, $pet_post_id) {
+		
+			$return = '<article class="container">';
+
+			$return .= '<h2 class="featured-pet-name">' . '<a class="keel-featured-pet" href="'.get_post_permalink($pet_post_id).'">' .
+									$pet['name'] . '</a></h2>';
+									
+			if ($this->type == "full"):
+				$img = get_post_meta( $pet_post_id, 'keel_pet_listings_pet_imgs', true ); // All Images for this pet
+			else:
+				$img = get_post_meta( $pet_post_id, 'keel_pet_listings_single_img', true ); // Single Image
+			endif;
 			
-			$this->featured_pet = $featured_pets['featured_pet'];
-			$this->featured_pet_backup = $featured_pets['featured_pet_backup'];
-
-			$args = array(
-					'posts_per_page' => 1,
-					'search_pet_title' => $this->featured_pet,
-					'post_status' => 'publish',
-					'orderby'     => 'title',
-					'order'       => 'ASC',
-					'post_type' => 'keel-pets'
-			);
-
-			add_filter( 'posts_where', array($this, 'title_filter'), 10, 2 );
-			$my_query = new WP_Query($args);
-			if ($my_query->have_posts() == true) {
-				while ($my_query->have_posts()) : $my_query->the_post();
-					setup_postdata($post);
-					$fpw_queried_id = get_the_ID();
-				endwhile;
-			} else {
-				$args['search_pet_title'] = $this->featured_pet_backup;
-				$this->featured_pet = $instance['featured_pet_backup'];
-				$my_query = new WP_Query($args);
-				while ($my_query->have_posts()) : $my_query->the_post();
-					setup_postdata($post);
-					$fpw_queried_id = get_the_ID();
-				endwhile;
+			// Pet image
+			if ( !empty( $img ) ) {
+				if ($this->type == "full"):
+					$return .= $img;
+				else:
+					$return .= '<a class="keel-featured-pet" href="'.get_post_permalink($pet[$pet_post_id]).'">'.$img.'</a>';
+				endif;
 			}
-			if ($my_query->have_posts() == false) {
-				unset($args['search_pet_title']);
-				$my_query = new WP_Query($args);
-				while ($my_query->have_posts()) : $my_query->the_post();
-					setup_postdata($post);
-					$fpw_queried_id = get_the_ID();
-				endwhile;
-			}
-			remove_filter( 'posts_where', array($this, 'title_filter'), 10, 2 );
 
-			wp_reset_postdata();
-
-				$fpw_args = array(
-					'posts_per_page' => 1,
-					'p' => $fpw_queried_id,
-					'post_type' => 'keel-pets',
-					'order' => 'ASC'
-				);
-
-			/* Generate Featured Pet Display */
-
-			$fpw_posts = new WP_Query($fpw_args);
-
-			while ($fpw_posts->have_posts()) :
-
-				$fpw_posts->the_post();
-
-				setup_postdata($post);
-
-		// Variables
-		$options = keel_pet_listings_get_theme_options(); // Pet Listings options
-		$details = get_post_meta( $post->ID, 'keel_pet_listings_pet_details', true ); // Details for this pet
-		
-		if ($type == "full"):
-			$img = get_post_meta( $post->ID, 'keel_pet_listings_pet_imgs', true ); // All Images for this pet
-		else:
-			$img = get_post_meta( $post->ID, 'keel_pet_listings_single_img', true ); // Single Image
-		endif;
-		
-		$return = '<article class="container">';
-
-		$return .= '<h2 class="featured-pet-name">' . '<a class="keel-featured-pet" href="'.get_the_permalink().'">' .
-								get_the_title() . '</a></h2>';
-
-				// Pet image
-				if ( !empty( $img ) ) {
-					if ($type == "full"):
-						$return .= $img;
-					else:
-						$return .= '<a class="keel-featured-pet" href="'.get_the_permalink().'">'.$img.'</a>';
-					endif;
-				}
-		
-				// Key pet info
+			// Key pet info
 			$return .= '<ul class="list-unstyled">' .
-				'<li><strong>' . __( 'Size', 'keel' ) . '</strong> ' . esc_attr( $details['size'] ) .'</li>' .
-				'<li><strong>' . __( 'Age', 'keel' ) . '</strong> ' . esc_attr( $details['age'] ) .'</li>' .
-				'<li><strong>' . __( 'Gender', 'keel' ) . '</strong> ' . esc_attr( $details['gender'] ) .'</li>' .
-				'<li><strong>' . __( 'Breeds', 'keel' ) . '</strong> ' . esc_attr( $details['breeds'] ) .'</li>';
-				if(!empty( $details['options']['multi'] ))
-					$return .= '<li><em>' . esc_attr( $details['options']['multi'] ) . '</em></li>';
-				if (!empty( $details['options']['special_needs'] ))
-					$return .= '<li><em>' . esc_attr( $details['options']['special_needs'] ) . '</em></li>' .
+			'<li><strong>' . __( 'Size', 'keel' ) . '</strong> ' . esc_attr( $pet['size'] ) .'</li>' .
+			'<li><strong>' . __( 'Age', 'keel' ) . '</strong> ' . esc_attr( $pet['age'] ) .'</li>' .
+			'<li><strong>' . __( 'Gender', 'keel' ) . '</strong> ' . esc_attr( $pet['gender'] ) .'</li>' .
+			'<li><strong>' . __( 'Breeds', 'keel' ) . '</strong> ' . esc_attr( $pet['breeds'] ) .'</li>';
+			if(!empty( $pet['options']['multi'] ))
+				$return .= '<li><em>' . esc_attr( $pet['options']['multi'] ) . '</em></li>';
+			if (!empty( $pet['options']['special_needs'] ))
+				$return .= '<li><em>' . esc_attr( $pet['options']['special_needs'] ) . '</em></li>' .
 			$return .= '</ul>';
 
-				// The page or post content
-				$return .= get_the_excerpt();
+			// The page or post content
+			$return .= $pet['description'];
 
-				$return .= '</article>';
-
-			endwhile;
+			$return .= '</article>';
 			
-			// Restore original Post Data
-			wp_reset_postdata();
-						
 			return $return;
-
+				
 		}
 		
 		// Changing excerpt more

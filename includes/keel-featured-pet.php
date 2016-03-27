@@ -52,15 +52,19 @@
 			if ($details['id'] == $options['featured_pet_id']):
 				$options['featured_pet_details'] = $details;
 				$options['featured_pet_name'] = $pet->post_title;
+				$options['featured_pet_post_id'] = $pet->ID;
 				continue;
 			elseif ($details['id'] == $options['featured_pet_backup_id']):
 				$options['featured_pet_backup_details'] = $details;
 				$options['featured_pet_backup_name'] = $pet->post_title;
+				$options['featured_pet_backup_post_id'] = $pet->ID;
 				continue;
 			endif;
 		endforeach;
 		echo '<input type="hidden" name="keel_featured_pet_selections[featured_pet_name]" value="' . $options['featured_pet_name'] . '" />';
 		echo '<input type="hidden" name="keel_featured_pet_selections[featured_pet_backup_name]" value="' . $options['featured_pet_backup_name'] . '" />';
+		echo '<input type="hidden" name="keel_featured_pet_selections[featured_pet_post_id]" value="' . $options['featured_pet_post_id'] . '" />';
+		echo '<input type="hidden" name="keel_featured_pet_selections[featured_pet_backup_post_id]" value="' . $options['featured_pet_backup_post_id'] . '" />';
 		echo '<input type="hidden" name="keel_featured_pet_selections[featured_pet_details]" value="nothing' . serialize($options['featured_pet_details']) . '" />';
 		echo '<input type="hidden" name="keel_featured_pet_selections[featured_pet_backup_details]" value="nothing' . serialize($options['featured_pet_backup_details']) . '" />';
     //wp_cache_delete('keel_featured_pet_selections');
@@ -98,6 +102,8 @@
 			'featured_pet_backup_id' => '',
 			'featured_pet_name' => '',
 			'featured_pet_backup_name' => '',
+			'featured_pet_post_id' => '',
+			'featured_pet_backup_post_id' => '',
 			'featured_pet_details' => array(),
 			'featured_pet_backup_details' => array(),
 		);
@@ -110,7 +116,7 @@
 		return $options;
 	}
 
-	// Sanitize and validate updated featured pet selections - necessary as from select?
+	// Sanitize and validate updated featured pet selections - necessary as from select and hidden fields?
 	function keel_featured_pet_validate( $input ) {
 		$output = array();
 
@@ -126,8 +132,16 @@
 
 		if ( isset( $input['featured_pet_backup_name'] ) && ! empty( $input['featured_pet_backup_name'] ) )
 			$output['featured_pet_backup_name'] = wp_filter_nohtml_kses( $input['featured_pet_backup_name'] );
+			
+		// Validate these?
+		if ( isset( $input['featured_pet_post_id'] ) && ! empty( $input['featured_pet_post_id'] ) )
+			$output['featured_pet_post_id'] = $input['featured_pet_post_id'];
+			
+		if ( isset( $input['featured_pet_backup_post_id'] ) && ! empty( $input['featured_pet_backup_post_id'] ) )
+			$output['featured_pet_backup_post_id'] = $input['featured_pet_backup_post_id'];
 
 		// TODO Validate pet details arrays
+			
 		if ( isset( $input['featured_pet_details'] ) && ! empty( $input['featured_pet_details'] ) )
 			$output['featured_pet_details'] =  $input['featured_pet_details'] ;
 			

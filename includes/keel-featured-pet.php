@@ -3,16 +3,15 @@
 	function keel_featured_pet_settings_field_filters() {
 		$options = keel_featured_pet_get_selections();
 		$pet_names = keel_retrieve_pet_names();
-		$featured_pets = get_option( 'keel_featured_pet_selections' );
 		?>
 		<p class="description"><em>Select a pet to feature.</em></p>
 		<div>
-				<select name="keel_featured_pet_selections[featured_pet]">
-				<?php foreach( $pet_names as $option ) {
-    			echo '<option value="'.$option.'" ';
-    			selected( $featured_pets['featured_pet'], $option );
-    			echo '>'.$option.'</option>';
-				}
+				<select name="keel_featured_pet_selections[featured_pet_id]">
+				<?php foreach( $pet_names as $info_tag ) {
+    						echo '<option value="'.$info_tag[0].'" ';
+    						selected( $options['featured_pet_id'], $info_tag[0] );
+    						echo '>'.$info_tag[1].'</option>';
+							}
 				?>
 				</select>
 		</div>
@@ -22,22 +21,51 @@
 	function keel_featured_pet_backup_settings_field_filters() {
 		$options = keel_featured_pet_get_selections();
 		$pet_names = keel_retrieve_pet_names();
-		$featured_pets = get_option( 'keel_featured_pet_selections' );
 		?>
 		<p class="description"><em>In case first featured pet isn't available.</em></p>
 		<div>
-				<select name="keel_featured_pet_selections[featured_pet_backup]">
-				<?php foreach( $pet_names as $option ) {
-    			echo '<option value="'.$option.'" ';
-    			selected( $featured_pets['featured_pet_backup'], $option );
-    			echo '>'.$option.'</option>';
-				}
+				<select name="keel_featured_pet_selections[featured_pet_backup_id]">
+				<?php foreach( $pet_names as $info_tag ) {
+    						echo '<option value="'.$info_tag[0].'" ';
+    						selected( $options['featured_pet_backup_id'], $info_tag[0] );
+    						echo '>'.$info_tag[1].'</option>';
+							}
 				?>
 				</select>
 		</div>
 		<?php
+		
 	}
-
+	
+	function keel_featured_pet_settings_names_details() {
+		if(isset($_GET['settings-updated']) && $_GET['settings-updated']=='true'){
+		$options = keel_featured_pet_get_selections();
+		$args = array(
+			'posts_per_page' => -1,
+			'post_status' => 'publish',
+			'post_type' => 'keel-pets'
+		);
+		
+		$pets = get_posts($args);
+		foreach ( $pets as $pet ) :
+			$details = get_post_meta( $pet->ID, 'keel_pet_listings_pet_details', true );
+			if ($details['id'] == $options['featured_pet_id']):
+				$options['featured_pet_details'] = $details;
+				$options['featured_pet_name'] = $pet->post_title;
+				continue;
+			elseif ($details['id'] == $options['featured_pet_backup_id']):
+				$options['featured_pet_backup_details'] = $details;
+				$options['featured_pet_backup_name'] = $pet->post_title;
+				continue;
+			endif;
+		endforeach;
+		echo '<input type="hidden" name="keel_featured_pet_selections[featured_pet_name]" value="' . $options['featured_pet_name'] . '" />';
+		echo '<input type="hidden" name="keel_featured_pet_selections[featured_pet_backup_name]" value="' . $options['featured_pet_backup_name'] . '" />';
+		echo '<input type="hidden" name="keel_featured_pet_selections[featured_pet_details]" value="nothing' . serialize($options['featured_pet_details']) . '" />';
+		echo '<input type="hidden" name="keel_featured_pet_selections[featured_pet_backup_details]" value="nothing' . serialize($options['featured_pet_backup_details']) . '" />';
+    //wp_cache_delete('keel_featured_pet_selections');
+    update_option( 'keel_featured_pet_selections', $options, True );		}
+	}
 	/**
 	 * Return list of names (the post Titles) for each published pet
 	 */
@@ -49,9 +77,8 @@
 		);
 		$features = get_posts($args);
 		foreach ( $features as $feature ) :
-
-			$posts[] = $feature->post_title;
-
+			$details = get_post_meta( $feature->ID, 'keel_pet_listings_pet_details', true );
+			$posts[] = array($details['id'], $feature->post_title);
 		endforeach;
 		return $posts;
 	}
@@ -67,8 +94,12 @@
 		$saved = (array) get_option( 'keel_featured_pet_selections' );
 
 		$defaults = array(
-			'featured_pet' => '',
-			'featured_pet_backup' => '',
+			'featured_pet_id' => '',
+			'featured_pet_backup_id' => '',
+			'featured_pet_name' => '',
+			'featured_pet_backup_name' => '',
+			'featured_pet_details' => array(),
+			'featured_pet_backup_details' => array(),
 		);
 
 		$defaults = apply_filters( 'keel_featured_pet_get_selections', $defaults );
@@ -83,11 +114,25 @@
 	function keel_featured_pet_validate( $input ) {
 		$output = array();
 
-		if ( isset( $input['featured_pet'] ) && ! empty( $input['featured_pet'] ) )
-			$output['featured_pet'] = wp_filter_nohtml_kses( $input['featured_pet'] );
+		if ( isset( $input['featured_pet_id'] ) && ! empty( $input['featured_pet_id'] ) )
+			$output['featured_pet_id'] = wp_filter_nohtml_kses( $input['featured_pet_id'] );
 
-		if ( isset( $input['featured_pet_backup'] ) && ! empty( $input['featured_pet_backup'] ) )
-			$output['featured_pet_backup'] = wp_filter_nohtml_kses( $input['featured_pet_backup'] );
+		if ( isset( $input['featured_pet_backup_id'] ) && ! empty( $input['featured_pet_backup_id'] ) )
+			$output['featured_pet_backup_id'] = wp_filter_nohtml_kses( $input['featured_pet_backup_id'] );
+			
+			
+		if ( isset( $input['featured_pet_name'] ) && ! empty( $input['featured_pet_name'] ) )
+			$output['featured_pet_name'] = wp_filter_nohtml_kses( $input['featured_pet_name'] );
+
+		if ( isset( $input['featured_pet_backup_name'] ) && ! empty( $input['featured_pet_backup_name'] ) )
+			$output['featured_pet_backup_name'] = wp_filter_nohtml_kses( $input['featured_pet_backup_name'] );
+
+		// TODO Validate pet details arrays
+		if ( isset( $input['featured_pet_details'] ) && ! empty( $input['featured_pet_details'] ) )
+			$output['featured_pet_details'] =  $input['featured_pet_details'] ;
+			
+		if ( isset( $input['featured_pet_backup_details'] ) && ! empty( $input['featured_pet_backup_details'] ) )
+			$output['featured_pet_backup_details'] = $input['featured_pet_backup_details'];
 
 		return apply_filters( 'keel_featured_pet_validate', $output, $input );
 	}
@@ -150,6 +195,7 @@
 		// $section - The section of the settings page in which to show the field.
 		add_settings_field( 'keel_featured_pet', __( 'Featured Pet', 'keel' ), 'keel_featured_pet_settings_field_filters', 'keel_featured_pet_selections', 'featured' );
 		add_settings_field( 'keel_featured_pet_backup', __( 'Backup Featured Pet', 'keel' ), 'keel_featured_pet_backup_settings_field_filters', 'keel_featured_pet_selections', 'featured' );
+		add_settings_field( 'keel_featured_pet_settings_names_details', __( 'Featured Pet Hidden', 'keel' ), 'keel_featured_pet_settings_names_details', 'keel_featured_pet_selections', 'featured' );
 	}
 	add_action( 'admin_init', 'keel_featured_pet_init' );
 	// Add the theme options page to the admin menu
@@ -165,6 +211,9 @@
 		$theme_page = add_submenu_page( 'edit.php?post_type=keel-pets', __( 'Featured Pet', 'keel' ), __( 'Featured Pet', 'keel' ), 'edit_theme_options', 'keel_featured_pet_selections', 'keel_featured_pet_render_page' );
 
 	}
-	add_action( 'admin_menu', 'keel_featured_pet_add_page' );
+	$saved = (array) get_option( 'keel_pet_listings_theme_options' );	
+	// Only add featured pet page if Basic API options have been configured.	
+	if(isset($saved['developer_key']))
+		add_action( 'admin_menu', 'keel_featured_pet_add_page' );
 
 ?>

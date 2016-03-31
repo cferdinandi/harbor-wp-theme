@@ -23,15 +23,33 @@
 				return $this->generate_pet($featured_pets['featured_pet_details'], $featured_pets['featured_pet_post_id']);
 			elseif(isset($featured_pets['featured_pet_details']['name']) && $featured_pets['featured_pet_details']['name'] != ''):
 				return $this->generate_pet($featured_pets['featured_pet_backup_details'], $featured_pets['featured_pet_backup_post_id']);
+			else:
+			// Retrieve the oldest pet
+			$args = array(
+				'showposts' => 1,
+				'post_type' => 'keel-pets',
+				'post_status' => 'publish',
+				'orderby' => 'post_date',
+				'order' => 'ASC',
+			);
+						
+				global $post;
+				$oldest_pet = new WP_Query($args);
+				if( $oldest_pet->have_posts() ) {
+					while ($oldest_pet->have_posts()) : $oldest_pet->the_post(); 
+						$featured_pet = $this->generate_pet('', $post->ID);
+					endwhile; 
+				}
+				// Reset Post Data
+				wp_reset_postdata();
+				return $featured_pet;
 			endif;
-			
-			//TODO Show oldest pet listing
-			return "Nothing to see here, folks.";
-
 		}
 		
 		private function generate_pet($pet, $pet_post_id) {
-		
+			if( $pet == '' && $pet_post_id != ''):
+				$pet = get_post_meta( $pet_post_id, 'keel_pet_listings_pet_details', true );
+			endif;
 			$return = '<article class="container">';
 
 			$return .= '<h2 class="featured-pet-name">' . '<a class="keel-featured-pet" href="'.get_post_permalink($pet_post_id).'">' .

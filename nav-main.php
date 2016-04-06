@@ -10,7 +10,7 @@
 
 <nav class="nav-wrap-navbar nav-collapse <?php if ( !keel_has_hero() ) { echo 'margin-bottom'; } ?>  no-js-drop">
 	<div class="container container-large">
-		<a class="logo-navbar" href="<?php echo site_url(); ?>/">
+		<a class="logo-navbar" href="<?php echo esc_url( home_url( '/' )); ?>">
 			<?php
 				$logo = get_theme_mod( 'keel_logo' );
 				if ( empty( $logo ) ) :

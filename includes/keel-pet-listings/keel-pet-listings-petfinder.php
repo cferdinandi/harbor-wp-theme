@@ -664,7 +664,6 @@
 	}
 
 
-
 	/**
 	 * An array with all of the details
 	 * @param  Array  $pets     The pet data
@@ -853,7 +852,7 @@
 
 			// Create post content
 			$imgs = keel_petfinder_api_create_pet_img_markup( $details );
-			$img = keel_petfinder_api_create_pet_img_markup( $details );
+			$img = keel_petfinder_api_get_pet_photo( $pet, 'large', 1 );
 
 			// Create post
 			$post = wp_insert_post(array(

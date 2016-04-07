@@ -84,7 +84,6 @@
 				$img = get_post_meta( $pet_post_id, 'keel_pet_listings_pet_imgs', true ); // All Images for this pet
 			else:
 				$img = get_post_meta( $pet_post_id, 'keel_pet_listings_single_img', true ); // Single Image
-				mz_pr(get_post_meta( $pet_post_id));
 			endif;
 			
 			// Pet image
@@ -92,7 +91,7 @@
 				if ($this->type == "full"):
 					$return .= $img;
 				else:
-					$return .= '<a class="keel-featured-pet" href="'.get_post_permalink($pet[$pet_post_id]).'">'.$img.'</a>';
+					$return .= '<a class="keel-featured-pet" href="'.get_post_permalink($pet_post_id).'"><img class="keel-featured-pet" src="'.$img.'" /></a>';
 				endif;
 			}
 

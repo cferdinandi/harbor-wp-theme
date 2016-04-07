@@ -853,6 +853,7 @@
 
 			// Create post content
 			$imgs = keel_petfinder_api_create_pet_img_markup( $details );
+			$img = keel_petfinder_api_create_pet_img_markup( $details );
 
 			// Create post
 			$post = wp_insert_post(array(
@@ -866,6 +867,7 @@
 			if ( $post === 0 ) continue;
 			update_post_meta( $post, 'keel_pet_listings_pet_details', $details );
 			update_post_meta( $post, 'keel_pet_listings_pet_imgs', $imgs );
+			update_post_meta( $post, 'keel_pet_listings_single_img', $img );
 
 		}
 

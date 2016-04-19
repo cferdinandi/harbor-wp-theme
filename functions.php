@@ -51,8 +51,8 @@
 		$options = keel_get_theme_options();
 		?>
 			<script>
-				<?php echo file_get_contents( get_template_directory_uri() . '/dist/js/detects.min.' . $keel_theme->get( 'Version' ) . '.js' ); ?>
-				<?php // echo file_get_contents( get_template_directory_uri() . '/dist/js/detects.js' ); ?>
+				<?php echo file_get_contents( get_template_directory() . '/dist/js/detects.min.' . $keel_theme->get( 'Version' ) . '.js' ); ?>
+				<?php // echo file_get_contents( get_template_directory() . '/dist/js/detects.js' ); ?>
 				<?php if ( $options['typeface'] === 'open_sans' ) : ?>
 					loadCSS( '//fonts.googleapis.com/css?family=Open+Sans:400,400italic,700' );
 				<?php elseif ( $options['typeface'] === 'source_sans_pro' ) : ?>
@@ -76,7 +76,7 @@
 		$keel_theme = wp_get_theme();
 		?>
 			<script>
-				<?php echo file_get_contents( get_template_directory_uri() . '/dist/js/loadJS.min.' . $keel_theme->get( 'Version' ) . '.js' ); ?>
+				<?php echo file_get_contents( get_template_directory() . '/dist/js/loadJS.min.' . $keel_theme->get( 'Version' ) . '.js' ); ?>
 				if ( 'querySelector' in document && 'addEventListener' in window ) {
 					loadJS('<?php echo get_template_directory_uri() . "/dist/js/main.min." . $keel_theme->get( "Version" ) . ".js"; ?>');
 					// loadJS('<?php echo get_template_directory_uri() . "/dist/js/main.js"; ?>');

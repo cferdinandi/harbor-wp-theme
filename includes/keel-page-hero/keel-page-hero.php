@@ -15,6 +15,7 @@
 			'image' => '',
 			'overlay' => 'off',
 			'min_height' => '',
+			'overlay_styling' => '',
 		);
 	}
 
@@ -91,6 +92,7 @@
 			</fieldset>
 
 			<h3>Overlay Styling</h3>
+			Find RGBA codes at: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool">RGB color picker</a>
 
 			<fieldset>
 				<label for="keel_page_hero_overlay_styling"><?php printf( __( '[Optional] Change overlay color and transparency from default. Example: %s', 'keel' ), '<code>rgba(0, 0, 0, 0.5)</code>' ); ?></label>

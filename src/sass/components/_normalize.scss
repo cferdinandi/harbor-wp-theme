@@ -155,9 +155,9 @@ figure {
 }
 
 /**
- * @workaround Remove focus from <main> element when using tabindex="-1" hack for skipnav link
+ * @workaround Remove focus from elements when using tabindex="-1" hack for skipnav link
  * @link https://code.google.com/p/chromium/issues/detail?id=37721
  */
-#main:focus {
+.tabindex:focus {
 	outline: none;
 }

@@ -1,5 +1,5 @@
 /*!
- * harbor v2.16.2: A free WordPress theme for animal and pet rescue organizations
+ * harbor v2.16.3: A free WordPress theme for animal and pet rescue organizations
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * https://github.com/cferdinandi/harbor-wp-theme
@@ -196,11 +196,11 @@ figure {
 }
 
 /**
- * @workaround Remove focus from <main> element when using tabindex="-1" hack for skipnav link
+ * @workaround Remove focus from elements when using tabindex="-1" hack for skipnav link
  * @link https://code.google.com/p/chromium/issues/detail?id=37721
  */
 /* line 161, /Users/cferdinandi/Sites/harbor/wordpress/wp-content/themes/harbor-wp-theme/src/sass/components/_normalize.scss */
-#main:focus {
+.tabindex:focus {
   outline: none;
 }
 

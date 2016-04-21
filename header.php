@@ -42,14 +42,16 @@
 				</section>
 			<![endif]-->
 
-			<!-- Skip link for better accessibility -->
-			<a class="screen-reader screen-reader-focusable" href="#main">Skip to main content</a>
+			<?php
+				// Accessibility improvements
+				get_template_part( 'nav', 'a11y' );
+			?>
 
 			<?php
 				// Get site navigation
 				get_template_part( 'nav', 'main' );
 			?>
 
-			<main id="main" tabindex="-1">
+			<main class="tabindex" id="main" tabindex="-1">
 
 				<div class="<?php if ( !is_singular() || is_404() ) { echo 'container'; } ?> <?php if ( is_post_type_archive( 'keel-pets' ) ) { echo 'container-large'; } ?>">

@@ -127,6 +127,16 @@
 
 	// Footer
 
+	function keel_settings_field_footer_search() {
+		$options = keel_get_theme_options();
+		?>
+		<label >
+			<input type="checkbox" name="keel_theme_options[search]" <?php checked( 'on', $options['search'] ); ?> />
+			<?php _e( 'Disable search', 'keel' ); ?>
+		</label>
+		<?php
+	}
+
 	function keel_settings_field_footer_content_1() {
 		$options = keel_get_theme_options();
 		?>
@@ -190,6 +200,7 @@
 			'newsletter' => '',
 
 			// Footer
+			'search' => 'off',
 			'footer1' => '',
 			'footer1_markdown' => '',
 			'footer2' => '',
@@ -242,6 +253,9 @@
 			$output['newsletter'] = wp_filter_nohtml_kses( $input['newsletter'] );
 
 		// Footer
+
+		if ( isset( $input['search'] ) )
+			$output['search'] = 'on';
 
 		if ( isset( $input['footer1'] ) && ! empty( $input['footer1'] ) ) {
 			$output['footer1'] = keel_process_jetpack_markdown( wp_filter_post_kses( $input['footer1'] ) );
@@ -335,6 +349,7 @@
 		add_settings_field( 'newsletter', __( 'Newsletter', 'keel' ), 'keel_settings_field_social_newsletter', 'keel_theme_options', 'social' );
 
 		// Footer
+		add_settings_field( 'search', __( 'Search', 'keel' ), 'keel_settings_field_footer_search', 'keel_theme_options', 'footer' );
 		add_settings_field( 'footer1', __( 'Footer 1', 'keel' ), 'keel_settings_field_footer_content_1', 'keel_theme_options', 'footer' );
 		add_settings_field( 'footer2', __( 'Footer 2', 'keel' ), 'keel_settings_field_footer_content_2', 'keel_theme_options', 'footer' );
 

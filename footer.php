@@ -20,9 +20,15 @@
 
 			<div class="container container-large text-center" >
 
-				<?php get_template_part( 'nav', 'secondary' ); ?>
+				<?php
+					// Secondary navigation
+					get_template_part( 'nav', 'secondary' );
+				?>
 
-				<?php get_template_part( 'nav', 'social' ); ?>
+				<?php
+					// Social nav and search
+					get_template_part( 'nav', 'social' );
+				?>
 
 				<?php if ( !empty( $options['footer1'] ) && !empty( $options['footer2'] ) ) : ?>
 					<div class="row">

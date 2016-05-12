@@ -793,7 +793,10 @@
 		if ( empty( $data ) || intval( $data['petfinder']['header']['status']['code']['$t'] ) !== 100 ) return null;
 
 		// Return the pet data
-		return $data['petfinder']['pets']['pet'];
+		if ( array_key_exists( 0, $data['petfinder']['pets']['pet'] ) ) return $data['petfinder']['pets']['pet'];
+		return array(
+			0 => $data['petfinder']['pets']['pet'],
+		);
 
 	}
 

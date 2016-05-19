@@ -28,7 +28,8 @@
 		$dom = new DOMDocument();
 		$dom->loadHTMLFile( $asm['url'] );
 		$data = $dom->getElementsByTagName( 'form' );
-		$form = $data[0]->ownerDocument->saveHTML($data[0]);
+		// $form = $data[0]->ownerDocument->saveHTML($data[0]);
+		$form = $data->item(0)->ownerDocument->saveHTML( $data->item(0) );
 		libxml_clear_errors();
 
 		// Add Harbor's grid and layout to the form

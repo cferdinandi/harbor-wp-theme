@@ -24,10 +24,12 @@
 		if ( empty( $asm['url'] ) ) return;
 
 		// Get the form
+		libxml_use_internal_errors(true);
 		$dom = new DOMDocument();
 		$dom->loadHTMLFile( $asm['url'] );
 		$data = $dom->getElementsByTagName( 'form' );
 		$form = $data[0]->ownerDocument->saveHTML($data[0]);
+		libxml_clear_errors();
 
 		// Add Harbor's grid and layout to the form
 

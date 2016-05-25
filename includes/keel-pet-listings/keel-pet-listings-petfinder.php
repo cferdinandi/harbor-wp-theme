@@ -284,7 +284,7 @@
 		// Link attributes
 		$attr = '';
 		foreach ($attributes as $key => $val) {
-			$attr = ' ' . $key . '="' . htmlentities($val) . '"';
+			$attr = ' ' . $key . '="' . preg_replace( '/[^A-Za-z0-9\-]/', '', $val ) . '"';
 		}
 		$links = array();
 

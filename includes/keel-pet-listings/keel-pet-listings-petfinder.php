@@ -138,11 +138,9 @@
 
 		// Sanitize description and add links
 		if ( $type === 'description' ) {
-			if ( array_key_exists( '$t', $pet['description'] ) && !empty( $pet['description']['$t'] ) ) {
-				$attribute = utf8_encode( $pet['description']['$t'] );
-				$attribute = keel_petfinder_api_sanitize_description( $attribute );
-				$attribute = keel_petfinder_api_linkify( $attribute );
-			}
+			$attribute = utf8_encode( $pet['description']['$t'] );
+			$attribute = keel_petfinder_api_sanitize_description( $attribute );
+			$attribute = keel_petfinder_api_linkify( $attribute );
 		}
 
 		// Generate string of breeds, separated by a delimiter
@@ -284,7 +282,7 @@
 		// Link attributes
 		$attr = '';
 		foreach ($attributes as $key => $val) {
-			$attr = ' ' . $key . '="' . htmlentities($val) . '"';
+			$attr = ' ' . $key . '="' . preg_replace( '/[^A-Za-z0-9\-]/', '', $val ) . '"';
 		}
 		$links = array();
 
@@ -335,6 +333,8 @@
 			'</span>',
 			'<font>',
 			'</font>',
+			'Ã¢Â',
+			'�',
 		);
 
 		// Things to replace them with
@@ -347,10 +347,11 @@
 			'',
 			'',
 			'',
+			',',
+			'',
 		);
 
 		// Sanitize text
-		// return preg_replace( $patterns, $replacements, $text );
 		return str_replace( $patterns, $replacements, $text );
 
 	}
@@ -793,10 +794,7 @@
 		if ( empty( $data ) || intval( $data['petfinder']['header']['status']['code']['$t'] ) !== 100 ) return null;
 
 		// Return the pet data
-		if ( array_key_exists( 0, $data['petfinder']['pets']['pet'] ) ) return $data['petfinder']['pets']['pet'];
-		return array(
-			0 => $data['petfinder']['pets']['pet'],
-		);
+		return $data['petfinder']['pets']['pet'];
 
 	}
 

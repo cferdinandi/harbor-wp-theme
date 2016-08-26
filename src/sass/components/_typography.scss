@@ -68,11 +68,6 @@ a {
 		color: darken( $color-primary, 15% );
 		text-decoration: underline;
 	}
-
-	img {
-		border: none;
-		background: none;
-	}
 }
 
 
@@ -212,27 +207,39 @@ h4,
  */
 
 hr {
-	margin: calc-em(32px) auto;
 	border: 0;
 	border-top: calc-em(1px) solid $color-gray-light;
 	border-bottom: 0 solid $color-white;
-}
-
-b,
-strong {
-	font-weight: bold;
-}
-
-i,
-em {
-	font-style: italic;
+	box-sizing: content-box;
+	height: 0;
+	margin: calc-em(32px) auto;
+	overflow: visible;
 }
 
 /**
- * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+b,
+strong {
+	font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+	font-weight: bolder;
+}
+
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
 abbr[title] {
 	border-bottom: calc-em(1px) dotted;
+	text-decoration: underline; /* 2 */
+	text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -243,10 +250,11 @@ dfn {
 }
 
 /**
- * Address styling not present in IE 8/9.
+ * Add the correct background and color in IE 9-.
  */
 mark {
-	background: #ff0;
+  background-color: #ff0;
+  color: #000;
 }
 
 /**

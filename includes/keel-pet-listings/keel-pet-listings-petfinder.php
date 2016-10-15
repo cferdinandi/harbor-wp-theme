@@ -142,6 +142,12 @@
 			$attribute = keel_petfinder_api_sanitize_description( $attribute );
 			$attribute = keel_petfinder_api_linkify( $attribute );
 		}
+				
+		// Sanitize description and add links
+		elseif ( $type === 'id' ) {
+			if (isset($pet['id']['$t']))
+				$attribute = $pet['id']['$t'];
+		}
 
 		// Generate string of breeds, separated by a delimiter
 		elseif ( $type === 'breeds' ) {
@@ -667,7 +673,6 @@
 	}
 
 
-
 	/**
 	 * An array with all of the details
 	 * @param  Array  $pets     The pet data
@@ -690,6 +695,7 @@
 				'size' => keel_petfinder_api_get_pet_attribute( $pets, 'size', $settings['size_unknown'] ),
 				'breeds' => keel_petfinder_api_get_pet_attribute( $pets, 'breeds' ),
 				'description' => keel_petfinder_api_get_pet_attribute( $pets, 'description' ),
+				'id' => keel_petfinder_api_get_pet_attribute( $pets, 'id' ),
 				'photos' => array(
 					'large' => array(
 						keel_petfinder_api_get_pet_photo( $pets, 'large', 1 ),
@@ -855,6 +861,7 @@
 
 			// Create post content
 			$imgs = keel_petfinder_api_create_pet_img_markup( $details );
+			$img = keel_petfinder_api_get_pet_photo( $pet, 'large', 1 );
 
 			// Create post
 			$post = wp_insert_post(array(
@@ -868,6 +875,7 @@
 			if ( $post === 0 ) continue;
 			update_post_meta( $post, 'keel_pet_listings_pet_details', $details );
 			update_post_meta( $post, 'keel_pet_listings_pet_imgs', $imgs );
+			update_post_meta( $post, 'keel_pet_listings_single_img', $img );
 
 		}
 

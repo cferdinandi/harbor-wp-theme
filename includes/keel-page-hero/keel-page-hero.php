@@ -15,6 +15,7 @@
 			'image' => '',
 			'overlay' => 'off',
 			'min_height' => '',
+			'overlay_styling' => '',
 		);
 	}
 
@@ -90,6 +91,14 @@
 				<input type="text" class="large-text" name="keel_page_hero_min_height" id="keel_page_hero_min_height" value="<?php echo stripslashes( $hero['min_height'] ); ?>">
 			</fieldset>
 
+			<h3>Overlay Styling</h3>
+			Find RGBA codes at: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool">RGB color picker</a>
+
+			<fieldset>
+				<label for="keel_page_hero_overlay_styling"><?php printf( __( '[Optional] Change overlay color and transparency from default. Example: %s', 'keel' ), '<code>rgba(0, 0, 0, 0.5)</code>' ); ?></label>
+				<input type="text" class="large-text" name="keel_page_hero_overlay_styling" id="keel_page_hero_overlay_styling" value="<?php echo stripslashes( $hero['overlay_styling'] ); ?>">
+			</fieldset>
+
 		<?php
 
 		// Security field
@@ -134,6 +143,10 @@
 
 		if ( isset( $_POST['keel_page_hero_overlay'] ) ) {
 			$hero['overlay'] = wp_filter_nohtml_kses( $_POST['keel_page_hero_overlay'] );
+		}
+		
+		if ( isset( $_POST['keel_page_hero_overlay_styling'] ) ) {
+			$hero['overlay_styling'] = wp_filter_nohtml_kses( $_POST['keel_page_hero_overlay_styling'] );
 		}
 
 		if ( isset( $_POST['keel_page_hero_min_height'] ) ) {
@@ -183,6 +196,10 @@
 					add_metadata( 'post', $post_id, 'keel_page_hero_overlay', $hero['overlay'] );
 				}
 
+				if ( array_key_exists( 'overlay_styling', $hero ) ) {
+					add_metadata( 'post', $post_id, 'keel_page_hero_overlay_styling', $hero['overlay_styling'] );
+				}
+
 				if ( array_key_exists( 'min_height', $hero ) ) {
 					add_metadata( 'post', $post_id, 'keel_page_hero_min_height', $hero['min_height'] );
 				}
@@ -208,6 +225,7 @@
 		$hero_color = get_metadata( 'post', $revision->ID, 'keel_page_hero_color', true );
 		$hero_overlay = get_metadata( 'post', $revision->ID, 'keel_page_hero_overlay', true );
 		$hero_min_height = get_metadata( 'post', $revision->ID, 'keel_page_hero_min_height', true );
+		$hero_overlay_styling = get_metadata( 'post', $revision->ID, 'keel_page_hero_overlay_styling', true );
 
 		// Update content
 		if ( !empty( $hero_content ) ) {
@@ -226,8 +244,12 @@
 			$hero['overlay'] = $hero_overlay;
 		}
 		if ( !empty( $hero_overlay ) ) {
+			$hero['overlay_styling'] = $hero_overlay_styling;
+		}
+		if ( !empty( $hero_overlay ) ) {
 			$hero['min_height'] = $hero_min_height;
 		}
+		mz_pr($hero);
 		update_post_meta( $post_id, 'keel_page_hero', $hero );
 
 	}
@@ -243,6 +265,7 @@
 		$fields['keel_page_hero_color'] = 'Page Hero Background and Text Color';
 		$fields['keel_page_hero_overlay'] = 'Page Hero Background Overlay';
 		$fields['keel_page_hero_min_height'] = 'Page Hero Minimum Height';
+		$fields['keel_page_hero_overlay_styling'] = 'Page Hero Overlay Styling';
 		return $fields;
 	}
 	add_filter( '_wp_post_revision_fields', 'keel_get_revisions_field_page_hero_textarea' );

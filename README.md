@@ -1,7 +1,8 @@
-# Harbor [![Build Status](https://travis-ci.org/cferdinandi/harbor-wp-theme.svg)](https://travis-ci.org/cferdinandi/harbor-wp-theme)
+# [DEPRECATED] Harbor [![Build Status](https://travis-ci.org/cferdinandi/harbor-wp-theme.svg)](https://travis-ci.org/cferdinandi/harbor-wp-theme)
 
-Harbor is a mobile-friendly WordPress theme built specifically for animal rescue organizations. [View the demo and get started.](http://harbor.gomakethings.com).
+Harbor is a mobile-friendly WordPress theme built specifically for animal rescue organizations.
 
+*__Note:__ This project is no longer maintained.*
 
 
 ## How to Contribute
